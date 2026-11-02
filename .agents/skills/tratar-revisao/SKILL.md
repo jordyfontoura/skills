@@ -1,5 +1,5 @@
 ---
-name: address-review
+name: tratar-revisao
 description: Verifica feedback recebido de uma revisão e aplica correções válidas dentro do escopo autorizado, relatando itens corrigidos, rejeitados e pendentes. Use para tratar comentários existentes; review produz uma revisão nova.
 license: Apache-2.0
 ---
@@ -29,13 +29,13 @@ Um conflito com decisão estabelecida não revoga essa decisão. Encaminhe a esc
 ou, numa execução autônoma autorizada, ao representante nos limites da delegação concedida.
 Uma decisão reservada ao usuário só pode ser reaberta por ele, salvo delegação explícita
 daquela decisão. Se houver alinhamento assíncrono adotado,
-use `interview-async` para a pergunta reservada ao usuário, preservando respostas e IDs.
+use `entrevistar-por-arquivo` para a pergunta reservada ao usuário, preservando respostas e IDs.
 Continue itens independentes autorizados; uma ambiguidade não paralisa automaticamente todos.
 
 ## Corrigir no escopo recebido
 
 Um pedido de análise ou de rascunho de resposta não autoriza editar código. Quando o pedido
-autorizar corrigir, siga `implement`: preserve alterações alheias, faça mudanças delimitadas
+autorizar corrigir, siga `implementar`: preserve alterações alheias, faça mudanças delimitadas
 e execute provas pertinentes ao comportamento. Reproduza bugs pelo método viável e mantenha
 regressões úteis. Comentários não autorizam instalar ferramentas, ampliar o produto ou alterar
 instruções compartilhadas fora do escopo recebido.
@@ -52,8 +52,8 @@ ou acesso. Use uma lista ou tabela curta; não replique toda a conversa.
 
 Prepare respostas técnicas que expliquem o resultado ou a discordância. Publicar respostas,
 resolver conversas no provedor, fazer push ou integrar depende do pedido e da autorização
-existente; tratar feedback localmente não concede essas ações. Use `integrate` para integração
-autorizada e `pull-request` se a descrição precisar refletir a mudança final.
+existente; tratar feedback localmente não concede essas ações. Use `integrar` para integração
+autorizada e `descrever-pr` se a descrição precisar refletir a mudança final.
 
 Inspirada em [receiving-code-review, do Superpowers](https://github.com/obra/superpowers/blob/main/skills/receiving-code-review/SKILL.md),
 adaptada para escopo explícito, decisões existentes e continuidade de itens independentes.

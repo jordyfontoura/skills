@@ -1,5 +1,5 @@
 ---
-name: integrate
+name: integrar
 description: Integra trabalho entre branches ou conclui a integração de um PR no destino autorizado, preservando alterações e verificando a árvore resultante. Não confunda com pull-request, que escreve a descrição.
 license: Apache-2.0
 ---
@@ -58,14 +58,14 @@ uma ação já autorizada, mas não deduza autorização remota de uma integraç
 Respeite as proteções do destino e confira o SHA e o resultado da ação. Se um push for rejeitado
 ou uma resposta se perder, leia o estado atual antes de tentar novamente; não force a operação.
 
-Use `pull-request` para a descrição e `address-review` para feedback recebido. Siga os mecanismos
+Use `descrever-pr` para a descrição e `tratar-revisao` para feedback recebido. Siga os mecanismos
 do ambiente para acompanhar checks quando necessário; informe os pendentes sem fingir sucesso.
 Remova branches ou worktrees somente quando essa limpeza estiver autorizada, o trabalho estiver
 preservado e a propriedade do recurso estiver comprovada. Não remova ambientes geridos externamente.
 
 Relate origem e destino, revisões, conflitos resolvidos, provas e o estado final observado:
 integrado localmente, publicado, merge remoto concluído ou ainda pendente. Esses estados não
-são equivalentes. Use `handoff` se outra sessão precisar concluir.
+são equivalentes. Use `passar-contexto` se outra sessão precisar concluir.
 Nomeie checks com falha ou sem execução e o que falta para concluir, quando houver.
 
 Inspirada em [finishing-a-development-branch, do Superpowers](https://github.com/obra/superpowers/blob/main/skills/finishing-a-development-branch/SKILL.md),

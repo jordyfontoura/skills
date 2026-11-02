@@ -6,7 +6,7 @@ aparecer duas vezes.
 | Rota | Para quem | Atualização |
 | --- | --- | --- |
 | Plugin | Claude Code e Codex, sem editar as skills. | Pelo gerenciador de plugins do agente. |
-| Cópia manual | Quem quer adaptar as skills ou usa outro agente. | Pela skill `update-harness`. |
+| Cópia manual | Quem quer adaptar as skills ou usa outro agente. | Pela skill `atualizar-harness`. |
 
 ## Plugin
 
@@ -24,14 +24,14 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 ```markdown
 ## Fluxo com as skills
 
-- Quando eu pedir `propose` ou pedir para explicar antes de agir, apresente a abordagem e
+- Quando eu pedir `propor` ou pedir para explicar antes de agir, apresente a abordagem e
   aguarde minha aprovação.
-- Use `interview` para escolhas abertas de escopo ou design e `specify` para trabalho substancial.
-- Use `implement` para entregar partes pequenas e verificáveis; relate os comandos executados
+- Use `entrevistar` para escolhas abertas de escopo ou design e `especificar` para trabalho substancial.
+- Use `implementar` para entregar partes pequenas e verificáveis; relate os comandos executados
   e os resultados observados. Prova ausente continua ausente.
-- Use `review` para analisar diffs e `evaluate` para aceite independente.
-- Use `progress` para consultas de andamento e `handoff` quando outra sessão for retomar.
-- Aplique `unslop` ao escrever documentos, títulos, descrições e mensagens.
+- Use `revisar` para analisar diffs e `verificar-aceite` para aceite independente.
+- Use `andamento` para consultas de andamento e `passar-contexto` quando outra sessão for retomar.
+- Aplique `escrever-claro` ao escrever documentos, títulos, descrições e mensagens.
 - Explorar não autoriza implementar, e uma pergunta não conta como aprovação.
 ```
 
@@ -48,11 +48,11 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
    [.agents/models.example.toml](../.agents/models.example.toml) como `.agents/models.toml`
    e ajuste. Sem esse arquivo, as skills usam o modelo do ambiente. O [guia](MODELS.md)
    explica o formato.
-5. `clarify` usa o glossário do projeto quando ele existe. Você pode partir do
+5. `esclarecer` usa o glossário do projeto quando ele existe. Você pode partir do
    [glossário desta coleção](GLOSSARY.md).
 6. Registre na documentação de manutenção do projeto a origem, a versão, o SHA e as skills
-   copiadas. A skill `update-harness` usa esse registro para preservar suas adaptações na
+   copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na
    próxima atualização.
 
-Use `setup-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
+Use `configurar-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
 Não há instalador, conta, serviço ou processo em segundo plano.

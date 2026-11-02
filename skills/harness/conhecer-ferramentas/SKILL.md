@@ -1,5 +1,5 @@
 ---
-name: toolbox
+name: conhecer-ferramentas
 description: Explica e seleciona ferramentas CLI, inventaria o ambiente e prepara as faltantes quando a instalação estiver autorizada. Perguntas explicativas e inventários não autorizam instalar ou configurar.
 license: Apache-2.0
 ---
@@ -65,5 +65,5 @@ servidores temporários que você abriu, e informe qualquer recurso que permane�
 Relate o que já existia, o que instalou ou configurou, versões e origem, teste e resultado,
 e o que continua ausente ou não verificado. Uma segunda execução com o ambiente adequado
 deve reutilizá-lo, sem reinstalar. Use a conversa ou o documento de adoção existente; não crie
-um serviço de inventário. `setup-harness` configura os comandos do projeto; esta skill prepara
+um serviço de inventário. `configurar-harness` configura os comandos do projeto; esta skill prepara
 as ferramentas necessárias, sem torná-las dependências obrigatórias das demais skills.

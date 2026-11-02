@@ -1,5 +1,5 @@
 ---
-name: reconcile
+name: reconciliar
 description: Compara requisitos, documentos e implementação para identificar o que existe, falta ou ficou obsoleto. Use em auditorias de estado ou pendências, em vez de revisão de um diff fixo.
 license: Apache-2.0
 ---
@@ -44,5 +44,5 @@ que não deve ser repetido e registros obsoletos que podem ser encerrados, com j
 A auditoria é de leitura por padrão. Não edite documentos, cancele tarefas, integre branches
 nem execute verificações que alterem estado apenas para conferir o trabalho. Se o usuário
 autorizar atualizações, preserve decisões históricas e autoria, altere apenas os registros
-combinados e verifique o resultado. Encaminhe um diff fixo a `review`, aceite em execução
-a `evaluate` e falhas sem causa a `diagnose`. Reconciliação não comprova aceite independente.
+combinados e verifique o resultado. Encaminhe um diff fixo a `revisar`, aceite em execução
+a `verificar-aceite` e falhas sem causa a `diagnosticar`. Reconciliação não comprova aceite independente.

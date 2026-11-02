@@ -1,5 +1,5 @@
 ---
-name: architecture-review
+name: examinar-arquitetura
 description: Analisa código existente para identificar atrito de arquitetura, acoplamento e dificuldades de manutenção ou teste, com propostas sustentadas por pontos de uso. Use mesmo sem diff; não implementa refatorações.
 license: Apache-2.0
 ---
@@ -9,7 +9,7 @@ license: Apache-2.0
 Defina a pergunta e o recorte: uma mudança difícil, um módulo, um fluxo ou uma área recorrente
 do código. Leia instruções, glossário, decisões e arquitetura documentada. Use as ferramentas
 de leitura permitidas; não edite, execute testes que alterem estado ou delegue por invocar esta skill.
-`review` examina um diff fixo; `reconcile` compara requisitos e estado. Aqui o objeto é a estrutura
+`revisar` examina um diff fixo; `reconciliar` compara requisitos e estado. Aqui o objeto é a estrutura
 existente e o custo concreto de entendê-la, alterá-la ou testá-la.
 
 ## Procurar atrito demonstrável
@@ -45,8 +45,8 @@ exija HTML, CDN, pontuação inventada ou um relatório separado para toda anál
 de fonte é apoio ao julgamento, não prova de um defeito local.
 
 Entregue a recomendação, as áreas examinadas e os limites de acesso ou evidência. Se não houver
-oportunidade sustentada, diga isso. Encaminhe escolhas abertas a `interview` e uma refatoração
-autorizada a `specify` ou `implement`; esta análise não concede autorização para executá-la.
+oportunidade sustentada, diga isso. Encaminhe escolhas abertas a `entrevistar` e uma refatoração
+autorizada a `especificar` ou `implementar`; esta análise não concede autorização para executá-la.
 
 Inspirada em [improve-codebase-architecture, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills/engineering/improve-codebase-architecture/SKILL.md),
 adaptada para evidência local e decisões existentes, sem dependências obrigatórias de ferramentas.

@@ -6,7 +6,7 @@ body:
     id: skill
     attributes:
       label: Skill ou papel
-      placeholder: specify
+      placeholder: especificar
     validations:
       required: true
   - type: input

@@ -15,27 +15,27 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 
 1. Leia o pedido, os arquivos relevantes, as decisões e a última passagem de contexto.
    Retome sua etapa exata; preserve escopo e autorizações estabelecidos.
-   Use `reconcile` para comparar documentos, pendências e implementação.
-2. Use `specify` para trabalho substancial e `interview` para escolhas abertas de escopo ou design.
-   Neste projeto, `specify` usa o `planner` no perfil `hard`, mesmo para trabalho simples.
+   Use `reconciliar` para comparar documentos, pendências e implementação.
+2. Use `especificar` para trabalho substancial e `entrevistar` para escolhas abertas de escopo ou design.
+   Neste projeto, `especificar` usa o `planner` no perfil `hard`, mesmo para trabalho simples.
    Apresente um plano concreto; a autorização existente pode cobrir a implementação.
-   Use `interview-async` para rodadas em arquivos Markdown, preservando respostas humanas.
-   Quando o usuário pedir `propose`, apresente a abordagem na resposta final e aguarde aprovação
+   Use `entrevistar-por-arquivo` para rodadas em arquivos Markdown, preservando respostas humanas.
+   Quando o usuário pedir `propor`, apresente a abordagem na resposta final e aguarde aprovação
    antes de executar; uma autorização genérica anterior não elimina essa espera solicitada.
-3. Use `implement` para entregar partes pequenas e verificáveis. Declare responsabilidade por
+3. Use `implementar` para entregar partes pequenas e verificáveis. Declare responsabilidade por
    arquivos ao delegar; não sobrescreva mudanças de outro colaborador.
 4. Prove os requisitos pelos métodos combinados e relate comandos e resultados observados.
    Prova ausente continua ausente. Implementação e aceite independente são distintos.
-5. Use `handoff` quando outra sessão precisar retomar. Indique próxima etapa e provas pendentes.
+5. Use `passar-contexto` quando outra sessão precisar retomar. Indique próxima etapa e provas pendentes.
    Mantenha trabalho curto na conversa; use documentos existentes para contexto durável.
-6. Use `delegate` para divisões autorizadas e `evaluate` para aceite independente.
+6. Use `delegar` para divisões autorizadas e `verificar-aceite` para aceite independente.
    Use ferramentas disponíveis e relate limites reais de modelos e provedores.
    Consulte `.agents/models.toml` e `docs/MODELS.md` para selecionar por papel e complexidade;
    a política não autoriza delegação nem muda o modelo da conversa aberta.
-   Use `council` para análise multidisciplinar solicitada, seguindo as regras existentes.
-7. Aplique `unslop` ao redigir ou editar documentos, títulos, descrições e mensagens.
+   Use `conselho` para análise multidisciplinar solicitada, seguindo as regras existentes.
+7. Aplique `escrever-claro` ao redigir ou editar documentos, títulos, descrições e mensagens.
    Preserve fatos e voz pretendida.
-8. Use `clarify` para esclarecer uma explicação. Retome o contexto em português e use
+8. Use `esclarecer` para esclarecer uma explicação. Retome o contexto em português e use
    `docs/GLOSSARY.md`; uma dúvida não autoriza novas ações.
 
 ## Regras
@@ -50,7 +50,7 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - Pergunte por escolhas não resolvidas; não reinicie uma entrevista já concluída.
 - Execute verificações explicitamente. Não instale hooks automáticos ou serviço de gestão de tarefas.
 - Use identificadores em inglês e textos de leitura em português, conforme `docs/STANDARDS.md`.
-- Use `update-harness` para atualizar a coleção em outro projeto sem sobrescrever suas adaptações.
+- Use `atualizar-harness` para atualizar a coleção em outro projeto sem sobrescrever suas adaptações.
 
 ## Índice
 

@@ -26,12 +26,12 @@ Algumas skills podem levar o agente a agir fora do repositório quando você aut
 
 | Skill | Efeito possível |
 | --- | --- |
-| `integrate` | Push, merge e abertura de PR. |
-| `toolbox` | Instalação de ferramentas de linha de comando. |
-| `setup-harness` | Configuração de comandos, CI e instruções do projeto. |
-| `delegate`, `council`, `evaluate` | Início de outros agentes, que podem receber contexto do projeto. |
-| `research` | Acesso à internet. |
-| `update-harness` | Leitura da origem desta coleção na rede. |
+| `integrar` | Push, merge e abertura de PR. |
+| `conhecer-ferramentas` | Instalação de ferramentas de linha de comando. |
+| `configurar-harness` | Configuração de comandos, CI e instruções do projeto. |
+| `delegar`, `conselho`, `verificar-aceite` | Início de outros agentes, que podem receber contexto do projeto. |
+| `pesquisar-web` | Acesso à internet. |
+| `atualizar-harness` | Leitura da origem desta coleção na rede. |
 
 ## Atualizações
 

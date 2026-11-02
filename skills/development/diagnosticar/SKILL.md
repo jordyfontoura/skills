@@ -1,5 +1,5 @@
 ---
-name: diagnose
+name: diagnosticar
 description: Reproduz e investiga falhas, instabilidade ou lentidão sem causa conhecida, inclusive após duas tentativas de correção sem sucesso.
 license: Apache-2.0
 ---
@@ -37,7 +37,7 @@ alheio e mitigações ainda necessárias. Declare o estado final e qualquer alte
 
 Registre sintoma, reprodução, causa demonstrada e tentativas na conversa ou no documento de
 trabalho existente. Prove requisitos pelos métodos combinados. Sem prova, não há aprovação.
-Relate falhas alheias ao pedido sem ampliar o escopo. Use `handoff` se a investigação continuar.
+Relate falhas alheias ao pedido sem ampliar o escopo. Use `passar-contexto` se a investigação continuar.
 
 Informe a causa observada, a reprodução antes e depois, a correção e a incerteza restante.
 Não inclua credenciais ou conteúdo privado nos registros e na resposta.

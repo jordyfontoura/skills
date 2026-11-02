@@ -4,7 +4,7 @@
 
 | Parte | Convenção |
 | --- | --- |
-| Identificador da skill e comando | Inglês, curto e em `kebab-case`, como `interview-async` e `write-goal`. |
+| Identificador da skill e comando | Inglês, curto e em `kebab-case`, como `entrevistar-por-arquivo` e `escrever-objetivo`. |
 | Pasta da skill e campo `name` | Mesmo identificador; sem acentos, espaços ou aliases concorrentes. O nome continua único entre os grupos. |
 | Papéis, arquivos e símbolos de código | Identificadores em inglês; respeitar formatos e convenções da ferramenta. |
 | Título, descrição e instruções | Português brasileiro; o título explica a ação, como "Alinhar decisões". |
@@ -13,12 +13,12 @@
 | Comandos, APIs, variáveis, formatos e marcas | Preservar identificadores e sintaxe reais; explicar o significado em português quando útil. |
 
 Prefira nomes que deixem a função clara e permaneçam estáveis. Use um sufixo para uma variação
-com finalidade própria, como `interview` e `interview-async`. Nomes existentes como `council`,
-`handoff` e `unslop` são identificadores aceitos; não os renomeie apenas por preferência estilística.
+com finalidade própria, como `entrevistar` e `entrevistar-por-arquivo`. Nomes existentes como `conselho`,
+`passar-contexto` e `escrever-claro` são identificadores aceitos; não os renomeie apenas por preferência estilística.
 
-`clarify` é o identificador da skill cujo título é "Pera aí, explica de novo".
+`esclarecer` é o identificador da skill cujo título é "Pera aí, explica de novo".
 O antigo `pera-ai` foi substituído; referências históricas podem citá-lo, mas o comando atual
-é `$clarify`. Atualize referências e cópias na mesma mudança de nome.
+é `$esclarecer`. Atualize referências e cópias na mesma mudança de nome.
 
 Use o [glossário](GLOSSARY.md) para manter o mesmo nome para o mesmo conceito.
 Na primeira ocorrência relevante, explique um termo inglês necessário. Não traduza comandos

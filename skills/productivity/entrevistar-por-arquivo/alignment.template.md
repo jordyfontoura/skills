@@ -15,7 +15,7 @@ Autorização para a próxima etapa: <referência à autorização existente ou 
 Escreva depois de `Resposta:` na pergunta que quiser. Pode responder em qualquer ordem,
 em texto livre ou pelas opções. Uma resposta em branco continua pendente. "Não sei" e
 "quero adiar" também são respostas úteis; o agente indicará o que ainda depende delas.
-Salve o arquivo e avise "respondi" ou chame a skill `interview-async` para o agente processar a rodada.
+Salve o arquivo e avise "respondi" ou chame a skill `entrevistar-por-arquivo` para o agente processar a rodada.
 
 Se mudar de ideia, pode acrescentar `Mudança (data): ...` à resposta. O agente preserva seu
 texto e registra a interpretação e as consequências em campos separados. Recomendações são

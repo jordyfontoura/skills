@@ -1,5 +1,5 @@
 ---
-name: clarify
+name: esclarecer
 description: Reformula a explicação anterior em português claro quando o usuário diz que não entendeu, pergunta como assim ou pede para retomar o raciocínio. Esclarece a conversa sem executar novas ações.
 license: Apache-2.0
 ---

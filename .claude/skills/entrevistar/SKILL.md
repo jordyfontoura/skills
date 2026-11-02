@@ -1,5 +1,5 @@
 ---
-name: interview
+name: entrevistar
 description: Resolve escolhas de escopo ou design pela conversa, preservando respostas e decisões existentes. Use interview-async para rodadas respondidas em arquivos Markdown.
 license: Apache-2.0
 ---
@@ -7,7 +7,7 @@ license: Apache-2.0
 # Alinhar decisões
 
 Para rodadas respondidas em arquivo Markdown, use
-`interview-async`. Esta skill conduz o alinhamento pela conversa.
+`entrevistar-por-arquivo`. Esta skill conduz o alinhamento pela conversa.
 
 Leia o pedido, os arquivos relevantes, as decisões existentes e a última passagem de contexto.
 Separe fatos que as ferramentas podem esclarecer de escolhas que cabem ao usuário.
@@ -36,5 +36,5 @@ atualize a documentação existente com contexto e consequências. Evite registr
 Uma execução autônoma autorizada pode consultar um representante em modo de leitura para
 escolhas dentro da intenção do usuário; quem o consultou preserva a resposta e as evidências.
 
-Pare quando houver definição suficiente para planejar ou executar o pedido. Use `specify`
+Pare quando houver definição suficiente para planejar ou executar o pedido. Use `especificar`
 para trabalho substancial ou implemente diretamente uma alteração pequena já autorizada.

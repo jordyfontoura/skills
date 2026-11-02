@@ -1,5 +1,5 @@
 ---
-name: propose
+name: propor
 description: Apresenta uma abordagem concreta e aguarda aprovação antes de executar, quando o usuário menciona propose ou pede para explicar o que será feito antes de agir. Permite investigação de leitura, sem alterar arquivos ou sistemas.
 license: Apache-2.0
 ---
@@ -16,7 +16,7 @@ solicitada pelo usuário.
 Leia o pedido, as instruções relevantes, as decisões existentes e os arquivos necessários
 para propor algo viável. Use ferramentas de leitura e investigação dentro do escopo permitido.
 Não peça ao usuário fatos que você pode conferir. Se uma escolha importante continuar aberta,
-explique a dúvida e as opções; use os princípios de `interview` sem reiniciar decisões resolvidas.
+explique a dúvida e as opções; use os princípios de `entrevistar` sem reiniciar decisões resolvidas.
 
 Nesta etapa, não edite nem crie arquivos, mude configurações, crie branches ou worktrees,
 faça commits, instale dependências, gere protótipos em arquivo ou rode scripts e testes que
@@ -38,7 +38,7 @@ Explique em português claro:
 Adapte o tamanho ao pedido. Para reorganizar pastas, mostre a árvore proposta e quais itens
 entrariam em cada grupo antes de movê-los. Para mudar um fluxo, descreva o comportamento
 esperado e suas diferenças. Não imponha tarefas, IDs ou uma especificação completa a uma
-proposta simples. Use os princípios de `specify` apenas quando esse nível de detalhe ajudar.
+proposta simples. Use os princípios de `especificar` apenas quando esse nível de detalhe ajudar.
 
 ## Encerrar e aguardar
 
@@ -48,11 +48,11 @@ Silêncio, passagem do tempo, uma dúvida ou elogio sem autorização não liber
 Uma autorização genérica anterior não elimina a espera que o usuário acabou de solicitar.
 
 Quando o usuário aprovar a proposta concreta, por exemplo dizendo "pode fazer", siga com
-`implement` ou com o procedimento adequado dentro do escopo aprovado. Não peça a mesma
+`implementar` ou com o procedimento adequado dentro do escopo aprovado. Não peça a mesma
 aprovação novamente nem volte a produzir propostas indefinidamente. Se ele pedir ajustes,
 revise a proposta e aguarde; se a aprovação for parcial, execute apenas a parte liberada.
 Peça outra decisão somente quando uma mudança importante ultrapassar o que foi aprovado.
 
-`propose` explica uma ação futura antes de executá-la. `clarify` esclarece uma explicação
-anterior; `specify` organiza trabalho substancial em tarefas e critérios. A aprovação da
+`propor` explica uma ação futura antes de executá-la. `esclarecer` esclarece uma explicação
+anterior; `especificar` organiza trabalho substancial em tarefas e critérios. A aprovação da
 proposta não comprova a implementação: as verificações ainda precisam ocorrer depois.

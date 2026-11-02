@@ -17,7 +17,7 @@ O arquivo deste repositório contém as preferências pessoais aprovadas do prop
 | `representative` | Claude Opus 5.5 high | GPT-6.1 Sol high |
 | `evaluator` | Claude Opus 5.5 high | GPT-6.1 Sol high |
 
-`planner`, usado por `specify`, usa sempre `hard`, sem mapa de complexidade. Mesmo uma
+`planner`, usado por `especificar`, usa sempre `hard`, sem mapa de complexidade. Mesmo uma
 especificação pequena usa esse perfil; o tamanho do texto continua proporcional ao trabalho.
 `implementer` e `reviewer` usam `default`, com mapas explícitos para `simple` e `hard`.
 `orchestrator` e `representative` usam seus perfis próprios. `evaluator` e `council` compartilham
@@ -113,7 +113,7 @@ preferências e consequências. O representante responde em leitura; o coordenad
 a autoria da decisão e continua o trabalho permitido. A revisão final do goal permanece com você.
 
 O representante não amplia o objetivo nem decide ações reservadas ao usuário. Não inventa
-fatos pessoais nem é apresentado como se você tivesse respondido. `$propose` continua aguardando
+fatos pessoais nem é apresentado como se você tivesse respondido. `$propor` continua aguardando
 sua aprovação, salvo delegação explícita daquela decisão. O arquivo não concede essa delegação.
 
 ## Adoção e atualização

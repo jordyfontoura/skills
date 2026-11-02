@@ -1,5 +1,5 @@
 ---
-name: interview-async
+name: entrevistar-por-arquivo
 description: Conduz rodadas de perguntas respondidas em arquivos Markdown, preservando respostas e consolidando decisões até os pontos importantes estarem definidos. Use interview para alinhamento pela conversa.
 license: Apache-2.0
 ---
@@ -7,7 +7,7 @@ license: Apache-2.0
 # Alinhamento assíncrono por arquivo
 
 Use este modo quando o usuário quiser responder perguntas em Markdown, no seu tempo, e
-retomar com o agente depois. Aplique os critérios de `interview`: investigar fatos disponíveis,
+retomar com o agente depois. Aplique os critérios de `entrevistar`: investigar fatos disponíveis,
 preservar escolhas já feitas e perguntar só o que muda o resultado. Escreva as rodadas em
 português brasileiro, salvo pedido diferente, usando o vocabulário do projeto.
 
@@ -49,7 +49,7 @@ Não aplique edição de estilo ao texto humano original. Uma síntese fica em o
 ligada à resposta. Preserve autoria e data quando disponíveis, sem inventá-las ou exigir
 que o usuário preencha metadados para conseguir participar.
 
-Explique como retomar: salvar o arquivo e avisar "respondi" ou chamar `interview` de novo.
+Explique como retomar: salvar o arquivo e avisar "respondi" ou chamar `entrevistar` de novo.
 Sem um gatilho externo já autorizado, o agente não acompanha edições sozinho. Não instale
 monitoramento, agendamento ou uma dependência de infraestrutura para viabilizar este modo.
 
@@ -75,7 +75,7 @@ monitoramento, agendamento ou uma dependência de infraestrutura para viabilizar
 
 Se houver um decisor delegado autorizado, registre suas respostas com essa atribuição e
 dentro do escopo recebido. Nunca as apresente como texto ou aprovação do usuário. Pareceres
-de `council` podem informar recomendações; não substituem automaticamente quem decide.
+de `conselho` podem informar recomendações; não substituem automaticamente quem decide.
 
 ## Editar sem perder trabalho humano
 
@@ -109,7 +109,7 @@ em vez de pedir a mesma preferência novamente. Trabalho independente pode conti
 Use o registro para retomar sem repetir a entrevista. Quando houver um documento de decisões
 oficial, consolide ali as escolhas autorizadas e mantenha links de origem no alinhamento,
 sem criar duas cópias concorrentes da decisão vigente. Preserve as respostas históricas.
-`specify` pode usar esse resultado para planejar; não é uma etapa obrigatória do modo assíncrono.
+`especificar` pode usar esse resultado para planejar; não é uma etapa obrigatória do modo assíncrono.
 Autorizações anteriores continuam válidas dentro do escopo, mas o pedido de alinhar uma ideia
 não autoriza por si só implementá-la.
 

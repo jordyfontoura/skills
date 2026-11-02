@@ -1,5 +1,5 @@
 ---
-name: setup-harness
+name: configurar-harness
 description: Configura comandos, verificações e orientações de provedores para as tecnologias reais do projeto, dentro do escopo autorizado.
 license: Apache-2.0
 ---
@@ -15,7 +15,7 @@ Use os scripts, o executor de tarefas e a CI existentes quando disponíveis. Man
 comandos executáveis diretamente no repositório. Num projeto de documentação, use checagens
 proporcionais de estrutura, links e metadados. Não adicione ferramentas de aplicação apenas
 por causa do harness.
-Use `toolbox` para inventariar ferramentas e preparar faltantes quando essa instalação fizer
+Use `conhecer-ferramentas` para inventariar ferramentas e preparar faltantes quando essa instalação fizer
 parte do pedido; isso não torna o catálogo de CLIs uma dependência obrigatória do projeto.
 
 Atualize o índice de comandos em `AGENTS.md` e as instruções de CI e preparação relevantes.

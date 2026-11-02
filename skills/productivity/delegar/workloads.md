@@ -2,7 +2,7 @@
 
 Use esta referência para trabalho recorrente, seleção de capacidades e comparações autorizadas de modelos.
 
-Para escolher CLIs ou conferir sua disponibilidade, use `toolbox`. Aproveite ferramentas já
+Para escolher CLIs ou conferir sua disponibilidade, use `conhecer-ferramentas`. Aproveite ferramentas já
 disponíveis e compatíveis com o ambiente; não instale uma alternativa apenas porque foi citada
 no catálogo. Preparar o ambiente exige o escopo e a autorização correspondentes.
 
@@ -32,7 +32,7 @@ Um tempo limite excedido não demonstra sozinho a causa. Várias causas podem co
 
 Use capacidades disponíveis adequadas à consequência do erro. Respeite provedor, modelo
 e esforço escolhidos; declare configurações que a ferramenta não pode fornecer.
-Quando existir `.agents/models.toml`, resolva papel e complexidade seguindo `delegate`:
+Quando existir `.agents/models.toml`, resolva papel e complexidade seguindo `delegar`:
 na v2, o perfil base só muda por mapa explícito; na v1, combine os campos e alternativas antigos.
 Tipos como visual, escrita e operação orientam capacidades e provas, sem reordenar candidatos.
 A escolha explícita do pedido atual prevalece. Não confunda

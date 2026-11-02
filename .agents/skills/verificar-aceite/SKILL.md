@@ -1,5 +1,5 @@
 ---
-name: evaluate
+name: verificar-aceite
 description: Verifica critérios de aceite de forma independente e relata evidências sem implementar correções.
 license: Apache-2.0
 ---
@@ -17,16 +17,16 @@ resultado de uma versão anterior não aprova automaticamente a nova. Relacione 
 
 Quando a delegação estiver autorizada, use um contexto novo com o papel `evaluator`,
 quando disponível. Forneça revisão fixada, passos de prova, instruções de execução
-e limites de permissão. Siga `delegate` e relate configurações reais de modelo e ferramentas,
+e limites de permissão. Siga `delegar` e relate configurações reais de modelo e ferramentas,
 quando expostas. Se não puder executar um contexto independente adequado, declare o aceite
 como não comprovado.
 Se existir uma política em `.agents/models.toml`, quem inicia a avaliação resolve
-`roles.evaluator` seguindo `delegate`: perfil próprio na v2, campos e alternativas na v1,
+`roles.evaluator` seguindo `delegar`: perfil próprio na v2, campos e alternativas na v1,
 sem substituição pela complexidade da implementação. Respeite a seleção explícita do pedido.
 Configurar esse papel não comprova
 que o modelo executou nem permite dispensar a independência ou as provas.
 
-Um pedido só de análise de código pertence a `review`. Não execute além das permissões.
+Um pedido só de análise de código pertence a `revisar`. Não execute além das permissões.
 Para avaliação em execução, exercite cada critério pelo método declarado e rode as verificações
 exigidas. Inclua caminhos relevantes de falha e examine testes alterados em busca de asserções
 enfraquecidas. Não edite código, testes, configuração ou critérios, nem delegue correções.

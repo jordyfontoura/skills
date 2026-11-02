@@ -2,7 +2,7 @@
 
 Catálogo de usos, não lista de instalações obrigatórias. Descubra disponibilidade e versão
 no ambiente real. Comandos abaixo são exemplos de uso; instalação e configuração seguem
-o escopo de `toolbox`. Leia a ajuda da versão instalada antes de usar opções específicas.
+o escopo de `conhecer-ferramentas`. Leia a ajuda da versão instalada antes de usar opções específicas.
 
 ## Encontrar código e recuperar contexto
 
@@ -49,7 +49,7 @@ por HTTP quando isso estiver autorizado, sem desabilitar a restrição.
   do produto só para executar uma ferramenta auxiliar. [Guia](https://docs.astral.sh/uv/guides/tools/).
 - **GitHub CLI (`gh`):** consulta PRs, comentários e checks, com saída estruturada quando
   suportada. Ler, publicar resposta, fazer push e integrar são ações diferentes; siga
-  `address-review` e `integrate` dentro da autorização. [Manual](https://cli.github.com/manual/).
+  `tratar-revisao` e `integrar` dentro da autorização. [Manual](https://cli.github.com/manual/).
 
 ## Opções para avaliar depois
 

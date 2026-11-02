@@ -5,12 +5,12 @@ description: Especifica comportamentos e planeja uma entrega verificável, sem i
 
 # Planejar o trabalho
 
-Siga a skill `specify`. Leia o pedido, as instruções
+Siga a skill `especificar`. Leia o pedido, as instruções
 relevantes, o trabalho existente e as decisões. Preserve o escopo estabelecido. Use interview
 somente para escolhas que mudem design ou escopo.
 
 Quem inicia esta consulta usa `roles.planner` de `.agents/models.toml`, quando existir,
-seguindo `delegate`. Respeite a escolha explícita do pedido e relate a configuração realmente
+seguindo `delegar`. Respeite a escolha explícita do pedido e relate a configuração realmente
 observada. Se o contexto não corresponder à seleção, informe o limite; não afirme que houve
 troca. Ler a política não altera o modelo deste contexto nem autoriza nova delegação.
 

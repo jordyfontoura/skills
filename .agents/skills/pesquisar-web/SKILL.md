@@ -1,5 +1,5 @@
 ---
-name: research
+name: pesquisar-web
 description: Pesquisa obrigatoriamente na internet para responder perguntas, reunir dados ou fundamentar recomendações, com fontes consultadas, evidências e limites. Use quando o usuário pedir research ou uma investigação apoiada em fontes externas.
 license: Apache-2.0
 ---

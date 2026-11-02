@@ -1,12 +1,12 @@
 ---
-name: review
+name: revisar
 description: Analisa um diff fixo contra requisitos e padrões em revisões de código ou PRs não triviais. Respeita restrições de execução e relata requisitos ausentes sem impedir a análise disponível.
 license: Apache-2.0
 ---
 
 # Revisar alterações específicas
 
-Use `address-review` para tratar comentários já recebidos e `architecture-review` para examinar
+Use `tratar-revisao` para tratar comentários já recebidos e `examinar-arquitetura` para examinar
 atrito estrutural do código existente sem depender de um diff. Este procedimento produz achados
 sobre alterações específicas; não aplica correções por conta própria.
 
@@ -29,7 +29,7 @@ já cobertos por verificações configuradas.
 Uma revisão relata o que o código sustenta; leitura não comprova funcionamento em execução.
 Não espere pelo código de outro agente, aplique correções, execute testes, delegue nem atualize
 registros, salvo autorização explícita para esse trabalho adicional. Um relatório de leitura
-não exige a campanha de testes da implementação. Use `evaluate` separadamente para aceite.
+não exige a campanha de testes da implementação. Use `verificar-aceite` separadamente para aceite.
 
 Retorne os achados por impacto, as revisões examinadas e os trechos ou provas não avaliados.
 Se não houver achado relevante, diga isso junto dos limites da revisão.

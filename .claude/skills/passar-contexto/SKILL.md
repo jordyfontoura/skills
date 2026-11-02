@@ -1,5 +1,5 @@
 ---
-name: handoff
+name: passar-contexto
 description: Preserva o estado do trabalho, a próxima etapa, as decisões e as provas pendentes para retomada por outra sessão.
 license: Apache-2.0
 ---
@@ -13,7 +13,7 @@ para continuar sem repetir a investigação:
 - Branch e worktree, base fixa do diff, commits, arquivos sob sua responsabilidade e alterações
   ainda não commitadas, com explicação.
 - O que foi comprovado, com comandos e resultados exatos, e o que continua sem prova.
-- Próxima etapa exata (`review`, `implement`, `evaluate`, `specify` ou outra atividade nomeada)
+- Próxima etapa exata (`revisar`, `implementar`, `verificar-aceite`, `especificar` ou outra atividade nomeada)
   e primeira ação concreta.
 - Decisões já tomadas, dúvidas abertas, tentativas sem sucesso e acessos necessários.
 - Para trabalho bloqueado, falha observada e condição de retomada. Para trabalho recorrente,

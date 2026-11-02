@@ -8,8 +8,8 @@ Uma coleção de 26 skills e 3 papéis para Claude Code e Codex. Elas orientam o
 alinhar antes de agir, entregar em partes verificáveis e relatar as provas do que fez.
 É tudo Markdown: não há serviço, conta ou processo em segundo plano.
 
-Internamente, a coleção se chama harness; daí os nomes `setup-harness`, `update-harness` e
-`improve-harness`. O plugin se chama `jordyfontoura-skills`.
+Internamente, a coleção se chama harness; daí os nomes `configurar-harness`, `atualizar-harness` e
+`melhorar-harness`. O plugin se chama `jordyfontoura-skills`.
 
 ## Para quem é
 
@@ -49,28 +49,28 @@ veja como copiá-los em [docs/ADOPTING.md](docs/ADOPTING.md).
 ### Cópia editável
 
 Para adaptar as skills ou usar outro agente, copie as pastas que quiser e atualize-as com
-`update-harness`. O passo a passo está em [docs/ADOPTING.md](docs/ADOPTING.md#cópia-manual).
+`atualizar-harness`. O passo a passo está em [docs/ADOPTING.md](docs/ADOPTING.md#cópia-manual).
 
 Instalação local testada em 01/11/2026 com Claude Code 2.1.314 e Codex 0.166.0.
 
 ## Primeiro uso
 
-Comece por `propose`. Ela só lê o projeto, apresenta uma abordagem e espera sua aprovação antes
+Comece por `propor`. Ela só lê o projeto, apresenta uma abordagem e espera sua aprovação antes
 de alterar qualquer coisa. Num repositório seu:
 
 ```text
-/jordyfontoura-skills:propose Quero adicionar paginação na listagem de pedidos. Mostre a abordagem antes de alterar.
+/jordyfontoura-skills:propor Quero adicionar paginação na listagem de pedidos. Mostre a abordagem antes de alterar.
 ```
 
 O agente lê os arquivos relevantes, explica o que faria e para. Um "pode fazer" libera aquela
-proposta. Depois, experimente `interview` para decidir escopo, `specify` para planejar e
-`review` para analisar um diff.
+proposta. Depois, experimente `entrevistar` para decidir escopo, `especificar` para planejar e
+`revisar` para analisar um diff.
 
 ## Como chamar as skills
 
 | Agente | Forma |
 | --- | --- |
-| Claude Code | `/jordyfontoura-skills:<skill>`. O nome curto, como `/propose`, funciona quando não há outro comando com o mesmo nome. Use sempre a forma completa para `review`, porque `/review` é um comando do próprio Claude Code. |
+| Claude Code | `/jordyfontoura-skills:<skill>`. O nome curto, como `/propor`, funciona quando não há outro comando com o mesmo nome. Use sempre a forma completa para `revisar`, porque `/revisar` é um comando do próprio Claude Code. |
 | Codex | Digite `$` e escolha a skill. O nome completo é `jordyfontoura-skills:<skill>`. |
 | Qualquer um | Peça em linguagem natural, como "antes de alterar, me proponha a abordagem". O agente pode escolher a skill pela descrição, mas isso não é garantido. |
 
@@ -78,11 +78,11 @@ Os comandos ficam em inglês; as instruções e as respostas, em português.
 
 ## Fluxo típico
 
-1. `propose` ou `interview`: alinhar o que fazer antes de alterar.
-2. `specify`: definir comportamentos, critérios e tarefas.
-3. `implement`: entregar em partes verificáveis.
-4. `review` e `evaluate`: analisar o diff e conferir os critérios de forma independente.
-5. `handoff`: deixar a próxima sessão pronta para continuar.
+1. `propor` ou `entrevistar`: alinhar o que fazer antes de alterar.
+2. `especificar`: definir comportamentos, critérios e tarefas.
+3. `implementar`: entregar em partes verificáveis.
+4. `revisar` e `verificar-aceite`: analisar o diff e conferir os critérios de forma independente.
+5. `passar-contexto`: deixar a próxima sessão pronta para continuar.
 
 ## Catálogo
 
@@ -90,42 +90,42 @@ Os comandos ficam em inglês; as instruções e as respostas, em português.
 
 | Skill | Para quê |
 | --- | --- |
-| `specify` | Especificar comportamentos e contratos e planejar uma entrega verificável. |
-| `implement` | Entregar e verificar o trabalho combinado. |
-| `diagnose` | Reproduzir uma falha e demonstrar sua causa. |
-| `review` | Avaliar um diff fixo contra requisitos e padrões. |
-| `address-review` | Verificar feedback recebido e aplicar as correções válidas. |
-| `architecture-review` | Identificar atrito de arquitetura e propor mudanças sustentadas. |
-| `evaluate` | Verificar critérios de aceite de forma independente. |
-| `prototype` | Esclarecer uma questão de design com um experimento. |
-| `pull-request` | Explicar comportamento resultante, provas e riscos de integração. |
-| `integrate` | Integrar branches ou concluir o merge de um PR e verificar o resultado. |
-| `reconcile` | Comparar requisitos, documentos e implementação para achar lacunas. |
+| `especificar` | Especificar comportamentos e contratos e planejar uma entrega verificável. |
+| `implementar` | Entregar e verificar o trabalho combinado. |
+| `diagnosticar` | Reproduzir uma falha e demonstrar sua causa. |
+| `revisar` | Avaliar um diff fixo contra requisitos e padrões. |
+| `tratar-revisao` | Verificar feedback recebido e aplicar as correções válidas. |
+| `examinar-arquitetura` | Identificar atrito de arquitetura e propor mudanças sustentadas. |
+| `verificar-aceite` | Verificar critérios de aceite de forma independente. |
+| `prototipar` | Esclarecer uma questão de design com um experimento. |
+| `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
+| `integrar` | Integrar branches ou concluir o merge de um PR e verificar o resultado. |
+| `reconciliar` | Comparar requisitos, documentos e implementação para achar lacunas. |
 
 ### Produtividade
 
 | Skill | Para quê |
 | --- | --- |
-| `propose` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `interview` | Resolver escolhas abertas de escopo e design pela conversa. |
-| `interview-async` | Conduzir perguntas em arquivo Markdown e consolidar as decisões. |
-| `clarify` | Reformular em português claro uma explicação que não ficou clara. |
-| `progress` | Resumir andamento, pendências e bloqueios sem mudar o objetivo. |
-| `handoff` | Preservar próxima etapa, provas e trabalho restante para outra sessão. |
-| `delegate` | Delegar trabalho delimitado e conferir o resultado. |
-| `council` | Consultar especialistas independentes e consolidar divergências. |
-| `research` | Pesquisar na internet e fundamentar conclusões com fontes. |
-| `unslop` | Escrever ou revisar textos claros, preservando fatos e voz. |
-| `write-goal` | Escrever uma instrução de execução autônoma com conclusão verificável. |
+| `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
+| `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
+| `entrevistar-por-arquivo` | Conduzir perguntas em arquivo Markdown e consolidar as decisões. |
+| `esclarecer` | Reformular em português claro uma explicação que não ficou clara. |
+| `andamento` | Resumir andamento, pendências e bloqueios sem mudar o objetivo. |
+| `passar-contexto` | Preservar próxima etapa, provas e trabalho restante para outra sessão. |
+| `delegar` | Delegar trabalho delimitado e conferir o resultado. |
+| `conselho` | Consultar especialistas independentes e consolidar divergências. |
+| `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes. |
+| `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
+| `escrever-objetivo` | Escrever uma instrução de execução autônoma com conclusão verificável. |
 
 ### Manutenção
 
 | Skill | Para quê |
 | --- | --- |
-| `setup-harness` | Configurar comandos e verificações para as tecnologias do projeto. |
-| `improve-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
-| `update-harness` | Trazer novas versões das skills preservando adaptações locais. |
-| `toolbox` | Explicar e preparar ferramentas de linha de comando, quando autorizado. |
+| `configurar-harness` | Configurar comandos e verificações para as tecnologias do projeto. |
+| `melhorar-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
+| `atualizar-harness` | Trazer novas versões das skills preservando adaptações locais. |
+| `conhecer-ferramentas` | Explicar e preparar ferramentas de linha de comando, quando autorizado. |
 
 Os procedimentos e exemplos de cada skill estão em [docs/HARNESS.md](docs/HARNESS.md).
 
@@ -161,7 +161,7 @@ não o usar.
   `claude plugin update jordyfontoura-skills@jordyfontoura`.
 - **Codex:** rode `codex plugin marketplace upgrade`. Se a versão instalada não mudar, rode de
   novo `codex plugin add jordyfontoura-skills@jordyfontoura`.
-- **Cópia editável:** peça ao agente `update-harness`.
+- **Cópia editável:** peça ao agente `atualizar-harness`.
 
 Leia o [CHANGELOG](CHANGELOG.md) antes de atualizar: uma nova versão muda as instruções que seus
 agentes seguem.
@@ -170,12 +170,12 @@ agentes seguem.
 
 Estas skills nasceram de problemas recorrentes no trabalho com agentes:
 
-- **O agente altera arquivos antes de entender o pedido.** `propose` e `interview` alinham antes.
-- **O agente diz "pronto" sem prova.** `implement`, `evaluate` e `reconcile` exigem comandos e
+- **O agente altera arquivos antes de entender o pedido.** `propor` e `entrevistar` alinham antes.
+- **O agente diz "pronto" sem prova.** `implementar`, `verificar-aceite` e `reconciliar` exigem comandos e
   resultados observados.
-- **O contexto se perde entre sessões.** `handoff` e `progress` registram onde o trabalho parou.
-- **O texto fica genérico.** `unslop` e `pull-request` pedem fatos concretos.
-- **Uma decisão grande depende de uma só opinião.** `council` reúne pareceres independentes.
+- **O contexto se perde entre sessões.** `passar-contexto` e `andamento` registram onde o trabalho parou.
+- **O texto fica genérico.** `escrever-claro` e `descrever-pr` pedem fatos concretos.
+- **Uma decisão grande depende de uma só opinião.** `conselho` reúne pareceres independentes.
 
 ## Relação com mattpocock/skills
 
@@ -183,7 +183,7 @@ A coleção começou inspirada em [mattpocock/skills](https://github.com/mattpoc
 skills seguem ideias de lá. As diferenças: tudo está em português; há papéis e uma política de
 modelos por responsabilidade; e as skills insistem em autorização explícita e provas.
 
-As duas coleções têm skills com o mesmo nome: `handoff`, `implement`, `prototype` e `research`.
+As duas coleções têm skills com o mesmo nome: `passar-contexto`, `implementar`, `prototipar` e `pesquisar-web`.
 Se você usar as duas, chame as skills pelo nome completo do plugin.
 
 ## Contribuir
@@ -196,7 +196,7 @@ manter este repositório.
 
 - [mattpocock/skills](https://github.com/mattpocock/skills), de Matt Pocock (MIT).
 - [pstack](https://github.com/cursor/plugins/tree/main/pstack), de Lauren Tan (MIT), adaptado
-  em `unslop`.
+  em `escrever-claro`.
 - [Superpowers](https://github.com/obra/superpowers), de Jesse Vincent (MIT).
 - [anthropics/skills](https://github.com/anthropics/skills), da Anthropic (Apache-2.0).
 

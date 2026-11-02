@@ -1,5 +1,5 @@
 ---
-name: council
+name: conselho
 description: Consulta especialistas independentes para explorar melhorias, refinar propostas ou resolver escolhas importantes quando houver pedido de comitê ou análise multidisciplinar. Retorna evidências, divergências e recomendação.
 license: Apache-2.0
 ---
@@ -12,7 +12,7 @@ instruções de especialistas existentes.
 Sem proposta pronta, use o estado atual e a pergunta como objeto comum da consulta. Peça o
 melhor argumento para manter esse estado, melhorias sustentadas e critérios de escolha;
 não invente uma proposta aprovada nem trate a exploração como autorização para implementar.
-Uma dúvida factual comum raramente exige conselho; investigue diretamente ou use `interview`
+Uma dúvida factual comum raramente exige conselho; investigue diretamente ou use `entrevistar`
 para uma escolha que cabe ao usuário.
 
 Adapte a pergunta comum à situação, sem exigir um formato diferente de relatório para cada caso:
@@ -54,9 +54,9 @@ independente da fonte.
 
 ## Obter pareceres independentes
 
-Use `delegate` para consultas autorizadas. Respeite modelos escolhidos e capacidades reais
+Use `delegar` para consultas autorizadas. Respeite modelos escolhidos e capacidades reais
 da ferramenta; esta skill não fixa provedor, modelo, esforço nem tamanho de comitê.
-Se houver `.agents/models.toml`, resolva `roles.council` seguindo `delegate`: na v2, use seu
+Se houver `.agents/models.toml`, resolva `roles.council` seguindo `delegar`: na v2, use seu
 perfil sem substituição por complexidade; na v1, preserve campos e alternativas. Isso vale
 para cada consulta, salvo escolha explícita do usuário para um especialista.
 Execute cada perspectiva independente em seu próprio contexto. Várias perspectivas num único
@@ -113,6 +113,6 @@ verificada mantém essa premissa como desconhecida; não a transforma em prova.
 
 Pareceres não aprovam por si só mudanças no produto nem substituem uma decisão humana
 reservada pelo projeto. Quem consultou o conselho preserva achados úteis na conversa ou nos
-documentos existentes e age dentro da autorização. Use `evaluate` para aceite da implementação.
+documentos existentes e age dentro da autorização. Use `verificar-aceite` para aceite da implementação.
 Observe e informe tempo e uso quando disponíveis, respeitando limites explícitos do usuário.
 Reduzir custo não é um objetivo do conselho nem uma medida da qualidade dos pareceres.

@@ -1,5 +1,5 @@
 ---
-name: progress
+name: andamento
 description: Resume o andamento do trabalho, o que falta e os bloqueios sem mudar seu objetivo. Use para consultas rápidas durante a execução; reconcile audita requisitos e handoff prepara retomada por outra sessão.
 license: Apache-2.0
 ---
@@ -50,6 +50,6 @@ Não invente percentuais, prazos ou ausência de bloqueios. Uma foto parcial de 
 não comprova conclusão nem falha da entrega.
 
 Entregue o resumo na conversa, sem salvar um arquivo por padrão. Para comparar o trabalho
-contra requisitos, use `reconcile`; para preparar retomada
-por outra sessão, use `handoff`. Uma explicação que não ficou clara cabe a
-`clarify`. Não inicie esses procedimentos apenas para responder ao andamento.
+contra requisitos, use `reconciliar`; para preparar retomada
+por outra sessão, use `passar-contexto`. Uma explicação que não ficou clara cabe a
+`esclarecer`. Não inicie esses procedimentos apenas para responder ao andamento.

@@ -6,11 +6,11 @@ tools: Read, Grep, Glob, Bash, Skill
 
 # Avaliar a entrega
 
-Siga a skill `evaluate`. Você não implementou o trabalho.
+Siga a skill `verificar-aceite`. Você não implementou o trabalho.
 Leia critérios combinados, revisão fixada, decisões relevantes e achados anteriores.
 
 Quem inicia a avaliação usa `roles.evaluator` de `.agents/models.toml`, quando existir,
-seguindo `delegate`. Relate o modelo e esforço realmente expostos; a política não executa
+seguindo `delegar`. Relate o modelo e esforço realmente expostos; a política não executa
 o modelo por si só e não substitui a independência da avaliação.
 
 Respeite as permissões da tarefa. Análise só de código permite achados com referências,

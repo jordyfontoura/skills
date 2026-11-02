@@ -1,5 +1,5 @@
 ---
-name: specify
+name: especificar
 description: Especifica comportamentos e contratos observáveis e organiza sua entrega em tarefas com critérios e dependências, para trabalho substancial.
 license: Apache-2.0
 ---
@@ -7,11 +7,11 @@ license: Apache-2.0
 # Especificar o trabalho
 
 Leia o pedido, as instruções do projeto, o código relevante, os planos e as decisões existentes.
-Use `interview` apenas para escolhas não resolvidas que mudem escopo ou design. Preserve
+Use `entrevistar` apenas para escolhas não resolvidas que mudem escopo ou design. Preserve
 a etapa da última passagem de contexto e as autorizações existentes.
 
 Antes de elaborar, confira a seleção de modelo e esforço do pedido e de `roles.planner`,
-quando houver política local, seguindo `delegate`. Use um contexto compatível com essa seleção;
+quando houver política local, seguindo `delegar`. Use um contexto compatível com essa seleção;
 se o atual não corresponder, delegue ao `planner` quando autorizado. Sem contexto compatível
 ou delegação disponível, informe o limite antes de elaborar; não apresente outro modelo como o escolhido.
 Sem política ou escolha explícita, preserve a seleção do ambiente. Ler a política não troca
@@ -28,7 +28,7 @@ sessão. Identifique arquivos e interfaces prováveis sem prescrever cada ediç�
 expressam pré-requisitos; a ordem expressa prioridade entre tarefas que já podem avançar.
 
 Para cada critério, declare o comportamento esperado, o método de prova e os passos para
-reproduzi-lo. Leia o apoio `testing.md` da skill `implement` ao escolher a prova. Por exemplo,
+reproduzi-lo. Leia o apoio `testing.md` da skill `implementar` ao escolher a prova. Por exemplo,
 uma tarefa de exportação pode exigir o cabeçalho CSV correto para uma entrada vazia,
 verificado pela API pública de exportação. Use cenários concretos de entrada, ação e resultado,
 incluindo erros e limites relevantes ao risco. Confira antes se os dados, acessos e mecanismos
@@ -53,4 +53,4 @@ a implementação pendente. Peça uma decisão se o trabalho ultrapassar a autor
 se uma escolha importante continuar aberta.
 
 Um contexto novo de planejamento pode usar o papel `planner`, quando disponível,
-por meio de `delegate`, quando autorizado. Planejar não altera o código do produto.
+por meio de `delegar`, quando autorizado. Planejar não altera o código do produto.

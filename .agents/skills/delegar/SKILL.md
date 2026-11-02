@@ -1,5 +1,5 @@
 ---
-name: delegate
+name: delegar
 description: Delega trabalho autorizado e delimitado com responsabilidade clara, ferramentas disponíveis e conferência do resultado.
 license: Apache-2.0
 ---
@@ -66,7 +66,7 @@ Reutilize evidências já coletadas, com revisão, trechos relevantes e caminhos
 Separe fatos conferidos, interpretações e lacunas. Delimite a pergunta e o resultado necessário
 em vez de pedir uma nova investigação geral a cada agente. Preserve a possibilidade de conferir
 fontes e questionar premissas; fornecer um resumo não comprova que o agente validou a origem.
-Para pareceres de `council`, a preparação é um ponto de partida: siga a prioridade de qualidade,
+Para pareceres de `conselho`, a preparação é um ponto de partida: siga a prioridade de qualidade,
 cobertura e investigação independente definida na skill, inclusive quando exigir novas leituras
 ou ampliar a análise. Não limite o conselho ao resumo ou às conclusões do coordenador.
 
@@ -82,7 +82,7 @@ achados com referências; não aguarda implementação nem executa comandos proi
 
 Para uma entrega, inspecione o diff e confira as provas relevantes com as verificações do
 projeto. Dizer "concluído" não é evidência. Integre sem reverter trabalho alheio.
-Devolva trabalho incompleto com uma tarefa menor. Após duas correções sem sucesso, use `diagnose`.
+Devolva trabalho incompleto com uma tarefa menor. Após duas correções sem sucesso, use `diagnosticar`.
 
 Quando útil, mantenha um registro conciso na conversa ou no documento de trabalho existente.
 Separe configurações pedidas, configurações informadas pela ferramenta e fatos observados.

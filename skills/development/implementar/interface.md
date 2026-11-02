@@ -13,7 +13,7 @@ conteúdo e pelo contexto de uso; não converta tudo em cartões nem corte infor
 obter uma composição limpa. Conteúdo real orienta o layout; identifique dados simulados.
 
 Preserve nomes e componentes consistentes. Deixe explícitas ações com consequências diferentes,
-sem promessas que o produto não cumpre. Use `unslop` para revisar o texto de interface mantendo
+sem promessas que o produto não cumpre. Use `escrever-claro` para revisar o texto de interface mantendo
 as condições necessárias à compreensão.
 
 ## Cobrir estados e acesso

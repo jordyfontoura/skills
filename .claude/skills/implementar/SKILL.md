@@ -1,5 +1,5 @@
 ---
-name: implement
+name: implementar
 description: Implementa o trabalho combinado em partes verificáveis e relata evidências, lacunas e próxima etapa.
 license: Apache-2.0
 ---
@@ -15,11 +15,11 @@ e relate falhas preexistentes. Declare os arquivos ou módulos sob sua responsab
 o trabalho for compartilhado. Preserve edições alheias e faça mudanças sobrepostas em sequência.
 
 Implemente e comprove uma parte útil por vez. Leia [testing.md](testing.md) ao adicionar testes.
-Para interfaces, leia [interface.md](interface.md). Use `address-review` ao tratar feedback
-recebido e `integrate` quando o pedido autorizar concluir uma integração entre branches.
-Use `diagnose` após duas correções sem sucesso ou quando a causa não estiver clara.
-Use `delegate` apenas para uma divisão autorizada; leia o apoio
-`workloads.md` da skill `delegate` quando seleção de modelo, trabalho recorrente ou
+Para interfaces, leia [interface.md](interface.md). Use `tratar-revisao` ao tratar feedback
+recebido e `integrar` quando o pedido autorizar concluir uma integração entre branches.
+Use `diagnosticar` após duas correções sem sucesso ou quando a causa não estiver clara.
+Use `delegar` apenas para uma divisão autorizada; leia o apoio
+`workloads.md` da skill `delegar` quando seleção de modelo, trabalho recorrente ou
 registro de execução forem relevantes.
 
 Exercite cada critério de aceite pelo método combinado. Relate comandos, observações e
@@ -35,5 +35,5 @@ não descarte evidências ainda aplicáveis. Relacione resultados às referênci
 
 Execute as verificações relevantes antes de declarar a entrega. Faça commits pequenos quando
 as convenções permitirem. Explique o comportamento alterado, a verificação e os limites restantes.
-Implementação concluída não comprova aceite independente; use `evaluate` quando ele for exigido.
-Preserve trabalho inacabado com `handoff`, indicando a próxima etapa e a ação exatas.
+Implementação concluída não comprova aceite independente; use `verificar-aceite` quando ele for exigido.
+Preserve trabalho inacabado com `passar-contexto`, indicando a próxima etapa e a ação exatas.

@@ -1,5 +1,5 @@
 ---
-name: prototype
+name: prototipar
 description: Cria um experimento para esclarecer uma interação ou escolha de design quando o usuário pede uma prévia ou ainda não há definição suficiente do comportamento.
 license: Apache-2.0
 ---
@@ -11,7 +11,7 @@ clara; pergunte apenas se a ambiguidade mudar o experimento. Reutilize a linguag
 e as interfaces do projeto quando útil. Escolha o meio mais simples que demonstre a dúvida:
 página independente, script pequeno ou simulação isolada.
 Para direção visual, estados e acessibilidade de interfaces, leia o apoio
-`interface.md` da skill `implement`, respeitando as simulações próprias do protótipo.
+`interface.md` da skill `implementar`, respeitando as simulações próprias do protótipo.
 
 Mantenha o protótipo separado do código de produção, em local permitido para experimentos
 ou artefatos. Dê uma forma clara de executar ou visualizar. Acrescente apenas os mecanismos
@@ -33,7 +33,7 @@ não só a aparência da tela final. Registre ação e resultado esperados como 
 e compare o fluxo de produção com essa referência antes de declarar fidelidade.
 
 Quando a direção estiver definida, preserve o artefato útil e registre o resultado na conversa
-ou na documentação existente. Encaminhe a `specify` quando for necessário planejar.
+ou na documentação existente. Encaminhe a `especificar` quando for necessário planejar.
 Converta o comportamento aprovado em critérios com `visual`, `run` ou outro método adequado;
 um protótipo não comprova o critério de produção. Liste suas simulações e seus limites.
 

@@ -1,5 +1,5 @@
 ---
-name: improve-harness
+name: melhorar-harness
 description: Propõe uma melhoria concreta no harness a partir de dificuldades observadas, quando solicitado ou após erros repetidos. Não altera instruções compartilhadas sem autorização.
 license: Apache-2.0
 ---
@@ -19,7 +19,7 @@ quando ela for a causa. Não transforme um caso isolado em política para todos 
 Apresente apenas propostas que teriam mudado o resultado observado. Falta de verificações
 é um achado, não autorização para alterar o harness. Aplique mudanças já autorizadas; nos
 demais casos, apresente a proposta concreta para escolha do usuário. Não instale bloqueios
-automáticos. Use `setup-harness` para configurar verificações dentro do escopo autorizado.
+automáticos. Use `configurar-harness` para configurar verificações dentro do escopo autorizado.
 
 Se as skills vierem de um plugin, não edite o cache instalado: ele é substituído a cada versão.
 Proponha a mudança nas instruções do projeto, como `AGENTS.md` ou `CLAUDE.md`, ou, com
@@ -31,14 +31,14 @@ trabalho existente, retirando dados privados. Inclua, quando relevante, um caso 
 não deve agir; não invente uma falha anterior para justificar a mudança.
 
 Quando viável e autorizado, execute o mesmo cenário antes e depois, em contextos novos com
-entradas, ferramentas e configurações comparáveis. Use `delegate` se a prova exigir outro
+entradas, ferramentas e configurações comparáveis. Use `delegar` se a prova exigir outro
 agente e essa delegação estiver autorizada. Julgue o resultado e as ações observáveis, não
 a repetição de palavras da skill ou um caminho único de ferramentas. Preserve tentativas,
 limites e diferenças do ambiente nos registros existentes.
 
 Se a comparação anterior ou a execução não forem possíveis, declare a lacuna. Leitura dos
 cenários e validação de estrutura não demonstram mudança de comportamento. Uma execução
-isolada não estabelece taxa de acerto; siga `evaluate` para critérios variáveis e aceite
+isolada não estabelece taxa de acerto; siga `verificar-aceite` para critérios variáveis e aceite
 independente, quando exigidos. Não crie serviço de avaliação ou uma suíte extensa por padrão.
 
 Registre achados úteis na conversa ou na documentação existente. Preserve escolhas duráveis
