@@ -1,6 +1,6 @@
 ---
 name: andamento
-description: Resume o andamento do trabalho, o que falta e os bloqueios sem mudar seu objetivo. Use para consultas rápidas durante a execução; reconcile audita requisitos e handoff prepara retomada por outra sessão.
+description: Resume o andamento do trabalho, o que falta e os bloqueios sem mudar seu objetivo. Use para consultas rápidas durante a execução; `reconciliar` audita requisitos e `passar-contexto` prepara retomada por outra sessão.
 license: Apache-2.0
 ---
 

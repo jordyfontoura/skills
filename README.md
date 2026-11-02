@@ -70,11 +70,12 @@ proposta. Depois, experimente `entrevistar` para decidir escopo, `especificar` p
 
 | Agente | Forma |
 | --- | --- |
-| Claude Code | `/jordyfontoura-skills:<skill>`. O nome curto, como `/propor`, funciona quando não há outro comando com o mesmo nome. Use sempre a forma completa para `revisar`, porque `/revisar` é um comando do próprio Claude Code. |
+| Claude Code | `/jordyfontoura-skills:<skill>`. O nome curto, como `/propor`, funciona quando não há outro comando com o mesmo nome. |
 | Codex | Digite `$` e escolha a skill. O nome completo é `jordyfontoura-skills:<skill>`. |
 | Qualquer um | Peça em linguagem natural, como "antes de alterar, me proponha a abordagem". O agente pode escolher a skill pela descrição, mas isso não é garantido. |
 
-Os comandos ficam em inglês; as instruções e as respostas, em português.
+Os comandos, as instruções e as respostas ficam em português. Até a versão 0.1.0 os comandos
+ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANGELOG.md).
 
 ## Fluxo típico
 
@@ -180,11 +181,9 @@ Estas skills nasceram de problemas recorrentes no trabalho com agentes:
 ## Relação com mattpocock/skills
 
 A coleção começou inspirada em [mattpocock/skills](https://github.com/mattpocock/skills), e várias
-skills seguem ideias de lá. As diferenças: tudo está em português; há papéis e uma política de
+skills seguem ideias de lá. As diferenças: tudo está em português, inclusive os comandos, o que evita
+conflito de nomes ao usar as duas coleções; há papéis e uma política de
 modelos por responsabilidade; e as skills insistem em autorização explícita e provas.
-
-As duas coleções têm skills com o mesmo nome: `passar-contexto`, `implementar`, `prototipar` e `pesquisar-web`.
-Se você usar as duas, chame as skills pelo nome completo do plugin.
 
 ## Contribuir
 

@@ -1,6 +1,6 @@
 ---
 name: propor
-description: Apresenta uma abordagem concreta e aguarda aprovação antes de executar, quando o usuário menciona propose ou pede para explicar o que será feito antes de agir. Permite investigação de leitura, sem alterar arquivos ou sistemas.
+description: Apresenta uma abordagem concreta e aguarda aprovação antes de executar, quando o usuário menciona `propor`, pede uma proposta antes da ação ou pede para explicar o que será feito antes de agir. Permite investigação de leitura, sem alterar arquivos ou sistemas.
 license: Apache-2.0
 ---
 

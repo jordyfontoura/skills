@@ -1,6 +1,6 @@
 ---
 name: entrevistar-por-arquivo
-description: Conduz rodadas de perguntas respondidas em arquivos Markdown, preservando respostas e consolidando decisões até os pontos importantes estarem definidos. Use interview para alinhamento pela conversa.
+description: Conduz rodadas de perguntas respondidas em arquivos Markdown, preservando respostas e consolidando decisões até os pontos importantes estarem definidos. Use `entrevistar` para alinhamento pela conversa.
 license: Apache-2.0
 ---
 

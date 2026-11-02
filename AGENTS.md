@@ -49,7 +49,8 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
   Nunca force um push nem use `--no-verify`.
 - Pergunte por escolhas não resolvidas; não reinicie uma entrevista já concluída.
 - Execute verificações explicitamente. Não instale hooks automáticos ou serviço de gestão de tarefas.
-- Use identificadores em inglês e textos de leitura em português, conforme `docs/STANDARDS.md`.
+- Use nomes de skills em português, demais identificadores em inglês e textos de leitura em
+  português, conforme `docs/STANDARDS.md`.
 - Use `atualizar-harness` para atualizar a coleção em outro projeto sem sobrescrever suas adaptações.
 
 ## Índice

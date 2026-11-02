@@ -28,7 +28,7 @@ Relate ferramentas, permissões e evidências ausentes como ausentes.
 
 ## Catálogo de skills
 
-Os comandos ficam em inglês; os títulos e as instruções, em português.
+Os comandos, os títulos e as instruções ficam em português.
 Consulte os [padrões de nomes e idioma](STANDARDS.md) para detalhes.
 
 ### Desenvolvimento e especificação
@@ -87,7 +87,6 @@ Fontes em `skills/harness/`.
 Use `$esclarecer` ou pergunte "Como assim?" para retomar uma explicação.
 A skill recupera o contexto e usa o [glossário](GLOSSARY.md), preservando nomes de comandos
 e skills. Ela não avança a tarefa nem trata uma dúvida como aprovação.
-O comando `esclarecer` substitui o antigo `pera-ai`.
 
 Para consultar o andamento, use, por exemplo:
 
@@ -135,7 +134,7 @@ prova de ganho neste ambiente. Esses contextos não impõem requisitos a toda co
 
 Use `pesquisar-web` quando quiser uma resposta fundamentada em fontes externas consultadas:
 
-> `$pesquisar-web Pesquise como melhorar a skill unslop e quais critérios usar para diferentes tipos de conteúdo.`
+> `$pesquisar-web Pesquise como melhorar a skill escrever-claro e quais critérios usar para diferentes tipos de conteúdo.`
 
 A skill exige busca online e leitura das fontes relevantes, com links próximos das conclusões.
 Se faltar acesso à internet, o agente declara a pesquisa ausente ou parcial em vez de responder

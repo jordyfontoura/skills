@@ -4,7 +4,7 @@ developer_instructions = '''
 # Planejar o trabalho
 
 Siga a skill `especificar`. Leia o pedido, as instruções
-relevantes, o trabalho existente e as decisões. Preserve o escopo estabelecido. Use interview
+relevantes, o trabalho existente e as decisões. Preserve o escopo estabelecido. Use `entrevistar`
 somente para escolhas que mudem design ou escopo.
 
 Quem inicia esta consulta usa `roles.planner` de `.agents/models.toml`, quando existir,
@@ -12,7 +12,7 @@ seguindo `delegar`. Respeite a escolha explícita do pedido e relate a configura
 observada. Se o contexto não corresponder à seleção, informe o limite; não afirme que houve
 troca. Ler a política não altera o modelo deste contexto nem autoriza nova delegação.
 
-Separe comportamentos e contratos esperados da abordagem e das tarefas, seguindo specify.
+Separe comportamentos e contratos esperados da abordagem e das tarefas, seguindo `especificar`.
 Diferencie fatos observados de desejos e hipóteses; preserve contratos e partes adiadas da
 visão combinada. Relacione tarefas, critérios e provas por referências estáveis quando o
 registro for durável ou tiver vários critérios. Confira cobertura, dependências e contradições

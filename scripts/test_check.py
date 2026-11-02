@@ -88,7 +88,7 @@ class ValidationTests(unittest.TestCase):
     def test_moving_group_keeps_native_command_names(self):
         group = self.root / "skills/writing"
         group.mkdir()
-        shutil.move(str(self.root / "skills/productivity/escrever-claro"), str(group / "unslop"))
+        shutil.move(str(self.root / "skills/productivity/escrever-claro"), str(group / "escrever-claro"))
         errors, _, _ = validate(self.root)
         self.assertTrue(any("plugin.json: skills deve listar os grupos" in e for e in errors))
         manifest = self.root / ".claude-plugin/plugin.json"
@@ -224,7 +224,7 @@ class ValidationTests(unittest.TestCase):
         readme.write_text(readme.read_text(encoding="utf-8").replace(
             "| `conhecer-ferramentas` |", "| `toolkit` |"), encoding="utf-8")
         errors, _, _ = validate(self.root)
-        self.assertTrue(any("README.md: o catálogo difere das skills; faltam ['toolbox'], "
+        self.assertTrue(any("README.md: o catálogo difere das skills; faltam ['conhecer-ferramentas'], "
                             "sobram ['toolkit']" in error for error in errors), errors)
 
     def test_hidden_characters_are_rejected(self):

@@ -4,21 +4,26 @@
 
 | Parte | Convenção |
 | --- | --- |
-| Identificador da skill e comando | Inglês, curto e em `kebab-case`, como `entrevistar-por-arquivo` e `escrever-objetivo`. |
-| Pasta da skill e campo `name` | Mesmo identificador; sem acentos, espaços ou aliases concorrentes. O nome continua único entre os grupos. |
-| Papéis, arquivos e símbolos de código | Identificadores em inglês; respeitar formatos e convenções da ferramenta. |
+| Identificador da skill e comando | Português, curto e em `kebab-case`, como `entrevistar-por-arquivo` e `escrever-objetivo`. |
+| Pasta da skill e campo `name` | Mesmo identificador; ASCII, sem acentos, espaços ou aliases. O nome continua único entre os grupos. |
+| Papéis, grupos, arquivos e símbolos de código | Identificadores em inglês; respeitar formatos e convenções da ferramenta. |
 | Título, descrição e instruções | Português brasileiro; o título explica a ação, como "Alinhar decisões". |
 | Exemplos, modelos, documentação e mensagens de manutenção | Português brasileiro, salvo texto original que precise ser preservado. |
 | Campos técnicos e arquivos convencionais | Preservar `name`, `description`, `developer_instructions`, `SKILL.md`, `AGENTS.md`, `CLAUDE.md` e `README.md`. |
 | Comandos, APIs, variáveis, formatos e marcas | Preservar identificadores e sintaxe reais; explicar o significado em português quando útil. |
 
-Prefira nomes que deixem a função clara e permaneçam estáveis. Use um sufixo para uma variação
-com finalidade própria, como `entrevistar` e `entrevistar-por-arquivo`. Nomes existentes como `conselho`,
-`passar-contexto` e `escrever-claro` são identificadores aceitos; não os renomeie apenas por preferência estilística.
+Forme o identificador da skill com um verbo no infinitivo, derivado do título ou do
+[glossário](GLOSSARY.md), como `especificar` ("Especificar o trabalho") e `passar-contexto`
+("Passagem de contexto"). Acrescente um complemento quando o verbo sozinho for ambíguo, como
+`pesquisar-web` e `verificar-aceite`. Use substantivo só nas exceções listadas: `conselho` e
+`andamento`. Escreva siglas em minúsculas, como `descrever-pr`. Use um sufixo para uma variação
+com finalidade própria, como `entrevistar` e `entrevistar-por-arquivo`. Não mantenha aliases.
 
-`esclarecer` é o identificador da skill cujo título é "Pera aí, explica de novo".
-O antigo `pera-ai` foi substituído; referências históricas podem citá-lo, mas o comando atual
-é `$esclarecer`. Atualize referências e cópias na mesma mudança de nome.
+Desde a versão 0.2.0, os identificadores ficam em português. Assim o comando corresponde ao título
+e ao glossário, e a coleção deixa de colidir com comandos dos agentes, como `/review` do
+Claude Code, e com nomes de outras coleções. Prefira nomes que permaneçam estáveis: uma
+renomeação quebra chamadas e cópias adaptadas. Registre cada renomeação no [CHANGELOG](../CHANGELOG.md),
+na forma usada pela verificação de nomes antigos, e atualize referências e cópias na mesma mudança.
 
 Use o [glossário](GLOSSARY.md) para manter o mesmo nome para o mesmo conceito.
 Na primeira ocorrência relevante, explique um termo inglês necessário. Não traduza comandos

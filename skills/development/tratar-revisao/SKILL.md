@@ -1,6 +1,6 @@
 ---
 name: tratar-revisao
-description: Verifica feedback recebido de uma revisão e aplica correções válidas dentro do escopo autorizado, relatando itens corrigidos, rejeitados e pendentes. Use para tratar comentários existentes; review produz uma revisão nova.
+description: Verifica feedback recebido de uma revisão e aplica correções válidas dentro do escopo autorizado, relatando itens corrigidos, rejeitados e pendentes. Use para tratar comentários existentes; `revisar` produz uma revisão nova.
 license: Apache-2.0
 ---
 

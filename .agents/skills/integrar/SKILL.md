@@ -1,6 +1,6 @@
 ---
 name: integrar
-description: Integra trabalho entre branches ou conclui a integração de um PR no destino autorizado, preservando alterações e verificando a árvore resultante. Não confunda com pull-request, que escreve a descrição.
+description: Integra trabalho entre branches ou conclui a integração de um PR no destino autorizado, preservando alterações e verificando a árvore resultante. Não confunda com `descrever-pr`, que escreve a descrição.
 license: Apache-2.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: entrevistar
-description: Resolve escolhas de escopo ou design pela conversa, preservando respostas e decisões existentes. Use interview-async para rodadas respondidas em arquivos Markdown.
+description: Resolve escolhas de escopo ou design pela conversa, preservando respostas e decisões existentes. Use `entrevistar-por-arquivo` para rodadas respondidas em arquivos Markdown.
 license: Apache-2.0
 ---
 
