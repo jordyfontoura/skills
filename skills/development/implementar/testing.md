@@ -1,6 +1,6 @@
 # Escolher provas úteis
 
-Leia ao escolher o método de um critério de aceite ou adicionar testes durante a implementação.
+Leia ao escolher o método de um critério de aceite, adicionar testes ou ordenar verificações.
 
 ## Relacionar evidência e critério
 
@@ -35,10 +35,20 @@ ou incontroláveis quando útil; use componentes reais próprios para provar a i
 Para um bug, reproduza primeiro e confirme que o sinal falha pelo motivo correto.
 Mantenha a reprodução rápida o suficiente para orientar a correção. Converta-a em cobertura
 quando existir um ponto estável de teste, corrija a causa e repita regressão e gatilho original.
-Para os demais trabalhos, desenvolva e comprove uma parte útil por vez; siga a sequência
-combinada do projeto, sem impor testes sempre antes ou sempre depois.
+Nos demais trabalhos, siga a sequência combinada do projeto, sem impor testes sempre antes ou sempre depois.
 
 Nunca enfraqueça nem remova uma verificação só para passar. Se um teste contrariar um requisito
 aprovado, explique a contradição e corrija o teste explicitamente. Registre comando e resultado
 útil junto do requisito ou dos registros existentes. Scripts e asserções não executados
 não são evidências.
+
+## Ordenar a execução
+
+Ordene as verificações pelo custo e pela chance de invalidar o candidato: primeiro as rápidas,
+como o validador do harness, tipos e lint, as regressões e as jornadas afetadas; depois a revisão
+e o tratamento dos achados; por fim, a campanha completa no candidato estabilizado. Não inicie a
+campanha completa enquanto uma revisão ainda pode mudar o candidato. Uma revisão exploratória
+pode correr antes, enquanto o código muda. Um resultado vale para a revisão em que foi obtido;
+reaproveite-o enquanto ela não mudar. Uma execução atende a mais de uma obrigação só quando
+preserva os controles de cada uma e essa combinação consta do plano. Comandos obrigatórios
+continuam obrigatórios até uma mudança autorizada.
