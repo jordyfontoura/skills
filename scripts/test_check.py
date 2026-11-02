@@ -95,6 +95,10 @@ class ValidationTests(unittest.TestCase):
         data = json.loads(manifest.read_text(encoding="utf-8"))
         data["skills"] = sorted([*data["skills"], "./skills/writing/"])
         manifest.write_text(json.dumps(data), encoding="utf-8")
+        examples = self.root / "docs/EXAMPLES.md"
+        examples.write_text(examples.read_text(encoding="utf-8").replace(
+            "../skills/productivity/unslop/SKILL.md", "../skills/writing/unslop/SKILL.md"
+        ), encoding="utf-8")
         errors, count, _ = validate(self.root)
         self.assertEqual(errors, [])
         self.assertEqual(count, len(catalog(ROOT)))
