@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -249,6 +250,85 @@ class ValidationTests(unittest.TestCase):
             "[roles.representative]", "[roles.other]"), encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "Responsabilidades sem configuração: representative"):
             validate(self.root)
+
+    def edit(self, relative, transform):
+        path = self.root / relative
+        path.write_text(transform(path.read_text(encoding="utf-8")), encoding="utf-8")
+
+    def test_old_skill_names_cited_as_skills_are_rejected(self):
+        cases = {
+            "Use `review` para analisar o diff.": "nome antigo `review`; use `revisar`",
+            "> `$propose Mostre a abordagem.`": "nome antigo `propose`; use `propor`",
+            "/jordyfontoura-skills:propose": "nome antigo `propose`; use `propor`",
+            "Veja skills/development/review/SKILL.md.": "nome antigo `review`; use `revisar`",
+            "Use interview para alinhar.": "nome antigo `interview`; use `entrevistar`",
+            "Use `interview-async` para arquivos.": "nome antigo `interview-async`",
+            "Rode `retro` ao final.": "nome antigo `retro`; use `melhorar-harness`",
+            "Peça `pera-ai`.": "nome antigo `pera-ai`; use `esclarecer`",
+        }
+        for text, message in cases.items():
+            with self.subTest(text=text):
+                self.setUp()
+                self.edit("docs/HARNESS.md", lambda t: t + "\n" + text + "\n")
+                errors, _, _ = validate(self.root)
+                self.assertTrue(any(message in e and "docs/HARNESS.md:" in e for e in errors), errors)
+
+    def test_old_skill_name_in_description_is_rejected(self):
+        self.edit("skills/development/revisar/SKILL.md",
+                  lambda t: t.replace("\ndescription: ", "\ndescription: Antes chamada review. ", 1))
+        sync(self.root)
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("skills/development/revisar/SKILL.md:3: nome antigo `review`" in e
+                            for e in errors), errors)
+
+    def test_legitimate_mentions_of_old_names_pass(self):
+        self.edit("docs/HARNESS.md", lambda t: t + (
+            "\nInspirada em [prototype, de Matt Pocock]"
+            "(https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md).\n"
+            "Resolva `roles.council` e `[roles.council]`.\n"
+            "- **Passagem de contexto (handoff)**: registro para retomar.\n"
+            "A implementação usa receiving-code-review como referência.\n"))
+        self.assertEqual(validate(self.root)[0], [])
+
+    def test_renames_come_from_the_changelog(self):
+        self.edit("CHANGELOG.md", lambda t: t.replace(
+            "### Renomeações\n", "### Renomeações\n\n- `antigo-x` passou a se chamar `revisar`.\n", 1))
+        self.edit("docs/HARNESS.md", lambda t: t + "\nUse `antigo-x`.\n")
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("nome antigo `antigo-x`; use `revisar`" in e for e in errors), errors)
+
+        self.setUp()
+        self.edit("CHANGELOG.md", lambda t: re.sub(r"(?m)^- `[a-z0-9-]+` passou a se chamar .*\n",
+                                                   "", t))
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("nenhuma renomeação" in e for e in errors), errors)
+
+    def test_renames_must_end_in_the_catalog(self):
+        cases = {
+            "- `revisar` passou a se chamar `outra`.\n": "`revisar` foi renomeada, mas ainda está",
+            "- `velha` passou a se chamar `inexistente`.\n": "renomeação de `velha` não termina",
+            "- `ida` passou a se chamar `volta`.\n- `volta` passou a se chamar `ida`.\n":
+                "renomeação de `ida` não termina",
+        }
+        for lines, message in cases.items():
+            with self.subTest(message=message):
+                self.setUp()
+                self.edit("CHANGELOG.md", lambda t: t.replace(
+                    "### Renomeações\n", "### Renomeações\n\n" + lines, 1))
+                errors, _, _ = validate(self.root)
+                self.assertTrue(any(message in e for e in errors), errors)
+
+    def test_old_name_exceptions_are_narrow_and_used(self):
+        self.edit("docs/MODELS.md", lambda t: t + "\nUse `council` para pareceres.\n")
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("docs/MODELS.md:" in e and "nome antigo `council`" in e
+                            for e in errors), errors)
+
+        self.setUp()
+        self.edit("THIRD_PARTY_NOTICES.md", lambda t: t.replace(
+            "das skills `unslop` e `technical-writing`", "de duas skills"))
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("exceção de nome antigo sem uso" in e for e in errors), errors)
 
 
 if __name__ == "__main__":
