@@ -1,0 +1,23 @@
+# Configurações pessoais dos agentes
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Segredos
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Dependências, caches do Python e arquivos do sistema
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Rascunhos e experimentos locais
+work/
+
+# Configuração local de ferramentas do mantenedor
+t3.json

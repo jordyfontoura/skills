@@ -1,0 +1,22 @@
+name: Ideia ou mudança
+description: Proponha uma skill nova ou uma mudança de comportamento antes de abrir o PR.
+labels: ["ideia"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema observado
+      description: Descreva uma situação real em que as skills atuais não ajudaram.
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Proposta
+      description: O que mudaria no comportamento do agente.
+    validations:
+      required: true
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas consideradas

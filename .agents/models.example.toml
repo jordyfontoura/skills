@@ -1,0 +1,34 @@
+# Exemplo neutro para adoção: todas as responsabilidades herdam o modelo e o esforço do ambiente.
+# Copie como .agents/models.toml e ajuste. A política não inicia agentes nem autoriza delegação.
+version = 2
+
+[profiles.inherited]
+candidates = [{ provider = "inherit", model = "inherit", effort = "inherit" }]
+
+[roles.orchestrator]
+when = "Organizar trabalho autorizado, distribuir responsabilidades e integrar resultados."
+profile = "inherited"
+
+[roles.planner]
+when = "Especificar comportamento e planejar a entrega, quando autorizado."
+profile = "inherited"
+
+[roles.implementer]
+when = "Implementar uma parte delimitada, com arquivos e provas definidos."
+profile = "inherited"
+
+[roles.reviewer]
+when = "Revisar um diff fixo, respeitando os limites de leitura e execução."
+profile = "inherited"
+
+[roles.evaluator]
+when = "Verificar os critérios de aceite independentemente de quem implementou."
+profile = "inherited"
+
+[roles.representative]
+when = "Resolver escolhas dentro de uma execução autônoma em que o usuário autorizou representação."
+profile = "inherited"
+
+[roles.council]
+when = "Consultar especialistas independentes numa análise multidisciplinar autorizada."
+profile = "inherited"

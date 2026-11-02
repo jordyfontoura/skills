@@ -1,0 +1,74 @@
+# Preferências pessoais deste repositório. Confira capacidades antes de executar.
+# A política não inicia agentes nem altera o modelo da conversa aberta.
+version = 2
+
+[profiles.simple]
+candidates = [
+  { provider = "codex", model = "gpt-6-luna", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-haiku-5-5", effort = "medium" },
+]
+
+[profiles.default]
+candidates = [
+  { provider = "codex", model = "gpt-6.1-sol", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-sonnet-5-5", effort = "high" },
+]
+
+[profiles.hard]
+candidates = [
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "high" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "high" },
+]
+
+[profiles.orchestrator]
+candidates = [
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "high" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "high" },
+]
+
+# Perfil próprio: mudanças no trabalho difícil não alteram o representante.
+[profiles.representative]
+candidates = [
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "high" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "high" },
+]
+
+[profiles.evaluator]
+candidates = [
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "high" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "high" },
+]
+
+[roles.orchestrator]
+when = "Organizar trabalho autorizado, distribuir responsabilidades e integrar resultados."
+profile = "orchestrator"
+
+[roles.planner]
+when = "Especificar comportamento e planejar a entrega no perfil hard, quando autorizado."
+profile = "hard"
+
+[roles.implementer]
+when = "Implementar uma parte delimitada, com arquivos e provas definidos."
+profile = "default"
+[roles.implementer.complexity]
+simple = "simple"
+hard = "hard"
+
+[roles.reviewer]
+when = "Revisar um diff fixo, respeitando os limites de leitura e execução."
+profile = "default"
+[roles.reviewer.complexity]
+simple = "simple"
+hard = "hard"
+
+[roles.evaluator]
+when = "Verificar os critérios de aceite independentemente de quem implementou."
+profile = "evaluator"
+
+[roles.representative]
+when = "Resolver escolhas dentro de uma execução autônoma em que o usuário autorizou representação."
+profile = "representative"
+
+[roles.council]
+when = "Consultar especialistas independentes numa análise multidisciplinar autorizada."
+profile = "evaluator"

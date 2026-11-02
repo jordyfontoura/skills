@@ -1,0 +1,23 @@
+{
+  "name": "jordyfontoura",
+  "owner": {
+    "name": "Jordy Fontoura",
+    "url": "https://github.com/jordyfontoura"
+  },
+  "description": "Plugins de Jordy Fontoura para agentes de código.",
+  "plugins": [
+    {
+      "name": "jordyfontoura-skills",
+      "source": "./",
+      "description": "Skills de engenharia em português para agentes de código: alinhar, especificar, implementar, revisar e provar com autorização explícita.",
+      "category": "engineering",
+      "keywords": [
+        "skills",
+        "pt-br",
+        "especificação",
+        "revisão",
+        "agentes"
+      ]
+    }
+  ]
+}

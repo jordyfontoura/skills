@@ -1,0 +1,37 @@
+name: Problema numa skill
+description: Uma skill ou papel levou a um resultado diferente do esperado.
+labels: ["falha"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill ou papel
+      placeholder: specify
+    validations:
+      required: true
+  - type: input
+    id: ambiente
+    attributes:
+      label: Agente, versão e rota de instalação
+      placeholder: Claude Code 2.1.314, plugin jordyfontoura-skills 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: pedido
+    attributes:
+      label: Pedido e estado inicial
+      description: O que você pediu ao agente e em que situação estava o projeto.
+    validations:
+      required: true
+  - type: textarea
+    id: observado
+    attributes:
+      label: Resultado observado
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true

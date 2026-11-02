@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.11"
+      - name: Validar arquivos do harness
+        run: python scripts/check.py
+      - name: Testar falhas de validação
+        run: python -m unittest discover -s scripts
+
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+      - name: Instalar a CLI do Claude Code
+        run: npm install --global @anthropic-ai/claude-code@2.1.314
+      - name: Validar o plugin
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude
+        run: |
+          claude plugin validate . --strict
+          details="$(claude --plugin-dir . plugin details jordyfontoura-skills)"
+          echo "$details"
+          skills="$(find skills -mindepth 2 -maxdepth 2 -type d | wc -l)"
+          echo "$details" | grep -E "Skills \($skills\)"
+          echo "$details" | grep -E "Agents \($(ls agents | wc -l)\)"

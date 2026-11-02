@@ -1,0 +1,24 @@
+{
+  "name": "jordyfontoura-skills",
+  "version": "0.1.0",
+  "description": "Skills de engenharia em português para agentes de código: alinhar, especificar, implementar, revisar e provar com autorização explícita.",
+  "author": {
+    "name": "Jordy Fontoura",
+    "url": "https://github.com/jordyfontoura"
+  },
+  "homepage": "https://github.com/jordyfontoura/skills",
+  "repository": "https://github.com/jordyfontoura/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "skills",
+    "pt-br",
+    "especificação",
+    "revisão",
+    "agentes"
+  ],
+  "skills": [
+    "./skills/development/",
+    "./skills/harness/",
+    "./skills/productivity/"
+  ]
+}
