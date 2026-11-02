@@ -5,6 +5,13 @@ Mudanças relevantes para quem usa ou adota a coleção. O formato segue o
 [SemVer](https://semver.org/lang/pt-BR/); na série 0.x, uma versão MINOR pode quebrar
 compatibilidade.
 
+## [Não lançado]
+
+### Adicionado
+
+- Ícone do plugin em `.claude-plugin/icon.png`: uma rede neural com um caminho de ativação,
+  no estilo do banner.
+
 ## [0.1.0] - 2026-11-01
 
 ### Adicionado
