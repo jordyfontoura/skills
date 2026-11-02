@@ -66,6 +66,8 @@ O agente lê os arquivos relevantes, explica o que faria e para. Um "pode fazer"
 proposta. Depois, experimente `interview` para decidir escopo, `specify` para planejar e
 `review` para analisar um diff.
 
+Veja [quando usar cada skill, por que ela ajuda e um exemplo pronto](docs/EXAMPLES.md).
+
 ## Como chamar as skills
 
 | Agente | Forma |

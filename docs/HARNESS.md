@@ -31,6 +31,8 @@ Relate ferramentas, permissões e evidências ausentes como ausentes.
 Os comandos ficam em inglês; os títulos e as instruções, em português.
 Consulte os [padrões de nomes e idioma](STANDARDS.md) para detalhes.
 
+Para escolher por situação, veja o [guia com exemplos de todas as skills](EXAMPLES.md).
+
 ### Desenvolvimento e especificação
 
 Fontes em `skills/development/`.
