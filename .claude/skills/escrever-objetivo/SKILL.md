@@ -20,7 +20,10 @@ independente são distintas. Avaliação ou acesso ausentes continuam sem prova.
 Declare limites de atuação, arquivos e worktree sob responsabilidade, exclusões e decisões
 autorizadas. Use `implementar` para entrega, `delegar` para divisão autorizada e `verificar-aceite`
 quando necessário. Respeite ferramentas e modelos escolhidos; não invente configurações
-ou capacidades indisponíveis.
+ou capacidades indisponíveis. Autorize avançar sem nova consulta as tarefas do plano com
+dependências satisfeitas, preservando os portões combinados, como revisão, aceite e espera de
+`propor`. Ao aguardar processos ou agentes, a execução avança trabalho independente e relata
+só mudanças de estado.
 Se o destino tiver `.agents/models.toml`, aponte para a política e informe quais responsabilidades
 serão usadas e que a seleção segue `delegar` (v1 ou v2), sem copiar a lista inteira para o objetivo.
 Na v2, complexidade só muda um perfil por mapa explícito; preserve os perfis próprios de
@@ -41,6 +44,7 @@ ser delegadas; a presença dessa tabela não concede representação. Preserve a
 O representante não aprova em nome do usuário uma espera pedida por `propor`, salvo delegação
 explícita daquela decisão. Uma dúvida ou aprovação parcial não libera todo o objetivo.
 
-Após duas correções sem sucesso, use `diagnosticar`. Antes de encerrar o contexto, use `passar-contexto`
+Após duas correções sem sucesso ou quando variantes do mesmo defeito reaparecerem, use
+`diagnosticar`. Antes de encerrar o contexto, use `passar-contexto`
 com o trabalho restante, as provas ausentes e as condições de retomada. Mostre o texto,
 a contagem de caracteres e as exclusões. O usuário decide se vai executá-lo.

@@ -6,8 +6,8 @@ license: Apache-2.0
 
 # Delegar trabalho delimitado
 
-Delegue apenas quando autorizado e quando houver uma parte independente com resultado
-e responsabilidade claros. Faça pequenas edições diretamente quando explicá-las custar tanto
+Delegue apenas quando autorizado e quando houver uma parte independente, com dependências
+satisfeitas, resultado e responsabilidade claros. Faça pequenas edições diretamente quando explicá-las custar tanto
 quanto executá-las. Preserve os limites de permissão: revisão de código não autoriza execução,
 edição nem novas delegações.
 
@@ -72,8 +72,9 @@ ou ampliar a análise. Não limite o conselho ao resumo ou às conclusões do co
 
 Para edições, diga ao agente que ele não está sozinho e precisa preservar mudanças alheias.
 Distribua arquivos distintos ou use ambientes de trabalho isolados suportados; faça edições
-em arquivos compartilhados em sequência. Preserve uma base recuperável e não duplique
-o trabalho do agente enquanto ele executa.
+em arquivos compartilhados em sequência. Preserve uma base recuperável. Enquanto o agente ou
+processo executa, não duplique seu trabalho: guarde o identificador e a forma de receber o
+resultado, avance trabalho independente e relate só mudanças de estado.
 
 ## Conferir o retorno
 
@@ -82,7 +83,8 @@ achados com referências; não aguarda implementação nem executa comandos proi
 
 Para uma entrega, inspecione o diff e confira as provas relevantes com as verificações do
 projeto. Dizer "concluído" não é evidência. Integre sem reverter trabalho alheio.
-Devolva trabalho incompleto com uma tarefa menor. Após duas correções sem sucesso, use `diagnosticar`.
+Devolva trabalho incompleto com uma tarefa menor. Após duas correções sem sucesso ou quando
+variantes do mesmo defeito reaparecerem, use `diagnosticar`.
 
 Quando útil, mantenha um registro conciso na conversa ou no documento de trabalho existente.
 Separe configurações pedidas, configurações informadas pela ferramenta e fatos observados.
