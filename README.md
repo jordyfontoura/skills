@@ -149,8 +149,8 @@ projeto.
 
 ## Custo de contexto
 
-O nome e a descrição de cada skill entram em toda sessão. Na versão 0.1.0, o
-`claude plugin details` estima cerca de 1.400 tokens fixos para o plugin inteiro. O texto
+O nome e a descrição de cada skill entram em toda sessão. Na versão 0.2.0, o
+`claude plugin details` estima cerca de 1.500 tokens fixos para o plugin inteiro. O texto
 completo de uma skill só é carregado quando ela é usada. Desative o plugin nos projetos em que
 não o usar.
 

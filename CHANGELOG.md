@@ -7,6 +7,8 @@ compatibilidade.
 
 ## [Não lançado]
 
+## [0.2.0] - 2026-11-02
+
 ### Adicionado
 
 - Ícone do plugin em `.claude-plugin/icon.png`: uma rede neural com um caminho de ativação,

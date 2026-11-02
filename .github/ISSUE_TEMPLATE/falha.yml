@@ -13,7 +13,7 @@ body:
     id: ambiente
     attributes:
       label: Agente, versão e rota de instalação
-      placeholder: Claude Code 2.1.314, plugin jordyfontoura-skills 0.1.0
+      placeholder: Claude Code 2.1.314, plugin jordyfontoura-skills 0.2.0
     validations:
       required: true
   - type: textarea
