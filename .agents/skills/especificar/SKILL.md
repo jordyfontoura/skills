@@ -44,7 +44,7 @@ Em registros duráveis ou com vários critérios, use referências estáveis; n�
 nem reutilize IDs existentes. Ligue tarefas aos critérios e provas que atendem. Uma prova pode
 atender a vários critérios quando essa relação for explícita. Antes de apresentar, confira
 critérios sem cobertura, tarefas sem finalidade ou pré-requisito declarado, dependências
-contraditórias e provas que exigem funcionalidade de fase posterior. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
+contraditórias e, numa entrega em fases, provas que exigem funcionalidade de fase posterior. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
 
 Mantenha planos curtos na conversa. Quando várias sessões precisarem de contexto durável,
 use o registro oficial do projeto ou o destino escolhido pelo usuário. Inclua escopo,

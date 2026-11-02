@@ -44,8 +44,9 @@ não são evidências.
 
 ## Ordenar a execução
 
-Numa mudança pequena, rode as verificações relevantes sem criar etapas novas. Quando o trabalho
-combinar verificações caras, revisão separada ou campanha completa, ordene-as pelo custo e pela
+Numa mudança pequena, rode as verificações relevantes e não acrescente campanha nem etapas
+que o projeto não combinou. Quando o trabalho combinar verificações caras, revisão separada ou
+campanha completa, ordene-as pelo custo e pela
 chance de invalidar o candidato: primeiro as rápidas,
 como o validador do harness, tipos e lint, as regressões e as jornadas afetadas; depois a revisão
 e o tratamento dos achados; por fim, a campanha completa no candidato estabilizado. Não inicie a
