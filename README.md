@@ -2,28 +2,26 @@
   <img src="docs/assets/banner.svg" alt="skills, por Jordy Fontoura: para engenharia com agentes de código, em português" width="100%">
 </p>
 
-# Skills para agentes de código, em português
+# Mais controle sobre o trabalho dos seus agentes
 
-Uma coleção de 26 skills e 3 papéis para Claude Code e Codex. Elas orientam o agente a
-alinhar antes de agir, entregar em partes verificáveis e relatar as provas do que fez.
-É tudo Markdown: não há serviço, conta ou processo em segundo plano.
+Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
+feito. Para Claude Code e Codex, com 26 skills e 3 papéis que você pode usar ou adaptar.
 
-Internamente, a coleção se chama harness; daí os nomes `configurar-harness`, `atualizar-harness` e
-`melhorar-harness`. O plugin se chama `jordyfontoura-skills`.
+**[Instalar](#instalar) · [Experimentar uma skill](#primeiro-uso) · [Ver exemplos](docs/EXAMPLES.md)**
 
-## Para quem é
+## Quando usar
 
-- Para quem usa Claude Code ou Codex e quer instruções e respostas em português.
-- Para quem quer decidir quando o agente pode alterar arquivos, e ver provas antes de aceitar.
-- Para quem prefere skills pequenas, que se combinam e podem ser adaptadas.
+- **Quer ver a abordagem antes de alterar?** `propor` orienta o agente a apresentar uma proposta e esperar seu aceite.
+- **Precisa conferir uma entrega?** `implementar` pede comandos e resultados observados; `verificar-aceite` confere os critérios de forma independente.
+- **Vai retomar em outra sessão?** `passar-contexto` preserva a próxima etapa e as provas pendentes; `andamento` resume o andamento.
 
-As skills não instalam hooks, não trocam o modelo da conversa, não delegam trabalho sem sua
-autorização e não substituem os testes do seu projeto.
+É tudo Markdown, sem serviço em segundo plano. As skills não instalam hooks, não trocam o
+modelo da conversa nem autorizam delegação por conta própria. Seus testes continuam necessários.
 
 ## Instalar
 
-Escolha uma rota por agente. Instalar o plugin e copiar as skills ao mesmo tempo faz cada skill
-aparecer duas vezes.
+Escolha uma rota por agente: instalar o plugin e copiar as skills ao mesmo tempo faz cada
+skill aparecer duas vezes.
 
 ### Claude Code
 
@@ -32,9 +30,7 @@ claude plugin marketplace add jordyfontoura/skills
 claude plugin install jordyfontoura-skills@jordyfontoura
 ```
 
-Dentro de uma sessão, use `/plugin marketplace add jordyfontoura/skills` e
-`/plugin install jordyfontoura-skills@jordyfontoura`. Para conferir, digite
-`/jordyfontoura-skills:` ou rode `claude plugin list`.
+Para conferir, digite `/jordyfontoura-skills:` numa sessão ou rode `claude plugin list`.
 
 ### Codex
 
@@ -43,169 +39,133 @@ codex plugin marketplace add jordyfontoura/skills
 codex plugin add jordyfontoura-skills@jordyfontoura
 ```
 
-Abra uma sessão nova e digite `$` para ver as skills. O Codex não recebe os papéis pelo plugin;
-veja como copiá-los em [docs/ADOPTING.md](docs/ADOPTING.md).
-
-### Cópia editável
-
-Para adaptar as skills ou usar outro agente, copie as pastas que quiser e atualize-as com
-`atualizar-harness`. O passo a passo está em [docs/ADOPTING.md](docs/ADOPTING.md#cópia-manual).
+Abra uma sessão nova e digite `$` para ver as skills. O Codex não recebe os papéis pelo
+plugin; veja como copiá-los no [guia de adoção](docs/ADOPTING.md#plugin).
 
 Instalação local testada em 01/11/2026 com Claude Code 2.1.314 e Codex 0.166.0.
+Prefere adaptar os arquivos? Use a [cópia editável](docs/ADOPTING.md#cópia-manual).
 
 ## Primeiro uso
 
-Comece por `propor`. Ela só lê o projeto, apresenta uma abordagem e espera sua aprovação antes
-de alterar qualquer coisa. Num repositório seu:
+Num repositório seu, peça uma proposta para uma mudança. `propor` instrui o agente a ler o
+projeto, explicar a abordagem e esperar sua aprovação antes de alterar arquivos.
 
+**Claude Code**
 ```text
-/jordyfontoura-skills:propor Quero adicionar paginação na listagem de pedidos. Mostre a abordagem antes de alterar.
+/jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
 ```
 
-O agente lê os arquivos relevantes, explica o que faria e para. Um "pode fazer" libera aquela
-proposta. Depois, experimente `entrevistar` para decidir escopo, `especificar` para planejar e
-`revisar` para analisar um diff.
+**Codex**
+```text
+$jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
+```
+
+Um "pode fazer" libera aquela proposta. Para outras situações, veja
+[quando usar cada skill e um pedido pronto para copiar](docs/EXAMPLES.md).
 
 ## Como chamar as skills
 
 | Agente | Forma |
 | --- | --- |
 | Claude Code | `/jordyfontoura-skills:<skill>`. O nome curto, como `/propor`, funciona quando não há outro comando com o mesmo nome. |
-| Codex | Digite `$` e escolha a skill. O nome completo é `jordyfontoura-skills:<skill>`. |
-| Qualquer um | Peça em linguagem natural, como "antes de alterar, me proponha a abordagem". O agente pode escolher a skill pela descrição, mas isso não é garantido. |
+| Codex | `$jordyfontoura-skills:<skill>` ou selecione a skill na lista de `$`. |
+| Qualquer um | Peça em linguagem natural. O agente pode escolher pela descrição, mas isso não é garantido. |
 
 Os comandos, as instruções e as respostas ficam em português. Até a versão 0.1.0 os comandos
 ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANGELOG.md).
 
-## Fluxo típico
+## Explorar as skills
 
-1. `propor` ou `entrevistar`: alinhar o que fazer antes de alterar.
-2. `especificar`: definir comportamentos, critérios e tarefas.
-3. `implementar`: entregar em partes verificáveis.
-4. `revisar` e `verificar-aceite`: analisar o diff e conferir os critérios de forma independente.
-5. `passar-contexto`: deixar a próxima sessão pronta para continuar.
+Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
-## Catálogo
+<details>
+<summary>Ver as 26 skills</summary>
 
-### Desenvolvimento
+### Entender e decidir
 
-| Skill | Para quê |
+| Skill | Use para |
 | --- | --- |
-| `especificar` | Especificar comportamentos e contratos e planejar uma entrega verificável. |
+| `propor` | Avaliar uma abordagem antes de autorizar alterações. |
+| `entrevistar` | Resolver escolhas abertas pela conversa. |
+| `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
+| `esclarecer` | Retomar uma explicação que ficou confusa. |
+| `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
+| `conselho` | Consultar perspectivas independentes sobre uma decisão. |
+| `prototipar` | Experimentar uma interação antes da implementação completa. |
+| `especificar` | Definir comportamentos, critérios e tarefas. |
+| `escrever-objetivo` | Preparar uma instrução de execução autônoma com limites claros. |
+
+### Entregar e conferir
+
+| Skill | Use para |
+| --- | --- |
 | `implementar` | Entregar e verificar o trabalho combinado. |
-| `diagnosticar` | Reproduzir uma falha e demonstrar sua causa. |
-| `revisar` | Avaliar um diff fixo contra requisitos e padrões. |
-| `tratar-revisao` | Verificar feedback recebido e aplicar as correções válidas. |
-| `examinar-arquitetura` | Identificar atrito de arquitetura e propor mudanças sustentadas. |
-| `verificar-aceite` | Verificar critérios de aceite de forma independente. |
-| `prototipar` | Esclarecer uma questão de design com um experimento. |
-| `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
-| `integrar` | Integrar branches ou concluir o merge de um PR e verificar o resultado. |
-| `reconciliar` | Comparar requisitos, documentos e implementação para achar lacunas. |
+| `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
+| `revisar` | Analisar um diff fixo contra requisitos e padrões. |
+| `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
+| `examinar-arquitetura` | Identificar atrito estrutural no código e propor melhorias. |
+| `verificar-aceite` | Conferir critérios de aceite de forma independente. |
+| `reconciliar` | Comparar requisitos, implementação e evidências. |
+| `descrever-pr` | Escrever a descrição de uma mudança para quem vai revisá-la. |
+| `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
 
-### Produtividade
+### Acompanhar e dividir o trabalho
 
-| Skill | Para quê |
+| Skill | Use para |
 | --- | --- |
-| `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
-| `entrevistar-por-arquivo` | Conduzir perguntas em arquivo Markdown e consolidar as decisões. |
-| `esclarecer` | Reformular em português claro uma explicação que não ficou clara. |
-| `andamento` | Resumir andamento, pendências e bloqueios sem mudar o objetivo. |
-| `passar-contexto` | Preservar próxima etapa, provas e trabalho restante para outra sessão. |
-| `delegar` | Delegar trabalho delimitado e conferir o resultado. |
-| `conselho` | Consultar especialistas independentes e consolidar divergências. |
-| `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes. |
-| `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
-| `escrever-objetivo` | Escrever uma instrução de execução autônoma com conclusão verificável. |
+| `andamento` | Consultar andamento, pendências e bloqueios. |
+| `passar-contexto` | Deixar outra sessão pronta para continuar. |
+| `delegar` | Dividir trabalho autorizado e conferir o retorno. |
 
-### Manutenção
+### Escrever e cuidar das ferramentas
 
-| Skill | Para quê |
+| Skill | Use para |
 | --- | --- |
-| `configurar-harness` | Configurar comandos e verificações para as tecnologias do projeto. |
+| `escrever-claro` | Escrever e revisar textos, preservando fatos e voz. |
+| `configurar-harness` | Configurar comandos e verificações para o projeto. |
 | `melhorar-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
-| `atualizar-harness` | Trazer novas versões das skills preservando adaptações locais. |
-| `conhecer-ferramentas` | Explicar e preparar ferramentas de linha de comando, quando autorizado. |
+| `atualizar-harness` | Atualizar skills copiadas preservando adaptações locais. |
+| `conhecer-ferramentas` | Entender e preparar ferramentas de linha de comando, quando autorizado. |
 
-Os procedimentos e exemplos de cada skill estão em [docs/HARNESS.md](docs/HARNESS.md).
+O nome interno da coleção é harness; daí os nomes das skills de manutenção.
 
-## Papéis
+</details>
 
-`planner` planeja sem implementar, `evaluator` confere critérios sem corrigir o produto e
-`representative` escolhe entre alternativas numa execução autônoma que você autorizou. No Claude
-Code, eles vêm com o plugin como `jordyfontoura-skills:<papel>`. Um papel disponível não autoriza
-delegação: o agente só o usa quando você pede ou autoriza.
+## Como o autor usa
 
-A escolha de modelo por papel é opcional e fica no seu projeto. Veja a
-[política de modelos](docs/MODELS.md).
+Frequência relativa nas conversas pessoais do autor, consultadas em 02/11/2026.
+Pedidos e declarações podem se sobrepor e não comprovam execução.
 
-## Integrar às instruções do projeto
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/assets/skill-usage-mobile.svg">
+  <img src="docs/assets/skill-usage.svg" alt="Dois rankings de frequência relativa, sem contagens: pedidos diretos do usuário e uso declarado pelo agente." width="100%">
+</picture>
 
-O plugin não carrega o `AGENTS.md` nem o `CLAUDE.md` deste repositório. Para que o agente use as
-skills no momento certo sem que você as chame, copie o bloco curto de
-[docs/ADOPTING.md](docs/ADOPTING.md#bloco-para-agentsmd-ou-claudemd) para as instruções do seu
-projeto.
+## Para ir além
 
-## Custo de contexto
-
-O nome e a descrição de cada skill entram em toda sessão. Na versão 0.2.0, o
-`claude plugin details` estima cerca de 1.500 tokens fixos para o plugin inteiro. O texto
-completo de uma skill só é carregado quando ela é usada. Desative o plugin nos projetos em que
-não o usar.
+- **Exemplos:** [quando e como usar cada skill](docs/EXAMPLES.md).
+- **Papéis e modelos:** `planner` planeja, `evaluator` confere e `representative` decide nos limites da autonomia autorizada. Veja o [fluxograma](docs/MODEL-FLOW.md) e a [política de modelos](docs/MODELS.md).
+- **Uso pelas instruções do projeto:** acrescente o [bloco para AGENTS.md ou CLAUDE.md](docs/ADOPTING.md#bloco-para-agentsmd-ou-claudemd).
+- **Referência e manutenção:** [HARNESS.md](docs/HARNESS.md) e [guia de adoção](docs/ADOPTING.md), incluindo custo de contexto e cópia editável.
 
 ## Atualizar
 
-- **Claude Code:** a atualização automática de marketplaces de terceiros vem desligada. Ligue em
-  `/plugin`, na aba de marketplaces, ou rode
-  `claude plugin marketplace update jordyfontoura` e depois
-  `claude plugin update jordyfontoura-skills@jordyfontoura`.
-- **Codex:** rode `codex plugin marketplace upgrade`. Se a versão instalada não mudar, rode de
-  novo `codex plugin add jordyfontoura-skills@jordyfontoura`.
+Leia o [CHANGELOG](CHANGELOG.md) antes de atualizar.
+
+- **Claude Code:** a atualização automática de marketplaces de terceiros vem desligada. Ligue em `/plugin` ou rode `claude plugin marketplace update jordyfontoura` e depois `claude plugin update jordyfontoura-skills@jordyfontoura`.
+- **Codex:** rode `codex plugin marketplace upgrade`. Se a versão instalada não mudar, rode de novo `codex plugin add jordyfontoura-skills@jordyfontoura`.
 - **Cópia editável:** peça ao agente `atualizar-harness`.
 
-Leia o [CHANGELOG](CHANGELOG.md) antes de atualizar: uma nova versão muda as instruções que seus
-agentes seguem.
+## Contribuir, créditos e licença
 
-## Por que existe
+Criado por [Jordy Fontoura](https://github.com/jordyfontoura). PRs são bem-vindos:
+leia o [CONTRIBUTING](CONTRIBUTING.md) e o [SECURITY](SECURITY.md).
 
-Estas skills nasceram de problemas recorrentes no trabalho com agentes:
+Inspirado em [mattpocock/skills](https://github.com/mattpocock/skills),
+[pstack](https://github.com/cursor/plugins/tree/main/pstack),
+[Superpowers](https://github.com/obra/superpowers) e
+[anthropics/skills](https://github.com/anthropics/skills).
+Créditos e avisos de licença em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-- **O agente altera arquivos antes de entender o pedido.** `propor` e `entrevistar` alinham antes.
-- **O agente diz "pronto" sem prova.** `implementar`, `verificar-aceite` e `reconciliar` exigem comandos e
-  resultados observados.
-- **O contexto se perde entre sessões.** `passar-contexto` e `andamento` registram onde o trabalho parou.
-- **O texto fica genérico.** `escrever-claro` e `descrever-pr` pedem fatos concretos.
-- **Uma decisão grande depende de uma só opinião.** `conselho` reúne pareceres independentes.
-
-## Relação com mattpocock/skills
-
-A coleção começou inspirada em [mattpocock/skills](https://github.com/mattpocock/skills), e várias
-skills seguem ideias de lá. As diferenças: tudo está em português, inclusive os comandos, o que evita
-conflito de nomes ao usar as duas coleções; há papéis e uma política de
-modelos por responsabilidade; e as skills insistem em autorização explícita e provas.
-
-## Contribuir
-
-PRs são bem-vindos. Leia o [CONTRIBUTING](CONTRIBUTING.md) antes, e o [SECURITY](SECURITY.md)
-para relatar uma vulnerabilidade. Usar as skills não exige Python; ele só é necessário para
-manter este repositório.
-
-## Créditos
-
-- [mattpocock/skills](https://github.com/mattpocock/skills), de Matt Pocock (MIT).
-- [pstack](https://github.com/cursor/plugins/tree/main/pstack), de Lauren Tan (MIT), adaptado
-  em `escrever-claro`.
-- [Superpowers](https://github.com/obra/superpowers), de Jesse Vincent (MIT).
-- [anthropics/skills](https://github.com/anthropics/skills), da Anthropic (Apache-2.0).
-
-Os avisos de licença estão em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-## Licença
-
-[Apache-2.0](LICENSE). O retrato do autor no banner não faz parte dessa licença; veja
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md#retrato-do-autor).
-
-## Autor
-
-Criado e mantido por [Jordy Fontoura](https://github.com/jordyfontoura).
+[Apache-2.0](LICENSE). O retrato do banner não faz parte dessa licença;
+veja os [direitos do retrato](THIRD_PARTY_NOTICES.md#retrato-do-autor).
