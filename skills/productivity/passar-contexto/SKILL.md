@@ -7,19 +7,23 @@ license: Apache-2.0
 # Preservar o contexto para retomada
 
 Leia o trabalho atual e a passagem de contexto mais recente. Resuma o que outra sessão precisa
-para continuar sem repetir a investigação:
+para continuar sem repetir a investigação, abrindo pelo estado atual:
 
+- Tarefas e processos ativos, com identificador, responsável e como conferir o estado ou
+  receber o resultado.
 - Objetivo, escopo combinado e links para o plano ou os requisitos.
 - Branch e worktree, base fixa do diff, commits, arquivos sob sua responsabilidade e alterações
   ainda não commitadas, com explicação.
-- O que foi comprovado, com comandos e resultados exatos, e o que continua sem prova.
+- O que foi comprovado, com comandos, resultados exatos e a revisão a que se aplicam, e o que
+  continua sem prova.
 - Próxima etapa exata (`revisar`, `implementar`, `verificar-aceite`, `especificar` ou outra atividade nomeada)
   e primeira ação concreta.
 - Decisões já tomadas, dúvidas abertas, tentativas sem sucesso e acessos necessários.
-- Para trabalho bloqueado, falha observada e condição de retomada. Para trabalho recorrente,
+- Condição de retomada e, para trabalho bloqueado, a falha observada. Para trabalho recorrente,
   última entrada processada e lote incompleto.
 
-Aponte para evidências existentes em vez de copiar a conversa. Não trate trabalho incompleto
+Aponte para o histórico, as passagens anteriores e as evidências existentes em vez de copiar
+a conversa ou acumular resumos. Não trate trabalho incompleto
 como aprovado nem reinicie uma entrevista com decisões já resolvidas.
 
 Entregue uma passagem curta na resposta. Para continuar entre sessões, atualize um documento

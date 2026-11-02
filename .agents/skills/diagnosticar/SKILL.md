@@ -1,6 +1,6 @@
 ---
 name: diagnosticar
-description: Reproduz e investiga falhas, instabilidade ou lentidão sem causa conhecida, inclusive após duas tentativas de correção sem sucesso.
+description: Reproduz e investiga falhas, instabilidade ou lentidão sem causa conhecida, inclusive após duas tentativas de correção sem sucesso ou quando variantes do mesmo defeito reaparecem.
 license: Apache-2.0
 ---
 
@@ -27,13 +27,18 @@ logs direcionados, depurador ou medições. Preserve tentativas sem sucesso para
 não as repita. Se faltar acesso para reproduzir, registre a lacuna e busque evidências
 independentes, sem adivinhar nem iniciar uma campanha ampla de testes.
 
+Quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com cada correção
+passando, pare de corrigir caso a caso. Antes da próxima correção, mapeie estados, transições
+e invariantes do mecanismo e derive deles os casos de teste. Confira a solução com oráculos
+independentes da implementação, como modelo de referência, exemplos resolvidos ou propriedades
+verificadas sobre sequências de operações.
+
 Corrija a causa e, quando viável, mantenha um teste de regressão no ponto que a alcança.
 Repita o gatilho original e as verificações relevantes do projeto. Remova a instrumentação
 temporária e explique por que uma reprodução não pode virar um teste durável, quando for o caso.
 Nunca enfraqueça uma verificação para fazê-la passar.
-Registre alterações temporárias feitas durante a investigação e como revertê-las. Restaure
-apenas as suas mudanças temporárias que não fazem parte da correção, preservando trabalho
-alheio e mitigações ainda necessárias. Declare o estado final e qualquer alteração mantida.
+Registre alterações temporárias e como revertê-las. Restaure só as suas que não fazem parte
+da correção, preservando trabalho alheio e mitigações necessárias. Declare o estado final e o que ficou.
 
 Registre sintoma, reprodução, causa demonstrada e tentativas na conversa ou no documento de
 trabalho existente. Prove requisitos pelos métodos combinados. Sem prova, não há aprovação.

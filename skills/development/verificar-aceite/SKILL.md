@@ -23,12 +23,12 @@ como não comprovado.
 Se existir uma política em `.agents/models.toml`, quem inicia a avaliação resolve
 `roles.evaluator` seguindo `delegar`: perfil próprio na v2, campos e alternativas na v1,
 sem substituição pela complexidade da implementação. Respeite a seleção explícita do pedido.
-Configurar esse papel não comprova
-que o modelo executou nem permite dispensar a independência ou as provas.
+Configurar esse papel não comprova que o modelo executou nem permite dispensar a independência ou as provas.
 
 Um pedido só de análise de código pertence a `revisar`. Não execute além das permissões.
 Para avaliação em execução, exercite cada critério pelo método declarado e rode as verificações
-exigidas. Inclua caminhos relevantes de falha e examine testes alterados em busca de asserções
+exigidas na revisão fixada, na ordem do apoio `testing.md` da skill `implementar`: rápidas e
+jornadas afetadas antes da campanha completa. Inclua caminhos relevantes de falha e examine testes alterados em busca de asserções
 enfraquecidas. Não edite código, testes, configuração ou critérios, nem delegue correções.
 
 Para trabalho interativo ou integrado, percorra a jornada real coberta pelos critérios:

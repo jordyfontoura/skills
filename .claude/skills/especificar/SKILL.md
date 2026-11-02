@@ -26,6 +26,10 @@ continuam explícitas, sem reduzir silenciosamente o produto à primeira etapa.
 Divida o trabalho em tarefas completas, verificáveis de forma independente e compatíveis com uma
 sessão. Identifique arquivos e interfaces prováveis sem prescrever cada edição. Dependências
 expressam pré-requisitos; a ordem expressa prioridade entre tarefas que já podem avançar.
+Quando o pedido ou o plano dividir a entrega em fases, a primeira tarefa de cada fase percorre
+uma jornada representativa com a fixture aprovada, só pelas camadas que a fase entrega, como
+entrada, cálculo, API, interface ou persistência. Testes específicos continuam cobrindo os detalhes.
+Não crie fases, fixtures nem essa estrutura para trabalho de uma sessão.
 
 Para cada critério, declare o comportamento esperado, o método de prova e os passos para
 reproduzi-lo. Leia o apoio `testing.md` da skill `implementar` ao escolher a prova. Por exemplo,
@@ -33,12 +37,14 @@ uma tarefa de exportação pode exigir o cabeçalho CSV correto para uma entrada
 verificado pela API pública de exportação. Use cenários concretos de entrada, ação e resultado,
 incluindo erros e limites relevantes ao risco. Confira antes se os dados, acessos e mecanismos
 necessários à prova existem; dependências ausentes ficam explícitas, não viram promessa de aceite.
+Numa entrega em fases, indique para cada prova as funcionalidades que ela exige e a fase que as
+entrega. O aceite de uma fase não pode depender de funcionalidade de fase posterior.
 
 Em registros duráveis ou com vários critérios, use referências estáveis; não renumere
 nem reutilize IDs existentes. Ligue tarefas aos critérios e provas que atendem. Uma prova pode
 atender a vários critérios quando essa relação for explícita. Antes de apresentar, confira
-critérios sem cobertura, tarefas sem finalidade ou pré-requisito declarado e dependências
-contraditórias. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
+critérios sem cobertura, tarefas sem finalidade ou pré-requisito declarado, dependências
+contraditórias e, numa entrega em fases, provas que exigem funcionalidade de fase posterior. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
 
 Mantenha planos curtos na conversa. Quando várias sessões precisarem de contexto durável,
 use o registro oficial do projeto ou o destino escolhido pelo usuário. Inclua escopo,
@@ -50,7 +56,4 @@ concorrentes nem crie um sistema paralelo de acompanhamento.
 Apresente o plano concreto e as perguntas restantes. Prossiga quando o pedido existente
 autorizar claramente esse escopo. Um pedido apenas de planejamento ou exploração deixa
 a implementação pendente. Peça uma decisão se o trabalho ultrapassar a autorização ou
-se uma escolha importante continuar aberta.
-
-Um contexto novo de planejamento pode usar o papel `planner`, quando disponível,
-por meio de `delegar`, quando autorizado. Planejar não altera o código do produto.
+se uma escolha importante continuar aberta. Planejar não altera o código do produto.

@@ -7,6 +7,27 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Mudado
+
+- `diagnosticar`: quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com
+  cada correção passando, mapeia estados, transições e invariantes antes da próxima correção e
+  confere a solução com oráculos independentes. `implementar`, `delegar` e `escrever-objetivo`
+  acionam `diagnosticar` nessa situação.
+- `especificar` e `implementar`: cada fase começa por uma jornada representativa com a fixture
+  aprovada; testes específicos continuam cobrindo os detalhes.
+- `especificar`: cada prova indica as funcionalidades que exige e a fase que as entrega; o aceite
+  de uma fase não depende de funcionalidade de fase posterior.
+- `testing.md` (em `implementar`) e `verificar-aceite`: verificações rápidas, regressões e
+  jornadas afetadas vêm antes da revisão, e a campanha completa roda só no candidato
+  estabilizado. Um resultado vale para a revisão em que foi obtido. Uma execução só atende a
+  várias obrigações quando preserva os controles de cada uma e consta do plano.
+- `configurar-harness`: testes do validador usam fixtures mínimas próprias, separadas da
+  verificação do repositório real, e o índice de comandos põe o validador antes das suítes longas.
+- `escrever-objetivo`, `delegar` e `passar-contexto`: o objetivo autoriza avançar tarefas com
+  dependências satisfeitas, preservando os portões; durante esperas, a execução avança trabalho
+  independente e relata só mudanças de estado; a passagem lista tarefas e processos ativos e
+  liga cada resultado à revisão a que se aplica.
+
 ## [0.2.0] - 2026-11-02
 
 ### Adicionado
