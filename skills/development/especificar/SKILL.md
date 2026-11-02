@@ -26,9 +26,10 @@ continuam explícitas, sem reduzir silenciosamente o produto à primeira etapa.
 Divida o trabalho em tarefas completas, verificáveis de forma independente e compatíveis com uma
 sessão. Identifique arquivos e interfaces prováveis sem prescrever cada edição. Dependências
 expressam pré-requisitos; a ordem expressa prioridade entre tarefas que já podem avançar.
-Numa entrega em fases, a primeira tarefa de cada fase percorre uma jornada representativa com
-a fixture aprovada pelas camadas no escopo da fase, como entrada normal, cálculo, API, interface
-e persistência. Testes específicos continuam cobrindo os detalhes.
+Quando o pedido ou o plano dividir a entrega em fases, a primeira tarefa de cada fase percorre
+uma jornada representativa com a fixture aprovada, só pelas camadas que a fase entrega, como
+entrada, cálculo, API, interface ou persistência. Testes específicos continuam cobrindo os detalhes.
+Não crie fases, fixtures nem essa estrutura para trabalho de uma sessão.
 
 Para cada critério, declare o comportamento esperado, o método de prova e os passos para
 reproduzi-lo. Leia o apoio `testing.md` da skill `implementar` ao escolher a prova. Por exemplo,
@@ -36,8 +37,8 @@ uma tarefa de exportação pode exigir o cabeçalho CSV correto para uma entrada
 verificado pela API pública de exportação. Use cenários concretos de entrada, ação e resultado,
 incluindo erros e limites relevantes ao risco. Confira antes se os dados, acessos e mecanismos
 necessários à prova existem; dependências ausentes ficam explícitas, não viram promessa de aceite.
-Para cada prova, indique as funcionalidades que ela exige e a fase que as entrega. O aceite de
-uma fase não pode depender de funcionalidade de fase posterior.
+Numa entrega em fases, indique para cada prova as funcionalidades que ela exige e a fase que as
+entrega. O aceite de uma fase não pode depender de funcionalidade de fase posterior.
 
 Em registros duráveis ou com vários critérios, use referências estáveis; não renumere
 nem reutilize IDs existentes. Ligue tarefas aos critérios e provas que atendem. Uma prova pode
