@@ -137,8 +137,8 @@ Frequência relativa nas conversas pessoais do autor, consultadas em 02/11/2026.
 Pedidos e declarações podem se sobrepor e não comprovam execução.
 
 <picture>
-  <source media="(max-width: 600px)" srcset="docs/assets/skill-usage-mobile.svg">
-  <img src="docs/assets/skill-usage.svg" alt="Dois rankings de frequência relativa, sem contagens: pedidos diretos do usuário e uso declarado pelo agente." width="100%">
+  <source media="(max-width: 600px)" srcset="docs/assets/skill-usage-mobile.svg?v=0.2.0">
+  <img src="docs/assets/skill-usage.svg?v=0.2.0" alt="Dois rankings de frequência relativa, sem contagens: pedidos diretos do usuário e uso declarado pelo agente." width="100%">
 </picture>
 
 ## Para ir além

@@ -7,6 +7,11 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Corrigido
+
+- O README usa URLs versionadas para os gráficos desktop e móvel, para renovar a imagem
+  em cache após a tradução dos nomes das skills.
+
 ### Mudado
 
 - `diagnosticar`: quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com
