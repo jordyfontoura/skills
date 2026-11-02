@@ -1,0 +1,271 @@
+{
+  "snapshot_date": "2026-11-02",
+  "cutoff": "2026-11-02T12:17:00-03:00",
+  "thread_count": 185,
+  "source": "Mensagens das conversas pessoais do autor disponíveis no T3 Code.",
+  "counting_unit": "Uma ocorrência por skill em cada mensagem, incluindo repetições em mensagens diferentes.",
+  "user": [
+    {
+      "skill": "write-goal",
+      "occurrences": 26,
+      "threads": 16
+    },
+    {
+      "skill": "interview",
+      "occurrences": 23,
+      "threads": 15
+    },
+    {
+      "skill": "council",
+      "occurrences": 22,
+      "threads": 11
+    },
+    {
+      "skill": "research",
+      "occurrences": 19,
+      "threads": 9
+    },
+    {
+      "skill": "propose",
+      "occurrences": 15,
+      "threads": 9
+    },
+    {
+      "skill": "progress",
+      "occurrences": 4,
+      "threads": 1
+    },
+    {
+      "skill": "prototype",
+      "occurrences": 3,
+      "threads": 1
+    },
+    {
+      "skill": "unslop",
+      "occurrences": 2,
+      "threads": 2
+    },
+    {
+      "skill": "architecture-review",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "clarify",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "delegate",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "interview-async",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "setup-harness",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "update-harness",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "address-review",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "diagnose",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "evaluate",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "handoff",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "implement",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "improve-harness",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "integrate",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "pull-request",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "reconcile",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "review",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "specify",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "toolbox",
+      "occurrences": 0,
+      "threads": 0
+    }
+  ],
+  "agent": [
+    {
+      "skill": "delegate",
+      "occurrences": 46,
+      "threads": 16
+    },
+    {
+      "skill": "implement",
+      "occurrences": 43,
+      "threads": 19
+    },
+    {
+      "skill": "diagnose",
+      "occurrences": 42,
+      "threads": 15
+    },
+    {
+      "skill": "specify",
+      "occurrences": 34,
+      "threads": 13
+    },
+    {
+      "skill": "unslop",
+      "occurrences": 24,
+      "threads": 19
+    },
+    {
+      "skill": "evaluate",
+      "occurrences": 22,
+      "threads": 10
+    },
+    {
+      "skill": "interview",
+      "occurrences": 18,
+      "threads": 12
+    },
+    {
+      "skill": "council",
+      "occurrences": 15,
+      "threads": 8
+    },
+    {
+      "skill": "write-goal",
+      "occurrences": 15,
+      "threads": 10
+    },
+    {
+      "skill": "handoff",
+      "occurrences": 14,
+      "threads": 11
+    },
+    {
+      "skill": "setup-harness",
+      "occurrences": 13,
+      "threads": 13
+    },
+    {
+      "skill": "propose",
+      "occurrences": 10,
+      "threads": 6
+    },
+    {
+      "skill": "research",
+      "occurrences": 8,
+      "threads": 5
+    },
+    {
+      "skill": "progress",
+      "occurrences": 7,
+      "threads": 2
+    },
+    {
+      "skill": "address-review",
+      "occurrences": 5,
+      "threads": 2
+    },
+    {
+      "skill": "review",
+      "occurrences": 4,
+      "threads": 3
+    },
+    {
+      "skill": "update-harness",
+      "occurrences": 3,
+      "threads": 2
+    },
+    {
+      "skill": "prototype",
+      "occurrences": 2,
+      "threads": 1
+    },
+    {
+      "skill": "reconcile",
+      "occurrences": 2,
+      "threads": 1
+    },
+    {
+      "skill": "toolbox",
+      "occurrences": 2,
+      "threads": 2
+    },
+    {
+      "skill": "improve-harness",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "integrate",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "interview-async",
+      "occurrences": 1,
+      "threads": 1
+    },
+    {
+      "skill": "architecture-review",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "clarify",
+      "occurrences": 0,
+      "threads": 0
+    },
+    {
+      "skill": "pull-request",
+      "occurrences": 0,
+      "threads": 0
+    }
+  ]
+}
