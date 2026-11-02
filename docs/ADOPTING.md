@@ -14,6 +14,20 @@ Os comandos estão no [README](../README.md#instalar). O plugin traz as 26 skill
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
+Dentro de uma sessão do Claude Code, a instalação também pode ser feita com
+`/plugin marketplace add jordyfontoura/skills` e
+`/plugin install jordyfontoura-skills@jordyfontoura`. Para conferir, digite
+`/jordyfontoura-skills:` ou rode `claude plugin list` no terminal.
+
+### Custo de contexto
+
+O nome e a descrição de cada skill entram em toda sessão. Na versão 0.1.0, o
+`claude plugin details` estima cerca de 1.400 tokens fixos para o plugin inteiro. O texto
+completo de uma skill só é carregado quando ela é usada. Desative o plugin nos projetos
+em que não o usar.
+
+### Instruções do projeto
+
 O plugin não carrega instruções de projeto. Para que o agente use as skills no momento certo
 sem que você as chame, acrescente o bloco abaixo ao seu `AGENTS.md` ou `CLAUDE.md`.
 
