@@ -5,5 +5,5 @@ veja a seção "Retrato do autor" em [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_
 
 `skill-usage.svg` e `skill-usage-mobile.svg` apresentam o mesmo retrato de uso, em duas
 disposições. São gerados por `python scripts/render_skill_usage.py`, a partir de
-[skill-usage.json](../data/skill-usage.json). O [método e a tabela](../SKILL-USAGE.md)
-explicam a contagem. Os gráficos usam a paleta neutra do banner e não carregam recursos externos.
+[skill-usage.json](../data/skill-usage.json). Exibem frequência relativa, sem contagens visíveis.
+Os gráficos usam a paleta neutra do banner e não carregam recursos externos.

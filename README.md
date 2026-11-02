@@ -88,16 +88,15 @@ Os comandos ficam em inglês; as instruções e as respostas, em português.
 
 ## Uso observado
 
-Um retrato das skills em 185 conversas pessoais do autor, consultadas em 02/11/2026.
-As repetições na mesma conversa contam: **vezes** mede ocorrências; **threads**, conversas distintas.
+Um retrato da frequência relativa das skills nas conversas pessoais do autor,
+consultadas em 02/11/2026.
 
 <picture>
   <source media="(max-width: 600px)" srcset="docs/assets/skill-usage-mobile.svg">
-  <img src="docs/assets/skill-usage.svg" alt="Dois rankings por ocorrências: pedidos diretos do usuário e uso declarado pelo agente. Tabela completa e método no link abaixo." width="100%">
+  <img src="docs/assets/skill-usage.svg" alt="Dois rankings de frequência relativa, sem contagens: pedidos diretos do usuário e uso declarado pelo agente." width="100%">
 </picture>
 
-Pedidos e declarações podem se sobrepor e não comprovam execução.
-[Tabela completa, critérios e limites da análise](docs/SKILL-USAGE.md).
+As barras usam a mesma escala. Pedidos e declarações podem se sobrepor e não comprovam execução.
 
 ## Catálogo
 
