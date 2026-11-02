@@ -1,5 +1,7 @@
 # Modelos por papel e complexidade
 
+Para uma introdução com fluxograma e exemplos, veja [como papéis e perfis escolhem os modelos](MODEL-FLOW.md).
+
 A política fica em [`.agents/models.toml`](../.agents/models.toml). Ela orienta novas delegações,
 sem iniciar agentes, instalar serviços ou mudar o modelo da conversa aberta. A escolha explícita
 do usuário no pedido atual prevalece. Configurar um modelo não autoriza delegação nem representação.

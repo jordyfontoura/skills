@@ -152,7 +152,7 @@ Code, eles vêm com o plugin como `jordyfontoura-skills:<papel>`. Um papel dispo
 delegação: o agente só o usa quando você pede ou autoriza.
 
 A escolha de modelo por papel é opcional e fica no seu projeto. Veja a
-[política de modelos](docs/MODELS.md).
+[explicação com fluxograma](docs/MODEL-FLOW.md) ou a [política de modelos](docs/MODELS.md).
 
 ## Integrar às instruções do projeto
 
