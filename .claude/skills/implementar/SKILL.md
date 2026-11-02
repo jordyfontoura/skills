@@ -14,10 +14,13 @@ Inspecione a branch e as alterações locais. Execute as verificações iniciais
 e relate falhas preexistentes. Declare os arquivos ou módulos sob sua responsabilidade quando
 o trabalho for compartilhado. Preserve edições alheias e faça mudanças sobrepostas em sequência.
 
-Implemente e comprove uma parte útil por vez. Leia [testing.md](testing.md) ao adicionar testes.
+Implemente e comprove uma parte útil por vez. Numa entrega em fases, comece cada fase pela
+jornada representativa do plano, com a fixture aprovada, e depois amplie os casos específicos.
+Leia [testing.md](testing.md) ao adicionar testes ou ordenar verificações.
 Para interfaces, leia [interface.md](interface.md). Use `tratar-revisao` ao tratar feedback
 recebido e `integrar` quando o pedido autorizar concluir uma integração entre branches.
-Use `diagnosticar` após duas correções sem sucesso ou quando a causa não estiver clara.
+Use `diagnosticar` após duas correções sem sucesso, quando a causa não estiver clara ou quando
+variantes do mesmo defeito reaparecerem, mesmo com cada correção passando.
 Use `delegar` apenas para uma divisão autorizada; leia o apoio
 `workloads.md` da skill `delegar` quando seleção de modelo, trabalho recorrente ou
 registro de execução forem relevantes.
@@ -33,7 +36,7 @@ Peça decisão apenas quando faltar autorização; substituir um critério não 
 Identifique quais provas perderam validade e refaça as afetadas, incluindo suas dependências;
 não descarte evidências ainda aplicáveis. Relacione resultados às referências dos critérios.
 
-Execute as verificações relevantes antes de declarar a entrega. Faça commits pequenos quando
+Execute as verificações relevantes, na ordem de [testing.md](testing.md), antes de declarar a entrega. Faça commits pequenos quando
 as convenções permitirem. Explique o comportamento alterado, a verificação e os limites restantes.
 Implementação concluída não comprova aceite independente; use `verificar-aceite` quando ele for exigido.
 Preserve trabalho inacabado com `passar-contexto`, indicando a próxima etapa e a ação exatas.
