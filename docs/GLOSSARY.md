@@ -52,7 +52,7 @@ inglês abaixo ajudam a reconhecer esses mesmos conceitos no código e nas ferra
 - **Worktree**: diretório de trabalho adicional do mesmo repositório Git, usado para manter
   alterações separadas em outra branch.
 - **Objetivo de execução (goal)**: instrução com resultado esperado, escopo e condição de
-  conclusão, preparada por `write-goal` para orientar uma execução autônoma.
+  conclusão, preparada por `escrever-objetivo` para orientar uma execução autônoma.
 - **Provedor (provider)**: ferramenta ou serviço que disponibiliza o modelo e os recursos
   de execução do agente.
 - **Veredito**: resultado de uma avaliação. `PASS` significa aprovado; `FAIL`, reprovado;

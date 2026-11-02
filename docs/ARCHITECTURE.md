@@ -38,5 +38,6 @@ passagem de contexto em Markdown pode preservar tarefas longas; não há formato
 serviço ou banco de tarefas obrigatório. O harness não instala hooks, gerencia sessões
 nem mantém processos em segundo plano.
 
-Identificadores permanecem em inglês. Textos de leitura ficam em português brasileiro,
+Nomes de skills ficam em português; papéis, grupos, arquivos e demais identificadores, em inglês.
+Textos de leitura ficam em português brasileiro,
 conforme os [padrões](STANDARDS.md). A mesma regra vale para fontes e cópias dos provedores.

@@ -7,19 +7,19 @@ de duplicá-los.
 
 ## Fluxo de trabalho
 
-Quando quiser revisar a abordagem antes de qualquer alteração, use `propose`. O agente pode
+Quando quiser revisar a abordagem antes de qualquer alteração, use `propor`. O agente pode
 investigar por leitura, mas deve entregar uma proposta concreta na resposta final e aguardar
 sua aprovação. Um "pode fazer" posterior libera a execução daquela proposta, sem repetir
 a mesma aprovação. Esse modo não é imposto aos demais pedidos.
 
 Leia o pedido e as instruções relevantes. Resolva dúvidas importantes de escopo com
-`interview`. Use `specify` para definir comportamentos e planejar sua entrega; use `implement`
-para entregar partes verificáveis. Use `review` para analisar alterações de código e `evaluate` para aceite
-independente quando solicitado. Termine com evidências e use `handoff` se outra sessão continuar.
+`entrevistar`. Use `especificar` para definir comportamentos e planejar sua entrega; use `implementar`
+para entregar partes verificáveis. Use `revisar` para analisar alterações de código e `verificar-aceite` para aceite
+independente quando solicitado. Termine com evidências e use `passar-contexto` se outra sessão continuar.
 
-Use `reconcile` para comparar o trabalho pretendido com implementação e evidências atuais.
-Use `council` para pareceres independentes sobre uma proposta; siga a governança existente
-sem exigir comitê para toda mudança. Aplique `unslop` ao redigir textos para leitores,
+Use `reconciliar` para comparar o trabalho pretendido com implementação e evidências atuais.
+Use `conselho` para pareceres independentes sobre uma proposta; siga a governança existente
+sem exigir comitê para toda mudança. Aplique `escrever-claro` ao redigir textos para leitores,
 incluindo títulos e descrições.
 
 Autorizações anteriores continuam válidas. Explorar não autoriza implementar. Um pedido claro
@@ -28,7 +28,7 @@ Relate ferramentas, permissões e evidências ausentes como ausentes.
 
 ## Catálogo de skills
 
-Os comandos ficam em inglês; os títulos e as instruções, em português.
+Os comandos, os títulos e as instruções ficam em português.
 Consulte os [padrões de nomes e idioma](STANDARDS.md) para detalhes.
 
 Para escolher por situação, veja o [guia com exemplos de todas as skills](EXAMPLES.md).
@@ -39,23 +39,23 @@ Fontes em `skills/development/`.
 
 | Skill | Resultado |
 | --- | --- |
-| `specify` | Especificar comportamentos e contratos e planejar sua entrega verificável. |
-| `implement` | Entregar e verificar o trabalho combinado. |
-| `diagnose` | Reproduzir uma falha e demonstrar sua causa. |
-| `review` | Avaliar um diff fixo contra requisitos e padrões. |
-| `address-review` | Verificar feedback recebido e aplicar correções autorizadas com evidências. |
-| `architecture-review` | Identificar atrito estrutural em código existente e propor mudanças sustentadas. |
-| `evaluate` | Verificar critérios de aceite de forma independente. |
-| `prototype` | Esclarecer uma questão de design com um experimento. |
-| `pull-request` | Explicar comportamento resultante, provas e riscos de integração. |
-| `integrate` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
-| `reconcile` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
+| `especificar` | Especificar comportamentos e contratos e planejar sua entrega verificável. |
+| `implementar` | Entregar e verificar o trabalho combinado. |
+| `diagnosticar` | Reproduzir uma falha e demonstrar sua causa. |
+| `revisar` | Avaliar um diff fixo contra requisitos e padrões. |
+| `tratar-revisao` | Verificar feedback recebido e aplicar correções autorizadas com evidências. |
+| `examinar-arquitetura` | Identificar atrito estrutural em código existente e propor mudanças sustentadas. |
+| `verificar-aceite` | Verificar critérios de aceite de forma independente. |
+| `prototipar` | Esclarecer uma questão de design com um experimento. |
+| `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
+| `integrar` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
+| `reconciliar` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
 
-`review` produz achados; `address-review` trata feedback existente. `architecture-review`
-examina dificuldades de arquitetura mesmo sem diff. `pull-request` escreve a descrição;
-`integrate` executa a integração solicitada sem presumir publicação. O apoio de
-[direção visual](../skills/development/implement/interface.md) é compartilhado por `implement`
-e `prototype`, preservando a identidade e os componentes do projeto.
+`revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
+examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
+`integrar` executa a integração solicitada sem presumir publicação. O apoio de
+[direção visual](../skills/development/implementar/interface.md) é compartilhado por `implementar`
+e `prototipar`, preservando a identidade e os componentes do projeto.
 
 ### Produtividade
 
@@ -63,17 +63,17 @@ Fontes em `skills/productivity/`.
 
 | Skill | Resultado |
 | --- | --- |
-| `clarify` | Reformular um ponto confuso em português claro, usando o glossário do projeto. |
-| `council` | Consolidar pareceres independentes, divergências e recomendações. |
-| `delegate` | Delegar trabalho delimitado e conferir o resultado. |
-| `handoff` | Preservar próxima etapa, evidências e trabalho restante. |
-| `interview` | Resolver escolhas abertas de escopo e design pela conversa. |
-| `interview-async` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
-| `propose` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `progress` | Consultar andamento, pendências e bloqueios preservando o objetivo e as autorizações. |
-| `research` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
-| `unslop` | Escrever ou revisar textos claros, preservando fatos e voz. |
-| `write-goal` | Escrever uma instrução de execução delimitada com conclusão verificável. |
+| `esclarecer` | Reformular um ponto confuso em português claro, usando o glossário do projeto. |
+| `conselho` | Consolidar pareceres independentes, divergências e recomendações. |
+| `delegar` | Delegar trabalho delimitado e conferir o resultado. |
+| `passar-contexto` | Preservar próxima etapa, evidências e trabalho restante. |
+| `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
+| `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
+| `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
+| `andamento` | Consultar andamento, pendências e bloqueios preservando o objetivo e as autorizações. |
+| `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
+| `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
+| `escrever-objetivo` | Escrever uma instrução de execução delimitada com conclusão verificável. |
 
 ### Manutenção do harness
 
@@ -81,24 +81,23 @@ Fontes em `skills/harness/`.
 
 | Skill | Resultado |
 | --- | --- |
-| `setup-harness` | Configurar verificações adequadas às tecnologias do projeto. |
-| `improve-harness` | Melhorar o harness a partir de dificuldades observadas na sessão. |
-| `update-harness` | Trazer atualizações da origem preservando adaptações locais. |
-| `toolbox` | Explicar ferramentas CLI, inventariar o ambiente e preparar faltantes no escopo autorizado. |
+| `configurar-harness` | Configurar verificações adequadas às tecnologias do projeto. |
+| `melhorar-harness` | Melhorar o harness a partir de dificuldades observadas na sessão. |
+| `atualizar-harness` | Trazer atualizações da origem preservando adaptações locais. |
+| `conhecer-ferramentas` | Explicar ferramentas CLI, inventariar o ambiente e preparar faltantes no escopo autorizado. |
 
-Use `$clarify` ou pergunte "Como assim?" para retomar uma explicação.
+Use `$esclarecer` ou pergunte "Como assim?" para retomar uma explicação.
 A skill recupera o contexto e usa o [glossário](GLOSSARY.md), preservando nomes de comandos
 e skills. Ela não avança a tarefa nem trata uma dúvida como aprovação.
-O comando `clarify` substitui o antigo `pera-ai`.
 
 Para consultar o andamento, use, por exemplo:
 
-> `$progress Como está? O que já fez, o que falta e tem algo dependendo de mim?`
+> `$andamento Como está? O que já fez, o que falta e tem algo dependendo de mim?`
 
 O agente responde com o estado conhecido, as provas disponíveis, os impedimentos e a próxima
 ação. Depois, continua a etapa que já estava em execução e autorizada. Se estava aguardando
 uma decisão, continua aguardando: uma pergunta de andamento não conta como aprovação.
-`progress` faz uma consulta curta; `reconcile` audita o trabalho contra requisitos e `handoff`
+`andamento` faz uma consulta curta; `reconciliar` audita o trabalho contra requisitos e `passar-contexto`
 prepara o contexto para outra sessão retomar.
 
 Na mesma conversa, o momento e o efeito da entrega da pergunta dependem do ambiente: a skill
@@ -112,19 +111,19 @@ precisa ser verificado; a existência de uma ferramenta de leitura não prova au
 
 Para pedir uma proposta, por exemplo:
 
-> `$propose Quero agrupar as skills por finalidade. Mostre a estrutura e os grupos antes de alterar.`
+> `$propor Quero agrupar as skills por finalidade. Mostre a estrutura e os grupos antes de alterar.`
 
 Nesse caso, a resposta apresenta a organização sugerida e suas consequências; o agente não
 move arquivos, cria branches ou começa a solução enquanto aguarda. Para pedidos simples,
-não é necessário produzir o plano detalhado de `specify`.
+não é necessário produzir o plano detalhado de `especificar`.
 
 ## Pesquisa na internet
 
-Para ferramentas CLI, use `toolbox` e o [guia de ferramentas](TOOLS.md). Uma pergunta explicativa
+Para ferramentas CLI, use `conhecer-ferramentas` e o [guia de ferramentas](TOOLS.md). Uma pergunta explicativa
 ou um inventário não autoriza instalação. Quando a preparação já estiver explicitamente
 autorizada, a skill executa o lote pertinente sem pedir a mesma aprovação novamente.
 
-`clarify`, `research` e `council` adaptam suas orientações à situação dentro do próprio `SKILL.md`:
+`esclarecer`, `pesquisar-web` e `conselho` adaptam suas orientações à situação dentro do próprio `SKILL.md`:
 tipo de dúvida, tipo de evidência necessária e tipo de decisão, respectivamente. Essas divisões
 ajudam a escolher a abordagem; não são etapas ou seções obrigatórias em toda resposta.
 
@@ -135,25 +134,25 @@ O W3C trata de conteúdo web; a Cochrane, de revisões de intervenções; o estu
 simulados sobre temas controversos. A aplicação ao harness é uma escolha de projeto, sem
 prova de ganho neste ambiente. Esses contextos não impõem requisitos a toda conversa ou busca.
 
-Use `research` quando quiser uma resposta fundamentada em fontes externas consultadas:
+Use `pesquisar-web` quando quiser uma resposta fundamentada em fontes externas consultadas:
 
-> `$research Pesquise como melhorar a skill unslop e quais critérios usar para diferentes tipos de conteúdo.`
+> `$pesquisar-web Pesquise como melhorar a skill escrever-claro e quais critérios usar para diferentes tipos de conteúdo.`
 
 A skill exige busca online e leitura das fontes relevantes, com links próximos das conclusões.
 Se faltar acesso à internet, o agente declara a pesquisa ausente ou parcial em vez de responder
 de memória como se tivesse pesquisado. Guias e opiniões são distinguidos de resultados medidos.
 A pesquisa não amplia a autorização para editar arquivos ou implementar suas recomendações.
-`unslop` continua podendo revisar textos sem pesquisa externa quando isso for suficiente ao pedido.
+`escrever-claro` continua podendo revisar textos sem pesquisa externa quando isso for suficiente ao pedido.
 
 ## Consultas ao conselho
 
-O `council` prioriza profundidade, cobertura e independência dos pareceres. Sua composição e
+O `conselho` prioriza profundidade, cobertura e independência dos pareceres. Sua composição e
 investigação seguem a decisão e seus riscos. O coordenador organiza opções, critérios,
 restrições, revisão e evidências com suas origens. Os especialistas recebem esse objeto comum
 e perguntas claras, sem conhecer o parecer um do outro antes da primeira análise. Cada um
 investiga as fontes por conta própria e confere as premissas que sustentam seu parecer.
 
-Por exemplo, para melhorar `specify`, a pergunta de produto pode ser "A intenção humana é
+Por exemplo, para melhorar `especificar`, a pergunta de produto pode ser "A intenção humana é
 preservada quando o requisito muda?" e a de engenharia, "Cada requisito chega a uma prova
 sem duplicar registros?". Essas perguntas orientam o foco; os especialistas podem reler o
 catálogo, ampliar a busca e examinar riscos além do resumo recebido, dentro da autorização.
@@ -183,19 +182,19 @@ não é um objetivo do conselho nem um critério para limitar especialistas, inv
 Contagem de consultas ou palavras não mede tokens faturados nem cota da assinatura.
 Verificações estruturais e leitura dos cenários não comprovam a qualidade real dos pareceres;
 isso exige execuções comparáveis autorizadas, conforme
-[as orientações de comparação](../skills/productivity/delegate/workloads.md).
+[as orientações de comparação](../skills/productivity/delegar/workloads.md).
 
 ## Alinhamento assíncrono
 
-Use `$interview-async` com um pedido como: "Quero alinhar esta ideia respondendo em um arquivo.
+Use `$entrevistar-por-arquivo` com um pedido como: "Quero alinhar esta ideia respondendo em um arquivo.
 Prepare as perguntas e processe minhas respostas quando eu avisar." O agente investiga os
 fatos disponíveis, prepara uma rodada em português e indica onde responder. Você salva suas
 respostas no arquivo e diz "respondi". O agente consolida decisões e acrescenta perguntas
 relevantes, respeitando as dependências.
 
-O [procedimento](../skills/productivity/interview-async/SKILL.md) cobre respostas parciais, mudanças
+O [procedimento](../skills/productivity/entrevistar-por-arquivo/SKILL.md) cobre respostas parciais, mudanças
 de opinião, preservação do texto humano e conflitos de edição. Há um
-[modelo copiável](../skills/productivity/interview-async/alignment.template.md); adapte-o ao formato
+[modelo copiável](../skills/productivity/entrevistar-por-arquivo/alignment.template.md); adapte-o ao formato
 existente. Os arquivos criados pertencem ao projeto de destino, sem banco ou serviço.
 
 O alinhamento é suficiente quando as escolhas importantes para o objetivo estão resolvidas
@@ -217,9 +216,9 @@ O [guia de modelos](MODELS.md) explica as responsabilidades e o fluxo com repres
 A configuração deste repositório registra preferências pessoais em perfis da versão 2,
 com seleção por papel e mapas explícitos de complexidade. O guia traz um exemplo neutro
 com `inherit` para adoção; políticas locais da versão 1 continuam válidas sem migração.
-`delegate`, `council`, `evaluate` e `write-goal` consultam a política quando ela existe no destino.
+`delegar`, `conselho`, `verificar-aceite` e `escrever-objetivo` consultam a política quando ela existe no destino.
 O agente verifica a seleção na ferramenta real; o arquivo não muda a conversa aberta nem
-autoriza delegação ou ações novas. `$propose` mantém a espera humana, salvo delegação explícita.
+autoriza delegação ou ações novas. `$propor` mantém a espera humana, salvo delegação explícita.
 
 ## Adotar em outro projeto
 
@@ -232,9 +231,9 @@ A origem desta coleção é [jordyfontoura/skills](https://github.com/jordyfonto
 As skills já copiadas continuam funcionando sem conexão com a origem. Quem instalou pelo
 plugin atualiza pelo gerenciador de plugins do agente, conforme o [README](../README.md#atualizar).
 
-Inclua `update-harness` entre as skills adotadas e peça, por exemplo:
+Inclua `atualizar-harness` entre as skills adotadas e peça, por exemplo:
 
-> `$update-harness Atualize as skills deste projeto a partir de jordyfontoura/skills,
+> `$atualizar-harness Atualize as skills deste projeto a partir de jordyfontoura/skills,
 > preservando nossas adaptações e informando conflitos.`
 
 A skill fixa uma revisão da origem, compara o conjunto instalado, preserva personalizações

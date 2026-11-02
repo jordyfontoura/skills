@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -34,7 +35,7 @@ class ValidationTests(unittest.TestCase):
         self.assertGreater(roles, 0)
 
     def test_skill_copy_drift_is_rejected(self):
-        target = self.root / ".claude/skills/implement/testing.md"
+        target = self.root / ".claude/skills/implementar/testing.md"
         target.write_text("Instruções desatualizadas\n", encoding="utf-8")
         errors, _, _ = validate(self.root)
         self.assertTrue(any("difere da skill canônica" in error for error in errors))
@@ -52,7 +53,7 @@ class ValidationTests(unittest.TestCase):
         self.assertTrue(any("link quebrado: missing.md" in error for error in errors))
 
     def test_invalid_metadata_is_rejected(self):
-        target = self.root / "skills/development/implement/SKILL.md"
+        target = self.root / "skills/development/implementar/SKILL.md"
         target.write_text("# Metadados ausentes\n", encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "metadados iniciais"):
             validate(self.root)
@@ -79,16 +80,16 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("cópias dos provedores", output)
 
     def test_duplicate_names_across_groups_are_rejected(self):
-        target = self.root / "skills/another/unslop"
+        target = self.root / "skills/another/escrever-claro"
         target.parent.mkdir()
-        shutil.copytree(self.root / "skills/productivity/unslop", target)
+        shutil.copytree(self.root / "skills/productivity/escrever-claro", target)
         with self.assertRaisesRegex(ValueError, "Skill duplicada"):
             validate(self.root)
 
     def test_moving_group_keeps_native_command_names(self):
         group = self.root / "skills/writing"
         group.mkdir()
-        shutil.move(str(self.root / "skills/productivity/unslop"), str(group / "unslop"))
+        shutil.move(str(self.root / "skills/productivity/escrever-claro"), str(group / "escrever-claro"))
         errors, _, _ = validate(self.root)
         self.assertTrue(any("plugin.json: skills deve listar os grupos" in e for e in errors))
         manifest = self.root / ".claude-plugin/plugin.json"
@@ -97,31 +98,31 @@ class ValidationTests(unittest.TestCase):
         manifest.write_text(json.dumps(data), encoding="utf-8")
         examples = self.root / "docs/EXAMPLES.md"
         examples.write_text(examples.read_text(encoding="utf-8").replace(
-            "../skills/productivity/unslop/SKILL.md", "../skills/writing/unslop/SKILL.md"
+            "../skills/productivity/escrever-claro/SKILL.md", "../skills/writing/escrever-claro/SKILL.md"
         ), encoding="utf-8")
         errors, count, _ = validate(self.root)
         self.assertEqual(errors, [])
         self.assertEqual(count, len(catalog(ROOT)))
-        self.assertTrue((self.root / ".agents/skills/unslop/SKILL.md").is_file())
+        self.assertTrue((self.root / ".agents/skills/escrever-claro/SKILL.md").is_file())
 
     def append_to_implement(self, text):
-        source = self.root / "skills/development/implement/SKILL.md"
+        source = self.root / "skills/development/implementar/SKILL.md"
         source.write_text(source.read_text(encoding="utf-8") + text, encoding="utf-8")
         return source
 
     def test_cross_group_links_are_rebased_in_copies_and_rejected_in_sources(self):
-        self.append_to_implement("\nLeia [cargas](../../productivity/delegate/workloads.md).\n")
+        self.append_to_implement("\nLeia [cargas](../../productivity/delegar/workloads.md).\n")
         exported = copy_files(self.root, self.root / ".agents/skills")
-        target = (self.root / ".agents/skills/implement/SKILL.md").resolve()
-        self.assertIn("(../delegate/workloads.md)", exported[target].decode("utf-8"))
+        target = (self.root / ".agents/skills/implementar/SKILL.md").resolve()
+        self.assertIn("(../delegar/workloads.md)", exported[target].decode("utf-8"))
         errors, _, _ = validate(self.root)
         self.assertTrue(any("link sai da skill" in error and "workloads.md" in error
                             for error in errors))
 
     def test_links_leaving_the_skill_are_rejected(self):
-        for link in ("../implement/testing.md", "../../../docs/GLOSSARY.md"):
+        for link in ("../implementar/testing.md", "../../../docs/GLOSSARY.md"):
             with self.subTest(link=link):
-                source = self.root / "skills/development/specify/SKILL.md"
+                source = self.root / "skills/development/especificar/SKILL.md"
                 original = source.read_text(encoding="utf-8")
                 source.write_text(original + f"\n[Apoio]({link})\n", encoding="utf-8")
                 errors, _, _ = validate(self.root)
@@ -130,32 +131,32 @@ class ValidationTests(unittest.TestCase):
                                     in error for error in errors))
 
     def test_reference_links_leaving_the_skill_are_rejected(self):
-        self.append_to_implement("\nVeja [cargas].\n\n[cargas]: ../delegate/workloads.md\n")
+        self.append_to_implement("\nVeja [cargas].\n\n[cargas]: ../delegar/workloads.md\n")
         errors, _, _ = validate(self.root)
         self.assertTrue(any("link sai da skill" in error for error in errors))
 
     def test_links_inside_the_skill_and_in_code_are_accepted(self):
         self.append_to_implement("\nLeia [testes](testing.md#prova).\n\n"
-                                 "~~~markdown\n[Exemplo](../delegate/workloads.md)\n"
+                                 "~~~markdown\n[Exemplo](../delegar/workloads.md)\n"
                                  "[ref]: ../../../docs/GLOSSARY.md\n~~~\n")
         self.assertEqual(sync(self.root), 2)
         self.assertEqual(validate(self.root)[0], [])
 
     def test_rebasing_preserves_anchors_external_links_and_code(self):
-        source = self.root / "skills/development/implement/SKILL.md"
-        target = self.root / ".agents/skills/implement/SKILL.md"
-        linked = self.root / "skills/productivity/delegate/workloads.md"
-        mapping = {linked.resolve(): (self.root / ".agents/skills/delegate/workloads.md").resolve()}
-        text = ("[Guia](../../productivity/delegate/workloads.md?view=1#prova)\n"
+        source = self.root / "skills/development/implementar/SKILL.md"
+        target = self.root / ".agents/skills/implementar/SKILL.md"
+        linked = self.root / "skills/productivity/delegar/workloads.md"
+        mapping = {linked.resolve(): (self.root / ".agents/skills/delegar/workloads.md").resolve()}
+        text = ("[Guia](../../productivity/delegar/workloads.md?view=1#prova)\n"
                 "[Site](https://example.com/guide#prova)\n"
-                "```markdown\n[Exemplo](../../productivity/delegate/workloads.md)\n```\n")
+                "```markdown\n[Exemplo](../../productivity/delegar/workloads.md)\n```\n")
         actual = rebase_links(text, source, target, mapping)
-        self.assertIn("(../delegate/workloads.md?view=1#prova)", actual)
+        self.assertIn("(../delegar/workloads.md?view=1#prova)", actual)
         self.assertIn("https://example.com/guide#prova", actual)
-        self.assertIn("[Exemplo](../../productivity/delegate/workloads.md)", actual)
+        self.assertIn("[Exemplo](../../productivity/delegar/workloads.md)", actual)
 
     def test_sync_updates_copies_without_changing_sources(self):
-        source = self.root / "skills/development/implement/testing.md"
+        source = self.root / "skills/development/implementar/testing.md"
         content = source.read_text(encoding="utf-8") + "\nNota de verificação.\n"
         source.write_text(content, encoding="utf-8")
         self.assertTrue(validate(self.root)[0])
@@ -168,13 +169,13 @@ class ValidationTests(unittest.TestCase):
         extra = self.root / ".claude/skills/custom/SKILL.md"
         extra.parent.mkdir()
         extra.write_text("Conteúdo local a preservar.\n", encoding="utf-8")
-        before = (self.root / ".agents/skills/implement/testing.md").read_bytes()
-        source = self.root / "skills/development/implement/testing.md"
+        before = (self.root / ".agents/skills/implementar/testing.md").read_bytes()
+        source = self.root / "skills/development/implementar/testing.md"
         source.write_text("Alteração ainda não exportada.\n", encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "Cópias fora do catálogo"):
             sync(self.root)
         self.assertEqual(extra.read_text(encoding="utf-8"), "Conteúdo local a preservar.\n")
-        self.assertEqual((self.root / ".agents/skills/implement/testing.md").read_bytes(), before)
+        self.assertEqual((self.root / ".agents/skills/implementar/testing.md").read_bytes(), before)
 
     def test_sync_rejects_empty_orphan_directories(self):
         (self.root / ".agents/skills/unknown").mkdir()
@@ -226,13 +227,13 @@ class ValidationTests(unittest.TestCase):
     def test_catalog_documents_must_list_every_skill(self):
         readme = self.root / "README.md"
         readme.write_text(readme.read_text(encoding="utf-8").replace(
-            "| `toolbox` |", "| `toolkit` |"), encoding="utf-8")
+            "| `conhecer-ferramentas` |", "| `toolkit` |"), encoding="utf-8")
         errors, _, _ = validate(self.root)
-        self.assertTrue(any("README.md: o catálogo difere das skills; faltam ['toolbox'], "
+        self.assertTrue(any("README.md: o catálogo difere das skills; faltam ['conhecer-ferramentas'], "
                             "sobram ['toolkit']" in error for error in errors), errors)
 
     def test_hidden_characters_are_rejected(self):
-        target = self.root / "skills/development/implement/SKILL.md"
+        target = self.root / "skills/development/implementar/SKILL.md"
         target.write_text(target.read_text(encoding="utf-8") + "\nTexto\u200bescondido.\n",
                           encoding="utf-8")
         sync(self.root)
@@ -253,6 +254,85 @@ class ValidationTests(unittest.TestCase):
             "[roles.representative]", "[roles.other]"), encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "Responsabilidades sem configuração: representative"):
             validate(self.root)
+
+    def edit(self, relative, transform):
+        path = self.root / relative
+        path.write_text(transform(path.read_text(encoding="utf-8")), encoding="utf-8")
+
+    def test_old_skill_names_cited_as_skills_are_rejected(self):
+        cases = {
+            "Use `review` para analisar o diff.": "nome antigo `review`; use `revisar`",
+            "> `$propose Mostre a abordagem.`": "nome antigo `propose`; use `propor`",
+            "/jordyfontoura-skills:propose": "nome antigo `propose`; use `propor`",
+            "Veja skills/development/review/SKILL.md.": "nome antigo `review`; use `revisar`",
+            "Use interview para alinhar.": "nome antigo `interview`; use `entrevistar`",
+            "Use `interview-async` para arquivos.": "nome antigo `interview-async`",
+            "Rode `retro` ao final.": "nome antigo `retro`; use `melhorar-harness`",
+            "Peça `pera-ai`.": "nome antigo `pera-ai`; use `esclarecer`",
+        }
+        for text, message in cases.items():
+            with self.subTest(text=text):
+                self.setUp()
+                self.edit("docs/HARNESS.md", lambda t: t + "\n" + text + "\n")
+                errors, _, _ = validate(self.root)
+                self.assertTrue(any(message in e and "docs/HARNESS.md:" in e for e in errors), errors)
+
+    def test_old_skill_name_in_description_is_rejected(self):
+        self.edit("skills/development/revisar/SKILL.md",
+                  lambda t: t.replace("\ndescription: ", "\ndescription: Antes chamada review. ", 1))
+        sync(self.root)
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("skills/development/revisar/SKILL.md:3: nome antigo `review`" in e
+                            for e in errors), errors)
+
+    def test_legitimate_mentions_of_old_names_pass(self):
+        self.edit("docs/HARNESS.md", lambda t: t + (
+            "\nInspirada em [prototype, de Matt Pocock]"
+            "(https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md).\n"
+            "Resolva `roles.council` e `[roles.council]`.\n"
+            "- **Passagem de contexto (handoff)**: registro para retomar.\n"
+            "A implementação usa receiving-code-review como referência.\n"))
+        self.assertEqual(validate(self.root)[0], [])
+
+    def test_renames_come_from_the_changelog(self):
+        self.edit("CHANGELOG.md", lambda t: t.replace(
+            "### Renomeações\n", "### Renomeações\n\n- `antigo-x` passou a se chamar `revisar`.\n", 1))
+        self.edit("docs/HARNESS.md", lambda t: t + "\nUse `antigo-x`.\n")
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("nome antigo `antigo-x`; use `revisar`" in e for e in errors), errors)
+
+        self.setUp()
+        self.edit("CHANGELOG.md", lambda t: re.sub(r"(?m)^- `[a-z0-9-]+` passou a se chamar .*\n",
+                                                   "", t))
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("nenhuma renomeação" in e for e in errors), errors)
+
+    def test_renames_must_end_in_the_catalog(self):
+        cases = {
+            "- `revisar` passou a se chamar `outra`.\n": "`revisar` foi renomeada, mas ainda está",
+            "- `velha` passou a se chamar `inexistente`.\n": "renomeação de `velha` não termina",
+            "- `ida` passou a se chamar `volta`.\n- `volta` passou a se chamar `ida`.\n":
+                "renomeação de `ida` não termina",
+        }
+        for lines, message in cases.items():
+            with self.subTest(message=message):
+                self.setUp()
+                self.edit("CHANGELOG.md", lambda t: t.replace(
+                    "### Renomeações\n", "### Renomeações\n\n" + lines, 1))
+                errors, _, _ = validate(self.root)
+                self.assertTrue(any(message in e for e in errors), errors)
+
+    def test_old_name_exceptions_are_narrow_and_used(self):
+        self.edit("docs/MODELS.md", lambda t: t + "\nUse `council` para pareceres.\n")
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("docs/MODELS.md:" in e and "nome antigo `council`" in e
+                            for e in errors), errors)
+
+        self.setUp()
+        self.edit("THIRD_PARTY_NOTICES.md", lambda t: t.replace(
+            "das skills `unslop` e `technical-writing`", "de duas skills"))
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("exceção de nome antigo sem uso" in e for e in errors), errors)
 
 
 if __name__ == "__main__":
