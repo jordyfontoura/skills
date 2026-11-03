@@ -1,16 +1,16 @@
 # Ferramentas CLI no desenvolvimento com agentes
 
-Use [`toolbox`](../skills/harness/toolbox/SKILL.md) para conhecer ferramentas, conferir o ambiente
-ou preparar as faltantes. O [catálogo de usos](../skills/harness/toolbox/tools.md) explica as
+Use [`conhecer-ferramentas`](../skills/harness/conhecer-ferramentas/SKILL.md) para conhecer ferramentas, conferir o ambiente
+ou preparar as faltantes. O [catálogo de usos](../skills/harness/conhecer-ferramentas/tools.md) explica as
 opções e acompanha a skill quando ela é copiada para outro projeto. As CLIs são opcionais:
 as ferramentas nativas e as restrições de cada ambiente continuam valendo.
 
 ## Como pedir
 
-- `$toolbox Explique quando usar ast-grep em vez de rg.`: explicação, sem instalação.
-- `$toolbox Confira o que está disponível para buscar código e testar uma interface.`:
+- `$conhecer-ferramentas Explique quando usar ast-grep em vez de rg.`: explicação, sem instalação.
+- `$conhecer-ferramentas Confira o que está disponível para buscar código e testar uma interface.`:
   inventário delimitado, sem preparar recursos adicionais.
-- `$toolbox Prepare as ferramentas que faltam para esta tarefa.`: inventário e lote concreto
+- `$conhecer-ferramentas Prepare as ferramentas que faltam para esta tarefa.`: inventário e lote concreto
   de instalação para aprovação, salvo autorização anterior que já cubra o lote e seus efeitos.
 
 Uma aprovação vale para o escopo recebido e não precisa ser solicitada de novo. Instalar uma
@@ -31,4 +31,4 @@ qmd --index <índice> collection list
 
 Depois de editar documentos, atualize apenas o índice adotado, com `qmd --index <índice> update`.
 Não confunda recuperar texto com provar sua atualidade ou realizar pesquisa na internet.
-`research` continua exigindo fontes externas quando invocada.
+`pesquisar-web` continua exigindo fontes externas quando invocada.

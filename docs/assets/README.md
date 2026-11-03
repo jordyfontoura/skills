@@ -7,3 +7,5 @@ veja a seção "Retrato do autor" em [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_
 disposições. São gerados por `python scripts/render_skill_usage.py`, a partir de
 [skill-usage.json](../data/skill-usage.json). Exibem frequência relativa, sem contagens visíveis.
 Os gráficos usam a paleta neutra do banner e não carregam recursos externos.
+
+Os rótulos usam os nomes da versão 0.2.0; a renomeação preserva as contagens do retrato original.

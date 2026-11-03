@@ -4,9 +4,9 @@
 
 ### pstack, de Lauren Tan
 
-A skill `unslop` adapta e traduz trechos das skills `unslop` e `technical-writing` do
+A skill `escrever-claro` adapta e traduz trechos das skills `unslop` e `technical-writing` do
 [pstack](https://github.com/cursor/plugins/tree/main/pstack). O aviso também acompanha a
-skill em `skills/productivity/unslop/LICENSE-pstack.txt`.
+skill em `skills/productivity/escrever-claro/LICENSE-pstack.txt`.
 
 ```text
 MIT License
@@ -34,8 +34,8 @@ SOFTWARE.
 
 ### Skills de Matt Pocock
 
-`clarify`, `diagnose`, `prototype`, `improve-harness`, `architecture-review` e
-`interview-async` seguem ideias e a organização de skills de
+`esclarecer`, `diagnosticar`, `prototipar`, `melhorar-harness`, `examinar-arquitetura` e
+`entrevistar-por-arquivo` seguem ideias e a organização de skills de
 [mattpocock/skills](https://github.com/mattpocock/skills). O texto foi escrito de novo em
 português. Por cautela, o aviso da licença acompanha esta coleção.
 
@@ -67,8 +67,8 @@ SOFTWARE.
 
 Estas fontes inspiraram temas de skills, sem texto incluído:
 
-- `address-review` e `integrate`: [Superpowers](https://github.com/obra/superpowers), de Jesse Vincent (MIT).
-- Apoio `interface.md` de `implement`: [frontend-design](https://github.com/anthropics/skills), da Anthropic (Apache-2.0).
+- `tratar-revisao` e `integrar`: [Superpowers](https://github.com/obra/superpowers), de Jesse Vincent (MIT).
+- Apoio `interface.md` de `implementar`: [frontend-design](https://github.com/anthropics/skills), da Anthropic (Apache-2.0).
 
 ## Retrato do autor
 

@@ -11,14 +11,14 @@ delegações autorizadas; não inicia agentes nem troca o modelo da conversa abe
 
 | Conceito | Exemplo | O que representa |
 | --- | --- | --- |
-| Skill | `specify` | O procedimento a seguir para uma situação. |
+| Skill | `especificar` | O procedimento a seguir para uma situação. |
 | Papel (`role`) | `planner` | A responsabilidade de quem faz o trabalho. |
 | Complexidade | `simple`, `default`, `hard` | A classificação do trabalho, pelo escopo e pela consequência do erro. |
 | Perfil (`profile`) | `hard` | Uma lista ordenada de candidatos configurados no projeto. |
 | Modelo | `claude-opus-5-5` | O modelo que a ferramenta é solicitada a executar. |
 | Esforço (`effort`) | `medium`, `high` | Uma configuração de raciocínio aceita pela ferramenta. |
 
-Por exemplo: **`specify` orienta o `planner`, que usa o perfil `hard`; aqui, o primeiro
+Por exemplo: **`especificar` orienta o `planner`, que usa o perfil `hard`; aqui, o primeiro
 candidato desse perfil é Claude Opus 5.5 com esforço `high`.**
 
 `hard` e `high` são coisas diferentes. O primeiro pode classificar o trabalho ou nomear um
@@ -35,7 +35,7 @@ seleção se o papel tiver um mapa para esse nível.
 | `reviewer` | Analisar um diff fixado e relatar achados. | `default` | Sim: `simple` → `simple`; `hard` → `hard`. |
 | `evaluator` | Conferir os critérios de aceite independentemente da implementação. | `evaluator` | Não aceita mapa. |
 | `representative` | Escolher entre alternativas dentro de uma autonomia autorizada. | `representative` | Não aceita mapa. |
-| `council` | Reunir pareceres independentes sobre uma decisão ou proposta. | `evaluator` | Não aceita mapa. |
+| `roles.council` | Reunir pareceres independentes sobre uma decisão ou proposta. | `evaluator` | Não aceita mapa. |
 
 Esses sete nomes são responsabilidades na política. A coleção distribui arquivos de papel
 próprios para [planner](../.agents/roles/planner.md),
@@ -91,11 +91,11 @@ de candidatos e alternativas está em [MODELS.md](MODELS.md#configuração-pesso
 
 `hard`, `representative`, `evaluator` e `orchestrator` têm hoje os mesmos candidatos, mas são
 listas distintas. Assim, trocar o modelo do trabalho `hard` não muda automaticamente o
-representante nem o avaliador. Já `council` usa o perfil `evaluator`: alterar essa lista afeta ambos.
+representante nem o avaliador. Já `roles.council` usa o perfil `evaluator`: alterar essa lista afeta ambos.
 
 O representante recebe opções, evidências e preferências e devolve uma decisão em leitura.
 Quem coordena registra a autoria da decisão e continua o trabalho permitido. Ele não amplia
-o objetivo nem assume escolhas reservadas ao usuário; uma espera pedida por `propose`
+o objetivo nem assume escolhas reservadas ao usuário; uma espera pedida por `propor`
 continua valendo, salvo delegação explícita daquela aprovação.
 
 Para alterar a política ou entender os formatos, consulte [MODELS.md](MODELS.md).

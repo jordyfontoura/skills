@@ -17,8 +17,8 @@ bem-vindos quando resolvem um problema observado ao usar uma skill.
 
 ## Idioma e padrões
 
-Identificadores, nomes de skills e comandos ficam em inglês. Descrições, instruções e
-documentação ficam em português brasileiro. Issues e PRs podem ser em português ou inglês.
+Nomes de skills e comandos ficam em português; papéis, grupos, arquivos e demais identificadores
+ficam em inglês. Descrições, instruções e documentação ficam em português brasileiro. Issues e PRs podem ser em português ou inglês.
 Consulte os [padrões](docs/STANDARDS.md), o [glossário](docs/GLOSSARY.md) e a
 [arquitetura](docs/ARCHITECTURE.md).
 

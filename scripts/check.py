@@ -21,6 +21,19 @@ TEXT_DIRECTORIES = ("skills", "agents", "docs", "scripts", ".agents", ".claude",
 TEXT_SUFFIXES = {".md", ".json", ".toml", ".py", ".yml", ".yaml", ".svg", ""}
 HIDDEN = re.compile("[\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff"
                     "\U000e0000-\U000e007f\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+RENAME = re.compile(r"^- `([a-z0-9-]+)` passou a se chamar `([a-z0-9-]+)`\.$", re.M)
+STALE_NAME_SUFFIXES = {".md", ".toml", ".yml", ".yaml", ".json", ""}
+URL = re.compile(r"https?://[^\s)>\]]+")
+# Trechos em que um nome antigo continua correto, por arquivo (sufixo do caminho).
+STALE_NAME_EXCEPTIONS = {
+    # Nomes das skills de origem no pstack, preservados na atribuição.
+    "THIRD_PARTY_NOTICES.md": ("das skills `unslop` e `technical-writing`",),
+    # `council` aqui é a chave de papel `roles.council`, que continua em inglês.
+    "docs/MODELS.md": ("`evaluator` e `council`",),
+    "delegar/SKILL.md": ("`representative` ou `council`", "`evaluator` e `council`"),
+    # O comando nativo do Claude Code que motivou a mudança de nomes.
+    "docs/STANDARDS.md": ("`/review`",),
+}
 
 
 def read(path):
@@ -141,7 +154,70 @@ def validate(root=ROOT):
         missing, extra = sorted(set(sources) - set(listed)), sorted(set(listed) - set(sources))
         require(not missing and not extra and len(listed) == len(set(listed)),
                 f"{relative}: o catálogo difere das skills; faltam {missing}, sobram {extra}")
+    errors.extend(stale_names(root, sources))
     return errors, len(sources), len(role_names)
+
+
+def stale_names(root, sources):
+    """Recusa nomes de skills renomeadas, lidos do CHANGELOG, citados como skill."""
+    changelog = root / "CHANGELOG.md"
+    renames = dict(RENAME.findall(read(changelog))) if changelog.is_file() else {}
+    if not renames:
+        return ["CHANGELOG.md: nenhuma renomeação no formato "
+                "\"- `antigo` passou a se chamar `novo`.\"; a verificação de nomes antigos depende dela"]
+    errors = []
+    current = {}
+    for old in renames:
+        seen, name = {old}, renames[old]
+        while name in renames and name not in seen:
+            seen.add(name)
+            name = renames[name]
+        if old in sources:
+            errors.append(f"CHANGELOG.md: `{old}` foi renomeada, mas ainda está no catálogo")
+        elif name in seen or name not in sources:
+            errors.append(f"CHANGELOG.md: a renomeação de `{old}` não termina numa skill do catálogo")
+        else:
+            current[old] = name
+    if not current:
+        return errors
+    names = "|".join(re.escape(n) for n in sorted(current, key=len, reverse=True))
+    end = r"(?![\w-])"
+    patterns = (
+        re.compile(rf"`({names})`"),
+        re.compile(rf"\$({names}){end}"),
+        re.compile(rf"(?<=[/:])({names}){end}"),
+        re.compile(rf"^\s*(?:name|placeholder):\s*({names})\s*$", re.M),
+        re.compile(rf"(?<![\w-])(?:[Uu]se|siga|seguindo|menciona|pedir|skills?)\s+({names}){end}"),
+        re.compile(rf"^description:.*?(?<![\w-])({names}){end}", re.M),
+    )
+    files = [p for p in root.iterdir() if p.is_file() and p.name != "CHANGELOG.md"]
+    for relative in TEXT_DIRECTORIES:
+        if relative != "scripts":
+            files.extend(p for p in (root / relative).rglob("*") if p.is_file())
+    used = set()
+    for path in sorted(files):
+        if path.suffix.lower() not in STALE_NAME_SUFFIXES:
+            continue
+        relative = path.relative_to(root).as_posix()
+        text = URL.sub(lambda m: " " * len(m[0]), read(path))
+        for suffix, excerpts in STALE_NAME_EXCEPTIONS.items():
+            if relative == suffix or relative.endswith("/" + suffix):
+                for excerpt in excerpts:
+                    if excerpt in text:
+                        used.add((suffix, excerpt))
+                        text = text.replace(excerpt, " " * len(excerpt))
+        found = set()
+        for pattern in patterns:
+            for match in pattern.finditer(text):
+                line = text.count("\n", 0, match.start(1)) + 1
+                found.add((line, match[1]))
+        for line, old in sorted(found):
+            errors.append(f"{relative}:{line}: nome antigo `{old}`; use `{current[old]}`")
+    for suffix, excerpts in STALE_NAME_EXCEPTIONS.items():
+        for excerpt in excerpts:
+            if (suffix, excerpt) not in used:
+                errors.append(f"{suffix}: exceção de nome antigo sem uso: {excerpt}")
+    return errors
 
 
 def main():
