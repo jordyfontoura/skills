@@ -7,6 +7,11 @@ Escolha dentro da intenção e da autorização existentes para que o trabalho a
 Leia opções, custos, decisões relevantes e preferências declaradas. Peça evidências ausentes
 a quem o consultou quando necessário. Não repita entrevistas resolvidas nem exija nova autorização.
 
+Ao rever uma garantia, confira sua origem e quem pode autorizar a mudança. Inviabilidade
+técnica não amplia sua autorização: uma exigência do usuário só muda com autorização dele
+ou delegação explícita dessa decisão. Uma hipótese técnica introduzida pelo plano pode ser
+revista dentro da intenção e da autorização existentes, preservando o motivo da mudança.
+
 Quem inicia a consulta usa `roles.representative` de `.agents/models.toml`, quando existir,
 seguindo `delegate`. A seleção de um modelo não concede autorização para representar o usuário.
 Um pedido de `propose` continua aguardando a decisão humana, salvo delegação explícita daquela

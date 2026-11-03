@@ -26,6 +26,9 @@ continuam explícitas, sem reduzir silenciosamente o produto à primeira etapa.
 Divida o trabalho em tarefas completas, verificáveis de forma independente e compatíveis com uma
 sessão. Identifique arquivos e interfaces prováveis sem prescrever cada edição. Dependências
 expressam pré-requisitos; a ordem expressa prioridade entre tarefas que já podem avançar.
+Em entregas com várias camadas, planeje cedo um percurso mínimo pela entrada normal e pela
+configuração padrão, com componentes próprios reais e dados sintéticos. Respeite a ordem
+definida pelo usuário e preserve os critérios finais da entrega.
 
 Para cada critério, declare o comportamento esperado, o método de prova e os passos para
 reproduzi-lo. Leia o apoio `testing.md` da skill `implement` ao escolher a prova. Por exemplo,
@@ -33,12 +36,17 @@ uma tarefa de exportação pode exigir o cabeçalho CSV correto para uma entrada
 verificado pela API pública de exportação. Use cenários concretos de entrada, ação e resultado,
 incluindo erros e limites relevantes ao risco. Confira antes se os dados, acessos e mecanismos
 necessários à prova existem; dependências ausentes ficam explícitas, não viram promessa de aceite.
+Quando uma garantia depender de plataforma ou runtime, investigue a viabilidade do mecanismo
+e da medição antes de assumir uma solução técnica. Diferencie exigências do usuário de
+hipóteses introduzidas pelo plano; falta de prova não rebaixa uma exigência a hipótese.
 
 Em registros duráveis ou com vários critérios, use referências estáveis; não renumere
 nem reutilize IDs existentes. Ligue tarefas aos critérios e provas que atendem. Uma prova pode
 atender a vários critérios quando essa relação for explícita. Antes de apresentar, confira
 critérios sem cobertura, tarefas sem finalidade ou pré-requisito declarado e dependências
-contraditórias. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
+contraditórias, incluindo critérios de uma etapa que só possam ser provados por capacidades
+de etapas posteriores. Ajuste a distribuição das provas preservando os critérios e suas
+referências. Não imponha IDs ou arquivos adicionais a trabalho curto na conversa.
 
 Mantenha planos curtos na conversa. Quando várias sessões precisarem de contexto durável,
 use o registro oficial do projeto ou o destino escolhido pelo usuário. Inclua escopo,

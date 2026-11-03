@@ -15,6 +15,10 @@ Use os scripts, o executor de tarefas e a CI existentes quando disponíveis. Man
 comandos executáveis diretamente no repositório. Num projeto de documentação, use checagens
 proporcionais de estrutura, links e metadados. Não adicione ferramentas de aplicação apenas
 por causa do harness.
+Ao configurar um validador, teste suas regras com árvores sintéticas mínimas, incluindo
+casos que devem falhar, e valide a documentação real na própria árvore do repositório.
+Não mantenha listas parciais de arquivos copiados para fazer a documentação passar nos testes.
+
 Use `toolbox` para inventariar ferramentas e preparar faltantes quando essa instalação fizer
 parte do pedido; isso não torna o catálogo de CLIs uma dependência obrigatória do projeto.
 

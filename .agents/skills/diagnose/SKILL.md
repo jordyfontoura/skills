@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: Reproduz e investiga falhas, instabilidade ou lentidão sem causa conhecida, inclusive após duas tentativas de correção sem sucesso.
+description: Reproduz e investiga falhas, instabilidade ou lentidão sem causa conhecida, após duas correções sem sucesso ou novos defeitos do mesmo mecanismo após correções locais.
 license: Apache-2.0
 ---
 
@@ -26,6 +26,11 @@ uma previsão que permita distinguir cada hipótese. Investigue uma variável po
 logs direcionados, depurador ou medições. Preserve tentativas sem sucesso para que outra sessão
 não as repita. Se faltar acesso para reproduzir, registre a lacuna e busque evidências
 independentes, sem adivinhar nem iniciar uma campanha ampla de testes.
+
+Quando novos defeitos do mesmo mecanismo surgirem após correções locais, investigue a causa
+e as invariantes comuns antes de outro reparo pontual. Regressões anteriores passando não
+excluem uma causa comum; compartilhar um módulo, por si só, não demonstra essa relação.
+Quando viável, verifique a invariante para a família de casos, além dos exemplos reproduzidos.
 
 Corrija a causa e, quando viável, mantenha um teste de regressão no ponto que a alcança.
 Repita o gatilho original e as verificações relevantes do projeto. Remova a instrumentação

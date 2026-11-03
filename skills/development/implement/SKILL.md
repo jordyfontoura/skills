@@ -17,7 +17,8 @@ o trabalho for compartilhado. Preserve edições alheias e faça mudanças sobre
 Implemente e comprove uma parte útil por vez. Leia [testing.md](testing.md) ao adicionar testes.
 Para interfaces, leia [interface.md](interface.md). Use `address-review` ao tratar feedback
 recebido e `integrate` quando o pedido autorizar concluir uma integração entre branches.
-Use `diagnose` após duas correções sem sucesso ou quando a causa não estiver clara.
+Use `diagnose` após duas correções sem sucesso, quando a causa não estiver clara ou quando
+novos defeitos do mesmo mecanismo surgirem após correções locais.
 Use `delegate` apenas para uma divisão autorizada; leia o apoio
 `workloads.md` da skill `delegate` quando seleção de modelo, trabalho recorrente ou
 registro de execução forem relevantes.
