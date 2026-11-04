@@ -9,6 +9,10 @@ compatibilidade.
 
 ### Adicionado
 
+- `examinar-eficiencia`: explica por que o trabalho com o agente demorou ou gastou muitos
+  tokens e propõe a menor mudança para cada causa, sem cortar verificações úteis. Usa a conversa,
+  diffs, verificações e métricas expostas; lê logs locais de sessão só a pedido. Não estima
+  tokens por contagem de palavras e encaminha causas nas instruções para `melhorar-harness`.
 - `criticar-interface`: critica UI e UX com uma rubrica fixa: percurso cognitivo, heurísticas
   de Nielsen, WCAG 2.2 AA (com WCAG2ICT fora da web), hierarquia visual, conteúdo, confiança e
   escolha, estados e convenções da plataforma. Cada achado traz padrão, impacto, severidade de

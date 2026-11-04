@@ -160,6 +160,14 @@ preservando o objetivo e as autorizações do trabalho em curso.
 
 > $andamento O que já foi feito, o que falta e tem algo dependendo de mim?
 
+### [`examinar-eficiencia`](../skills/productivity/examinar-eficiencia/SKILL.md)
+
+Quando o trabalho está demorando ou gastando muitos tokens. Aponta onde o gasto aconteceu, com
+evidências, separa causa observada de inferida e propõe a menor mudança para cada uma, sem
+cortar verificações úteis.
+
+> $examinar-eficiencia Por que estamos demorando ou gastando tantos tokens para terminar as tarefas? Como podemos melhorar?
+
 ### [`passar-contexto`](../skills/productivity/passar-contexto/SKILL.md)
 
 Quando outra sessão vai continuar o trabalho. Preserva a etapa exata, as decisões, as provas

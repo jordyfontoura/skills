@@ -77,6 +77,7 @@ Fontes em `skills/productivity/`.
 | `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
 | `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
 | `andamento` | Consultar andamento, pendências e bloqueios preservando o objetivo e as autorizações. |
+| `examinar-eficiencia` | Explicar onde o trabalho gastou tempo e tokens e propor a menor mudança para cada causa. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
 | `escrever-objetivo` | Escrever uma instrução de execução delimitada com conclusão verificável. |
