@@ -13,7 +13,8 @@ Sem proposta pronta, use o estado atual e a pergunta como objeto comum da consul
 melhor argumento para manter esse estado, melhorias sustentadas e critérios de escolha;
 não invente uma proposta aprovada nem trate a exploração como autorização para implementar.
 Uma dúvida factual comum raramente exige conselho; investigue diretamente ou use `entrevistar`
-para uma escolha que cabe ao usuário.
+para uma escolha que cabe ao usuário. Para criticar a UI e a UX de uma interface, use
+`criticar-interface-em-conselho`.
 
 Adapte a pergunta comum à situação, sem exigir um formato diferente de relatório para cada caso:
 

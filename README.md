@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 26 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 28 skills e 3 papéis que você pode usar ou adaptar.
 
 **[Instalar](#instalar) · [Experimentar uma skill](#primeiro-uso) · [Ver exemplos](docs/EXAMPLES.md)**
 
@@ -79,7 +79,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 26 skills</summary>
+<summary>Ver as 28 skills</summary>
 
 ### Entender e decidir
 
@@ -106,6 +106,8 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `examinar-arquitetura` | Identificar atrito estrutural no código e propor melhorias. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
 | `reconciliar` | Comparar requisitos, implementação e evidências. |
+| `criticar-interface` | Receber uma crítica de UI e UX com severidade e base declarada. |
+| `criticar-interface-em-conselho` | Reunir críticas independentes de UI e UX e consolidar divergências. |
 | `descrever-pr` | Escrever a descrição de uma mudança para quem vai revisá-la. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
 

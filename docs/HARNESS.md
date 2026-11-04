@@ -50,12 +50,18 @@ Fontes em `skills/development/`.
 | `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
 | `integrar` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
 | `reconciliar` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
+| `criticar-interface` | Criticar UI e UX com rubrica fixa, severidade, base e limites declarados. |
+| `criticar-interface-em-conselho` | Consolidar críticas independentes de UI e UX, com severidades e divergências. |
 
 `revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
 examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
 `integrar` executa a integração solicitada sem presumir publicação. O apoio de
 [direção visual](../skills/development/implementar/interface.md) é compartilhado por `implementar`
 e `prototipar`, preservando a identidade e os componentes do projeto.
+`criticar-interface` avalia a experiência de uso de uma interface, com ou sem diff, usando a
+[rubrica comum](../skills/development/criticar-interface/rubric.md), o design system do projeto e as
+diretrizes vigentes da plataforma. `criticar-interface-em-conselho` aplica a mesma rubrica com
+avaliadores independentes e segue `conselho` para independência e consolidação.
 
 ### Produtividade
 

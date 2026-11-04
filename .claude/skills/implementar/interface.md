@@ -37,6 +37,7 @@ referência aprovada e transforme estados e ações relevantes em critérios `vi
 seguindo [testing.md](testing.md). Registre o que foi observado e o que não pôde ser examinado;
 uma captura estática não prova navegação, persistência ou conformidade completa de acessibilidade.
 Um protótipo pode simular mecanismos, mas precisa declarar os limites dessa simulação.
+Para uma crítica estruturada da experiência de uso, use a skill `criticar-interface`.
 
 Inspiração de direção visual: [frontend-design, da Anthropic](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md).
 As orientações são adaptadas ao projeto, sem impor a estética da referência.
