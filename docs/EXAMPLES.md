@@ -119,7 +119,7 @@ independência da implementação e provas por critério; conferir o próprio tr
 ### [`criticar-interface`](../skills/development/criticar-interface/SKILL.md)
 
 Quando você quer uma crítica de UI e UX que não dependa de gosto pessoal. Cada achado aponta o
-padrão violado, o impacto, a severidade e a evidência, e a crítica declara o que não pôde examinar.
+padrão violado, o impacto, a severidade e a base, e a crítica declara o que não pôde examinar.
 
 > $criticar-interface Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
 

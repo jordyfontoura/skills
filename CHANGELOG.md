@@ -9,13 +9,17 @@ compatibilidade.
 
 ### Adicionado
 
-- `criticar-interface`: critica UI e UX com uma rubrica fixa (percurso cognitivo, heurísticas
-  de Nielsen, WCAG 2.2 AA, hierarquia visual, conteúdo, estados e convenções da plataforma).
-  Cada achado traz padrão, impacto, severidade de 0 a 4 e tipo de evidência. A skill consulta
-  o design system do projeto e as diretrizes vigentes da plataforma, com `pesquisar-web` quando
-  houver acesso, e declara o que não pôde examinar.
-- `criticar-interface-em-conselho`: reúne avaliadores independentes com a mesma rubrica e
-  consolida achados, severidades individuais, medianas e divergências, seguindo `conselho`.
+- `criticar-interface`: critica UI e UX com uma rubrica fixa: percurso cognitivo, heurísticas
+  de Nielsen, WCAG 2.2 AA (com WCAG2ICT fora da web), hierarquia visual, conteúdo, confiança e
+  escolha, estados e convenções da plataforma. Cada achado traz padrão, impacto, severidade de
+  0 a 4 com notas definidas e a base no material examinado. Decisões do projeto não reduzem os
+  pisos de acessibilidade e de escolha da pessoa. A skill consulta o design system do projeto
+  e as diretrizes vigentes da plataforma, com `pesquisar-web` quando houver acesso, e declara
+  o que não pôde examinar.
+- `criticar-interface-em-conselho`: reúne avaliadores independentes com a mesma rubrica, agrupa
+  achados com rastreio, pede a todos notas para a lista consolidada e registra mediana,
+  intervalo e controvérsias, seguindo `conselho`. `conselho` passa a encaminhar críticas de
+  interface para essa skill.
 
 ### Mudado
 
