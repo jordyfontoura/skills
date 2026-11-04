@@ -10,7 +10,7 @@ aparecer duas vezes.
 
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 26 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 28 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
