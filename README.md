@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 28 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 29 skills e 3 papéis que você pode usar ou adaptar.
 
 **[Instalar](#instalar) · [Experimentar uma skill](#primeiro-uso) · [Ver exemplos](docs/EXAMPLES.md)**
 
@@ -79,7 +79,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 28 skills</summary>
+<summary>Ver as 29 skills</summary>
 
 ### Entender e decidir
 
@@ -116,6 +116,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `andamento` | Consultar andamento, pendências e bloqueios. |
+| `examinar-eficiencia` | Entender por que o trabalho demorou ou gastou muitos tokens e como melhorar. |
 | `passar-contexto` | Deixar outra sessão pronta para continuar. |
 | `delegar` | Dividir trabalho autorizado e conferir o retorno. |
 
