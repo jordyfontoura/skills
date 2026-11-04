@@ -45,7 +45,9 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - Altere instruções compartilhadas e configurações de provedor somente no escopo autorizado.
 - Permaneça neste repositório, salvo autorização para trabalhar em outro.
 - Edite com ferramentas de arquivo; salve código executável de várias linhas antes de rodá-lo.
-- Trabalhe em branch a partir de `main`, com commits pequenos no padrão Conventional Commits.
+- Crie branches de trabalho a partir de `nightly` e direcione os PRs para `nightly`, com commits
+  pequenos no padrão Conventional Commits. `main` recebe promoções estáveis integrais e hotfixes;
+  reintegre hotfixes em `nightly`. Veja o fluxo em `CONTRIBUTING.md`.
   Nunca force um push nem use `--no-verify`.
 - Pergunte por escolhas não resolvidas; não reinicie uma entrevista já concluída.
 - Execute verificações explicitamente. Não instale hooks automáticos ou serviço de gestão de tarefas.

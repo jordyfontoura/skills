@@ -241,8 +241,16 @@ e verifica referências e cópias dos provedores. Ela não substitui o código d
 reconfigura CI, permissões ou hooks por padrão. Mudanças conflitantes precisam de uma decisão;
 diferenças locais não são automaticamente descartadas como versões antigas.
 
-Na adoção ou atualização, registre na documentação de manutenção do destino a origem, a versão, o SHA
-incorporado e os componentes adotados. Preserve esse registro nas próximas atualizações.
+Para cópias editáveis, `main` é o canal estável padrão; escolha `nightly` para experimentar
+novidades. Por exemplo: `$atualizar-harness Atualize as skills a partir da branch nightly de
+jordyfontoura/skills, preservando nossas adaptações.` A skill preserva o canal registrado nas
+próximas atualizações, salvo pedido de outra referência. Uma tag fixa uma versão específica.
+O canal experimental descrito aqui usa cópias editáveis; os comandos de plugin do README
+continuam usando a instalação estável.
+
+Na adoção ou atualização, registre na documentação de manutenção do destino a origem, o canal
+ou referência fixa, a versão, o SHA incorporado e os componentes adotados. Preserve esse
+registro nas próximas atualizações.
 Se a atualização for parcial, identifique os componentes pendentes em vez de registrar
 uma versão global incorreta. Não é necessário um serviço ou agendador para usar esse fluxo.
 

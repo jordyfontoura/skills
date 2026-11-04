@@ -156,6 +156,11 @@ Leia o [CHANGELOG](CHANGELOG.md) antes de atualizar.
 - **Codex:** rode `codex plugin marketplace upgrade`. Se a versão instalada não mudar, rode de novo `codex plugin add jordyfontoura-skills@jordyfontoura`.
 - **Cópia editável:** peça ao agente `atualizar-harness`.
 
+`main` é o canal estável; `nightly` reúne novidades em avaliação. Para experimentar com uma
+cópia editável, peça `atualizar-harness` indicando a branch `nightly`. O canal escolhido fica
+registrado para as próximas atualizações. Uma tag fixa uma versão específica. Veja o
+[guia de adoção](docs/ADOPTING.md#cópia-manual) e o [fluxo de contribuição](CONTRIBUTING.md#branches-e-canais).
+
 ## Contribuir, créditos e licença
 
 Criado por [Jordy Fontoura](https://github.com/jordyfontoura). PRs são bem-vindos:

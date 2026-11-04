@@ -9,6 +9,11 @@ compatibilidade.
 
 ### Mudado
 
+- Desenvolvimento e PRs passam a usar a branch permanente `nightly`; `main` é o canal estável,
+  com promoções integrais e tags de versão. CI verifica ambos os canais e o Dependabot abre
+  PRs para `nightly`.
+- `atualizar-harness`: respeita a revisão pedida ou o canal escolhido e registrado no destino.
+  Nesta coleção, usa `main` por padrão e permite acompanhar `nightly`, fixando o SHA adotado.
 - `diagnosticar`: quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com
   cada correção passando, mapeia estados, transições e invariantes antes da próxima correção e
   confere a solução com oráculos independentes. `implementar`, `delegar` e `escrever-objetivo`

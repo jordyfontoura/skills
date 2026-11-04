@@ -51,6 +51,11 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 
 ## Cópia manual
 
+Escolha a referência da origem antes de copiar: `main` para o canal estável (padrão), `nightly`
+para novidades em avaliação ou uma tag `vX.Y.Z` para uma versão específica. Os links abaixo
+abrem os arquivos na referência que você está consultando no GitHub; confira a branch ou tag.
+Publicar na origem não atualiza as cópias instaladas nos seus projetos.
+
 1. Copie as skills escolhidas de [.agents/skills/](../.agents/skills/) (Codex e outros agentes)
    ou de [.claude/skills/](../.claude/skills/) (Claude Code) para a mesma pasta no seu projeto.
    Cada skill funciona sozinha; outras skills são citadas pelo nome e podem ser copiadas depois.
@@ -64,9 +69,14 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
    explica o formato.
 5. `esclarecer` usa o glossário do projeto quando ele existe. Você pode partir do
    [glossário desta coleção](GLOSSARY.md).
-6. Registre na documentação de manutenção do projeto a origem, a versão, o SHA e as skills
-   copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na
+6. Registre na documentação de manutenção do projeto a origem, o canal ou referência fixa,
+   a versão, o SHA e as skills copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na
    próxima atualização.
+
+Para acompanhar as novidades, peça: `$atualizar-harness Atualize as skills pela branch nightly
+de jordyfontoura/skills, preservando nossas adaptações.` Nas próximas atualizações, a skill
+mantém o canal registrado. Para voltar ao canal estável, peça explicitamente `main`; confira
+as mudanças que essa troca pode retirar. Uma versão específica pedida prevalece sobre o canal.
 
 Use `configurar-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
 Não há instalador, conta, serviço ou processo em segundo plano.
