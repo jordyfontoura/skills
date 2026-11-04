@@ -57,6 +57,16 @@ inglês abaixo ajudam a reconhecer esses mesmos conceitos no código e nas ferra
   de execução do agente.
 - **Veredito**: resultado de uma avaliação. `PASS` significa aprovado; `FAIL`, reprovado;
   `UNPROVED`, sem prova suficiente. O token é preservado e a justificativa fica em português.
+- **Heurística de usabilidade (usability heuristic)**: princípio geral usado para inspecionar
+  uma interface, como as 10 heurísticas de Nielsen. Uma violação aparente indica um problema
+  provável, não um problema confirmado com usuários.
+- **Percurso cognitivo (cognitive walkthrough)**: inspeção que percorre uma tarefa passo a passo
+  e pergunta se a pessoa entenderá o que fazer, encontrará a ação e perceberá o progresso.
+- **Severidade (severity)**: nota de 0 a 4 dada a um problema de uso, combinando frequência,
+  impacto e persistência. Não mede o esforço da correção.
+- **Efeito do avaliador (evaluator effect)**: tendência de avaliadores diferentes encontrarem
+  problemas diferentes na mesma interface. Por isso um achado relatado por uma só pessoa
+  não é descartado por falta de concordância.
 
 Se uma área do projeto usar um termo com significado próprio, registre esse contexto na
 definição. Não misture sentidos diferentes nem substitua uma escolha aprovada por uma preferência

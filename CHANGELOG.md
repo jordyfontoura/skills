@@ -7,6 +7,16 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Adicionado
+
+- `criticar-interface`: critica UI e UX com uma rubrica fixa (percurso cognitivo, heurísticas
+  de Nielsen, WCAG 2.2 AA, hierarquia visual, conteúdo, estados e convenções da plataforma).
+  Cada achado traz padrão, impacto, severidade de 0 a 4 e tipo de evidência. A skill consulta
+  o design system do projeto e as diretrizes vigentes da plataforma, com `pesquisar-web` quando
+  houver acesso, e declara o que não pôde examinar.
+- `criticar-interface-em-conselho`: reúne avaliadores independentes com a mesma rubrica e
+  consolida achados, severidades individuais, medianas e divergências, seguindo `conselho`.
+
 ### Mudado
 
 - Desenvolvimento e PRs passam a usar a branch permanente `nightly`; `main` é o canal estável,

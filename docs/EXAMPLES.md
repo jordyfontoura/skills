@@ -116,6 +116,20 @@ independência da implementação e provas por critério; conferir o próprio tr
 
 > $verificar-aceite Verifique os critérios da exportação em um contexto independente. Relate o resultado e as provas, sem corrigir o código.
 
+### [`criticar-interface`](../skills/development/criticar-interface/SKILL.md)
+
+Quando você quer uma crítica de UI e UX que não dependa de gosto pessoal. Cada achado aponta o
+padrão violado, o impacto, a severidade e a evidência, e a crítica declara o que não pôde examinar.
+
+> $criticar-interface Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
+
+### [`criticar-interface-em-conselho`](../skills/development/criticar-interface-em-conselho/SKILL.md)
+
+Quando a interface é importante demais para uma só opinião. Avaliadores independentes aplicam a
+mesma rubrica, e a consolidação mostra onde concordam, onde divergem e o que só um deles viu.
+
+> $criticar-interface-em-conselho Avalie o fluxo de cadastro antes do lançamento pelas perspectivas de usabilidade, acessibilidade e conteúdo.
+
 ### [`reconciliar`](../skills/development/reconciliar/SKILL.md)
 
 Quando documentos, código e relatos parecem discordar sobre o que está pronto. Compara
