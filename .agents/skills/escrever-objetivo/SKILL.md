@@ -13,6 +13,11 @@ Inclua resultado, repositório, requisitos ou caminhos relevantes, critérios no
 consultá-los. Nomeie a etapa inicial e a última passagem de contexto. Uma continuação segue
 essa etapa sem reabrir escolhas resolvidas. Aponte para requisitos em vez de copiar toda a especificação.
 
+Priorize uma jornada utilizável e mantenha explícito o trabalho restante. Com requisitos
+suficientes, a primeira etapa pode ser implementar; não acrescente especificação, planner,
+conselho ou portões por hábito. Use `especificar` apenas para definições relevantes ausentes
+ou quando solicitado. Regras e verificações já exigidas no destino continuam valendo.
+
 Descreva a condição observável de conclusão: critérios comprovados pelos métodos combinados,
 verificações relevantes passando e aceite independente, se exigido. Implementação e avaliação
 independente são distintas. Avaliação ou acesso ausentes continuam sem prova.
@@ -24,6 +29,9 @@ ou capacidades indisponíveis. Autorize avançar sem nova consulta as tarefas do
 dependências satisfeitas, preservando os portões combinados, como revisão, aceite e espera de
 `propor`. Ao aguardar processos ou agentes, a execução avança trabalho independente e relata
 só mudanças de estado.
+Uma pendência humana bloqueia apenas a decisão, entrega ou prova que depende dela, salvo
+ordem ou portão explicitamente combinado. Preparar trabalho independente não equivale a
+obter aprovação nem a declarar aceite da fase. Não invente aprovações de fixtures sintéticas.
 Se o destino tiver `.agents/models.toml`, aponte para a política e informe quais responsabilidades
 serão usadas e que a seleção segue `delegar` (v1 ou v2), sem copiar a lista inteira para o objetivo.
 Na v2, complexidade só muda um perfil por mapa explícito; preserve os perfis próprios de

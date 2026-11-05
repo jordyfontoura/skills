@@ -33,7 +33,9 @@ não só a aparência da tela final. Registre ação e resultado esperados como 
 e compare o fluxo de produção com essa referência antes de declarar fidelidade.
 
 Quando a direção estiver definida, preserve o artefato útil e registre o resultado na conversa
-ou na documentação existente. Encaminhe a `especificar` quando for necessário planejar.
+ou na documentação existente. Use `especificar` se ainda faltar uma definição relevante de
+comportamento, contrato ou prova. Com definições suficientes, a implementação autorizada
+pode continuar com um plano curto, sem nova etapa de especificação.
 Converta o comportamento aprovado em critérios com `visual`, `run` ou outro método adequado;
 um protótipo não comprova o critério de produção. Liste suas simulações e seus limites.
 

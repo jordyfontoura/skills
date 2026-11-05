@@ -36,5 +36,7 @@ atualize a documentação existente com contexto e consequências. Evite registr
 Uma execução autônoma autorizada pode consultar um representante em modo de leitura para
 escolhas dentro da intenção do usuário; quem o consultou preserva a resposta e as evidências.
 
-Pare quando houver definição suficiente para planejar ou executar o pedido. Use `especificar`
-para trabalho substancial ou implemente diretamente uma alteração pequena já autorizada.
+Pare quando houver definição suficiente para executar a próxima entrega. Use `especificar`
+se faltar uma definição relevante de comportamento, contratos, dependências ou provas, ou
+se o usuário pedir uma spec. Com requisitos suficientes, siga para `implementar` dentro da
+autorização, mesmo em trabalho longo; preserve a visão completa e as decisões já tomadas.

@@ -26,6 +26,12 @@ Cite arquivo e linha, requisito ou regra, impacto concreto e correção sugerida
 Separe defeito demonstrado de incerteza. Evite refatorações especulativas e problemas
 já cobertos por verificações configuradas.
 
+Delimite a revisão pelo diff, pelos requisitos e pelos riscos aplicáveis. Não expanda o
+produto para encontrar mais achados. Preferências e melhorias opcionais, quando pertinentes
+ao pedido, ficam separadas de falhas que impedem o aceite. Encerre ao cobrir esse escopo;
+não é obrigatório encontrar defeitos. Numa nova rodada, confira as correções e seus efeitos
+no conjunto, ampliando a análise quando uma dependência ou risco concreto justificar.
+
 Uma revisão relata o que o código sustenta; leitura não comprova funcionamento em execução.
 Não espere pelo código de outro agente, aplique correções, execute testes, delegue nem atualize
 registros, salvo autorização explícita para esse trabalho adicional. Um relatório de leitura

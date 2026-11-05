@@ -12,10 +12,23 @@ investigar por leitura, mas deve entregar uma proposta concreta na resposta fina
 sua aprovação. Um "pode fazer" posterior libera a execução daquela proposta, sem repetir
 a mesma aprovação. Esse modo não é imposto aos demais pedidos.
 
-Leia o pedido e as instruções relevantes. Resolva dúvidas importantes de escopo com
-`entrevistar`. Use `especificar` para definir comportamentos e planejar sua entrega; use `implementar`
-para entregar partes verificáveis. Use `revisar` para analisar alterações de código e `verificar-aceite` para aceite
-independente quando solicitado. Termine com evidências e use `passar-contexto` se outra sessão continuar.
+Leia o pedido, as instruções relevantes e as decisões existentes. Com requisitos suficientes,
+use `implementar` para entregar uma jornada útil e verificável pela entrada normal, com um
+plano curto na conversa quando necessário. Preserve a visão completa e detalhe a próxima
+entrega conforme o trabalho avança. Implementar a primeira jornada não conclui o produto.
+
+Use `entrevistar` para escolhas abertas de escopo ou design. Use `especificar` quando o usuário
+pedir uma spec ou faltar uma definição relevante de comportamento, contratos, dependências ou
+provas. Encerre essa definição assim que a próxima entrega puder ser implementada e verificada.
+Tamanho do trabalho não exige uma spec por si só; correções dentro do combinado não reiniciam
+o planejamento. Consulte `planner` apenas se uma análise separada tiver utilidade e estiver autorizada.
+
+Use `revisar` para analisar o diff contra requisitos e riscos aplicáveis. Agrupe correções
+relacionadas e confira seus efeitos no conjunto, preservando provas ainda válidas. Melhorias
+opcionais ficam separadas de defeitos que impedem cumprir o combinado. Uma nova rodada precisa
+de uma questão pendente, alteração ou risco concreto; não é obrigatório produzir achados.
+Use `verificar-aceite` quando solicitado ou exigido pelo projeto. Termine com evidências e use
+`passar-contexto` se outra sessão continuar, com estado, provas e próxima ação, sem copiar o histórico.
 
 Use `reconciliar` para comparar o trabalho pretendido com implementação e evidências atuais.
 Use `conselho` para pareceres independentes sobre uma proposta; siga a governança existente
@@ -25,6 +38,51 @@ incluindo títulos e descrições.
 Autorizações anteriores continuam válidas. Explorar não autoriza implementar. Um pedido claro
 de implementação não exige nova aprovação para passos rotineiros dentro do escopo.
 Relate ferramentas, permissões e evidências ausentes como ausentes.
+
+Uma aprovação ausente bloqueia a decisão, entrega ou prova que a exige. Trabalho independente
+autorizado pode avançar, respeitando ordens e portões explicitamente combinados, sem declarar
+aceite ou preencher decisões humanas. Dados sintéticos não exigem aprovação humana por padrão.
+
+### Base da escolha e limites
+
+Este fluxo substitui a exigência genérica de especificar todo trabalho substancial. A motivação
+local foi a recorrência de planejamento, revisões e conferências nas execuções Mindfy e Partilha,
+com demora para alcançar as jornadas de uso. É uma decisão de projeto, sem economia medida ainda.
+
+A pesquisa consultada em 04/11/2026 dá apoio delimitado:
+
+- [Geração de testes orientada por contratos, Google/SpecOps 2026](https://arxiv.org/html/2608.17177v2):
+  houve melhora na detecção de bugs com custo adicional de tokens. O experimento trata de
+  testes sobre bugs históricos; não valida um fluxo obrigatório completo de SDD.
+- [Artefatos de especificação em PRs, ESEM 2026](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESEM.2026.84):
+  o estudo observacional não encontrou proteção contra defeitos ou retrabalho. A medida era
+  principalmente referência a issues e tickets, sem observar adoção direta das ferramentas SDD.
+- [SDD prescrito e praticado, preprint](https://arxiv.org/html/2608.25202v4): profissionais
+  relataram benefícios e custos de planejamento e revisão, com uso seletivo. Os relatos não
+  isolam causalidade nem separam os ganhos das melhorias dos modelos.
+- [Experimento de harness para aplicações longas, Anthropic](https://www.anthropic.com/research/harness-design-long-running-apps):
+  o autor simplificou a coordenação ao mudar de modelo e preservou planejamento e avaliação.
+  É um experimento interno, não uma validação universal nem uma receita de configuração.
+
+Esses resultados não demonstram que SDD seja sempre superior nem que deva ser abandonado.
+A aplicação aqui é ajustar o processo à incerteza e ao risco, mantendo requisitos, decisões,
+verificações úteis e aceite independente exigido. Compare entregas equivalentes por tempo até
+a jornada funcionar, uso exposto, retrabalho posterior e requisitos atendidos. Cenários lidos
+e validação estrutural não demonstram melhora de comportamento ou economia de tokens.
+
+### Cenários para conferir o fluxo
+
+| Pedido e estado inicial | Resultado esperado |
+| --- | --- |
+| Corrigir um bug com comportamento esperado e reprodução conhecidos. | Corrigir e verificar; não criar spec nem consultar planner por rotina. |
+| Implementar várias tarefas de uma spec vigente. | Retomar decisões e dependências, com plano curto; não reespecificar o produto pelo tamanho do trabalho. |
+| Implementar exportação sem decisão sobre campos ou tratamento de dados sensíveis. | Esclarecer essas escolhas e especificar o necessário antes de implementar a parte dependente. |
+| Usuário pede somente uma especificação. | Entregar definições e plano, sem implementar, mesmo que o trabalho seja pequeno. |
+| Fixture humana pendente, com código independente autorizado. | Preparar o código com dados adequados, sem presumir aprovação nem declarar aceite; respeitar eventual portão explícito. |
+| Revisão encontra um defeito e sugere uma abstração opcional. | Tratar o defeito; separar a sugestão sem torná-la requisito ou iniciar nova spec. |
+| Critérios cumpridos e revisão sem defeitos relevantes. | Encerrar a entrega; não abrir rodadas apenas para obter mais achados. |
+| Correção muda o código exercitado por provas anteriores. | Repetir provas afetadas e dependências, mantendo evidências não invalidadas e comandos obrigatórios. |
+| Projeto exige aceite independente ou usuário pede conselho. | Executar a avaliação ou consulta exigida com a independência e cobertura combinadas; economia não revoga a exigência. |
 
 ## Catálogo de skills
 

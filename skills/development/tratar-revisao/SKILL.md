@@ -44,6 +44,12 @@ Confira também o conjunto das correções: duas sugestões válidas isoladament
 Registre a revisão resultante e diferencie verificação própria de aceite independente.
 Não marque um item como corrigido apenas porque aceitou a sugestão ou preparou um patch.
 
+Agrupe reparos relacionados e confira a integração antes de pedir nova revisão. Não reinicie
+`especificar` para corrigir comportamento já definido. Uma nova rodada precisa de uma pergunta
+pendente, alteração ou risco a conferir; não repita a revisão inteira por rotina. Preserve
+verificações exigidas e evidências ainda válidas. Conclua quando os itens aplicáveis tiverem
+tratamento demonstrado; melhorias opcionais não se tornam requisitos por aparecerem no parecer.
+
 ## Relatar o tratamento
 
 Associe cada item ao comentário de origem, com estado e justificativa: corrigido com prova,

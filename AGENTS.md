@@ -16,14 +16,17 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 1. Leia o pedido, os arquivos relevantes, as decisões e a última passagem de contexto.
    Retome sua etapa exata; preserve escopo e autorizações estabelecidos.
    Use `reconciliar` para comparar documentos, pendências e implementação.
-2. Use `especificar` para trabalho substancial e `entrevistar` para escolhas abertas de escopo ou design.
-   Neste projeto, `especificar` usa o `planner` no perfil `hard`, mesmo para trabalho simples.
-   Apresente um plano concreto; a autorização existente pode cobrir a implementação.
+2. Trabalhe por entregas úteis e verificáveis, com plano curto quando necessário.
+   Use `especificar` quando houver incerteza relevante sobre comportamento, contratos ou
+   dependências; tamanho do trabalho, sozinho, não exige uma nova especificação.
+   Use `entrevistar` para escolhas abertas de escopo ou design. Preserve definições existentes.
+   Planejamento rotineiro fica na conversa; consultar `planner` exige necessidade e delegação autorizada.
    Use `entrevistar-por-arquivo` para rodadas em arquivos Markdown, preservando respostas humanas.
    Quando o usuário pedir `propor`, apresente a abordagem na resposta final e aguarde aprovação
    antes de executar; uma autorização genérica anterior não elimina essa espera solicitada.
 3. Use `implementar` para entregar partes pequenas e verificáveis. Declare responsabilidade por
-   arquivos ao delegar; não sobrescreva mudanças de outro colaborador.
+   arquivos ao delegar; não sobrescreva mudanças de outro colaborador. Corrija dentro dos
+   contratos existentes sem reiniciar o planejamento; revise o conjunto e repita as provas afetadas.
 4. Prove os requisitos pelos métodos combinados e relate comandos e resultados observados.
    Prova ausente continua ausente. Implementação e aceite independente são distintos.
 5. Use `passar-contexto` quando outra sessão precisar retomar. Indique próxima etapa e provas pendentes.

@@ -6,16 +6,23 @@ license: Apache-2.0
 
 # Implementar o trabalho combinado
 
-Leia o pedido, o plano aplicável, os critérios de aceite, as decisões relevantes e a última
-passagem de contexto. Retome a etapa exata. Não reinicie discussões de design resolvidas
+Leia o pedido, os critérios, as decisões relevantes e o plano e a passagem de contexto,
+quando existirem. Requisitos claros permitem começar sem spec, tarefas com IDs ou consulta
+a um planejador. Use um plano curto na conversa quando ajudar; `especificar` resolve apenas
+definições relevantes ausentes. Retome a etapa exata. Não reinicie discussões de design resolvidas
 nem assuma trabalho sob responsabilidade de outro colaborador.
 
 Inspecione a branch e as alterações locais. Execute as verificações iniciais relevantes
 e relate falhas preexistentes. Declare os arquivos ou módulos sob sua responsabilidade quando
 o trabalho for compartilhado. Preserve edições alheias e faça mudanças sobrepostas em sequência.
 
-Implemente e comprove uma parte útil por vez. Numa entrega em fases, comece cada fase pela
-jornada representativa do plano, com a fixture aprovada, e depois amplie os casos específicos.
+Implemente e comprove uma parte útil por vez, priorizando uma jornada que o usuário possa
+exercitar pela entrada normal, com integração real entre os componentes próprios necessários.
+Numa entrega em fases, comece pela jornada representativa do plano e amplie os casos específicos.
+Use dados de teste adequados; aprovação humana da fixture só é obrigatória quando combinada.
+Preserve o escopo completo e registre o que ainda falta, sem transformar a primeira jornada
+em conclusão do produto. Uma pendência bloqueia somente o trabalho que depende dela, salvo
+ordem ou portão explícito; avance trabalho independente autorizado sem antecipar aceite.
 Leia [testing.md](testing.md) ao adicionar testes ou ordenar verificações.
 Para interfaces, leia [interface.md](interface.md). Use `tratar-revisao` ao tratar feedback
 recebido e `integrar` quando o pedido autorizar concluir uma integração entre branches.
@@ -35,6 +42,13 @@ a decisão que autoriza a nova versão no registro oficial, preservando autoria 
 Peça decisão apenas quando faltar autorização; substituir um critério não comprova seu aceite.
 Identifique quais provas perderam validade e refaça as afetadas, incluindo suas dependências;
 não descarte evidências ainda aplicáveis. Relacione resultados às referências dos critérios.
+
+Agrupe correções relacionadas antes de revisar o conjunto integrado. Ajustes técnicos dentro
+do combinado seguem para implementação e prova, sem nova especificação ou delegação por hábito.
+Encerre a entrega quando o comportamento combinado estiver comprovado e as verificações
+exigidas passarem. Melhorias opcionais ficam separadas; falhas de requisitos continuam abertas.
+Relate mudanças de estado com resultado, evidência e próxima ação, sem repetir o histórico
+nem criar trabalho documental apenas para ocupar a espera por agentes ou processos.
 
 Execute as verificações relevantes, na ordem de [testing.md](testing.md), antes de declarar a entrega. Faça commits pequenos quando
 as convenções permitirem. Explique o comportamento alterado, a verificação e os limites restantes.
