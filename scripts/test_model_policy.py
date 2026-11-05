@@ -128,13 +128,15 @@ class ProfilePolicyTests(unittest.TestCase):
             self.assertEqual(result["profile"], profile)
             self.assertFalse(result["complexity_applied"])
 
-    def test_planner_keeps_hard_candidates_at_every_complexity(self):
+    def test_planner_routes_candidates_by_complexity(self):
         for level in ("simple", "default", "hard"):
             with self.subTest(level=level):
                 result = resolve_policy(self.policy, "planner", level)
-                self.assertEqual(result["profile"], "hard")
-                self.assertEqual(result["candidates"], self.policy["profiles"]["hard"]["candidates"])
-                self.assertFalse(result["complexity_applied"])
+                self.assertEqual(result["profile"], level)
+                self.assertEqual(result["candidates"], self.policy["profiles"][level]["candidates"])
+                self.assertEqual(result["complexity_applied"], level != "default")
+        self.assertEqual(resolve_policy(self.policy, "planner"),
+                         resolve_policy(self.policy, "planner", "default"))
 
     def test_known_level_without_override_preserves_role(self):
         del self.policy["roles"]["implementer"]["complexity"]["hard"]

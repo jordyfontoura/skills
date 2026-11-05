@@ -44,8 +44,11 @@ when = "Organizar trabalho autorizado, distribuir responsabilidades e integrar r
 profile = "orchestrator"
 
 [roles.planner]
-when = "Especificar comportamento e planejar a entrega no perfil hard, quando autorizado."
-profile = "hard"
+when = "Resolver incertezas relevantes de comportamento e planejar uma entrega, quando autorizado."
+profile = "default"
+[roles.planner.complexity]
+simple = "simple"
+hard = "hard"
 
 [roles.implementer]
 when = "Implementar uma parte delimitada, com arquivos e provas definidos."
