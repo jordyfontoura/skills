@@ -7,6 +7,10 @@
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
 feito. Para Claude Code e Codex, com 29 skills e 3 papéis que você pode usar ou adaptar.
 
+O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
+risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
+de toda mudança. Veja o [fluxo, sua base e seus limites](docs/HARNESS.md#fluxo-de-trabalho).
+
 **[Instalar](#instalar) · [Experimentar uma skill](#primeiro-uso) · [Ver exemplos](docs/EXAMPLES.md)**
 
 ## Quando usar
@@ -47,20 +51,21 @@ Prefere adaptar os arquivos? Use a [cópia editável](docs/ADOPTING.md#cópia-ma
 
 ## Primeiro uso
 
-Num repositório seu, peça uma proposta para uma mudança. `propor` instrui o agente a ler o
-projeto, explicar a abordagem e esperar sua aprovação antes de alterar arquivos.
+Num repositório seu, peça uma mudança com resultado claro. `implementar` orienta o agente a
+ler as instruções, executar o trabalho autorizado e apresentar as verificações.
 
 **Claude Code**
 ```text
-/jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
+/jordyfontoura-skills:implementar Exporte os resultados filtrados em CSV, com as mesmas colunas da tabela. Confira o arquivo gerado e não publique.
 ```
 
 **Codex**
 ```text
-$jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
+$jordyfontoura-skills:implementar Exporte os resultados filtrados em CSV, com as mesmas colunas da tabela. Confira o arquivo gerado e não publique.
 ```
 
-Um "pode fazer" libera aquela proposta. Para outras situações, veja
+Se quiser aprovar a abordagem antes das alterações, use `propor`: o agente apresenta a proposta
+e aguarda seu "pode fazer". Para outras situações, veja
 [quando usar cada skill e um pedido pronto para copiar](docs/EXAMPLES.md).
 
 ## Como chamar as skills

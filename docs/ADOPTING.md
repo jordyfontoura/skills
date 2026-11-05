@@ -40,10 +40,17 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 
 - Quando eu pedir `propor` ou pedir para explicar antes de agir, apresente a abordagem e
   aguarde minha aprovação.
-- Use `entrevistar` para escolhas abertas de escopo ou design e `especificar` para trabalho substancial.
+- Com requisitos claros, implemente por entregas úteis, com plano curto quando necessário.
+- Use `entrevistar` para escolhas abertas de escopo ou design e `especificar` para definir
+  comportamentos, contratos ou dependências ainda incertos, ou quando eu pedir uma spec.
+  Preserve definições existentes; tamanho do trabalho não exige especificação por si só.
 - Use `implementar` para entregar partes pequenas e verificáveis; relate os comandos executados
   e os resultados observados. Prova ausente continua ausente.
-- Use `revisar` para analisar diffs e `verificar-aceite` para aceite independente.
+- Use `revisar` para analisar diffs contra requisitos e riscos aplicáveis, sem transformar
+  melhorias opcionais em bloqueios. Use `verificar-aceite` quando houver aceite independente exigido.
+- Delegue apenas divisões autorizadas com ganho concreto; ter um papel não obriga uma consulta.
+- Repita as provas afetadas por mudanças e preserve as ainda válidas. Uma pendência bloqueia
+  seu trabalho dependente; ordens e portões explícitos continuam valendo.
 - Use `andamento` para consultas de andamento e `passar-contexto` quando outra sessão for retomar.
 - Aplique `escrever-claro` ao escrever documentos, títulos, descrições e mensagens.
 - Explorar não autoriza implementar, e uma pergunta não conta como aprovação.

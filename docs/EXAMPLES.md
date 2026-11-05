@@ -60,8 +60,9 @@ a ideia e descobrir ajustes antes de construir a funcionalidade completa.
 
 ### [`especificar`](../skills/development/especificar/SKILL.md)
 
-Quando o trabalho precisa de uma definição verificável. Converte o comportamento esperado
-em critérios, tarefas e dependências, para que implementação e aceite tenham a mesma referência.
+Quando há uma definição relevante ausente ou você quer uma especificação. Explicita
+comportamento, contratos e provas da próxima entrega, preservando a visão completa.
+Requisitos já suficientes permitem implementar sem passar novamente por esta skill.
 
 > $especificar Especifique a exportação CSV aprovada, incluindo filtros, campos, critérios de aceite e tarefas.
 
@@ -76,10 +77,11 @@ pronta para colar, com referências e condição de conclusão; escrever o texto
 
 ### [`implementar`](../skills/development/implementar/SKILL.md)
 
-Quando o trabalho já está combinado e pode ser executado. Orienta a entrega em partes
-verificáveis, com registro do que foi alterado, testado e ainda falta provar.
+Quando o trabalho já está combinado e pode ser executado, com ou sem spec em arquivo.
+Prioriza uma jornada utilizável e verificável, com registro do que foi alterado, testado
+e ainda falta provar. Um plano curto pode ficar na conversa.
 
-> $implementar Implemente a exportação CSV conforme a spec aprovada e registre as verificações realizadas.
+> $implementar Adicione a exportação CSV dos resultados filtrados, com as colunas já exibidas na tabela, e confira o arquivo gerado. Não publique.
 
 ### [`diagnosticar`](../skills/development/diagnosticar/SKILL.md)
 

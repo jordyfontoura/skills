@@ -11,6 +11,11 @@ satisfeitas, resultado e responsabilidade claros. Faça pequenas edições diret
 quanto executá-las. Preserve os limites de permissão: revisão de código não autoriza execução,
 edição nem novas delegações.
 
+Explique o ganho esperado da divisão: trabalho independente em paralelo, investigação com
+saída volumosa ou uma avaliação que precise de independência. Não delegue apenas por haver
+um papel configurado nem para repetir uma análise já suficiente. Planejamento rotineiro e
+reparos delimitados podem permanecer com quem já tem o contexto, respeitando o pedido.
+
 ## Escolher trabalho e ferramentas
 
 Se o destino tiver `.agents/models.toml`, consulte a política e o guia local, quando houver, antes de
@@ -89,3 +94,7 @@ variantes do mesmo defeito reaparecerem, use `diagnosticar`.
 Quando útil, mantenha um registro conciso na conversa ou no documento de trabalho existente.
 Separe configurações pedidas, configurações informadas pela ferramenta e fatos observados.
 Uso não informado continua desconhecido.
+
+Peça retornos concisos com achados, provas e limites, apontando para os registros existentes.
+Conferir a origem não exige repetir toda a investigação ou executar novamente provas ainda
+aplicáveis. Repita o que faltar, estiver inconsistente ou tiver sido invalidado por mudanças.

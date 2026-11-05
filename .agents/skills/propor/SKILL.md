@@ -54,5 +54,5 @@ revise a proposta e aguarde; se a aprovação for parcial, execute apenas a part
 Peça outra decisão somente quando uma mudança importante ultrapassar o que foi aprovado.
 
 `propor` explica uma ação futura antes de executá-la. `esclarecer` esclarece uma explicação
-anterior; `especificar` organiza trabalho substancial em tarefas e critérios. A aprovação da
+anterior; `especificar` resolve definições relevantes ausentes e organiza a entrega verificável. A aprovação da
 proposta não comprova a implementação: as verificações ainda precisam ocorrer depois.
