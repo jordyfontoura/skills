@@ -49,6 +49,8 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 - Use `revisar` para analisar diffs contra requisitos e riscos aplicáveis, sem transformar
   melhorias opcionais em bloqueios. Use `verificar-aceite` quando houver aceite independente exigido.
 - Delegue apenas divisões autorizadas com ganho concreto; ter um papel não obriga uma consulta.
+- Localize por busca (`rg -n`) e leia o trecho; não releia inteira uma saída já salva.
+  Requisitos e critérios continuam lidos por inteiro na revisão e no aceite.
 - Repita as provas afetadas por mudanças e preserve as ainda válidas. Uma pendência bloqueia
   seu trabalho dependente; ordens e portões explícitos continuam valendo.
 - Use `andamento` para consultas de andamento e `passar-contexto` quando outra sessão for retomar.

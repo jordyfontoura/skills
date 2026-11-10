@@ -15,8 +15,9 @@ locais incluídas no pedido; um diff vazio entre commits não pode esconder edi�
 Use ferramentas de diff e histórico somente quando permitidas. Se o pedido proibir execução,
 leia diretamente o diff e os arquivos fornecidos, sem invocar comandos de terminal.
 
-Leia os requisitos e registros aplicáveis, os padrões do projeto, a arquitetura relevante e
-as decisões existentes. Consulte requisitos apenas por meios permitidos. Se faltar acesso
+Leia por inteiro os requisitos e critérios aplicáveis. Em registros, padrões, arquitetura e
+decisões longos, localize por busca (`rg -n`, quando permitida) e leia os trechos relevantes;
+não releia inteira uma saída já salva. Consulte requisitos apenas por meios permitidos. Se faltar acesso
 ou documentação, declare o limite da comparação e continue a revisão dos padrões e do código.
 Não inicie uma entrevista apenas para revisar material fornecido.
 

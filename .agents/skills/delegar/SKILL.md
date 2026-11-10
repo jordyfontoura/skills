@@ -70,6 +70,9 @@ Inclua resultado esperado, requisitos, revisão das entradas, arquivos para ler,
 por arquivos ou análise de leitura, ações permitidas, exclusões, provas exigidas e lacunas.
 Informe modelo e esforço somente quando selecionados ou observados. Peça resultado, arquivos
 alterados, evidências e incerteza restante.
+Se já houver resultado de base das verificações, informe comando, revisão, ambiente e
+resultado; o agente o reaproveita e roda só as verificações focadas. O aceite independente
+continua executando todas as verificações exigidas.
 Inclua responsabilidade, versão, perfil efetivo, complexidade e sua origem, se ela mudou
 a seleção, e eventual alternativa usada. Na v1, dispense os campos que não existem.
 

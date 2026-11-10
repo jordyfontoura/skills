@@ -13,7 +13,8 @@ muda o trabalho em curso; depois da resposta, retome a etapa autorizada.
 ## Reunir evidências
 
 Use a conversa, os diffs, os resultados de verificações e as métricas que o ambiente expõe,
-como uso de tokens, duração de subagentes, custo estimado ou tempo de comandos. Cite a fonte
+como uso de tokens, duração de subagentes, custo estimado ou tempo de comandos. Quando o
+ambiente tiver uma ferramenta de medição de uso, use-a e cite o comando e o período. Cite a fonte
 de cada número. Leia logs locais de sessão, como os arquivos JSONL do agente, somente quando
 o usuário pedir explicitamente. Não leia segredos e não reproduza conteúdo privado na resposta.
 
