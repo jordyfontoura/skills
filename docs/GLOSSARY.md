@@ -25,8 +25,8 @@ inglês abaixo ajudam a reconhecer esses mesmos conceitos no código e nas ferra
 - **Revisão (review)**: análise de alterações específicas em relação aos requisitos e padrões.
   Ler o código não demonstra, por si só, que o programa funciona.
 - **Avaliação (evaluation)**: verificação independente dos critérios de aceite pelos métodos combinados.
-- **Passagem de contexto (handoff)**: registro suficiente para outra sessão retomar o trabalho
-  na etapa correta, com o próximo passo e as provas que faltam.
+- **Passagem de contexto (handoff)**: registro do estado atual, não do histórico, suficiente
+  para outra sessão retomar o trabalho na etapa correta, com o próximo passo e as provas que faltam.
 - **Decisão (decision)**: escolha já estabelecida, com seu motivo e suas consequências.
 - **Alinhamento assíncrono**: conversa em que o agente prepara perguntas em arquivo, as pessoas
   respondem quando puderem e o agente processa as respostas em outra rodada.

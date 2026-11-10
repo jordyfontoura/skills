@@ -29,6 +29,10 @@ ou capacidades indisponíveis. Autorize avançar sem nova consulta as tarefas do
 dependências satisfeitas, preservando os portões combinados, como revisão, aceite e espera de
 `propor`. Ao aguardar processos ou agentes, a execução avança trabalho independente e relata
 só mudanças de estado.
+Divida o trabalho em fases, cada uma terminando numa entrega aceita. Ao fim de cada fase, a
+sessão grava a passagem com `passar-contexto` e uma sessão nova retoma a partir dela, sem
+carregar o histórico da anterior. Diga onde a passagem fica. Sem meio de abrir outra sessão,
+a execução para na fronteira da fase e indica a passagem para o usuário retomar.
 Uma pendência humana bloqueia apenas a decisão, entrega ou prova que depende dela, salvo
 ordem ou portão explicitamente combinado. Preparar trabalho independente não equivale a
 obter aprovação nem a declarar aceite da fase. Não invente aprovações de fixtures sintéticas.
@@ -53,6 +57,6 @@ O representante não aprova em nome do usuário uma espera pedida por `propor`, 
 explícita daquela decisão. Uma dúvida ou aprovação parcial não libera todo o objetivo.
 
 Após duas correções sem sucesso ou quando variantes do mesmo defeito reaparecerem, use
-`diagnosticar`. Antes de encerrar o contexto, use `passar-contexto`
+`diagnosticar`. Ao fim de cada fase e antes de encerrar o contexto, use `passar-contexto`
 com o trabalho restante, as provas ausentes e as condições de retomada. Mostre o texto,
 a contagem de caracteres e as exclusões. O usuário decide se vai executá-lo.

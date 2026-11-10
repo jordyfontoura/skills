@@ -7,14 +7,20 @@ license: Apache-2.0
 # Delegar trabalho delimitado
 
 Delegue apenas quando autorizado e quando houver uma parte independente, com dependências
-satisfeitas, resultado e responsabilidade claros. Faça pequenas edições diretamente quando explicá-las custar tanto
-quanto executá-las. Preserve os limites de permissão: revisão de código não autoriza execução,
-edição nem novas delegações.
+satisfeitas, resultado e responsabilidade claros. Faça pequenas edições diretamente quando
+explicá-las custar tanto quanto executá-las. Preserve os limites de permissão: revisão de
+código não autoriza execução, edição nem novas delegações.
+
+Num coordenador com contexto grande ou já compactado, essa conta muda: cada leitura, edição
+ou saída de teste fica no contexto e é paga de novo em todas as chamadas seguintes. Nesse
+caso, envie implementação, testes e leituras longas a contextos novos. O coordenador guarda
+decisões, integração e estado. Um pedido explícito para trabalhar no próprio contexto prevalece.
 
 Explique o ganho esperado da divisão: trabalho independente em paralelo, investigação com
-saída volumosa ou uma avaliação que precise de independência. Não delegue apenas por haver
-um papel configurado nem para repetir uma análise já suficiente. Planejamento rotineiro e
-reparos delimitados podem permanecer com quem já tem o contexto, respeitando o pedido.
+saída volumosa, uma avaliação que precise de independência ou a preservação do contexto do
+coordenador. Não delegue apenas por haver um papel configurado nem para repetir uma análise
+já suficiente. Planejamento rotineiro e reparos delimitados podem permanecer com quem já tem
+o contexto, enquanto ele for pequeno, respeitando o pedido.
 
 ## Escolher trabalho e ferramentas
 
@@ -86,8 +92,11 @@ resultado, avance trabalho independente e relate só mudanças de estado.
 Verifique achados contra a fonte na revisão fixada. Um revisor em modo de leitura devolve
 achados com referências; não aguarda implementação nem executa comandos proibidos.
 
-Para uma entrega, inspecione o diff e confira as provas relevantes com as verificações do
-projeto. Dizer "concluído" não é evidência. Integre sem reverter trabalho alheio.
+Para uma entrega, inspecione o diff e confira o resultado registrado de cada prova: comando,
+revisão e resultado observado. Dizer "concluído" não é evidência. Rode de novo só o que
+faltar, estiver inconsistente ou tiver sido invalidado por mudanças posteriores. O aceite
+independente, quando exigido, continua executando as próprias verificações.
+Integre sem reverter trabalho alheio.
 Devolva trabalho incompleto com uma tarefa menor. Após duas correções sem sucesso ou quando
 variantes do mesmo defeito reaparecerem, use `diagnosticar`.
 
@@ -96,5 +105,5 @@ Separe configurações pedidas, configurações informadas pela ferramenta e fat
 Uso não informado continua desconhecido.
 
 Peça retornos concisos com achados, provas e limites, apontando para os registros existentes.
-Conferir a origem não exige repetir toda a investigação ou executar novamente provas ainda
-aplicáveis. Repita o que faltar, estiver inconsistente ou tiver sido invalidado por mudanças.
+Conferir a origem não exige repetir toda a investigação: retome só o que faltar, estiver
+inconsistente ou tiver sido invalidado.
