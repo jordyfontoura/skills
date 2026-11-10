@@ -7,13 +7,15 @@ license: Apache-2.0
 # Implementar o trabalho combinado
 
 Leia o pedido, os critérios, as decisões relevantes e o plano e a passagem de contexto,
-quando existirem. Requisitos claros permitem começar sem spec, tarefas com IDs ou consulta
+quando existirem. Em arquivos longos, localize por busca (`rg -n`) e leia o trecho; não releia
+inteira uma saída já salva. Requisitos claros permitem começar sem spec, tarefas com IDs ou consulta
 a um planejador. Use um plano curto na conversa quando ajudar; `especificar` resolve apenas
 definições relevantes ausentes. Retome a etapa exata. Não reinicie discussões de design resolvidas
 nem assuma trabalho sob responsabilidade de outro colaborador.
 
 Inspecione a branch e as alterações locais. Execute as verificações iniciais relevantes
-e relate falhas preexistentes. Declare os arquivos ou módulos sob sua responsabilidade quando
+e relate falhas preexistentes. Se o brief trouxer o resultado de base para a mesma revisão e
+o mesmo ambiente, reaproveite-o e rode só as verificações focadas na sua mudança. Declare os arquivos ou módulos sob sua responsabilidade quando
 o trabalho for compartilhado. Preserve edições alheias e faça mudanças sobrepostas em sequência.
 
 Implemente e comprove uma parte útil por vez, priorizando uma jornada que o usuário possa
@@ -23,7 +25,7 @@ Use dados de teste adequados; aprovação humana da fixture só é obrigatória 
 Preserve o escopo completo e registre o que ainda falta, sem transformar a primeira jornada
 em conclusão do produto. Uma pendência bloqueia somente o trabalho que depende dela, salvo
 ordem ou portão explícito; avance trabalho independente autorizado sem antecipar aceite.
-Leia [testing.md](testing.md) ao adicionar testes ou ordenar verificações.
+Leia [testing.md](testing.md) ao adicionar testes, ordenar verificações ou ler suas saídas.
 Para interfaces, leia [interface.md](interface.md). Use `tratar-revisao` ao tratar feedback
 recebido e `integrar` quando o pedido autorizar concluir uma integração entre branches.
 Use `diagnosticar` após duas correções sem sucesso, quando a causa não estiver clara ou quando
