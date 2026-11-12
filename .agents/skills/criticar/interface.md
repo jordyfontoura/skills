@@ -1,16 +1,11 @@
----
-name: criticar-interface
-description: Critica a UI e a UX de uma tela, fluxo, protótipo ou código de interface com uma rubrica fixa e achados com padrão violado, impacto, severidade e base declarada. Use para avaliar experiência de uso; para diff ou PR, use `revisar`. Não corrige a interface.
-license: Apache-2.0
----
-
 # Criticar a interface
 
 Use para avaliar a experiência de uso de uma interface existente ou proposta: capturas de tela,
 aplicação em execução, protótipo, arquivo de design ou código de interface. Use `revisar` para
 um diff contra requisitos, `verificar-aceite` para critérios combinados e `implementar` para
 construir ou corrigir a interface. Para vários avaliadores independentes, use
-`criticar-interface-em-conselho`; para escolher entre alternativas de design, use `conselho`.
+o apoio [interface-panel.md](interface-panel.md) de `criticar`;
+para escolher entre alternativas de design, use `conselho`.
 
 ## Fixar o contexto
 
@@ -32,7 +27,7 @@ prossiga. Sem objetivo definido, um julgamento vira preferência pessoal.
 
 ## Consultar as diretrizes aplicáveis
 
-Leia [rubric.md](rubric.md), a base comum, com seus pisos de acessibilidade e de escolha da
+Leia [interface-rubric.md](interface-rubric.md), a base comum, com seus pisos de acessibilidade e de escolha da
 pessoa. Depois procure as diretrizes específicas:
 
 - No projeto: tokens, componentes, documentação do design system, guias de conteúdo e decisões

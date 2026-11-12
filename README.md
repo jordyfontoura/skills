@@ -111,8 +111,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `examinar-arquitetura` | Identificar atrito estrutural no código e propor melhorias. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
 | `reconciliar` | Comparar requisitos, implementação e evidências. |
-| `criticar-interface` | Receber uma crítica de UI e UX com severidade e base declarada. |
-| `criticar-interface-em-conselho` | Reunir críticas independentes de UI e UX e consolidar divergências. |
+| `criticar` | Receber uma crítica especializada de um artefato ou experiência, individual ou com conselho. |
 | `descrever-pr` | Escrever a descrição de uma mudança para quem vai revisá-la. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
 

@@ -23,7 +23,9 @@ O arquivo deste repositório contém as preferências pessoais aprovadas do prop
 No planejamento, `hard` atende escolhas difíceis de comportamento ou arquitetura, com
 consequências relevantes; uma definição delimitada não exige esse perfil por ser uma spec.
 `orchestrator` e `representative` usam seus perfis próprios. `evaluator` e `council` compartilham
-o perfil `evaluator`; alterar essa lista afeta ambos. O representante tem uma lista própria,
+o perfil `evaluator`; alterar essa lista afeta ambos. `criticar` usa `roles.council` para uma
+consulta independente, mesmo individual; a quantidade de críticos vem do pedido e da cobertura.
+O representante tem uma lista própria,
 mesmo sendo igual à de `hard`, para que mudanças na implementação não alterem suas decisões.
 
 Os IDs de provedor `codex` e `claudeAgent` correspondem ao T3 Code, usado pelo mantenedor.

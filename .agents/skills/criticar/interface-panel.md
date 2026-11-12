@@ -1,17 +1,11 @@
----
-name: criticar-interface-em-conselho
-description: Reúne avaliadores independentes para criticar a UI e a UX de uma interface com a mesma rubrica e consolida achados, severidades e divergências. Use quando pedirem um conselho, painel ou avaliação de UI/UX por várias perspectivas.
-license: Apache-2.0
----
-
 # Criticar a interface em conselho
 
 Use quando uma única crítica não basta: avaliadores diferentes encontram problemas diferentes
-na mesma interface, e a nota de severidade de uma só pessoa é pouco confiável. Esta skill
+na mesma interface, e a nota de severidade de uma só pessoa é pouco confiável. Este apoio
 acrescenta o que é específico de interface. Siga `conselho` para independência, rodadas e
 consolidação, e `delegar` para executar as consultas, resolvendo `roles.council` quando houver
-política de modelos. Para cada avaliador, o formato de achado de `criticar-interface` substitui
-o retorno de especialista de `conselho`. Para uma crítica individual, use `criticar-interface`;
+política de modelos. Para cada avaliador, o formato de achado de `criticar` substitui
+o retorno de especialista de `conselho`. Para uma crítica individual, use `criticar`;
 para escolher entre alternativas de design, use `conselho`.
 
 ## Preparar o objeto comum
@@ -19,9 +13,9 @@ para escolher entre alternativas de design, use `conselho`.
 Fixe o que será avaliado e entregue o mesmo material a todos os avaliadores:
 
 - A versão examinada: capturas identificadas, build, URL com data ou commit.
-- O contexto da crítica, conforme `criticar-interface`: público, tarefas, plataforma, etapa,
+- O contexto da crítica, conforme [interface.md](interface.md): público, tarefas, plataforma, etapa,
   escopo, suposições e meta de acessibilidade.
-- As diretrizes: a rubrica `rubric.md` da skill `criticar-interface`, o design system do
+- As diretrizes: a rubrica [interface-rubric.md](interface-rubric.md), o design system do
   projeto e as diretrizes de plataforma consultadas, com origem e data.
 - As formas de acesso disponíveis a cada avaliador: interface em uso, capturas, código,
   árvore de acessibilidade ou tecnologia assistiva.
@@ -48,7 +42,7 @@ do mesmo modelo como confirmação fraca.
 
 Cada avaliador examina a interface inteira com a rubrica completa e aprofunda sua perspectiva;
 a ênfase não limita o que ele pode relatar. Ele entrega a crítica no formato de
-`criticar-interface`, sem contato com outros pareceres.
+`criticar`, sem contato com outros pareceres e sem abrir novos agentes.
 
 ## Consolidar
 
