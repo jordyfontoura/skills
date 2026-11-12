@@ -1,6 +1,6 @@
 ---
 name: andamento
-description: Resume o andamento do trabalho, o que falta e os bloqueios sem mudar seu objetivo. Use para consultas rápidas durante a execução; `reconciliar` audita requisitos e `passar-contexto` prepara retomada por outra sessão.
+description: Resume o andamento do pedido inteiro, pendências, bloqueios, próxima entrega utilizável e previsão fundamentada de conclusão, ou o motivo de ainda não estimar. Use para consultas rápidas sem mudar o objetivo; `reconciliar` audita requisitos e `passar-contexto` prepara retomada.
 license: Apache-2.0
 ---
 
@@ -38,7 +38,12 @@ Adapte o detalhe à pergunta; estes pontos não exigem seções vazias ou um rel
 - **Situação atual:** objetivo e etapa, incluindo o que depende de uma ação do usuário.
 - **Feito:** entregas e verificações observadas, com referências úteis às evidências.
 - **Em andamento:** ação atual conhecida ou último retorno observado de uma parte delegada.
-- **Restante:** trabalho pendente na ordem das dependências, incluindo provas ausentes.
+- **Restante até concluir o pedido:** trabalho pendente na ordem das dependências, incluindo
+  revisão, testes, aceite e publicação quando exigidos, não apenas o fim da etapa atual.
+- **Mudança desde o último resumo:** avanço, descoberta ou regressão relevante, quando houver
+  uma referência anterior disponível na conversa.
+- **Próxima entrega utilizável:** o que o usuário poderá ver, testar ou usar e o que falta até lá.
+- **Previsão:** horizonte do pedido inteiro ou da parte estimável, com base e incertezas explícitas.
 - **Impedimentos:** falha ou dependência observada, consequência e condição para destravar.
   Diferencie bloqueio de risco ou dúvida; sem impedimento observado, diga “nenhum bloqueio conhecido”.
 - **Próxima ação:** passo concreto que será retomado ou condição que continua aguardando.
@@ -48,6 +53,32 @@ Algo implementado sem validação deve aparecer com essa ressalva. Uma prova ant
 continuar aplicável à revisão e ao ambiente atuais; edições posteriores podem exigir nova prova.
 Não invente percentuais, prazos ou ausência de bloqueios. Uma foto parcial de arquivos em edição
 não comprova conclusão nem falha da entrega.
+
+## Estimar o que falta
+
+Quando o usuário perguntar quanto falta, sempre responda com uma previsão fundamentada ou
+com o motivo de ainda não haver previsão útil e o marco que permitirá estimar. Nas demais
+consultas, inclua-a quando ajudar a decidir se espera ou intervém. Nomeie o ponto de chegada:
+etapa atual, próxima entrega utilizável ou condição de conclusão do pedido inteiro.
+
+Use o contexto disponível: restante delimitado, durações observadas com sua fonte ou analogia
+com partes comparáveis já executadas. Prefira faixa ou ordem de grandeza, rotulada como
+estimativa, com premissas e principais fatores que podem alongá-la. Não exija histórico
+estatístico para uma estimativa grosseira, mas identifique o que é julgamento e sua incerteza.
+Sem base suficiente, como numa investigação de causa desconhecida, informe o que precisa
+ser descoberto antes de estimar. Não rode comandos, delegue nem faça medições só para obter um número.
+
+Considere dependências, provas e possíveis correções. Paralelismo só reduz a duração quando
+for real e puder ser sustentado pelas evidências; considere o ramo mais lento e a integração.
+Separe trabalho ativo de esperas externas. Sem prazo para uma aprovação ou resposta, declare
+essa condição: estimar a parte executável não equivale a estimar o término do pedido inteiro.
+
+Não converta contagem de tarefas heterogêneas em percentual do tempo nem invente probabilidades
+de confiança. Uma contagem de critérios comprovados deve dizer o que conta, sem se passar por
+percentual de conclusão do pedido. Não dê horário de término sem referência de relógio.
+Se uma previsão anterior mudar, explique o fato que a alterou. Para outra conversa, vincule a
+previsão ao momento e à fonte do registro observado, sem projetar atividade atual a partir de
+dados antigos. Não crie acompanhamento periódico ou novos registros para manter a previsão.
 
 Entregue o resumo na conversa, sem salvar um arquivo por padrão. Para comparar o trabalho
 contra requisitos, use `reconciliar`; para preparar retomada

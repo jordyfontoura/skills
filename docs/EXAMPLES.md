@@ -168,10 +168,30 @@ preserva alterações e verifica o resultado integrado, pois branches que passam
 
 ### [`andamento`](../skills/productivity/andamento/SKILL.md)
 
-Quando você quer uma consulta rápida de andamento. Resume entregas, pendências e bloqueios,
-preservando o objetivo e as autorizações do trabalho em curso.
+Quando você quer uma consulta rápida do pedido inteiro. Resume entregas, pendências até a
+conclusão combinada, bloqueios e próxima entrega utilizável. Mostra mudanças desde o resumo
+anterior quando houver e preserva o objetivo e as autorizações do trabalho em curso.
 
 > $andamento O que já foi feito, o que falta e tem algo dependendo de mim?
+
+> $andamento Quanto falta para concluir o goal inteiro, incluindo revisão, testes e aceite? Separe a etapa atual e eventuais esperas externas, com a base da previsão.
+
+A previsão é uma faixa ou ordem de grandeza fundamentada, não uma promessa. Sem base útil,
+a resposta explica o motivo e o marco que permitirá estimar. Uma etapa estimável não vira
+prazo do pedido inteiro se houver esperas sem duração conhecida. A skill usa o contexto
+disponível, sem medir, delegar ou acompanhar a execução repetidamente só para estimar.
+
+Exemplo fictício de resposta, sem representar uma previsão desta sessão:
+
+> A implementação está pronta para testar; desde o último resumo, foi corrigido o fluxo de download. Até concluir, faltam dois casos de erro, a suíte completa, a revisão e o aceite exigido. Estimo cerca de 40–80 minutos para esse conjunto, com base nas rodadas comparáveis já observadas; outra reprovação no aceite pode alongar a previsão. Nada depende de você agora. Vou retomar os casos de erro.
+
+Exemplo fictício quando só uma parte pode ser estimada:
+
+> Estimo dezenas de minutos até ficar pronto para sua aprovação. O término do pedido inteiro depende dessa decisão, sem prazo conhecido. A próxima entrega é a versão para testar. Depois da aprovação, posso estimar a publicação autorizada.
+
+Sem base para um número:
+
+> Ainda não há previsão útil: falta descobrir a causa da falha de integração. A primeira reprodução que isole a causa permitirá estimar a correção. Os testes e o aceite continuam pendentes depois dela.
 
 ### [`examinar-eficiencia`](../skills/productivity/examinar-eficiencia/SKILL.md)
 

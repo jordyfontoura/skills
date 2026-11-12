@@ -31,6 +31,11 @@ compatibilidade.
 
 ### Mudado
 
+- `andamento`: cobre o pedido inteiro até sua condição de conclusão, com mudanças desde o
+  último resumo, próxima entrega utilizável e previsão fundamentada quando pertinente.
+  Perguntas sobre tempo sempre recebem uma estimativa com base e incertezas ou o motivo de
+  ainda não estimar e o marco necessário. Distingue etapas de conclusão total e trabalho
+  ativo de esperas externas, sem percentual inventado, medições novas ou acompanhamento periódico.
 - As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica foi
   preservada em `criticar/interface-rubric.md`, o método em `interface.md` e o painel de UI em
   `interface-panel.md`. Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
