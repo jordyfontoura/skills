@@ -122,14 +122,16 @@ independência da implementação e provas por critério; conferir o próprio tr
 
 Quando você quer um crítico especializado no artefato e no foco do pedido. Os critérios vêm
 da intenção, das referências e dos padrões pertinentes. A crítica não altera o produto.
-Em UI e UX, usa a rubrica de interface, com severidade e base declaradas.
+Em UI e UX, usa a rubrica de interface, com severidade e base declaradas. Sempre entrega
+nota geral e, quando pertinente, notas por categoria. As notas de qualidade têm duas casas
+decimais, como `9.73` ou `7.00`, na escala padrão de 0 a 10, cujo máximo é `10.00`.
 
 > $criticar Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
 
 Para um jogo, peça que o crítico jogue e indique os aspectos que precisa observar. Uma captura
-não comprova cooperação ou resposta dos controles. Defina referências e âncoras quando pedir notas.
+não comprova cooperação ou resposta dos controles. Referências e âncoras orientam as notas.
 
-> $criticar Use outro contexto para jogar esta build e avaliar cooperação, legibilidade e fidelidade a `definicoes/` e suas referências. Registre os passos, as evidências e os limites. Não edite o jogo.
+> $criticar Use outro contexto para jogar esta build e avaliar cooperação, legibilidade e fidelidade a `definicoes/` e suas referências. Dê a nota geral e notas de game design e estética, com duas casas decimais e justificativas. Registre os passos, as evidências e os limites. Não edite o jogo.
 
 Para várias perspectivas independentes, combine com `conselho`. Todos recebem a mesma versão
 e os mesmos critérios; a consolidação preserva divergências e achados de um só avaliador.

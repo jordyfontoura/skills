@@ -123,8 +123,10 @@ compõe com `conselho`; o [painel de UI](../skills/development/criticar/interfac
 mantém seu método específico de severidade e consolidação.
 
 Uma crítica independente usa outro contexto e segue `delegar`, com `roles.council` quando
-houver política, inclusive para um único crítico. Notas são opcionais e exigem critérios e
-âncoras; não substituem provas técnicas. Num ciclo de correção autorizado, quem implementa
+houver política, inclusive para um único crítico. Toda crítica realizada inclui nota geral
+e notas por categoria quando pertinentes, com duas casas decimais, como `9.73`. A escala
+padrão é de 0 a 10 (`10.00` no extremo superior), com critérios e âncoras declarados.
+As notas não substituem provas técnicas. Num ciclo de correção autorizado, quem implementa
 confere o feedback com `tratar-revisao`, corrige e repete as provas afetadas antes da nova
 crítica. O limite e a condição de parada vêm do objetivo. `verificar-aceite` continua sendo
 a comprovação independente dos critérios combinados da entrega.

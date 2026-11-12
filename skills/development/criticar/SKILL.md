@@ -1,6 +1,6 @@
 ---
 name: criticar
-description: Critica a qualidade de um artefato ou experiência, como jogo, interface ou texto, com critérios especializados, evidências e prioridades. Use para pedir um crítico independente ou compor uma crítica com conselho. Não corrige; para diff use `revisar` e para aceite use `verificar-aceite`.
+description: Critica a qualidade de um artefato ou experiência com critérios especializados, evidências, prioridades e nota obrigatória com duas casas decimais. Use para pedir um crítico independente ou compor uma crítica com conselho; inclui notas por categoria quando pertinentes. Não corrige; para diff use `revisar` e para aceite use `verificar-aceite`.
 license: Apache-2.0
 ---
 
@@ -68,15 +68,30 @@ regressões e identifique os novos. Aponte também o que funciona e deve resisti
 
 ## Notas e ciclos de correção
 
-Dê notas apenas quando pedidas. Use as dimensões, escala e âncoras combinadas; referências
-comentadas ajudam a calibrar a nota. Se faltar uma definição decisiva para um limiar de
-aprovação, esclareça antes de pontuar. Ligue cada nota a evidências e explique sua incerteza.
-Nota de qualidade geral e severidade de um problema são medidas distintas.
+Toda crítica realizada entrega uma nota geral de qualidade. Use a escala combinada ou,
+na ausência dela, de 0 a 10. Escreva as notas de qualidade com ponto e exatamente duas casas
+decimais: `9.73`, `7.00`, `0.00`; o extremo superior da escala padrão é `10.00`.
+Quando houver dimensões distintas relevantes, inclua também notas por categoria, como
+game design e estética, ou usabilidade e acessibilidade. Respeite categorias pedidas e
+não crie divisões só para preencher um quadro.
+
+Antes do exame, fixe critérios e âncoras adequados ao domínio, usando os combinados ou
+declarando os adotados quando o pedido não os fornecer. Referências comentadas ajudam a
+calibrar. Ligue cada nota às evidências, aos pontos fortes e aos problemas que a justificam;
+explique a relação da nota geral com as categorias e os pesos, se houver. Não suponha média
+aritmética nem use uma nota alta para compensar uma exigência descumprida.
+
+Declare a cobertura e a incerteza: duas casas decimais são formato de apresentação, não
+precisão estatística comprovada. Em exame parcial, a nota vale só para a parte examinada;
+sem acesso a material suficiente, declare a crítica não realizada em vez de inventar nota.
+Nota de qualidade e severidade são medidas distintas: a escala de severidade de UI continua
+de 0 a 4, conforme a rubrica. Se faltar uma definição decisiva para aplicar um limiar de
+aprovação, esclareça essa definição sem criar um limiar por conta própria.
 
 A crítica não edita o produto. Um ciclo só prossegue quando a implementação e as novas
 avaliações estiverem autorizadas. Antes da primeira rodada, fixe critérios, eventual limiar,
 regra de avaliação e condição de parada, incluindo o limite de rodadas quando combinado.
-Modelo, notas e número de rodadas vêm do pedido, sem padrões universais.
+Modelo, limiar de aprovação e número de rodadas respeitam o pedido.
 
 Quem implementa confere o feedback com `tratar-revisao`, corrige por prioridade com
 `implementar` e repete as provas afetadas. As sugestões são meios a conferir para atingir
@@ -94,6 +109,7 @@ automaticamente a melhor. Notas não substituem provas técnicas nem `verificar-
 
 Entregue contexto, versão, especialização, critérios e formas de acesso; achados por prioridade
 com evidências; o que preservar; divergências deliberadas e sugestões separadas; cobertura,
-limites e provas recomendadas. Inclua notas e conclusão pelo limiar somente quando combinadas.
+limites e provas recomendadas. Inclua sempre a nota geral e as notas por categoria pertinentes,
+com duas casas decimais e justificativas. A conclusão pelo limiar só existe quando combinada.
 Num painel, preserve divergências e autoria dos achados. Sem problema relevante, diga isso
 com a cobertura examinada, sem fabricar críticas nem declarar qualidade que não pôde verificar.

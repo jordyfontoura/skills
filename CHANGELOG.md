@@ -16,7 +16,9 @@ compatibilidade.
 - `criticar`: critica artefatos e experiências com critérios especializados pelo pedido,
   público e referências. Preserva a rubrica de UI e UX em apoios, compõe com `conselho` para
   várias perspectivas e usa `roles.council` para consultas independentes, inclusive individuais.
-  Distingue severidade de nota geral e orienta ciclos de correção autorizados, com condição
+  Sempre entrega nota geral e notas por categoria quando pertinentes, com duas casas decimais
+  (como `9.73`), na escala padrão de 0 a 10. Distingue severidade de qualidade e orienta
+  ciclos de correção autorizados, com condição
   de parada, sem substituir provas técnicas ou aceite independente.
 
 ### Mudado

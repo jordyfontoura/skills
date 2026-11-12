@@ -8,7 +8,8 @@ Fixe o mesmo objeto, versão, intenção, critérios e referências para todos. 
 real de cada um e use `delegar`, resolvendo `roles.council` quando houver política. Cada
 especialista faz sua crítica individual sem conhecer os primeiros pareceres dos demais e
 sem abrir agentes. O formato de achado de `criticar` substitui o relatório genérico de
-especialista de `conselho`.
+especialista de `conselho`. Cada crítico entrega a nota geral e as notas por categoria
+pertinentes, com duas casas decimais e justificativas, além dos achados.
 
 Para UI e UX, leia [interface-panel.md](interface-panel.md): ele preserva o procedimento
 específico de composição, reavaliação e severidade. Sua faixa de avaliadores, escala e fontes
@@ -20,9 +21,11 @@ relatados por um só crítico e confronte divergências com evidências. Não re
 factual por maioria. Reavalie o que depender de evidência nova ou de consequência ainda
 não examinada, seguindo `conselho`; se faltar prova decisiva, indique como obtê-la.
 
-Não calcule médias ou medianas de prioridades incompatíveis. Quando houver notas globais,
-fixe critérios, âncoras e regra de consolidação antes das consultas; notas com acessos ou
-critérios diferentes não são diretamente comparáveis. Retorne composição, cobertura,
+Não calcule médias ou medianas de prioridades incompatíveis. Fixe critérios, âncoras e regra
+de consolidação das notas de qualidade antes das consultas. Preserve as notas individuais
+e apresente as consolidadas com duas casas decimais e a regra usada. Notas com acessos ou
+critérios diferentes não são diretamente comparáveis: nesse caso, apresente-as por escopo,
+sem forçar uma nota consolidada. Retorne composição, cobertura,
 concordâncias, divergências, achados e limites, distinguindo recomendação de aprovação.
 
 Sem contextos independentes, declare o painel não realizado; uma análise individual não
