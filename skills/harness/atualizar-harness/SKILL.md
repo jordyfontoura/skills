@@ -96,6 +96,15 @@ até haver encaminhamento; não crie aliases concorrentes sem necessidade explí
 Atualize os arquivos canônicos e depois as cópias dos provedores adotados. Inclua referências,
 modelos e recursos necessários. Preserve metadados locais válidos, capacidades e configurações
 de modelos; não imponha a configuração de outro projeto.
+Na origem desta coleção, `knowledge/` contém os guias compartilhados. O plugin completo os
+leva na raiz; cópias avulsas de `.agents/skills/` e `.claude/skills/` levam as dependências
+empacotadas em `references/knowledge/`. Copie a pasta completa e registre a revisão dos guias.
+Em destinos com fontes agrupadas, inclua a biblioteca e use geração compatível. Não copie
+somente `SKILL.md` nem deixe links apontando para o clone original.
+Cabeçalhos de geração indicam procedência, não ausência de personalização: compare cada guia
+com a base adotada antes de atualizar. Preserve adaptações locais e confira versões do mesmo
+guia em skills diferentes. Recursos retirados ou deslocados exigem migração explícita;
+uma ausência na origem não autoriza apagar a cópia do destino.
 Trate `.agents/models.toml` e suas regras locais de seleção como personalizações do destino.
 Não substitua modelos, esforços ou alternativas pela configuração herdada desta coleção.
 As skills aceitam políticas v1 e v2: atualizar instruções não exige migrar o arquivo.

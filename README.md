@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 29 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 28 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -21,6 +21,10 @@ de toda mudança. Veja o [fluxo, sua base e seus limites](docs/HARNESS.md#fluxo-
 
 É tudo Markdown, sem serviço em segundo plano. As skills não instalam hooks, não trocam o
 modelo da conversa nem autorizam delegação por conta própria. Seus testes continuam necessários.
+
+A [biblioteca de referências](knowledge/README.md) reúne conhecimento de UI e acessibilidade
+para consulta conforme a tarefa. As fontes ficam fora das skills; as cópias avulsas incluem
+automaticamente os guias necessários, sem depender do caminho deste repositório.
 
 ## Instalar
 
@@ -84,7 +88,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 29 skills</summary>
+<summary>Ver as 28 skills</summary>
 
 ### Entender e decidir
 

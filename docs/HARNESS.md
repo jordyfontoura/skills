@@ -112,9 +112,11 @@ Fontes em `skills/development/`.
 
 `revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
 examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
-`integrar` executa a integração solicitada sem presumir publicação. O apoio de
-[direção visual](../skills/development/implementar/interface.md) é compartilhado por `implementar`
-e `prototipar`, preservando a identidade e os componentes do projeto.
+`integrar` executa a integração solicitada sem presumir publicação. A
+[biblioteca de conhecimento](../knowledge/README.md) reúne guias de UI e acessibilidade
+compartilhados por `implementar`, `prototipar` e `criticar`, preservando a identidade e os
+componentes do projeto. Métodos e políticas continuam nas skills; novos domínios entram
+com conteúdo real. As cópias avulsas incluem os guias usados em `references/knowledge/`.
 `criticar` avalia artefatos e experiências, como jogos, interfaces e textos, com critérios
 derivados do pedido, do público e das referências. Para UI e UX, preserva o método e a
 [rubrica comum](../skills/development/criticar/interface-rubric.md), incluindo acessibilidade,

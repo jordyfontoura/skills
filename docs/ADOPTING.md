@@ -10,7 +10,7 @@ aparecer duas vezes.
 
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 29 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 28 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
@@ -67,7 +67,9 @@ Publicar na origem não atualiza as cópias instaladas nos seus projetos.
 
 1. Copie as skills escolhidas de [.agents/skills/](../.agents/skills/) (Codex e outros agentes)
    ou de [.claude/skills/](../.claude/skills/) (Claude Code) para a mesma pasta no seu projeto.
-   Cada skill funciona sozinha; outras skills são citadas pelo nome e podem ser copiadas depois.
+   Copie a pasta inteira, incluindo `references/knowledge/` quando existir: ali estão os
+   guias usados pela skill, com links internos. Os arquivos de apoio não dependem do clone
+   original. Outras skills são citadas pelo nome; copie também as necessárias ao fluxo pedido.
 2. Se quiser os papéis, copie [.claude/agents/](../.claude/agents/) e
    [.codex/agents/](../.codex/agents/) para as pastas correspondentes.
 3. Acrescente o bloco acima às instruções do projeto. Preserve os comandos e as convenções
@@ -89,3 +91,21 @@ as mudanças que essa troca pode retirar. Uma versão específica pedida prevale
 
 Use `configurar-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
 Não há instalador, conta, serviço ou processo em segundo plano.
+
+## Biblioteca de conhecimento
+
+Na origem, [knowledge/](../knowledge/README.md) é a única fonte editável dos guias de domínio.
+O plugin completo leva essa pasta junto das skills. As cópias avulsas já incluem apenas os
+guias referenciados por cada skill, inclusive suas dependências, em `references/knowledge/`.
+Copiar somente `SKILL.md` deixa recursos de fora. Não é preciso instalar o gerador no destino.
+
+Registre o SHA adotado também para as referências empacotadas. Ao atualizar, compare o
+pacote anterior, a origem nova e suas adaptações; um cabeçalho de geração não autoriza
+sobrescrever uma edição local. Se o mesmo guia foi adaptado em mais de uma skill, confira
+as diferenças antes de mesclar. Não transforme uma cópia antiga em fonte do harness.
+
+Destinos que adotam as fontes agrupadas precisam incluir `knowledge/` e usar geração
+compatível; nesse layout, os links canônicos apontam para a biblioteca compartilhada.
+Uma referência retirada da origem pode deixar uma cópia extra: confira e migre-a explicitamente,
+pois `sync.py` recusa arquivos extras em vez de apagá-los. Conteúdo de domínio e mudanças de
+método têm revisões próprias; notas, pisos e critérios de aceite não são reduzidos pela atualização.

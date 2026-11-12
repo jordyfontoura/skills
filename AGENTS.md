@@ -65,6 +65,7 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - [Padrões](docs/STANDARDS.md): convenções de nomes, idioma e revisão.
 - [Glossário](docs/GLOSSARY.md): vocabulário compartilhado.
 - [Modelos](docs/MODELS.md): perfis, complexidade, alternativas e representante.
+- [Conhecimento](knowledge/README.md): referências por domínio ou tema, consultadas conforme a tarefa.
 - `skills/<grupo>/<nome>/`: fontes de desenvolvimento, produtividade e manutenção do harness.
 - `.agents/skills/` e `.claude/skills/`: cópias de uso; `.agents/roles/`: papéis canônicos.
 

@@ -45,6 +45,19 @@ Mudar uma skill de categoria não muda seu nome nem o comando. Preserve as cópi
 Edite as fontes agrupadas; não mantenha variações manuais nas cópias deste repositório.
 Adaptações em projetos de destino continuam pertencendo a esses projetos.
 
+Conhecimento reutilizável por domínio ou tema fica em `knowledge/`, com índice em
+`knowledge/README.md`. Mantenha nomes de pastas e arquivos em inglês, texto em português e
+aplicabilidade, origem, fontes e limites explícitos. Crie domínios apenas com conteúdo real.
+Procedimentos, escalas e pisos obrigatórios continuam nas skills; decisões de um projeto
+continuam no destino. Uma referência não concede permissão nem vira regra universal.
+
+Skills citam outras skills pelo nome. Links para fora de sua pasta são permitidos somente
+para arquivos catalogados em `knowledge/`; use links diretos aos guias pertinentes.
+Referências da biblioteca só têm links locais para dentro dela. A geração empacota as
+dependências necessárias em `references/knowledge/` de cada cópia avulsa, incluindo links
+transitivos, com procedência e caminhos ajustados. Essa pasta é reservada à geração no
+harness; não mantenha ali uma segunda fonte editável nem use symlinks.
+
 ## Escrita e manutenção
 
 - Cada skill trata de um resultado, com um gatilho claro e instruções suficientes para agir.

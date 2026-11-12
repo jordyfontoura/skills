@@ -18,6 +18,11 @@ Declare a especialização pertinente ao pedido e os critérios desta crítica a
 
 - **UI e UX**, inclusive a interface de jogos: leia [interface.md](interface.md) e sua
   [rubrica](interface-rubric.md). Preserve as sete seções, a escala e os pisos da rubrica.
+  Consulte os guias de [usabilidade](references/knowledge/ux/usability.md),
+  [hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md),
+  [plataforma](references/knowledge/ux/platform-conventions.md) e
+  [acessibilidade](references/knowledge/accessibility/interface-criteria.md) conforme os critérios
+  examinados. Os guias são compartilhados; o método e as políticas continuam nesta skill.
 - **Outros aspectos**, como game design, direção de arte ou argumentação de um texto: derive
   os critérios do pedido, das referências, das regras do projeto e de princípios do domínio
   com mecanismo explícito. Para clareza de texto, consulte `escrever-claro` sem reescrever.
@@ -44,7 +49,8 @@ Se não houver contexto independente ou ferramenta adequada, declare a crítica 
 limitada, sem simular outro especialista.
 
 Para várias perspectivas solicitadas, leia [panel.md](panel.md) e siga `conselho` para compor
-e executar as consultas. O coordenador organiza o painel uma única vez. Como crítico delegado,
+e executar as consultas; para UI, leia também [interface-panel.md](interface-panel.md).
+O coordenador organiza o painel uma única vez. Como crítico delegado,
 faça apenas sua análise, sem abrir novos agentes ou conselhos.
 
 ## Examinar e fundamentar

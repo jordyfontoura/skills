@@ -10,8 +10,12 @@ Identifique a pergunta que o experimento precisa responder. Deduza-a do pedido q
 clara; pergunte apenas se a ambiguidade mudar o experimento. Reutilize a linguagem visual
 e as interfaces do projeto quando útil. Escolha o meio mais simples que demonstre a dúvida:
 página independente, script pequeno ou simulação isolada.
-Para direção visual, estados e acessibilidade de interfaces, leia o apoio
-`interface.md` da skill `implementar`, respeitando as simulações próprias do protótipo.
+Para interfaces, consulte os guias de [usabilidade](references/knowledge/ux/usability.md),
+[hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md),
+[acessibilidade](references/knowledge/accessibility/interface-criteria.md) e
+[plataforma](references/knowledge/ux/platform-conventions.md), conforme a pergunta do experimento.
+Reutilize a identidade e os componentes do projeto; os guias não autorizam trocá-los.
+Respeite e declare as simulações próprias do protótipo.
 
 Mantenha o protótipo separado do código de produção, em local permitido para experimentos
 ou artefatos. Dê uma forma clara de executar ou visualizar. Acrescente apenas os mecanismos

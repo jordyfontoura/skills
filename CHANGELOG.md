@@ -9,6 +9,14 @@ compatibilidade.
 
 ### Adicionado
 
+- Biblioteca `knowledge/` com referências de UI e acessibilidade compartilhadas por
+  `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
+  O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
+  fontes e limites. Outros domínios entram quando houver conteúdo útil.
+- Empacotamento seletivo das referências em `references/knowledge/` das cópias avulsas,
+  incluindo dependências transitivas e links ajustados. O plugin completo usa a biblioteca
+  na raiz. A validação continua recusando links arbitrários fora da skill e verifica índice,
+  integridade das cópias e isolamento da biblioteca. Atualização e adoção preservam adaptações locais.
 - `examinar-eficiencia`: explica por que o trabalho com o agente demorou ou gastou muitos
   tokens e propõe a menor mudança para cada causa, sem cortar verificações úteis. Usa a conversa,
   diffs, verificações e métricas expostas; lê logs locais de sessão só a pedido. Não estima

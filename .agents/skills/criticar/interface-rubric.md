@@ -22,133 +22,44 @@ Uma diretriz do projeto abaixo de um piso é registrada como conflito, e o achad
 
 ## 1. Tarefas e fluxos
 
-Inclua as tarefas principais e as de saída: recusar, cancelar, desfazer, excluir e sair.
-Percorra cada tarefa e registre desvios, becos sem saída, etapas desnecessárias e perda de
-dados ao voltar ou cancelar.
-
-Quando a aprendizagem importar ou a tarefa usar padrões pouco familiares, defina antes a
-sequência correta de ações e faça em cada passo as perguntas do percurso cognitivo
-(*cognitive walkthrough*):
-
-1. **Intenção:** a pessoa tentará alcançar o resultado certo neste passo?
-2. **Visibilidade:** ela perceberá que a ação correta está disponível?
-3. **Associação:** ela ligará essa ação ao resultado que deseja?
-4. **Retorno:** depois de agir, perceberá que avançou em direção ao objetivo?
-
-Uma resposta "não" indica um achado no passo. Em fluxos convencionais, dispense as perguntas.
+Percorra as tarefas principais e de saída. Aplique os critérios de
+[usabilidade](references/knowledge/ux/usability.md), incluindo o percurso cognitivo quando a
+aprendizagem ou padrões pouco familiares importarem.
 
 ## 2. Heurísticas de usabilidade
 
-Examine a interface pelas 10 heurísticas de Nielsen:
-
-1. **Visibilidade do estado do sistema:** o sistema informa o que está acontecendo, a tempo.
-2. **Correspondência com o mundo real:** usa a linguagem e as convenções do público, não jargão interno.
-3. **Controle e liberdade:** há como desfazer, refazer, cancelar e sair de um caminho indesejado.
-4. **Consistência e padrões:** termos, ações e aparência se mantêm no produto e seguem convenções.
-5. **Prevenção de erros:** a interface evita condições propensas a erro ou confirma ações arriscadas.
-6. **Reconhecer em vez de lembrar:** opções e informações necessárias ficam visíveis quando úteis.
-7. **Flexibilidade e eficiência:** atalhos e personalização ajudam o uso frequente sem atrapalhar iniciantes.
-8. **Design estético e minimalista:** nada irrelevante compete com a informação essencial da tarefa.
-9. **Reconhecer, diagnosticar e recuperar erros:** mensagens dizem o problema em linguagem clara e como continuar.
-10. **Ajuda e documentação:** ajuda pesquisável, voltada à tarefa e próxima do contexto, quando necessária.
-
-"Minimalista" não significa cortar informação necessária. Uma violação aparente pode ser uma
-convenção que o público já conhece; nesse caso, registre-a só com impacto concreto na tarefa.
+Examine as dez heurísticas no mesmo guia de usabilidade, respeitando convenções do público.
+Uma violação aparente precisa de impacto concreto na tarefa.
 
 ## 3. Acessibilidade
 
-Os itens abaixo são exemplos frequentes, não uma lista completa. Numa auditoria, percorra
-todos os critérios dos níveis da meta. Indique número e nível do critério em cada achado.
-Separe o que a forma de acesso permite examinar:
-
-- **No código ou na árvore de acessibilidade:** texto alternativo (1.1.1, A); estrutura,
-  títulos e rótulos ligados a campos (1.3.1 e 3.3.2, A); idioma (3.1.1, A); nome, função,
-  estado e valor dos controles (4.1.2, A); nome acessível contendo o rótulo visível
-  (2.5.3, A); mensagens de status anunciadas (4.1.3, AA).
-- **Na tela renderizada ou em capturas:** informação que não depende só de cor (1.4.1, A);
-  contraste de texto (1.4.3, AA) e de componentes, ícones e indicadores de foco (1.4.11, AA);
-  foco visível (2.4.7, AA); tamanho aparente de alvos (2.5.8, AA). Contraste e medidas tirados
-  de capturas são aproximados. Confirme-os com os valores reais de cor e tamanho.
-- **Operando a interface:** teclado completo e sem armadilhas (2.1.1 e 2.1.2, A); ordem de foco
-  (2.4.3, A); foco não encoberto (2.4.11, AA); reflow (1.4.10, AA); texto ampliado (1.4.4, AA);
-  conteúdo em *hover* ou foco (1.4.13, AA); orientação (1.3.4, AA); alternativas a gestos
-  complexos e a arrastar (2.5.1, A; 2.5.7, AA); tempo limite (2.2.1, A); dados não pedidos
-  de novo (3.3.7, A); autenticação sem teste cognitivo (3.3.8, AA).
-- **Com tecnologia assistiva ou ferramenta:** leitores de tela, controle por voz, ampliadores
-  e auditorias. Ferramentas automáticas detectam só parte das falhas; um resultado limpo não
-  prova conformidade.
-
-Movimento reduzido é boa prática ou nível AAA (2.3.3); não o registre como falha AA. Com apenas
-capturas, marque como não examinados os itens de código e de operação. A conformidade vale para
-páginas e processos completos; uma inspeção de telas escolhidas não a declara.
-
-Em software que não é web, aplique os critérios conforme a WCAG2ICT. Os pixels CSS correspondem
-às unidades independentes de densidade da plataforma. O reflow é avaliado no menor tamanho que a
-plataforma permite, e o idioma e o tamanho de texto podem vir do sistema. Some as diretrizes e os
-inspetores de acessibilidade da plataforma. Para alvos de toque, siga o critério mais exigente
-entre o 2.5.8 e a plataforma, mas registre como falha WCAG apenas o que descumprir o 2.5.8.
+Use os [critérios por forma de acesso](references/knowledge/accessibility/interface-criteria.md).
+Numa auditoria, percorra todos os critérios dos níveis da meta. Indique número e nível em
+cada achado e registre como não examinados os itens que o acesso não permite verificar.
+Uma inspeção parcial não declara conformidade; o piso desta rubrica continua obrigatório.
 
 ## 4. Hierarquia visual, layout e consistência
 
-- A ação principal e a informação necessária para a tarefa se destacam na ordem certa.
-- Tipografia, espaçamento, alinhamento e proximidade agrupam o que é relacionado e não sugerem
-  relações falsas.
-- A densidade combina com o conteúdo e o contexto de uso.
-- Tokens, componentes, grade e padrões seguem o design system; aparência e imagens seguem o
-  guia de marca, quando houver.
-- Ícones e símbolos têm significado claro ou rótulo quando não forem convencionais.
-- Dados e gráficos representam valores sem distorção, com unidade, legenda próxima, números
-  alinhados para comparação e tabelas que permitem ordenar e acompanhar cabeçalhos.
-
-Quando o problema vier de um componente ou regra do design system, indique isso na recomendação:
-a correção pertence à origem, não só à tela.
+Compare com os critérios de [hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md)
+e o design system do projeto. Quando o problema vier de um componente ou regra compartilhada,
+a recomendação aponta a origem, não apenas a tela.
 
 ## 5. Conteúdo, confiança e escolha
 
-- Rótulos, botões e títulos dizem o que acontece, com termos consistentes.
-- Mensagens de erro, confirmação e estados vazios explicam a situação e o próximo passo.
-- Ações com consequências diferentes têm nomes diferentes; ações destrutivas deixam claro o efeito.
-- Voz e tom seguem o guia de conteúdo, quando houver.
-- Textos não prometem o que o produto não cumpre.
-- Recusar, cancelar e excluir têm acesso e peso equivalentes a aceitar. A interface não usa:
-  - opções pré-marcadas contra o interesse da pessoa;
-  - urgência ou escassez falsas;
-  - custos revelados tarde;
-  - culpa na recusa;
-  - pedidos repetidos após uma recusa;
-  - consentimento enviesado.
-
-Um padrão que leva a pessoa a escolher contra o próprio interesse causa dano, mesmo que
-melhore uma métrica do produto. Para revisar ou reescrever textos, aplique a skill `escrever-claro`.
+Examine os critérios de conteúdo e padrões enganosos do mesmo guia. Preserve o piso de
+escolha da pessoa. Para revisar ou reescrever textos, aplique `escrever-claro`.
 
 ## 6. Estados, interação e adaptação
 
-- Estados da jornada: carregando, vazio, parcial, sucesso, erro, sem permissão e indisponível.
-- Entradas preservadas após erro, quando possível.
-- Componentes interativos com estados distinguíveis: repouso, foco, *hover* onde houver
-  ponteiro, pressionado, selecionado e desabilitado. Cada ação tem retorno imediato.
-- Movimento que explica mudanças de estado, sem atrasar a tarefa.
-- Tamanhos de tela e orientação, sem sobreposição nem perda de ações essenciais.
-- Tema escuro, alto contraste e tamanho de texto do sistema, quando suportados.
-- Conteúdo real e extremos: textos longos, listas vazias ou grandes.
-- Em produtos localizados: idioma, direção da direita para a esquerda, formatos locais de data,
-  número e moeda, e expansão de textos traduzidos.
+Exercite os estados e extremos pertinentes descritos no guia de hierarquia, estados e
+conteúdo. Registre a cobertura e os limites de simulações, capturas e operação.
 
 ## 7. Convenções da plataforma
 
-Compare com as diretrizes vigentes da plataforma ou do sistema de componentes em uso, como
-Apple Human Interface Guidelines, Material Design, Fluent ou um guia interno. Confira:
-
-- **Entrada:** toque, ponteiro, teclado, controle ou voz; densidade e alvos adequados a ela.
-- **Navegação do sistema:** voltar, gestos e menus. Na web: botão voltar do navegador, URLs que
-  preservam o estado, links e botões com papéis distintos, preenchimento automático e zoom.
-- **Janelas e áreas:** áreas seguras, teclado virtual, redimensionamento e várias janelas.
-- **Recursos do sistema:** permissões pedidas no contexto de uso, notificações, atalhos,
-  menus de contexto, arrastar e soltar.
-
-Registre a URL, a data de consulta e a versão do sistema operacional, SDK ou biblioteca adotada.
-Uma divergência deliberada e registrada pelo projeto entra em "Divergências deliberadas e riscos",
-salvo impacto concreto na tarefa ou violação de um piso.
+Use o [inventário de plataforma](references/knowledge/ux/platform-conventions.md) e confira
+as diretrizes vigentes. Registre URL, data da consulta e versão do sistema, SDK ou biblioteca.
+Uma divergência deliberada do projeto entra em "Divergências deliberadas e riscos", salvo
+impacto concreto na tarefa ou violação de um piso.
 
 ## Achado ou preferência
 
@@ -209,14 +120,9 @@ Exemplos de calibração, adapte ao caso:
 
 ## Fontes
 
-- [10 heurísticas de usabilidade, Nielsen Norman Group](https://www.nngroup.com/articles/ten-usability-heuristics/)
-  (revisão de 2024). Os resumos acima são próprios.
 - [Escala de severidade, Nielsen Norman Group](https://www.nngroup.com/articles/how-to-rate-the-severity-of-usability-problems/).
   As definições das notas 1 a 3 e a regra de barreiras são escolhas deste harness.
 - [Avaliação heurística, Nielsen Norman Group](https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/).
-- [Percurso cognitivo, Nielsen Norman Group](https://www.nngroup.com/articles/cognitive-walkthroughs/).
-- [WCAG 2.2, W3C](https://www.w3.org/TR/WCAG22/), recomendação de 12 de dezembro de 2024, e
-  [WCAG2ICT](https://www.w3.org/TR/wcag2ict-22/), nota informativa para software que não é web.
 - [Duan et al., CHI 2024](https://arxiv.org/abs/2403.13139): na comparação com especialistas
   humanos, o GPT-4 teve precisão menor (0,60 contra 0,83) e recall um pouco maior. Os erros mais
   comuns foram:

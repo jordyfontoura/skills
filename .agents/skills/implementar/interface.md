@@ -7,28 +7,21 @@ com o público e a tarefa; não imponha preferências estéticas como regras uni
 
 ## Compor para a tarefa
 
-Identifique a ação principal e a informação necessária para realizá-la. Use hierarquia,
-tipografia, espaçamento e contraste para tornar essa ordem legível. Escolha a densidade pelo
-conteúdo e pelo contexto de uso; não converta tudo em cartões nem corte informação só para
-obter uma composição limpa. Conteúdo real orienta o layout; identifique dados simulados.
-
-Preserve nomes e componentes consistentes. Deixe explícitas ações com consequências diferentes,
-sem promessas que o produto não cumpre. Use `escrever-claro` para revisar o texto de interface mantendo
-as condições necessárias à compreensão.
+Identifique a ação principal e a informação necessária para realizá-la. Consulte os guias de
+[usabilidade](references/knowledge/ux/usability.md) e de
+[hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md).
+Não converta tudo em cartões nem corte informação só para obter uma composição limpa.
+Conteúdo real orienta o layout; identifique dados simulados. Use `escrever-claro` para revisar
+o texto de interface mantendo as condições necessárias à compreensão.
 
 ## Cobrir estados e acesso
 
-Inclua os estados relevantes à jornada: carregando, vazio, sucesso, erro e indisponibilidade.
-Mensagens de erro explicam o problema e, quando possível, como continuar, sem apagar a entrada
-do usuário desnecessariamente. Estado vazio pode orientar a próxima ação quando ela existir.
-
-Confira navegação por teclado, ordem de foco, foco visível, nomes acessíveis dos controles
-e compreensão sem depender só de cor ou posição. Use componentes semânticos e preserve suas
-capacidades de acessibilidade. A aparência de um botão não demonstra que ele é operável.
-
-Reorganize o conteúdo nos tamanhos combinados sem sobreposição ou perda de ações essenciais.
-Use movimento quando ajudar a entender a mudança e respeite a preferência por movimento
-reduzido. Não acrescente animação apenas para preencher a tela.
+Selecione no guia os estados e extremos pertinentes à jornada. Confira os
+[critérios de acessibilidade](references/knowledge/accessibility/interface-criteria.md) e as
+[convenções da plataforma](references/knowledge/ux/platform-conventions.md) adotada.
+Use componentes semânticos e preserve suas capacidades de acessibilidade. A aparência de
+um botão não demonstra que ele é operável. Reorganize o conteúdo nos tamanhos combinados e
+respeite a preferência por movimento reduzido; não acrescente animação só para preencher a tela.
 
 ## Conferir o resultado
 
