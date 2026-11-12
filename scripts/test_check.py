@@ -20,7 +20,7 @@ class ValidationTests(unittest.TestCase):
         self.workspace = tempfile.TemporaryDirectory(dir=ROOT / "scripts")
         self.addCleanup(self.workspace.cleanup)
         self.root = Path(self.workspace.name)
-        for directory in (".agents", ".claude", ".claude-plugin", ".codex", "agents", "docs", "skills"):
+        for directory in (".agents", ".claude", ".claude-plugin", ".codex", "agents", "docs", "skills", "knowledge"):
             shutil.copytree(ROOT / directory, self.root / directory)
         for path in ROOT.iterdir():
             if path.is_file():
@@ -39,6 +39,16 @@ class ValidationTests(unittest.TestCase):
         target.write_text("Instruções desatualizadas\n", encoding="utf-8")
         errors, _, _ = validate(self.root)
         self.assertTrue(any("difere da skill canônica" in error for error in errors))
+
+    def test_generated_knowledge_copy_drift_is_rejected_and_sync_repairs_it(self):
+        target = self.root / ".agents/skills/criticar/references/knowledge/ux/usability.md"
+        before = target.read_bytes()
+        target.write_text("Referência divergente.\n", encoding="utf-8")
+        errors, _, _ = validate(self.root)
+        self.assertTrue(any("usability.md: difere da skill canônica" in error for error in errors))
+        sync(self.root)
+        self.assertEqual(target.read_bytes(), before)
+        self.assertEqual(validate(self.root)[0], [])
 
     def test_role_instruction_drift_is_rejected(self):
         target = self.root / ".codex/agents/planner.toml"

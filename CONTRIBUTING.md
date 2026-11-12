@@ -22,8 +22,10 @@ ficam em inglês. Descrições, instruções e documentação ficam em portuguê
 Consulte os [padrões](docs/STANDARDS.md), o [glossário](docs/GLOSSARY.md) e a
 [arquitetura](docs/ARCHITECTURE.md).
 
-Uma skill cita outras skills e papéis pelo nome, sem links que saiam da sua pasta. Arquivos de
-apoio ficam dentro da skill que os usa. Assim cada skill funciona quando copiada sozinha.
+Uma skill cita outras skills e papéis pelo nome. Links para fora de sua pasta só podem
+apontar para referências catalogadas em `knowledge/`. Métodos e políticas ficam na skill;
+conhecimento de domínio compartilhado fica na biblioteca. A geração inclui os guias usados
+nas cópias avulsas, para que os arquivos de apoio funcionem quando a pasta for copiada sozinha.
 
 ## Branches e canais
 
@@ -66,6 +68,8 @@ a correção e o histórico. Nunca force push em nenhum dos canais.
 ## Editar
 
 Edite as fontes em `skills/<grupo>/<nome>/` e os papéis em `.agents/roles/`. Não edite as cópias.
+Edite referências de domínio em `knowledge/` e mantenha seu índice atualizado. Não edite
+manualmente `references/knowledge/` dentro das cópias geradas.
 
 1. Para papéis, atualize na mesma mudança `.claude/agents/<nome>.md` (metadados de nome,
    descrição e ferramentas, seguidos do corpo canônico) e `.codex/agents/<nome>.toml` (mesmo nome,

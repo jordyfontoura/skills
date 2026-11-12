@@ -118,19 +118,30 @@ independência da implementação e provas por critério; conferir o próprio tr
 
 > $verificar-aceite Verifique os critérios da exportação em um contexto independente. Relate o resultado e as provas, sem corrigir o código.
 
-### [`criticar-interface`](../skills/development/criticar-interface/SKILL.md)
+### [`criticar`](../skills/development/criticar/SKILL.md)
 
-Quando você quer uma crítica de UI e UX que não dependa de gosto pessoal. Cada achado aponta o
-padrão violado, o impacto, a severidade e a base, e a crítica declara o que não pôde examinar.
+Quando você quer um crítico especializado no artefato e no foco do pedido. Os critérios vêm
+da intenção, das referências e dos padrões pertinentes. A crítica não altera o produto.
+Em UI e UX, usa a rubrica de interface, com severidade e base declaradas. Sempre entrega
+nota geral e, quando pertinente, notas por categoria. As notas de qualidade têm duas casas
+decimais, como `9.73` ou `7.00`, na escala padrão de 0 a 10, cujo máximo é `10.00`.
 
-> $criticar-interface Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
+> $criticar Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
 
-### [`criticar-interface-em-conselho`](../skills/development/criticar-interface-em-conselho/SKILL.md)
+Para um jogo, peça que o crítico jogue e indique os aspectos que precisa observar. Uma captura
+não comprova cooperação ou resposta dos controles. Referências e âncoras orientam as notas.
 
-Quando a interface é importante demais para uma só opinião. Avaliadores independentes aplicam a
-mesma rubrica, e a consolidação mostra onde concordam, onde divergem e o que só um deles viu.
+> $criticar Use outro contexto para jogar esta build e avaliar cooperação, legibilidade e fidelidade a `definicoes/` e suas referências. Dê a nota geral e notas de game design e estética, com duas casas decimais e justificativas. Registre os passos, as evidências e os limites. Não edite o jogo.
 
-> $criticar-interface-em-conselho Avalie o fluxo de cadastro antes do lançamento pelas perspectivas de usabilidade, acessibilidade e conteúdo.
+Para várias perspectivas independentes, combine com `conselho`. Todos recebem a mesma versão
+e os mesmos critérios; a consolidação preserva divergências e achados de um só avaliador.
+
+> $criticar $conselho Avalie o cadastro antes do lançamento pelas perspectivas de usabilidade, acessibilidade e conteúdo.
+
+O ciclo de correção exige autorização de implementação e uma condição de encerramento.
+O crítico não escreve código; quem implementa confere os achados e repete as provas afetadas.
+
+> $implementar Conclua o escopo aprovado. Ao terminar, chame um crítico independente com $criticar, corrija os problemas confirmados no escopo e peça nova crítica, até três rodadas. Encerre com todos os critérios comprovados e sem problemas impeditivos confirmados pelo crítico, ou com as pendências ao atingir o limite. Não mude os requisitos para obter aprovação.
 
 ### [`reconciliar`](../skills/development/reconciliar/SKILL.md)
 

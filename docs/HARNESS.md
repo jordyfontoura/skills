@@ -108,18 +108,30 @@ Fontes em `skills/development/`.
 | `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
 | `integrar` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
 | `reconciliar` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
-| `criticar-interface` | Criticar UI e UX com rubrica fixa, severidade, base e limites declarados. |
-| `criticar-interface-em-conselho` | Consolidar críticas independentes de UI e UX, com severidades e divergências. |
+| `criticar` | Criticar a qualidade de um artefato ou experiência com critérios especializados e evidências. |
 
 `revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
 examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
-`integrar` executa a integração solicitada sem presumir publicação. O apoio de
-[direção visual](../skills/development/implementar/interface.md) é compartilhado por `implementar`
-e `prototipar`, preservando a identidade e os componentes do projeto.
-`criticar-interface` avalia a experiência de uso de uma interface, com ou sem diff, usando a
-[rubrica comum](../skills/development/criticar-interface/rubric.md), o design system do projeto e as
-diretrizes vigentes da plataforma. `criticar-interface-em-conselho` aplica a mesma rubrica com
-avaliadores independentes e segue `conselho` para independência e consolidação.
+`integrar` executa a integração solicitada sem presumir publicação. A
+[biblioteca de conhecimento](../knowledge/README.md) reúne guias de UI e acessibilidade
+compartilhados por `implementar`, `prototipar` e `criticar`, preservando a identidade e os
+componentes do projeto. Métodos e políticas continuam nas skills; novos domínios entram
+com conteúdo real. As cópias avulsas incluem os guias usados em `references/knowledge/`.
+`criticar` avalia artefatos e experiências, como jogos, interfaces e textos, com critérios
+derivados do pedido, do público e das referências. Para UI e UX, preserva o método e a
+[rubrica comum](../skills/development/criticar/interface-rubric.md), incluindo acessibilidade,
+o design system do projeto e as diretrizes da plataforma. Com várias perspectivas pedidas,
+compõe com `conselho`; o [painel de UI](../skills/development/criticar/interface-panel.md)
+mantém seu método específico de severidade e consolidação.
+
+Uma crítica independente usa outro contexto e segue `delegar`, com `roles.council` quando
+houver política, inclusive para um único crítico. Toda crítica realizada inclui nota geral
+e notas por categoria quando pertinentes, com duas casas decimais, como `9.73`. A escala
+padrão é de 0 a 10 (`10.00` no extremo superior), com critérios e âncoras declarados.
+As notas não substituem provas técnicas. Num ciclo de correção autorizado, quem implementa
+confere o feedback com `tratar-revisao`, corrige e repete as provas afetadas antes da nova
+crítica. O limite e a condição de parada vêm do objetivo. `verificar-aceite` continua sendo
+a comprovação independente dos critérios combinados da entrega.
 
 ### Produtividade
 

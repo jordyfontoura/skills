@@ -9,24 +9,35 @@ compatibilidade.
 
 ### Adicionado
 
+- Biblioteca `knowledge/` com referências de UI e acessibilidade compartilhadas por
+  `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
+  O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
+  fontes e limites. Outros domínios entram quando houver conteúdo útil.
+- Empacotamento seletivo das referências em `references/knowledge/` das cópias avulsas,
+  incluindo dependências transitivas e links ajustados. O plugin completo usa a biblioteca
+  na raiz. A validação continua recusando links arbitrários fora da skill e verifica índice,
+  integridade das cópias e isolamento da biblioteca. Atualização e adoção preservam adaptações locais.
 - `examinar-eficiencia`: explica por que o trabalho com o agente demorou ou gastou muitos
   tokens e propõe a menor mudança para cada causa, sem cortar verificações úteis. Usa a conversa,
   diffs, verificações e métricas expostas; lê logs locais de sessão só a pedido. Não estima
   tokens por contagem de palavras e encaminha causas nas instruções para `melhorar-harness`.
-- `criticar-interface`: critica UI e UX com uma rubrica fixa: percurso cognitivo, heurísticas
-  de Nielsen, WCAG 2.2 AA (com WCAG2ICT fora da web), hierarquia visual, conteúdo, confiança e
-  escolha, estados e convenções da plataforma. Cada achado traz padrão, impacto, severidade de
-  0 a 4 com notas definidas e a base no material examinado. Decisões do projeto não reduzem os
-  pisos de acessibilidade e de escolha da pessoa. A skill consulta o design system do projeto
-  e as diretrizes vigentes da plataforma, com `pesquisar-web` quando houver acesso, e declara
-  o que não pôde examinar.
-- `criticar-interface-em-conselho`: reúne avaliadores independentes com a mesma rubrica, agrupa
-  achados com rastreio, pede a todos notas para a lista consolidada e registra mediana,
-  intervalo e controvérsias, seguindo `conselho`. `conselho` passa a encaminhar críticas de
-  interface para essa skill.
+- `criticar`: critica artefatos e experiências com critérios especializados pelo pedido,
+  público e referências. Preserva a rubrica de UI e UX em apoios, compõe com `conselho` para
+  várias perspectivas e usa `roles.council` para consultas independentes, inclusive individuais.
+  Sempre entrega nota geral e notas por categoria quando pertinentes, com duas casas decimais
+  (como `9.73`), na escala padrão de 0 a 10. Distingue severidade de qualidade e orienta
+  ciclos de correção autorizados, com condição
+  de parada, sem substituir provas técnicas ou aceite independente.
 
 ### Mudado
 
+- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica foi
+  preservada em `criticar/interface-rubric.md`, o método em `interface.md` e o painel de UI em
+  `interface-panel.md`. Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
+  apoios, preservando adaptações locais; a ausência dos diretórios antigos não autoriza
+  apagá-los no destino. Use `criticar` com `conselho` para várias perspectivas, sem aliases.
+- `criticar-interface` passou a se chamar `criticar`.
+- `criticar-interface-em-conselho` passou a se chamar `criticar`.
 - Desenvolvimento e PRs passam a usar a branch permanente `nightly`; `main` é o canal estável,
   com promoções integrais e tags de versão. CI verifica ambos os canais e o Dependabot abre
   PRs para `nightly`.
