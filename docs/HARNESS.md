@@ -146,7 +146,7 @@ Fontes em `skills/productivity/`.
 | `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
 | `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
 | `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `andamento` | Consultar andamento, pendências e bloqueios preservando o objetivo e as autorizações. |
+| `andamento` | Consultar o pedido inteiro, pendências, próxima entrega e previsão fundamentada de conclusão. |
 | `examinar-eficiencia` | Explicar onde o trabalho gastou tempo e tokens e propor a menor mudança para cada causa. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
@@ -171,11 +171,28 @@ Para consultar o andamento, use, por exemplo:
 
 > `$andamento Como está? O que já fez, o que falta e tem algo dependendo de mim?`
 
+> `$andamento Quanto falta para concluir o goal inteiro, incluindo revisão, testes e aceite?`
+
 O agente responde com o estado conhecido, as provas disponíveis, os impedimentos e a próxima
 ação. Depois, continua a etapa que já estava em execução e autorizada. Se estava aguardando
 uma decisão, continua aguardando: uma pergunta de andamento não conta como aprovação.
 `andamento` faz uma consulta curta; `reconciliar` audita o trabalho contra requisitos e `passar-contexto`
 prepara o contexto para outra sessão retomar.
+
+O restante vai até a conclusão combinada do pedido. Quando pertinente, o resumo inclui o
+que mudou, a próxima entrega utilizável e a previsão de conclusão, distinguindo-a da etapa
+atual. Se o usuário perguntar quanto falta, a resposta sempre traz a estimativa com base e
+incertezas ou explica por que ainda não há previsão útil e o marco que permitirá estimar.
+Usa faixa ou ordem de grandeza sustentada pelo contexto, sem exigir histórico estatístico
+nem inventar um prazo. Esperas sem duração conhecida ficam como condições; não se converte
+contagem de tarefas em percentual do tempo nem se fazem medições só para responder.
+
+Essa é uma convenção do harness para tornar a consulta mais útil. A
+[NN/g](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/) recomenda
+mostrar etapas feitas e restantes quando uma estimativa razoável não está disponível.
+Um [estudo exploratório de workshop](https://arxiv.org/html/2604.00010v1) encontrou dificuldades
+de modelos ao prever sua própria duração; suas tarefas predominantemente curtas não validam
+previsões durante goals longos. As fontes motivam cautela, não comprovam calibração local.
 
 Na mesma conversa, o momento e o efeito da entrega da pergunta dependem do ambiente: a skill
 não controla filas ou interrupções. Para observar outra execução sem lhe enviar mensagens,
