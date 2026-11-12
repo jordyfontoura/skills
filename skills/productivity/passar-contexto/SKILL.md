@@ -23,6 +23,13 @@ Abra pela retomada:
 - O que foi comprovado, com comandos, resultados exatos e a revisão a que se aplicam.
 - Decisões já tomadas, dúvidas abertas, tentativas sem sucesso e acessos necessários.
 
+Quando as instruções do projeto declararem a Bateia para registrar verificações, siga o apoio
+`bateia.md` da skill `implementar`. Inclua `harness_task`, `harness_attempt` e os ids de registro
+relevantes com estado e árvore curta, dizendo se a árvore coincide com a revisão atual. Marque
+`incomplete` como desconhecido, a reexecutar na retomada, e indique a consulta
+`bateia runs --tag harness_task=<tarefa> --json`. Uma prova obtida noutra árvore não vale para a
+revisão atual.
+
 Aponte para o histórico, os commits e as evidências existentes em vez de copiar a conversa.
 Não trate trabalho incompleto como aprovado nem reinicie uma entrevista com decisões já
 resolvidas. Antes de entregar, confira se uma sessão nova conseguiria dizer, só a partir da

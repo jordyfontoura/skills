@@ -37,6 +37,15 @@ controles reais e confira o resultado visível e a persistência relevante. Um t
 de componente ou uma chamada direta de API não comprovam, sozinhos, o fluxo da interface.
 Escolha estados e tamanhos de tela a partir do escopo combinado, sem inventar requisitos.
 
+Quando as instruções do projeto declararem a Bateia para registrar verificações, com o comando
+e o contrato `HC-*`, siga o apoio `bateia.md` da skill `implementar`. Em contexto independente,
+gere as próprias execuções na revisão fixada, com `harness_role=evaluator` e o seu
+`harness_eval`, identificando a avaliação por tarefa, tentativa e ordinal. Para cada critério,
+cite os ids de registro que satisfazem E1, E2 e E5, comparando árvore, `schema_version` e versão
+da Bateia. Registros de outra árvore, de outro papel ou de outra avaliação são contexto, nunca
+prova; `incomplete` é desconhecido. Com a Bateia ausente ou incompatível, os critérios ficam
+`UNPROVED`, sem fallback para execução direta. A Bateia registra fatos e não aprova nada.
+
 Repita falhas relatadas pelo gatilho original, incluindo navegação ou transições que quebraram.
 Compare comportamentos de protótipos aprovados quando houver exigência de fidelidade.
 Registre revisão, ambiente, entradas e passos para não confundir a prova com outra versão.

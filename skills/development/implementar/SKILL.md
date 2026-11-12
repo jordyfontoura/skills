@@ -43,6 +43,14 @@ Exercite cada critério de aceite pelo método combinado. Relate comandos, obser
 resultados exatos. Scripts não executados, leitura de código e ferramentas indisponíveis
 não são evidência de funcionamento. Não enfraqueça um teste nem mude um requisito só para passar.
 
+Quando as instruções do projeto declararem a Bateia para registrar verificações, com o comando
+e o contrato `HC-*`, siga [bateia.md](bateia.md): confira disponibilidade e versão antes da
+primeira evidência, execute cada verificação usada como evidência por `bateia run` com as tags
+do contrato e relate id, estado, código, árvore curta, `dirty` e caminho do log. Nunca declare
+sucesso fora da regra E1. Com a Bateia ausente ou incompatível, relate falha de ambiente e
+mantenha os critérios sem prova, sem trocar de fluxo em silêncio. Sem a declaração, siga o
+fluxo acima sem exigir a ferramenta.
+
 Se uma descoberta exigir mudar requisito, tarefa ou método de prova, diferencie ajuste técnico
 dentro do combinado de mudança de comportamento. Registre a versão substituída, o motivo e
 a decisão que autoriza a nova versão no registro oficial, preservando autoria e referências.

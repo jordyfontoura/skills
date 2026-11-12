@@ -58,6 +58,24 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 - Explorar não autoriza implementar, e uma pergunta não conta como aprovação.
 ```
 
+### Registrar verificações com a Bateia
+
+A Bateia é uma ferramenta separada que executa comandos de verificação e registra fatos sobre
+cada execução. O harness não a instala. Se o projeto já a usa, declare nas instruções o comando
+e o contrato, por exemplo:
+
+```markdown
+## Registro de verificações
+
+- Registre as verificações com a Bateia pelo comando `bateia`, contrato `HC-2026-11-12`.
+- Verificações mecânicas sem contagem: `cargo fmt --check`, na raiz do repositório.
+```
+
+Use um caminho relativo à raiz ou um programa do `PATH`. Com a declaração, `implementar`,
+`verificar-aceite` e `passar-contexto` seguem o apoio `bateia.md` da skill `implementar`, e a
+ferramenta passa a ser obrigatória: ausente ou incompatível, os critérios ficam sem prova.
+Sem a declaração, as skills seguem o fluxo atual.
+
 ## Cópia manual
 
 Escolha a referência da origem antes de copiar: `main` para o canal estável (padrão), `nightly`

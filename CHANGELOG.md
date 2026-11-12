@@ -9,6 +9,15 @@ compatibilidade.
 
 ### Adicionado
 
+- Integração opcional com a Bateia, que registra execuções de verificação sem emitir veredito.
+  Vale só quando as instruções do projeto declaram a Bateia, com o comando e o contrato
+  `HC-2026-11-12`; sem a declaração, as skills seguem o fluxo atual e não exigem a ferramenta.
+  O novo apoio `bateia.md` em `implementar` traz compatibilidade (`schema_version` `0.1`,
+  versão mínima `0.1.0`), as tags `harness_*`, as regras de evidência E1–E6 e exemplos de
+  comando. Com a declaração, `implementar` registra cada verificação usada como evidência,
+  `verificar-aceite` cita por critério as execuções da própria avaliação na árvore avaliada e
+  `passar-contexto` leva tarefa, tentativa, ids e árvores para a retomada. Ferramenta ausente ou
+  incompatível deixa os critérios sem prova, sem fallback. O plugin continua só com Markdown.
 - Biblioteca `knowledge/` com referências de UI e acessibilidade compartilhadas por
   `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
   O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
