@@ -146,7 +146,7 @@ O nome interno da coleção é harness; daí os nomes das skills de manutenção
 
 ## Como o autor usa
 
-Frequência relativa nas conversas pessoais do autor, consultadas em 02/11/2026.
+Frequência relativa nas conversas pessoais do autor, consultadas em 13/11/2026.
 Pedidos e declarações podem se sobrepor e não comprovam execução.
 
 <picture>

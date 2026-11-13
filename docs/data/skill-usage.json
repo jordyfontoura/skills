@@ -1,57 +1,83 @@
 {
-  "snapshot_date": "2026-11-02",
-  "cutoff": "2026-11-02T12:17:00-03:00",
-  "thread_count": 185,
+  "snapshot_date": "2026-11-13",
+  "cutoff": "2026-11-13T16:08:15.602Z",
+  "thread_count": 256,
   "source": "Mensagens das conversas pessoais do autor disponíveis no T3 Code.",
   "counting_unit": "Uma ocorrência por skill em cada mensagem, incluindo repetições em mensagens diferentes.",
+  "method": "Pedidos diretos e declarações explícitas, com conferência das menções ambíguas. Exclui catálogos, citações, recomendações, edição das próprias skills, instruções em goals/automações, mensagens herdadas e atividade interna de subagentes. Nomes históricos reunidos conforme o CHANGELOG.",
   "user": [
     {
-      "skill": "escrever-objetivo",
-      "occurrences": 26,
-      "threads": 16
-    },
-    {
-      "skill": "entrevistar",
-      "occurrences": 23,
-      "threads": 15
-    },
-    {
       "skill": "conselho",
-      "occurrences": 22,
-      "threads": 11
+      "occurrences": 70,
+      "threads": 32
     },
     {
       "skill": "pesquisar-web",
-      "occurrences": 19,
-      "threads": 9
+      "occurrences": 50,
+      "threads": 28
+    },
+    {
+      "skill": "escrever-objetivo",
+      "occurrences": 38,
+      "threads": 27
     },
     {
       "skill": "propor",
-      "occurrences": 15,
-      "threads": 9
+      "occurrences": 37,
+      "threads": 24
+    },
+    {
+      "skill": "entrevistar",
+      "occurrences": 27,
+      "threads": 18
     },
     {
       "skill": "andamento",
-      "occurrences": 4,
-      "threads": 1
+      "occurrences": 20,
+      "threads": 8
     },
     {
       "skill": "prototipar",
-      "occurrences": 3,
-      "threads": 1
+      "occurrences": 17,
+      "threads": 5
+    },
+    {
+      "skill": "criticar",
+      "occurrences": 7,
+      "threads": 2
     },
     {
       "skill": "escrever-claro",
+      "occurrences": 4,
+      "threads": 3
+    },
+    {
+      "skill": "configurar-harness",
       "occurrences": 2,
       "threads": 2
     },
     {
-      "skill": "examinar-arquitetura",
+      "skill": "entrevistar-por-arquivo",
+      "occurrences": 2,
+      "threads": 2
+    },
+    {
+      "skill": "examinar-eficiencia",
+      "occurrences": 2,
+      "threads": 2
+    },
+    {
+      "skill": "melhorar-harness",
+      "occurrences": 2,
+      "threads": 2
+    },
+    {
+      "skill": "atualizar-harness",
       "occurrences": 1,
       "threads": 1
     },
     {
-      "skill": "esclarecer",
+      "skill": "conhecer-ferramentas",
       "occurrences": 1,
       "threads": 1
     },
@@ -61,22 +87,22 @@
       "threads": 1
     },
     {
-      "skill": "entrevistar-por-arquivo",
+      "skill": "esclarecer",
       "occurrences": 1,
       "threads": 1
     },
     {
-      "skill": "configurar-harness",
+      "skill": "examinar-arquitetura",
       "occurrences": 1,
       "threads": 1
     },
     {
-      "skill": "atualizar-harness",
+      "skill": "fazer-direto",
       "occurrences": 1,
       "threads": 1
     },
     {
-      "skill": "tratar-revisao",
+      "skill": "descrever-pr",
       "occurrences": 0,
       "threads": 0
     },
@@ -86,12 +112,7 @@
       "threads": 0
     },
     {
-      "skill": "verificar-aceite",
-      "occurrences": 0,
-      "threads": 0
-    },
-    {
-      "skill": "passar-contexto",
+      "skill": "especificar",
       "occurrences": 0,
       "threads": 0
     },
@@ -101,17 +122,12 @@
       "threads": 0
     },
     {
-      "skill": "melhorar-harness",
-      "occurrences": 0,
-      "threads": 0
-    },
-    {
       "skill": "integrar",
       "occurrences": 0,
       "threads": 0
     },
     {
-      "skill": "descrever-pr",
+      "skill": "passar-contexto",
       "occurrences": 0,
       "threads": 0
     },
@@ -126,111 +142,136 @@
       "threads": 0
     },
     {
-      "skill": "especificar",
+      "skill": "tratar-revisao",
       "occurrences": 0,
       "threads": 0
     },
     {
-      "skill": "conhecer-ferramentas",
+      "skill": "verificar-aceite",
       "occurrences": 0,
       "threads": 0
     }
   ],
   "agent": [
     {
-      "skill": "delegar",
-      "occurrences": 46,
-      "threads": 16
+      "skill": "diagnosticar",
+      "occurrences": 97,
+      "threads": 29
     },
     {
       "skill": "implementar",
-      "occurrences": 43,
-      "threads": 19
+      "occurrences": 94,
+      "threads": 37
     },
     {
-      "skill": "diagnosticar",
-      "occurrences": 42,
-      "threads": 15
+      "skill": "delegar",
+      "occurrences": 67,
+      "threads": 24
     },
     {
       "skill": "especificar",
-      "occurrences": 34,
-      "threads": 13
-    },
-    {
-      "skill": "escrever-claro",
-      "occurrences": 24,
-      "threads": 19
-    },
-    {
-      "skill": "verificar-aceite",
-      "occurrences": 22,
-      "threads": 10
-    },
-    {
-      "skill": "entrevistar",
-      "occurrences": 18,
-      "threads": 12
+      "occurrences": 61,
+      "threads": 25
     },
     {
       "skill": "conselho",
-      "occurrences": 15,
-      "threads": 8
+      "occurrences": 41,
+      "threads": 21
     },
     {
-      "skill": "escrever-objetivo",
-      "occurrences": 15,
-      "threads": 10
-    },
-    {
-      "skill": "passar-contexto",
-      "occurrences": 14,
-      "threads": 11
-    },
-    {
-      "skill": "configurar-harness",
-      "occurrences": 13,
-      "threads": 13
-    },
-    {
-      "skill": "propor",
-      "occurrences": 10,
-      "threads": 6
+      "skill": "verificar-aceite",
+      "occurrences": 41,
+      "threads": 17
     },
     {
       "skill": "pesquisar-web",
-      "occurrences": 8,
-      "threads": 5
+      "occurrences": 33,
+      "threads": 20
+    },
+    {
+      "skill": "entrevistar",
+      "occurrences": 26,
+      "threads": 18
+    },
+    {
+      "skill": "escrever-claro",
+      "occurrences": 26,
+      "threads": 23
     },
     {
       "skill": "andamento",
-      "occurrences": 7,
-      "threads": 2
+      "occurrences": 24,
+      "threads": 7
     },
     {
       "skill": "tratar-revisao",
-      "occurrences": 5,
-      "threads": 2
+      "occurrences": 24,
+      "threads": 7
+    },
+    {
+      "skill": "escrever-objetivo",
+      "occurrences": 22,
+      "threads": 18
+    },
+    {
+      "skill": "configurar-harness",
+      "occurrences": 19,
+      "threads": 19
+    },
+    {
+      "skill": "passar-contexto",
+      "occurrences": 18,
+      "threads": 14
+    },
+    {
+      "skill": "propor",
+      "occurrences": 17,
+      "threads": 12
     },
     {
       "skill": "revisar",
-      "occurrences": 4,
-      "threads": 3
+      "occurrences": 16,
+      "threads": 10
     },
     {
-      "skill": "atualizar-harness",
-      "occurrences": 3,
-      "threads": 2
+      "skill": "integrar",
+      "occurrences": 14,
+      "threads": 12
     },
     {
       "skill": "prototipar",
-      "occurrences": 2,
-      "threads": 1
+      "occurrences": 14,
+      "threads": 4
+    },
+    {
+      "skill": "atualizar-harness",
+      "occurrences": 12,
+      "threads": 11
     },
     {
       "skill": "reconciliar",
-      "occurrences": 2,
-      "threads": 1
+      "occurrences": 10,
+      "threads": 7
+    },
+    {
+      "skill": "criticar",
+      "occurrences": 8,
+      "threads": 3
+    },
+    {
+      "skill": "examinar-eficiencia",
+      "occurrences": 6,
+      "threads": 3
+    },
+    {
+      "skill": "esclarecer",
+      "occurrences": 4,
+      "threads": 4
+    },
+    {
+      "skill": "melhorar-harness",
+      "occurrences": 4,
+      "threads": 4
     },
     {
       "skill": "conhecer-ferramentas",
@@ -238,19 +279,14 @@
       "threads": 2
     },
     {
-      "skill": "melhorar-harness",
-      "occurrences": 1,
-      "threads": 1
-    },
-    {
-      "skill": "integrar",
-      "occurrences": 1,
-      "threads": 1
+      "skill": "descrever-pr",
+      "occurrences": 2,
+      "threads": 2
     },
     {
       "skill": "entrevistar-por-arquivo",
-      "occurrences": 1,
-      "threads": 1
+      "occurrences": 2,
+      "threads": 2
     },
     {
       "skill": "examinar-arquitetura",
@@ -258,12 +294,7 @@
       "threads": 0
     },
     {
-      "skill": "esclarecer",
-      "occurrences": 0,
-      "threads": 0
-    },
-    {
-      "skill": "descrever-pr",
+      "skill": "fazer-direto",
       "occurrences": 0,
       "threads": 0
     }
