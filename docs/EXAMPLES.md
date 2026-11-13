@@ -83,6 +83,14 @@ e ainda falta provar. Um plano curto pode ficar na conversa.
 
 > $implementar Adicione a exportação CSV dos resultados filtrados, com as colunas já exibidas na tabela, e confira o arquivo gerado. Não publique.
 
+### [`fazer-direto`](../skills/development/fazer-direto/SKILL.md)
+
+Quando você quer priorizar a entrega e dispensar o fluxo habitual. Vai direto ao código,
+decide detalhes técnicos reversíveis e confere o resultado, sem criar specs, planos formais
+ou rodadas de revisão por rotina. Mantém o escopo e as verificações obrigatórias.
+
+> $fazer-direto Adicione a exportação CSV com as colunas da tabela. Use os padrões existentes, sem spec nem plano formal. Confira o arquivo gerado e não publique.
+
 ### [`diagnosticar`](../skills/development/diagnosticar/SKILL.md)
 
 Quando há uma falha sem causa conhecida, principalmente após tentativas frustradas de correção.

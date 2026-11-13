@@ -27,6 +27,8 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 3. Use `implementar` para entregar partes pequenas e verificáveis. Declare responsabilidade por
    arquivos ao delegar; não sobrescreva mudanças de outro colaborador. Corrija dentro dos
    contratos existentes sem reiniciar o planejamento; revise o conjunto e repita as provas afetadas.
+   Quando o pedido priorizar execução direta, use `fazer-direto` no lugar das etapas habituais
+   de processo, preservando as Regras e as provas expressamente exigidas.
 4. Prove os requisitos pelos métodos combinados e relate comandos e resultados observados.
    Prova ausente continua ausente. Implementação e aceite independente são distintos.
 5. Use `passar-contexto` quando outra sessão precisar retomar. Indique próxima etapa e provas pendentes.

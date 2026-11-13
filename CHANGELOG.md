@@ -9,6 +9,9 @@ compatibilidade.
 
 ### Adicionado
 
+- `fazer-direto`: modo de execução que prioriza velocidade e dispensa specs, planos formais
+  e etapas de processo por rotina no pedido atual. Decide detalhes técnicos reversíveis,
+  preserva o escopo completo, permissões e verificações obrigatórias e relata o resultado brevemente.
 - Biblioteca `knowledge/` com referências de UI e acessibilidade compartilhadas por
   `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
   O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
