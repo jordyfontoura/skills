@@ -45,13 +45,26 @@ não são evidências.
 ## Ordenar a execução
 
 Numa mudança pequena, rode as verificações relevantes e não acrescente campanha nem etapas
-que o projeto não combinou. Quando o trabalho combinar verificações caras, revisão separada ou
-campanha completa, ordene-as pelo custo e pela
-chance de invalidar o candidato: primeiro as rápidas,
+que o projeto não combinou. Relacione cada verificação ao comportamento e ao risco cobertos;
+evite suítes sobrepostas que não acrescentem prova. Quando o trabalho combinar verificações
+caras, revisão separada ou campanha completa, ordene-as pelo custo e pela chance de invalidar
+o candidato: primeiro as rápidas,
 como o validador do harness, tipos e lint, as regressões e as jornadas afetadas; depois a revisão
-e o tratamento dos achados; por fim, a campanha completa no candidato estabilizado. Não inicie a
+e o tratamento dos achados; por fim, a campanha completa no candidato estabilizado. Antes de
+uma campanha cara, rode um caso mínimo que exercite a mesma preparação, fixtures e ambiente,
+para que uma falha de preparação apareça logo. Não inicie a
 campanha completa enquanto uma revisão ainda pode mudar o candidato. Uma revisão exploratória
-pode correr antes, enquanto o código muda. Um resultado vale para a revisão em que foi obtido;
-reaproveite-o enquanto ela não mudar. Uma execução atende a mais de uma obrigação só quando
-preserva os controles de cada uma e essa combinação consta do plano. Comandos obrigatórios
-continuam obrigatórios até uma mudança autorizada.
+pode correr antes, enquanto o código muda. Registre a revisão e as condições de cada resultado.
+Quando houver alterações, identifique as provas afetadas e suas dependências; repita essas
+provas e preserve as demais enquanto código, critérios, ambiente e entradas relevantes
+continuarem aplicáveis. Uma execução pode atender a mais de uma obrigação quando essa relação
+for explícita e preservar os controles de cada uma, sem exigir um novo plano para registrá-la.
+Comandos obrigatórios continuam obrigatórios até uma mudança autorizada.
+
+## Ler as saídas
+
+Toda saída lida fica no contexto. Use o modo conciso do runner e salve o log longo em arquivo.
+Leia o código de saída, as contagens e o trecho de cada falha; busque no log salvo só o que
+esse trecho não explicar. Nunca declare aprovação sem código de saída e contagem de testes.
+Zero testes executados não é aprovação. No git, comece por `--stat`, `--short` e `--oneline`
+e abra o diff completo só dos arquivos que precisar ler.

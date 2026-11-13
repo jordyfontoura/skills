@@ -19,21 +19,23 @@ O arquivo deste repositório contém as preferências pessoais aprovadas do prop
 | `representative` | Claude Opus 5.5 high | GPT-6.1 Sol high |
 | `evaluator` | Claude Opus 5.5 high | GPT-6.1 Sol high |
 
-`planner`, usado por `especificar`, usa sempre `hard`, sem mapa de complexidade. Mesmo uma
-especificação pequena usa esse perfil; o tamanho do texto continua proporcional ao trabalho.
-`implementer` e `reviewer` usam `default`, com mapas explícitos para `simple` e `hard`.
+`planner`, `implementer` e `reviewer` usam `default`, com mapas explícitos para `simple` e `hard`.
+No planejamento, `hard` atende escolhas difíceis de comportamento ou arquitetura, com
+consequências relevantes; uma definição delimitada não exige esse perfil por ser uma spec.
 `orchestrator` e `representative` usam seus perfis próprios. `evaluator` e `council` compartilham
-o perfil `evaluator`; alterar essa lista afeta ambos. O representante tem uma lista própria,
+o perfil `evaluator`; alterar essa lista afeta ambos. `criticar` usa `roles.council` para uma
+consulta independente, mesmo individual; a quantidade de críticos vem do pedido e da cobertura.
+O representante tem uma lista própria,
 mesmo sendo igual à de `hard`, para que mudanças na implementação não alterem suas decisões.
 
 Os IDs de provedor `codex` e `claudeAgent` correspondem ao T3 Code, usado pelo mantenedor.
 Outros ambientes podem exigir IDs diferentes ou não oferecer esses candidatos. A tabela
 registra preferências, não disponibilidade comprovada, desempenho comparado ou modelos executados.
 
-Antes de elaborar uma spec, confira se o contexto corresponde ao candidato selecionado para
-`planner`, incluindo esforço. Se não corresponder, use uma consulta autorizada ao planejador.
-Se não houver contexto compatível disponível, informe o limite, sem alegar troca de modelo.
-A escolha explícita do pedido prevalece sobre esta preferência. Ao adotar em outro projeto,
+Planejamento rotineiro permanece na conversa, com o modelo atual. Use uma consulta ao
+`planner` quando uma análise separada tiver utilidade concreta e estiver autorizada; nesse
+novo contexto, resolva papel, complexidade, modelo e esforço. Não chame outro agente apenas
+para corresponder à política. A escolha explícita do pedido prevalece. Ao adotar em outro projeto,
 preserve sua política local; a skill não fixa nomes de modelos nem exige este TOML.
 
 ## Formato da versão 2
@@ -119,6 +121,18 @@ fatos pessoais nem é apresentado como se você tivesse respondido. `$propor` co
 sua aprovação, salvo delegação explícita daquela decisão. O arquivo não concede essa delegação.
 
 ## Adoção e atualização
+
+O [CLI de adoção](../cli/README.md#configurar-modelos) pode criar `.agents/models.toml`
+por perguntas, com `models init`. Ele oferece herança do ambiente, um modelo compartilhado
+ou perfis separados, candidatos ordenados, esforço e associação às sete responsabilidades.
+A pergunta também aparece opcionalmente na instalação de papéis ou skills de delegação.
+O guia explica o uso pelo npm e como experimentar o código local.
+
+O CLI cria políticas v2 e valida os dados gerados sem exigir Python no destino. Isso não
+comprova disponibilidade nem suporte do provedor. Provedor e modelo são informados pela
+pessoa, sem copiar preferências pessoais deste repositório ou inferir IDs pelo agente.
+Arquivos existentes, inclusive v1, são preservados e não são validados pelo configurador.
+`--print` permite consultar uma proposta; não há migração, edição ou ativação automática.
 
 Em outro projeto, a política é opcional. Sem arquivo, preserve as seleções do ambiente e do usuário.
 Para adotar as mesmas preferências, copie e adapte o TOML pessoal e este guia. Para começar

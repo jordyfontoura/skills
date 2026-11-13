@@ -31,7 +31,8 @@ Quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com cada 
 passando, pare de corrigir caso a caso. Antes da próxima correção, mapeie estados, transições
 e invariantes do mecanismo e derive deles os casos de teste. Confira a solução com oráculos
 independentes da implementação, como modelo de referência, exemplos resolvidos ou propriedades
-verificadas sobre sequências de operações.
+verificadas sobre sequências de operações. Compartilhar um módulo, por si só, não
+demonstra um mecanismo comum.
 
 Corrija a causa e, quando viável, mantenha um teste de regressão no ponto que a alcança.
 Repita o gatilho original e as verificações relevantes do projeto. Remova a instrumentação

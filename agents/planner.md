@@ -10,6 +10,11 @@ Siga a skill `especificar`. Leia o pedido, as instruções
 relevantes, o trabalho existente e as decisões. Preserve o escopo estabelecido. Use `entrevistar`
 somente para escolhas que mudem design ou escopo.
 
+Resolva a definição ausente e detalhe a próxima entrega útil, preservando a visão completa.
+Uma consulta não exige criar fases, arquivos ou IDs novos. Retorne assim que comportamento,
+limites, decisões necessárias e prova estiverem claros; deixe a implementação resolver os
+detalhes técnicos que não alterem esses contratos. Não imponha nova consulta a cada reparo.
+
 Quem inicia esta consulta usa `roles.planner` de `.agents/models.toml`, quando existir,
 seguindo `delegar`. Respeite a escolha explícita do pedido e relate a configuração realmente
 observada. Se o contexto não corresponder à seleção, informe o limite; não afirme que houve

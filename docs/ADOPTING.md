@@ -8,9 +8,14 @@ aparecer duas vezes.
 | Plugin | Claude Code e Codex, sem editar as skills. | Pelo gerenciador de plugins do agente. |
 | Cópia manual | Quem quer adaptar as skills ou usa outro agente. | Pela skill `atualizar-harness`. |
 
+O [CLI de adoção guiada](../cli/README.md) automatiza a rota de cópias
+editáveis para Codex e Claude Code. Ele recomenda skills por práticas de trabalho, oferece
+papéis opcionais e mostra os arquivos antes da instalação. Execute
+`npx @jordyfontoura/skills init` no projeto; o guia também explica como usar o código local.
+
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 26 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 30 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
@@ -40,10 +45,19 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 
 - Quando eu pedir `propor` ou pedir para explicar antes de agir, apresente a abordagem e
   aguarde minha aprovação.
-- Use `entrevistar` para escolhas abertas de escopo ou design e `especificar` para trabalho substancial.
+- Com requisitos claros, implemente por entregas úteis, com plano curto quando necessário.
+- Use `entrevistar` para escolhas abertas de escopo ou design e `especificar` para definir
+  comportamentos, contratos ou dependências ainda incertos, ou quando eu pedir uma spec.
+  Preserve definições existentes; tamanho do trabalho não exige especificação por si só.
 - Use `implementar` para entregar partes pequenas e verificáveis; relate os comandos executados
   e os resultados observados. Prova ausente continua ausente.
-- Use `revisar` para analisar diffs e `verificar-aceite` para aceite independente.
+- Use `revisar` para analisar diffs contra requisitos e riscos aplicáveis, sem transformar
+  melhorias opcionais em bloqueios. Use `verificar-aceite` quando houver aceite independente exigido.
+- Delegue apenas divisões autorizadas com ganho concreto; ter um papel não obriga uma consulta.
+- Localize por busca (`rg -n`) e leia o trecho; não releia inteira uma saída já salva.
+  Requisitos e critérios continuam lidos por inteiro na revisão e no aceite.
+- Repita as provas afetadas por mudanças e preserve as ainda válidas. Uma pendência bloqueia
+  seu trabalho dependente; ordens e portões explícitos continuam valendo.
 - Use `andamento` para consultas de andamento e `passar-contexto` quando outra sessão for retomar.
 - Aplique `escrever-claro` ao escrever documentos, títulos, descrições e mensagens.
 - Explorar não autoriza implementar, e uma pergunta não conta como aprovação.
@@ -51,9 +65,16 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 
 ## Cópia manual
 
+Escolha a referência da origem antes de copiar: `main` para o canal estável (padrão), `nightly`
+para novidades em avaliação ou uma tag `vX.Y.Z` para uma versão específica. Os links abaixo
+abrem os arquivos na referência que você está consultando no GitHub; confira a branch ou tag.
+Publicar na origem não atualiza as cópias instaladas nos seus projetos.
+
 1. Copie as skills escolhidas de [.agents/skills/](../.agents/skills/) (Codex e outros agentes)
    ou de [.claude/skills/](../.claude/skills/) (Claude Code) para a mesma pasta no seu projeto.
-   Cada skill funciona sozinha; outras skills são citadas pelo nome e podem ser copiadas depois.
+   Copie a pasta inteira, incluindo `references/knowledge/` quando existir: ali estão os
+   guias usados pela skill, com links internos. Os arquivos de apoio não dependem do clone
+   original. Outras skills são citadas pelo nome; copie também as necessárias ao fluxo pedido.
 2. Se quiser os papéis, copie [.claude/agents/](../.claude/agents/) e
    [.codex/agents/](../.codex/agents/) para as pastas correspondentes.
 3. Acrescente o bloco acima às instruções do projeto. Preserve os comandos e as convenções
@@ -64,9 +85,48 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
    explica o formato.
 5. `esclarecer` usa o glossário do projeto quando ele existe. Você pode partir do
    [glossário desta coleção](GLOSSARY.md).
-6. Registre na documentação de manutenção do projeto a origem, a versão, o SHA e as skills
-   copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na
+6. Registre na documentação de manutenção do projeto a origem, o canal ou referência fixa,
+   a versão, o SHA e as skills copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na
    próxima atualização.
 
+Para acompanhar as novidades, peça: `$atualizar-harness Atualize as skills pela branch nightly
+de jordyfontoura/skills, preservando nossas adaptações.` Nas próximas atualizações, a skill
+mantém o canal registrado. Para voltar ao canal estável, peça explicitamente `main`; confira
+as mudanças que essa troca pode retirar. Uma versão específica pedida prevalece sobre o canal.
+
 Use `configurar-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
-Não há instalador, conta, serviço ou processo em segundo plano.
+As cópias manuais dispensam instalador. O CLI opcional exige Node.js e npm, sem conta,
+serviço ou processo em segundo plano para usar o conteúdo instalado.
+
+## Biblioteca de conhecimento
+
+Na origem, [knowledge/](../knowledge/README.md) é a única fonte editável dos guias de domínio.
+O plugin completo leva essa pasta junto das skills. As cópias avulsas já incluem apenas os
+guias referenciados por cada skill, inclusive suas dependências, em `references/knowledge/`.
+Copiar somente `SKILL.md` deixa recursos de fora. Não é preciso instalar o gerador no destino.
+
+Pelo CLI, os guias ficam em uma única biblioteca `knowledge/harness/` na raiz do projeto,
+compartilhada por Codex e Claude Code. As skills são instaladas com links ajustados para
+essa pasta. `consultar-conhecimento` é incluída quando a seleção usa os guias e pode ser
+instalada diretamente para disponibilizar a biblioteca. Seu índice permite localizar o
+material pertinente, sem exigir a leitura de todos os guias.
+
+O índice e suas dependências são incluídos uma única vez, mesmo com ambos os agentes.
+Arquivos próprios em outros caminhos de `knowledge/` são preservados. Conflitos dentro de
+`knowledge/harness/` interrompem a instalação antes da escrita; os hashes dos guias entram
+nos recibos e no comando `status`. `knowledge list` apresenta o catálogo disponível no pacote.
+
+O novo layout do CLI não migra instalações anteriores automaticamente. Se já houver cópias
+com `references/knowledge/`, use `atualizar-harness` para ajustar links e conferir adaptações
+antes de retirar cópias antigas. Remover uma skill não deve remover uma biblioteca que outras usam.
+
+Registre o SHA adotado também para as referências empacotadas. Ao atualizar, compare o
+pacote anterior, a origem nova e suas adaptações; um cabeçalho de geração não autoriza
+sobrescrever uma edição local. Se o mesmo guia foi adaptado em mais de uma skill, confira
+as diferenças antes de mesclar. Não transforme uma cópia antiga em fonte do harness.
+
+Destinos que adotam as fontes agrupadas precisam incluir `knowledge/` e usar geração
+compatível; nesse layout, os links canônicos apontam para a biblioteca compartilhada.
+Uma referência retirada da origem pode deixar uma cópia extra: confira e migre-a explicitamente,
+pois `sync.py` recusa arquivos extras em vez de apagá-los. Conteúdo de domínio e mudanças de
+método têm revisões próprias; notas, pisos e critérios de aceite não são reduzidos pela atualização.

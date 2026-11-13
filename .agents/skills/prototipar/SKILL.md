@@ -10,8 +10,12 @@ Identifique a pergunta que o experimento precisa responder. Deduza-a do pedido q
 clara; pergunte apenas se a ambiguidade mudar o experimento. Reutilize a linguagem visual
 e as interfaces do projeto quando útil. Escolha o meio mais simples que demonstre a dúvida:
 página independente, script pequeno ou simulação isolada.
-Para direção visual, estados e acessibilidade de interfaces, leia o apoio
-`interface.md` da skill `implementar`, respeitando as simulações próprias do protótipo.
+Para interfaces, consulte os guias de [usabilidade](references/knowledge/ux/usability.md),
+[hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md),
+[acessibilidade](references/knowledge/accessibility/interface-criteria.md) e
+[plataforma](references/knowledge/ux/platform-conventions.md), conforme a pergunta do experimento.
+Reutilize a identidade e os componentes do projeto; os guias não autorizam trocá-los.
+Respeite e declare as simulações próprias do protótipo.
 
 Mantenha o protótipo separado do código de produção, em local permitido para experimentos
 ou artefatos. Dê uma forma clara de executar ou visualizar. Acrescente apenas os mecanismos
@@ -33,7 +37,9 @@ não só a aparência da tela final. Registre ação e resultado esperados como 
 e compare o fluxo de produção com essa referência antes de declarar fidelidade.
 
 Quando a direção estiver definida, preserve o artefato útil e registre o resultado na conversa
-ou na documentação existente. Encaminhe a `especificar` quando for necessário planejar.
+ou na documentação existente. Use `especificar` se ainda faltar uma definição relevante de
+comportamento, contrato ou prova. Com definições suficientes, a implementação autorizada
+pode continuar com um plano curto, sem nova etapa de especificação.
 Converta o comportamento aprovado em critérios com `visual`, `run` ou outro método adequado;
 um protótipo não comprova o critério de produção. Liste suas simulações e seus limites.
 

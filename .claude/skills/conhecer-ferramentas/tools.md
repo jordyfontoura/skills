@@ -12,13 +12,23 @@ o escopo de `conhecer-ferramentas`. Leia a ajuda da versão instalada antes de u
   não distinguirem as estruturas relevantes. O pacote npm é `@ast-grep/cli`; os executáveis
   são `ast-grep` e `sg`. Prefira o nome menos ambíguo e comece em modo de busca, sem reescrita.
   [Guia oficial](https://ast-grep.github.io/guide/quick-start.html).
-- **QMD:** busca em documentos locais indexados. `qmd search` usa busca textual; `query`,
-  `vsearch` e `embed` envolvem recursos semânticos e podem exigir modelos. Confirme índice e
-  coleção antes de buscar ou atualizar; leia o documento original para validar a interpretação
-  e a revisão, pois o índice pode estar desatualizado. Não indexe a máquina inteira por padrão.
-  Exemplo delimitado: `qmd --index harness search 'representante' -c harness-docs -n 2`.
-  O nome do índice é uma escolha deste projeto, não uma convenção obrigatória.
-  [Projeto oficial](https://github.com/tobi/qmd).
+- **QMD:** busca em documentos locais indexados, usada diretamente pelo agente. Serve para
+  corpus grande ou vocabulário incerto; para termo conhecido, `rg` delimitado basta e está
+  sempre atualizado. [Projeto oficial](https://github.com/tobi/qmd).
+  - `qmd search` (BM25) é o padrão e não usa modelos. Use `query` ou `vsearch` só com os
+    modelos já em cache e embeddings atualizados, escrevendo `intent:`, `lex:` e `vec:`.
+    Sem os modelos, eles baixam cerca de 2 GB e podem travar sem erro.
+  - Informe sempre `--index` e `-c`, com `-n 3` a `5`, `--json` e `--full-path`. Índice
+    inexistente é criado vazio e devolve `[]` sem erro; confirme com
+    `qmd --index <índice> collection list`.
+  - O índice não avisa quando está desatualizado e pode devolver texto que não existe mais.
+    Não cite snippet, docid nem score: leia o arquivo atual na linha do resultado e cite
+    caminho e linhas. Busca vazia não prova que algo não existe.
+  - Sem autorização, não rode `update`, `embed`, `pull`, `init`, `collection add` nem `trust`;
+    não use `mcp --http` nem variáveis `QMD_TRUST_*`. Exija a versão 2.8.3 ou posterior.
+    Prefira um índice por projeto restrito a `**/*.md`; não indexe a máquina, `.env` ou logs.
+  - Exemplo: `qmd --index harness search 'representante' -c harness-docs -n 3 --json --full-path`.
+    O nome do índice é uma escolha deste projeto, não uma convenção obrigatória.
 - **Repomix:** prepara pacotes de contexto para sessões sem acesso ao checkout. Selecione
   arquivos por inclusão explícita e confira a saída antes de compartilhar. Evite incluir
   segredos, artefatos ou cópias geradas da mesma fonte. Ler um recorte diretamente costuma

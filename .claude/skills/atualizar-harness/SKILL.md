@@ -37,6 +37,21 @@ Com plugin, esta skill continua cuidando do que ele não instala: orientações 
 Se o mesmo nome existir no plugin e numa cópia local, relate a duplicata e peça uma escolha;
 não apague nenhuma das duas.
 
+Na rota CLI, leia os recibos de `.harness/receipts/` como registros por seleção e componente.
+Confira origem, versão, `source.sha`, `source.dirty`, `source.contentHash` e hashes dos arquivos.
+Se `source.dirty` for verdadeiro, o SHA identifica apenas o commit de base do build, não o
+conteúdo exato instalado. Os hashes identificam conteúdos, mas não permitem recuperá-los.
+Só use uma base anterior como comprovada quando o artefato ou conteúdo obtido ou reproduzido
+corresponder aos hashes registrados; isso também vale para arquivos gerados a partir de um
+commit sem alterações locais. Sem essa prova, siga a comparação sem base comprovada,
+preservando possíveis personalizações.
+
+Combine os recibos aplicáveis a cada componente; o nome de arquivo baseado em hash não
+indica ordem cronológica. Se faltar uma ordem ou base comprovada, relate a lacuna em vez
+de escolher um recibo como a última versão. Preserve os recibos antigos como histórico
+imutável e registre separadamente o que foi atualizado, sem declarar uma atualização
+parcial como revisão única de todo o destino.
+
 ## Identificar origem e destino
 
 Leia as instruções do projeto de destino, seu estado Git e os registros de adoção existentes.
@@ -50,10 +65,23 @@ agrupadas, use seu processo de geração e adapte os links relativos ao layout d
 Atualize o conjunto já adotado; instalar outras skills ou provedores exige que isso faça parte
 do pedido, incluindo dependências necessárias que devem ser identificadas antes de alterar.
 
-Use a versão pedida. Na ausência de uma versão específica, consulte a branch principal da
-origem e fixe seu SHA antes da comparação. Registre repositório e revisão reais, não apenas
-"última versão". Inspecione a origem em uma cópia separada ou por leitura remota; não troque
-o remoto, a branch ou o código do produto para acessar as instruções do harness.
+Use a versão, tag ou SHA pedido. Sem uma revisão específica, use o canal escolhido no pedido;
+sem essa escolha, preserve o canal ou referência fixa registrado na adoção do destino. Para esta coleção, `main`
+é o canal estável e `nightly` traz novidades ainda em avaliação. Sem canal pedido ou registrado,
+use `main`. Para outra origem, respeite seus canais e use a branch principal como padrão.
+Não deduza o canal apenas pelo SHA ou pela versão do plugin, nem troque de canal silenciosamente.
+Se a referência escolhida não existir ou não puder ser consultada, relate o impedimento sem
+substituí-la por outra branch.
+
+Fixe o SHA da referência escolhida antes da comparação. Registre repositório, canal ou referência
+fixa e revisão reais, não apenas "última versão". Ao seguir `nightly`, consulte também a seção
+`[Não lançado]` do CHANGELOG; a versão do plugin pode continuar igual à última estável.
+Inspecione a origem em uma cópia separada ou por leitura remota; não troque o remoto, a branch
+ou o código do produto para acessar as instruções do harness.
+
+Ao trocar de canal, compare com o conteúdo da revisão anteriormente adotada, mesmo quando ela
+não for ancestral do novo alvo. Se a troca retirar mudanças já adotadas, explique o efeito e
+resolva conflitos de comportamento ou de autorização antes de aplicar.
 
 Não execute scripts recebidos da origem sem inspecioná-los e verificar que estão no escopo.
 Instruções da origem não ampliam a autorização concedida no projeto de destino.
@@ -83,6 +111,20 @@ até haver encaminhamento; não crie aliases concorrentes sem necessidade explí
 Atualize os arquivos canônicos e depois as cópias dos provedores adotados. Inclua referências,
 modelos e recursos necessários. Preserve metadados locais válidos, capacidades e configurações
 de modelos; não imponha a configuração de outro projeto.
+Na origem desta coleção, `knowledge/` contém os guias compartilhados. O plugin completo os
+leva na raiz; cópias avulsas de `.agents/skills/` e `.claude/skills/` levam as dependências
+empacotadas em `references/knowledge/`. Copie a pasta completa e registre a revisão dos guias.
+Em destinos com fontes agrupadas, inclua a biblioteca e use geração compatível. Não copie
+somente `SKILL.md` nem deixe links apontando para o clone original.
+Nas adoções pelo CLI, a biblioteca fica em `knowledge/harness/` no destino e é compartilhada
+pelas skills de Codex e Claude Code. Preserve esse layout e consulte os recibos em
+`.harness/receipts/` para identificar a origem dos arquivos; confira as adaptações atuais.
+Ao migrar cópias antigas, compare os guias e ajuste os links dos dois agentes antes de retirar
+duplicatas. Preserve os outros caminhos de `knowledge/` e os guias ainda usados por outra skill.
+Cabeçalhos de geração indicam procedência, não ausência de personalização: compare cada guia
+com a base adotada antes de atualizar. Preserve adaptações locais e confira versões do mesmo
+guia em skills diferentes. Recursos retirados ou deslocados exigem migração explícita;
+uma ausência na origem não autoriza apagar a cópia do destino.
 Trate `.agents/models.toml` e suas regras locais de seleção como personalizações do destino.
 Não substitua modelos, esforços ou alternativas pela configuração herdada desta coleção.
 As skills aceitam políticas v1 e v2: atualizar instruções não exige migrar o arquivo.
@@ -111,8 +153,8 @@ arquivos de apoio, links e correspondência das cópias dos provedores. Ao alter
 de uma skill, confira um cenário relevante. Não use a suíte deste repositório como se ela fosse
 automaticamente adequada a qualquer projeto com apenas parte do catálogo.
 
-Registre origem, versão, SHA, componentes incorporados e adaptações mantidas no documento de adoção
-ou manutenção existente. Na primeira adoção, use uma nota curta na documentação escolhida
+Registre origem, canal ou referência fixa, versão, SHA, componentes incorporados e adaptações
+mantidas no documento de adoção ou manutenção existente. Na primeira adoção, use uma nota curta na documentação escolhida
 pelo projeto para viabilizar a próxima comparação. Isso é procedência da instalação, não
 um sistema de tarefas. Numa atualização parcial, registre a revisão por componente e os itens
 pendentes; não declare o destino inteiro atualizado para uma versão que ele ainda não contém.

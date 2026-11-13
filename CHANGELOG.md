@@ -7,8 +7,64 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Adicionado
+
+- `consultar-conhecimento`: localiza referências pertinentes e orienta sua aplicação por fontes,
+  aplicabilidade e limites. Pelo CLI, Codex e Claude Code usam uma biblioteca única em
+  `knowledge/harness/`, com links ajustados, recibos e consulta do catálogo por `knowledge list`.
+  Cópias manuais continuam autocontidas. A instalação não migra nem sobrescreve adaptações antigas.
+- Configurador `models init` no CLI, com política neutra, modelo compartilhado ou perfis,
+  esforço e alternativas ordenadas. A instalação oferece uma pergunta opcional. A geração
+  v2 tem validação estrutural em TypeScript e provas cruzadas com Python, sem editar arquivos
+  existentes ou consultar disponibilidade dos provedores. `--print` mostra somente o TOML.
+- CLI TypeScript `@jordyfontoura/skills` para adoção guiada e seletiva de skills e papéis,
+  com simulação, preservação de arquivos existentes, recibos de origem e consulta de estado.
+  O pacote leva referências completas e dispensa Python no destino.
+- `fazer-direto`: modo de execução que prioriza velocidade e dispensa specs, planos formais
+  e etapas de processo por rotina no pedido atual. Decide detalhes técnicos reversíveis,
+  preserva o escopo completo, permissões e verificações obrigatórias e relata o resultado brevemente.
+- Biblioteca `knowledge/` com referências de UI e acessibilidade compartilhadas por
+  `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
+  O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
+  fontes e limites. Outros domínios entram quando houver conteúdo útil.
+- Empacotamento seletivo das referências em `references/knowledge/` das cópias avulsas,
+  incluindo dependências transitivas e links ajustados. O plugin completo usa a biblioteca
+  na raiz. A validação continua recusando links arbitrários fora da skill e verifica índice,
+  integridade das cópias e isolamento da biblioteca. Atualização e adoção preservam adaptações locais.
+- `examinar-eficiencia`: explica por que o trabalho com o agente demorou ou gastou muitos
+  tokens e propõe a menor mudança para cada causa, sem cortar verificações úteis. Usa a conversa,
+  diffs, verificações e métricas expostas; lê logs locais de sessão só a pedido. Não estima
+  tokens por contagem de palavras e encaminha causas nas instruções para `melhorar-harness`.
+- `criticar`: critica artefatos e experiências com critérios especializados pelo pedido,
+  público e referências. Preserva a rubrica de UI e UX em apoios, compõe com `conselho` para
+  várias perspectivas e usa `roles.council` para consultas independentes, inclusive individuais.
+  Sempre entrega nota geral e notas por categoria quando pertinentes, com duas casas decimais
+  (como `9.73`), na escala padrão de 0 a 10. Distingue severidade de qualidade e orienta
+  ciclos de correção autorizados, com condição
+  de parada, sem substituir provas técnicas ou aceite independente.
+
 ### Mudado
 
+- `configurar-harness` reconhece a adoção pelo CLI, preserva a biblioteca compartilhada e
+  orienta a configuração opcional de modelos. `atualizar-harness` distingue o SHA de base
+  de builds locais do conteúdo instalado e confere os hashes antes de assumir uma base de comparação.
+- `andamento`: cobre o pedido inteiro até sua condição de conclusão, com mudanças desde o
+  último resumo, próxima entrega utilizável e previsão fundamentada quando pertinente.
+  Perguntas sobre tempo sempre recebem uma estimativa com base e incertezas ou o motivo de
+  ainda não estimar e o marco necessário. Distingue etapas de conclusão total e trabalho
+  ativo de esperas externas, sem percentual inventado, medições novas ou acompanhamento periódico.
+- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica foi
+  preservada em `criticar/interface-rubric.md`, o método em `interface.md` e o painel de UI em
+  `interface-panel.md`. Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
+  apoios, preservando adaptações locais; a ausência dos diretórios antigos não autoriza
+  apagá-los no destino. Use `criticar` com `conselho` para várias perspectivas, sem aliases.
+- `criticar-interface` passou a se chamar `criticar`.
+- `criticar-interface-em-conselho` passou a se chamar `criticar`.
+- Desenvolvimento e PRs passam a usar a branch permanente `nightly`; `main` é o canal estável,
+  com promoções integrais e tags de versão. CI verifica ambos os canais e o Dependabot abre
+  PRs para `nightly`.
+- `atualizar-harness`: respeita a revisão pedida ou o canal escolhido e registrado no destino.
+  Nesta coleção, usa `main` por padrão e permite acompanhar `nightly`, fixando o SHA adotado.
 - `diagnosticar`: quando variantes do mesmo defeito reaparecem no mesmo mecanismo, mesmo com
   cada correção passando, mapeia estados, transições e invariantes antes da próxima correção e
   confere a solução com oráculos independentes. `implementar`, `delegar` e `escrever-objetivo`

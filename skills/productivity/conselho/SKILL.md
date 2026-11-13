@@ -13,7 +13,10 @@ Sem proposta pronta, use o estado atual e a pergunta como objeto comum da consul
 melhor argumento para manter esse estado, melhorias sustentadas e critérios de escolha;
 não invente uma proposta aprovada nem trate a exploração como autorização para implementar.
 Uma dúvida factual comum raramente exige conselho; investigue diretamente ou use `entrevistar`
-para uma escolha que cabe ao usuário.
+para uma escolha que cabe ao usuário. Para criticar a qualidade de um artefato ou experiência
+com várias perspectivas, combine com `criticar`: ela define o método e o formato dos achados;
+este procedimento organiza as consultas independentes. Como especialista delegado, faça
+somente sua crítica individual, sem abrir outro painel.
 
 Adapte a pergunta comum à situação, sem exigir um formato diferente de relatório para cada caso:
 
