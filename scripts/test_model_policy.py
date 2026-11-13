@@ -1,6 +1,7 @@
 """Verifica herança, alternativas ordenadas e falhas da política de modelos."""
 
 import copy
+import json
 from pathlib import Path
 import unittest
 
@@ -101,6 +102,25 @@ class ProfilePolicyTests(unittest.TestCase):
     def setUp(self):
         self.policy = load_policy(ROOT / ".agents/models.toml")
 
+    def test_shared_cli_contract_cases(self):
+        fixture = json.loads((ROOT / "cli/test/fixtures/policy-cases.json").read_text(encoding="utf-8"))
+        for case in fixture["cases"]:
+            policy = copy.deepcopy(fixture["base"])
+            for change in case["changes"]:
+                target = policy
+                for key in change["path"][:-1]:
+                    target = target[key]
+                if change.get("delete"):
+                    del target[change["path"][-1]]
+                else:
+                    target[change["path"][-1]] = change["value"]
+            with self.subTest(case=case["name"]):
+                if case["valid"]:
+                    validate_policy(policy)
+                else:
+                    with self.assertRaises(ValueError):
+                        validate_policy(policy)
+
     def test_personal_preferences_and_order(self):
         expected = {
             "simple": [("gpt-6-luna", "medium"), ("claude-haiku-5-5", "medium")],
@@ -128,13 +148,15 @@ class ProfilePolicyTests(unittest.TestCase):
             self.assertEqual(result["profile"], profile)
             self.assertFalse(result["complexity_applied"])
 
-    def test_planner_keeps_hard_candidates_at_every_complexity(self):
+    def test_planner_routes_candidates_by_complexity(self):
         for level in ("simple", "default", "hard"):
             with self.subTest(level=level):
                 result = resolve_policy(self.policy, "planner", level)
-                self.assertEqual(result["profile"], "hard")
-                self.assertEqual(result["candidates"], self.policy["profiles"]["hard"]["candidates"])
-                self.assertFalse(result["complexity_applied"])
+                self.assertEqual(result["profile"], level)
+                self.assertEqual(result["candidates"], self.policy["profiles"][level]["candidates"])
+                self.assertEqual(result["complexity_applied"], level != "default")
+        self.assertEqual(resolve_policy(self.policy, "planner"),
+                         resolve_policy(self.policy, "planner", "default"))
 
     def test_known_level_without_override_preserves_role(self):
         del self.policy["roles"]["implementer"]["complexity"]["hard"]

@@ -5,18 +5,27 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 26 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 30 skills e 3 papéis que você pode usar ou adaptar.
+
+O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
+risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
+de toda mudança. Veja o [fluxo, sua base e seus limites](docs/HARNESS.md#fluxo-de-trabalho).
 
 **[Instalar](#instalar) · [Experimentar uma skill](#primeiro-uso) · [Ver exemplos](docs/EXAMPLES.md)**
 
 ## Quando usar
 
 - **Quer ver a abordagem antes de alterar?** `propor` orienta o agente a apresentar uma proposta e esperar seu aceite.
+- **Quer só fazer e entregar rápido?** `fazer-direto` dispensa specs e etapas de processo, com verificação do resultado.
 - **Precisa conferir uma entrega?** `implementar` pede comandos e resultados observados; `verificar-aceite` confere os critérios de forma independente.
 - **Vai retomar em outra sessão?** `passar-contexto` preserva a próxima etapa e as provas pendentes; `andamento` resume o andamento.
 
 É tudo Markdown, sem serviço em segundo plano. As skills não instalam hooks, não trocam o
 modelo da conversa nem autorizam delegação por conta própria. Seus testes continuam necessários.
+
+A [biblioteca de referências](knowledge/README.md) reúne conhecimento de UI e acessibilidade
+para consulta conforme a tarefa. As fontes ficam fora das skills; as cópias avulsas incluem
+automaticamente os guias necessários, sem depender do caminho deste repositório.
 
 ## Instalar
 
@@ -45,22 +54,35 @@ plugin; veja como copiá-los no [guia de adoção](docs/ADOPTING.md#plugin).
 Instalação local testada em 01/11/2026 com Claude Code 2.1.314 e Codex 0.166.0.
 Prefere adaptar os arquivos? Use a [cópia editável](docs/ADOPTING.md#cópia-manual).
 
+### CLI por projeto
+
+O [CLI `@jordyfontoura/skills`](cli/README.md) recomenda e instala cópias editáveis por
+projeto, incluindo papéis opcionais, configuração de modelos e biblioteca compartilhada.
+Requer Node.js 22 ou superior e npm:
+
+```bash
+npx @jordyfontoura/skills init
+```
+
+O guia também explica como experimentar o código local.
+
 ## Primeiro uso
 
-Num repositório seu, peça uma proposta para uma mudança. `propor` instrui o agente a ler o
-projeto, explicar a abordagem e esperar sua aprovação antes de alterar arquivos.
+Num repositório seu, peça uma mudança com resultado claro. `implementar` orienta o agente a
+ler as instruções, executar o trabalho autorizado e apresentar as verificações.
 
 **Claude Code**
 ```text
-/jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
+/jordyfontoura-skills:implementar Exporte os resultados filtrados em CSV, com as mesmas colunas da tabela. Confira o arquivo gerado e não publique.
 ```
 
 **Codex**
 ```text
-$jordyfontoura-skills:propor Quero exportar os relatórios em CSV.
+$jordyfontoura-skills:implementar Exporte os resultados filtrados em CSV, com as mesmas colunas da tabela. Confira o arquivo gerado e não publique.
 ```
 
-Um "pode fazer" libera aquela proposta. Para outras situações, veja
+Se quiser aprovar a abordagem antes das alterações, use `propor`: o agente apresenta a proposta
+e aguarda seu "pode fazer". Para outras situações, veja
 [quando usar cada skill e um pedido pronto para copiar](docs/EXAMPLES.md).
 
 ## Como chamar as skills
@@ -79,7 +101,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 26 skills</summary>
+<summary>Ver as 30 skills</summary>
 
 ### Entender e decidir
 
@@ -90,6 +112,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
 | `esclarecer` | Retomar uma explicação que ficou confusa. |
 | `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
+| `consultar-conhecimento` | Localizar e aplicar os guias pertinentes da biblioteca de conhecimento. |
 | `conselho` | Consultar perspectivas independentes sobre uma decisão. |
 | `prototipar` | Experimentar uma interação antes da implementação completa. |
 | `especificar` | Definir comportamentos, critérios e tarefas. |
@@ -100,12 +123,14 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `implementar` | Entregar e verificar o trabalho combinado. |
+| `fazer-direto` | Executar diretamente, priorizando velocidade e dispensando specs e etapas de processo. |
 | `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
 | `revisar` | Analisar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
 | `examinar-arquitetura` | Identificar atrito estrutural no código e propor melhorias. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
 | `reconciliar` | Comparar requisitos, implementação e evidências. |
+| `criticar` | Receber uma crítica especializada de um artefato ou experiência, individual ou com conselho. |
 | `descrever-pr` | Escrever a descrição de uma mudança para quem vai revisá-la. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
 
@@ -114,6 +139,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `andamento` | Consultar andamento, pendências e bloqueios. |
+| `examinar-eficiencia` | Entender por que o trabalho demorou ou gastou muitos tokens e como melhorar. |
 | `passar-contexto` | Deixar outra sessão pronta para continuar. |
 | `delegar` | Dividir trabalho autorizado e conferir o retorno. |
 
@@ -133,7 +159,7 @@ O nome interno da coleção é harness; daí os nomes das skills de manutenção
 
 ## Como o autor usa
 
-Frequência relativa nas conversas pessoais do autor, consultadas em 02/11/2026.
+Frequência relativa nas conversas pessoais do autor, consultadas em 13/11/2026.
 Pedidos e declarações podem se sobrepor e não comprovam execução.
 
 <picture>
@@ -155,6 +181,11 @@ Leia o [CHANGELOG](CHANGELOG.md) antes de atualizar.
 - **Claude Code:** a atualização automática de marketplaces de terceiros vem desligada. Ligue em `/plugin` ou rode `claude plugin marketplace update jordyfontoura` e depois `claude plugin update jordyfontoura-skills@jordyfontoura`.
 - **Codex:** rode `codex plugin marketplace upgrade`. Se a versão instalada não mudar, rode de novo `codex plugin add jordyfontoura-skills@jordyfontoura`.
 - **Cópia editável:** peça ao agente `atualizar-harness`.
+
+`main` é o canal estável; `nightly` reúne novidades em avaliação. Para experimentar com uma
+cópia editável, peça `atualizar-harness` indicando a branch `nightly`. O canal escolhido fica
+registrado para as próximas atualizações. Uma tag fixa uma versão específica. Veja o
+[guia de adoção](docs/ADOPTING.md#cópia-manual) e o [fluxo de contribuição](CONTRIBUTING.md#branches-e-canais).
 
 ## Contribuir, créditos e licença
 

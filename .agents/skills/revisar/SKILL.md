@@ -15,8 +15,9 @@ locais incluídas no pedido; um diff vazio entre commits não pode esconder edi�
 Use ferramentas de diff e histórico somente quando permitidas. Se o pedido proibir execução,
 leia diretamente o diff e os arquivos fornecidos, sem invocar comandos de terminal.
 
-Leia os requisitos e registros aplicáveis, os padrões do projeto, a arquitetura relevante e
-as decisões existentes. Consulte requisitos apenas por meios permitidos. Se faltar acesso
+Leia por inteiro os requisitos e critérios aplicáveis. Em registros, padrões, arquitetura e
+decisões longos, localize por busca (`rg -n`, quando permitida) e leia os trechos relevantes;
+não releia inteira uma saída já salva. Consulte requisitos apenas por meios permitidos. Se faltar acesso
 ou documentação, declare o limite da comparação e continue a revisão dos padrões e do código.
 Não inicie uma entrevista apenas para revisar material fornecido.
 
@@ -25,6 +26,12 @@ ou violam um padrão documentado. Rastreie o comportamento até seus pontos de u
 Cite arquivo e linha, requisito ou regra, impacto concreto e correção sugerida.
 Separe defeito demonstrado de incerteza. Evite refatorações especulativas e problemas
 já cobertos por verificações configuradas.
+
+Delimite a revisão pelo diff, pelos requisitos e pelos riscos aplicáveis. Não expanda o
+produto para encontrar mais achados. Preferências e melhorias opcionais, quando pertinentes
+ao pedido, ficam separadas de falhas que impedem o aceite. Encerre ao cobrir esse escopo;
+não é obrigatório encontrar defeitos. Numa nova rodada, confira as correções e seus efeitos
+no conjunto, ampliando a análise quando uma dependência ou risco concreto justificar.
 
 Uma revisão relata o que o código sustenta; leitura não comprova funcionamento em execução.
 Não espere pelo código de outro agente, aplique correções, execute testes, delegue nem atualize

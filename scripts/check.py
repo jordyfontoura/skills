@@ -7,7 +7,7 @@ import sys
 import tomllib
 
 from catalog import (CLAUDE_AGENTS, COPY_ROOTS, PLUGIN_AGENTS, catalog, copy_files,
-                     local_targets, plugin_agent_files)
+                     knowledge_catalog, local_targets, plugin_agent_files)
 from model_policy import load_policy
 
 
@@ -17,7 +17,7 @@ PLUGIN_FIELDS = {"name", "version", "description", "author", "homepage", "reposi
 CATALOG_DOCUMENTS = ("README.md", "docs/HARNESS.md")
 EXECUTABLE_COMPONENTS = ("hooks", "bin", "monitors", "commands", ".mcp.json", ".lsp.json")
 TEXT_DIRECTORIES = ("skills", "agents", "docs", "scripts", ".agents", ".claude", ".claude-plugin",
-                    ".codex", ".github")
+                    ".codex", ".github", "knowledge")
 TEXT_SUFFIXES = {".md", ".json", ".toml", ".py", ".yml", ".yaml", ".svg", ""}
 HIDDEN = re.compile("[\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff"
                     "\U000e0000-\U000e007f\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
@@ -64,13 +64,15 @@ def validate(root=ROOT):
             errors.append(message)
 
     sources = catalog(root)
+    library = knowledge_catalog(root)
     require(bool(sources), "O catálogo de skills está vazio")
     for name, source in sources.items():
         metadata, _ = document(source / "SKILL.md")
         require(metadata["name"] == name, f"{source}: o nome da skill difere do diretório")
         for path in sorted(source.rglob("*.md")):
             for target, relative in local_targets(read(path)):
-                inside = (path.parent / relative).resolve().is_relative_to(source.resolve())
+                resolved = (path.parent / relative).resolve()
+                inside = resolved.is_relative_to(source.resolve()) or resolved in library
                 require(inside, f"{path.relative_to(root)}: link sai da skill; "
                                 f"cite outra skill pelo nome: {target}")
     for relative in COPY_ROOTS:
@@ -143,7 +145,7 @@ def validate(root=ROOT):
             require(character is None, f"{path.relative_to(root)}: caractere invisível ou de "
                                        f"controle U+{ord(character[0]):04X}" if character else "")
     markdown = sorted(root.glob("*.md"))
-    for directory in ("docs", "skills", ".agents", ".claude", ".github"):
+    for directory in ("docs", "skills", ".agents", ".claude", ".github", "knowledge"):
         markdown.extend(sorted((root / directory).rglob("*.md")))
     for path in markdown:
         for target, relative in local_targets(read(path)):

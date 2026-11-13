@@ -9,6 +9,13 @@ completas de cada skill.
 
 ## Entender e decidir
 
+### [`consultar-conhecimento`](../skills/productivity/consultar-conhecimento/SKILL.md)
+
+Quando você precisa localizar referências pertinentes na biblioteca e relacioná-las à tarefa,
+considerando fontes, aplicabilidade e limites. A consulta não exige ler todos os guias.
+
+> $consultar-conhecimento Quais referências da biblioteca ajudam a avaliar as mensagens de erro deste formulário?
+
 ### [`propor`](../skills/productivity/propor/SKILL.md)
 
 Quando você quer avaliar o caminho antes de autorizar alterações. Ajuda a enxergar o escopo
@@ -60,8 +67,9 @@ a ideia e descobrir ajustes antes de construir a funcionalidade completa.
 
 ### [`especificar`](../skills/development/especificar/SKILL.md)
 
-Quando o trabalho precisa de uma definição verificável. Converte o comportamento esperado
-em critérios, tarefas e dependências, para que implementação e aceite tenham a mesma referência.
+Quando há uma definição relevante ausente ou você quer uma especificação. Explicita
+comportamento, contratos e provas da próxima entrega, preservando a visão completa.
+Requisitos já suficientes permitem implementar sem passar novamente por esta skill.
 
 > $especificar Especifique a exportação CSV aprovada, incluindo filtros, campos, critérios de aceite e tarefas.
 
@@ -76,10 +84,19 @@ pronta para colar, com referências e condição de conclusão; escrever o texto
 
 ### [`implementar`](../skills/development/implementar/SKILL.md)
 
-Quando o trabalho já está combinado e pode ser executado. Orienta a entrega em partes
-verificáveis, com registro do que foi alterado, testado e ainda falta provar.
+Quando o trabalho já está combinado e pode ser executado, com ou sem spec em arquivo.
+Prioriza uma jornada utilizável e verificável, com registro do que foi alterado, testado
+e ainda falta provar. Um plano curto pode ficar na conversa.
 
-> $implementar Implemente a exportação CSV conforme a spec aprovada e registre as verificações realizadas.
+> $implementar Adicione a exportação CSV dos resultados filtrados, com as colunas já exibidas na tabela, e confira o arquivo gerado. Não publique.
+
+### [`fazer-direto`](../skills/development/fazer-direto/SKILL.md)
+
+Quando você quer priorizar a entrega e dispensar o fluxo habitual. Vai direto ao código,
+decide detalhes técnicos reversíveis e confere o resultado, sem criar specs, planos formais
+ou rodadas de revisão por rotina. Mantém o escopo e as verificações obrigatórias.
+
+> $fazer-direto Adicione a exportação CSV com as colunas da tabela. Use os padrões existentes, sem spec nem plano formal. Confira o arquivo gerado e não publique.
 
 ### [`diagnosticar`](../skills/development/diagnosticar/SKILL.md)
 
@@ -116,6 +133,31 @@ independência da implementação e provas por critério; conferir o próprio tr
 
 > $verificar-aceite Verifique os critérios da exportação em um contexto independente. Relate o resultado e as provas, sem corrigir o código.
 
+### [`criticar`](../skills/development/criticar/SKILL.md)
+
+Quando você quer um crítico especializado no artefato e no foco do pedido. Os critérios vêm
+da intenção, das referências e dos padrões pertinentes. A crítica não altera o produto.
+Em UI e UX, usa a rubrica de interface, com severidade e base declaradas. Sempre entrega
+nota geral e, quando pertinente, notas por categoria. As notas de qualidade têm duas casas
+decimais, como `9.73` ou `7.00`, na escala padrão de 0 a 10, cujo máximo é `10.00`.
+
+> $criticar Critique a tela de agendamento no celular para pacientes que marcam a primeira consulta. Use nosso design system.
+
+Para um jogo, peça que o crítico jogue e indique os aspectos que precisa observar. Uma captura
+não comprova cooperação ou resposta dos controles. Referências e âncoras orientam as notas.
+
+> $criticar Use outro contexto para jogar esta build e avaliar cooperação, legibilidade e fidelidade a `definicoes/` e suas referências. Dê a nota geral e notas de game design e estética, com duas casas decimais e justificativas. Registre os passos, as evidências e os limites. Não edite o jogo.
+
+Para várias perspectivas independentes, combine com `conselho`. Todos recebem a mesma versão
+e os mesmos critérios; a consolidação preserva divergências e achados de um só avaliador.
+
+> $criticar $conselho Avalie o cadastro antes do lançamento pelas perspectivas de usabilidade, acessibilidade e conteúdo.
+
+O ciclo de correção exige autorização de implementação e uma condição de encerramento.
+O crítico não escreve código; quem implementa confere os achados e repete as provas afetadas.
+
+> $implementar Conclua o escopo aprovado. Ao terminar, chame um crítico independente com $criticar, corrija os problemas confirmados no escopo e peça nova crítica, até três rodadas. Encerre com todos os critérios comprovados e sem problemas impeditivos confirmados pelo crítico, ou com as pendências ao atingir o limite. Não mude os requisitos para obter aprovação.
+
 ### [`reconciliar`](../skills/development/reconciliar/SKILL.md)
 
 Quando documentos, código e relatos parecem discordar sobre o que está pronto. Compara
@@ -141,10 +183,38 @@ preserva alterações e verifica o resultado integrado, pois branches que passam
 
 ### [`andamento`](../skills/productivity/andamento/SKILL.md)
 
-Quando você quer uma consulta rápida de andamento. Resume entregas, pendências e bloqueios,
-preservando o objetivo e as autorizações do trabalho em curso.
+Quando você quer uma consulta rápida do pedido inteiro. Resume entregas, pendências até a
+conclusão combinada, bloqueios e próxima entrega utilizável. Mostra mudanças desde o resumo
+anterior quando houver e preserva o objetivo e as autorizações do trabalho em curso.
 
 > $andamento O que já foi feito, o que falta e tem algo dependendo de mim?
+
+> $andamento Quanto falta para concluir o goal inteiro, incluindo revisão, testes e aceite? Separe a etapa atual e eventuais esperas externas, com a base da previsão.
+
+A previsão é uma faixa ou ordem de grandeza fundamentada, não uma promessa. Sem base útil,
+a resposta explica o motivo e o marco que permitirá estimar. Uma etapa estimável não vira
+prazo do pedido inteiro se houver esperas sem duração conhecida. A skill usa o contexto
+disponível, sem medir, delegar ou acompanhar a execução repetidamente só para estimar.
+
+Exemplo fictício de resposta, sem representar uma previsão desta sessão:
+
+> A implementação está pronta para testar; desde o último resumo, foi corrigido o fluxo de download. Até concluir, faltam dois casos de erro, a suíte completa, a revisão e o aceite exigido. Estimo cerca de 40–80 minutos para esse conjunto, com base nas rodadas comparáveis já observadas; outra reprovação no aceite pode alongar a previsão. Nada depende de você agora. Vou retomar os casos de erro.
+
+Exemplo fictício quando só uma parte pode ser estimada:
+
+> Estimo dezenas de minutos até ficar pronto para sua aprovação. O término do pedido inteiro depende dessa decisão, sem prazo conhecido. A próxima entrega é a versão para testar. Depois da aprovação, posso estimar a publicação autorizada.
+
+Sem base para um número:
+
+> Ainda não há previsão útil: falta descobrir a causa da falha de integração. A primeira reprodução que isole a causa permitirá estimar a correção. Os testes e o aceite continuam pendentes depois dela.
+
+### [`examinar-eficiencia`](../skills/productivity/examinar-eficiencia/SKILL.md)
+
+Quando o trabalho está demorando ou gastando muitos tokens. Aponta onde o gasto aconteceu, com
+evidências, separa causa observada de inferida e propõe a menor mudança para cada uma, sem
+cortar verificações úteis.
+
+> $examinar-eficiencia Por que estamos demorando ou gastando tantos tokens para terminar as tarefas? Como podemos melhorar?
 
 ### [`passar-contexto`](../skills/productivity/passar-contexto/SKILL.md)
 

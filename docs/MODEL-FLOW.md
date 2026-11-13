@@ -18,8 +18,9 @@ delegações autorizadas; não inicia agentes nem troca o modelo da conversa abe
 | Modelo | `claude-opus-5-5` | O modelo que a ferramenta é solicitada a executar. |
 | Esforço (`effort`) | `medium`, `high` | Uma configuração de raciocínio aceita pela ferramenta. |
 
-Por exemplo: **`especificar` orienta o `planner`, que usa o perfil `hard`; aqui, o primeiro
-candidato desse perfil é Claude Opus 5.5 com esforço `high`.**
+Por exemplo: **numa consulta autorizada, `especificar` orienta o `planner`, cujo perfil base
+é `default`; uma escolha difícil classificada como `hard` usa Claude Opus 5.5/high.**
+Planejar na conversa não exige uma consulta nem altera o modelo atual.
 
 `hard` e `high` são coisas diferentes. O primeiro pode classificar o trabalho ou nomear um
 perfil; o segundo é um valor de esforço. Classificar uma tarefa como `hard` só muda sua
@@ -30,7 +31,7 @@ seleção se o papel tiver um mapa para esse nível.
 | Papel | Responsabilidade | Perfil base aqui | A complexidade muda o perfil? |
 | --- | --- | --- | --- |
 | `orchestrator` | Coordenar o trabalho e integrar os resultados. | `orchestrator` | Não há mapa neste projeto. |
-| `planner` | Especificar comportamentos e planejar a entrega, sem implementar. | `hard` | Não. Aqui, até planejamento pequeno usa `hard`. |
+| `planner` | Especificar comportamentos e planejar a entrega, sem implementar. | `default` | Sim: `simple` → `simple`; `hard` → `hard`. |
 | `implementer` | Implementar uma parte delimitada e apresentar provas. | `default` | Sim: `simple` → `simple`; `hard` → `hard`. |
 | `reviewer` | Analisar um diff fixado e relatar achados. | `default` | Sim: `simple` → `simple`; `hard` → `hard`. |
 | `evaluator` | Conferir os critérios de aceite independentemente da implementação. | `evaluator` | Não aceita mapa. |
@@ -80,7 +81,8 @@ Se o usuário exigiu um modelo e ele não pode executar, outra opção precisa e
 | Renomear uma variável em um trecho delimitado. | `implementer` + `simple` | `simple` | GPT-6 Luna, `medium`. |
 | Implementar um relatório comum. | `implementer` + `default` | `default` | GPT-6.1 Sol, `medium`. |
 | Revisar um diff com mudanças delicadas de arquitetura. | `reviewer` + `hard` | `hard` | Claude Opus 5.5, `high`. |
-| Planejar uma mudança pequena. | `planner` + `simple` | `hard` | Claude Opus 5.5, `high`. |
+| Consultar o planejador sobre uma definição mecânica delimitada. | `planner` + `simple` | `simple` | GPT-6 Luna, `medium`. |
+| Consultar o planejador sobre um contrato com consequências difíceis de reverter. | `planner` + `hard` | `hard` | Claude Opus 5.5, `high`. |
 | Conferir o aceite de uma entrega simples. | `evaluator` + `simple` | `evaluator` | Claude Opus 5.5, `high`. |
 | Resolver uma escolha autorizada durante um goal. | `representative` + `default` | `representative` | Claude Opus 5.5, `high`. |
 

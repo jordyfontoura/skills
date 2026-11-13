@@ -8,22 +8,29 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - Gerar cópias dos provedores após editar fontes: `python scripts/sync.py`.
 - Validar arquivos e cópias dos provedores: `python scripts/check.py` (Python 3.11+).
 - Testar o validador: `python -m unittest discover -s scripts`.
+- Preparar o CLI: `npm ci --prefix cli`; compilar: `npm run build --prefix cli`.
+- Verificar o CLI após o build: `npm run typecheck --prefix cli` e `npm test --prefix cli`.
 - Estado local: `git status --short`, `git log -5 --oneline`.
-- Não há aplicação para compilar, instalar ou executar.
+- Não há aplicação web. O CLI opcional fica em `cli/`; veja `cli/README.md`.
 
 ## Trabalho
 
 1. Leia o pedido, os arquivos relevantes, as decisões e a última passagem de contexto.
    Retome sua etapa exata; preserve escopo e autorizações estabelecidos.
    Use `reconciliar` para comparar documentos, pendências e implementação.
-2. Use `especificar` para trabalho substancial e `entrevistar` para escolhas abertas de escopo ou design.
-   Neste projeto, `especificar` usa o `planner` no perfil `hard`, mesmo para trabalho simples.
-   Apresente um plano concreto; a autorização existente pode cobrir a implementação.
+2. Trabalhe por entregas úteis e verificáveis, com plano curto quando necessário.
+   Use `especificar` quando houver incerteza relevante sobre comportamento, contratos ou
+   dependências; tamanho do trabalho, sozinho, não exige uma nova especificação.
+   Use `entrevistar` para escolhas abertas de escopo ou design. Preserve definições existentes.
+   Planejamento rotineiro fica na conversa; consultar `planner` exige necessidade e delegação autorizada.
    Use `entrevistar-por-arquivo` para rodadas em arquivos Markdown, preservando respostas humanas.
    Quando o usuário pedir `propor`, apresente a abordagem na resposta final e aguarde aprovação
    antes de executar; uma autorização genérica anterior não elimina essa espera solicitada.
 3. Use `implementar` para entregar partes pequenas e verificáveis. Declare responsabilidade por
-   arquivos ao delegar; não sobrescreva mudanças de outro colaborador.
+   arquivos ao delegar; não sobrescreva mudanças de outro colaborador. Corrija dentro dos
+   contratos existentes sem reiniciar o planejamento; revise o conjunto e repita as provas afetadas.
+   Quando o pedido priorizar execução direta, use `fazer-direto` no lugar das etapas habituais
+   de processo, preservando as Regras e as provas expressamente exigidas.
 4. Prove os requisitos pelos métodos combinados e relate comandos e resultados observados.
    Prova ausente continua ausente. Implementação e aceite independente são distintos.
 5. Use `passar-contexto` quando outra sessão precisar retomar. Indique próxima etapa e provas pendentes.
@@ -45,7 +52,9 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - Altere instruções compartilhadas e configurações de provedor somente no escopo autorizado.
 - Permaneça neste repositório, salvo autorização para trabalhar em outro.
 - Edite com ferramentas de arquivo; salve código executável de várias linhas antes de rodá-lo.
-- Trabalhe em branch a partir de `main`, com commits pequenos no padrão Conventional Commits.
+- Crie branches de trabalho a partir de `nightly` e direcione os PRs para `nightly`, com commits
+  pequenos no padrão Conventional Commits. `main` recebe promoções estáveis integrais e hotfixes;
+  reintegre hotfixes em `nightly`. Veja o fluxo em `CONTRIBUTING.md`.
   Nunca force um push nem use `--no-verify`.
 - Pergunte por escolhas não resolvidas; não reinicie uma entrevista já concluída.
 - Execute verificações explicitamente. Não instale hooks automáticos ou serviço de gestão de tarefas.
@@ -60,6 +69,7 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - [Padrões](docs/STANDARDS.md): convenções de nomes, idioma e revisão.
 - [Glossário](docs/GLOSSARY.md): vocabulário compartilhado.
 - [Modelos](docs/MODELS.md): perfis, complexidade, alternativas e representante.
+- [Conhecimento](knowledge/README.md): referências por domínio ou tema, consultadas conforme a tarefa.
 - `skills/<grupo>/<nome>/`: fontes de desenvolvimento, produtividade e manutenção do harness.
 - `.agents/skills/` e `.claude/skills/`: cópias de uso; `.agents/roles/`: papéis canônicos.
 

@@ -12,10 +12,29 @@ investigar por leitura, mas deve entregar uma proposta concreta na resposta fina
 sua aprovação. Um "pode fazer" posterior libera a execução daquela proposta, sem repetir
 a mesma aprovação. Esse modo não é imposto aos demais pedidos.
 
-Leia o pedido e as instruções relevantes. Resolva dúvidas importantes de escopo com
-`entrevistar`. Use `especificar` para definir comportamentos e planejar sua entrega; use `implementar`
-para entregar partes verificáveis. Use `revisar` para analisar alterações de código e `verificar-aceite` para aceite
-independente quando solicitado. Termine com evidências e use `passar-contexto` se outra sessão continuar.
+Leia o pedido, as instruções relevantes e as decisões existentes. Com requisitos suficientes,
+use `implementar` para entregar uma jornada útil e verificável pela entrada normal, com um
+plano curto na conversa quando necessário. Preserve a visão completa e detalhe a próxima
+entrega conforme o trabalho avança. Implementar a primeira jornada não conclui o produto.
+
+Use `entrevistar` para escolhas abertas de escopo ou design. Use `especificar` quando o usuário
+pedir uma spec ou faltar uma definição relevante de comportamento, contratos, dependências ou
+provas. Encerre essa definição assim que a próxima entrega puder ser implementada e verificada.
+Tamanho do trabalho não exige uma spec por si só; correções dentro do combinado não reiniciam
+o planejamento. Consulte `planner` apenas se uma análise separada tiver utilidade e estiver autorizada.
+
+Quando pedir para só fazer, ir direto ao código ou usar um modo gohorse, use `fazer-direto`
+como alternativa ao fluxo habitual naquele pedido. Ela dispensa criação e manutenção de specs,
+planos formais e rodadas de revisão por rotina. Aproveita requisitos já definidos, decide
+detalhes reversíveis e verifica o resultado, preservando permissões e provas obrigatórias.
+Não altera o padrão para pedidos futuros nem reduz o escopo a um protótipo.
+
+Use `revisar` para analisar o diff contra requisitos e riscos aplicáveis. Agrupe correções
+relacionadas e confira seus efeitos no conjunto, preservando provas ainda válidas. Melhorias
+opcionais ficam separadas de defeitos que impedem cumprir o combinado. Uma nova rodada precisa
+de uma questão pendente, alteração ou risco concreto; não é obrigatório produzir achados.
+Use `verificar-aceite` quando solicitado ou exigido pelo projeto. Termine com evidências e use
+`passar-contexto` se outra sessão continuar, com estado, provas e próxima ação, sem copiar o histórico.
 
 Use `reconciliar` para comparar o trabalho pretendido com implementação e evidências atuais.
 Use `conselho` para pareceres independentes sobre uma proposta; siga a governança existente
@@ -25,6 +44,83 @@ incluindo títulos e descrições.
 Autorizações anteriores continuam válidas. Explorar não autoriza implementar. Um pedido claro
 de implementação não exige nova aprovação para passos rotineiros dentro do escopo.
 Relate ferramentas, permissões e evidências ausentes como ausentes.
+
+Uma aprovação ausente bloqueia a decisão, entrega ou prova que a exige. Trabalho independente
+autorizado pode avançar, respeitando ordens e portões explicitamente combinados, sem declarar
+aceite ou preencher decisões humanas. Dados sintéticos não exigem aprovação humana por padrão.
+
+### Base da escolha e limites
+
+Este fluxo substitui a exigência genérica de especificar todo trabalho substancial. A motivação
+local foi a recorrência de planejamento, revisões e conferências nas execuções Mindfy e Partilha,
+com demora para alcançar as jornadas de uso. É uma decisão de projeto, sem economia medida ainda.
+
+A pesquisa consultada em 04/11/2026 dá apoio delimitado:
+
+- [Geração de testes orientada por contratos, Google/SpecOps 2026](https://arxiv.org/html/2608.17177v2):
+  houve melhora na detecção de bugs com custo adicional de tokens. O experimento trata de
+  testes sobre bugs históricos; não valida um fluxo obrigatório completo de SDD.
+- [Artefatos de especificação em PRs, ESEM 2026](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESEM.2026.84):
+  o estudo observacional não encontrou proteção contra defeitos ou retrabalho. A medida era
+  principalmente referência a issues e tickets, sem observar adoção direta das ferramentas SDD.
+- [SDD prescrito e praticado, preprint](https://arxiv.org/html/2608.25202v4): profissionais
+  relataram benefícios e custos de planejamento e revisão, com uso seletivo. Os relatos não
+  isolam causalidade nem separam os ganhos das melhorias dos modelos.
+- [Experimento de harness para aplicações longas, Anthropic](https://www.anthropic.com/research/harness-design-long-running-apps):
+  o autor simplificou a coordenação ao mudar de modelo e preservou planejamento e avaliação.
+  É um experimento interno, não uma validação universal nem uma receita de configuração.
+
+Esses resultados não demonstram que SDD seja sempre superior nem que deva ser abandonado.
+A aplicação aqui é ajustar o processo à incerteza e ao risco, mantendo requisitos, decisões,
+verificações úteis e aceite independente exigido. Compare entregas equivalentes por tempo até
+a jornada funcionar, uso exposto, retrabalho posterior e requisitos atendidos. Cenários lidos
+e validação estrutural não demonstram melhora de comportamento ou economia de tokens.
+
+### Cenários para conferir o fluxo
+
+| Pedido e estado inicial | Resultado esperado |
+| --- | --- |
+| Corrigir um bug com comportamento esperado e reprodução conhecidos. | Corrigir e verificar; não criar spec nem consultar planner por rotina. |
+| Implementar várias tarefas de uma spec vigente. | Retomar decisões e dependências, com plano curto; não reespecificar o produto pelo tamanho do trabalho. |
+| Implementar exportação sem decisão sobre campos ou tratamento de dados sensíveis. | Esclarecer essas escolhas e especificar o necessário antes de implementar a parte dependente. |
+| Usuário pede somente uma especificação. | Entregar definições e plano, sem implementar, mesmo que o trabalho seja pequeno. |
+| Fixture humana pendente, com código independente autorizado. | Preparar o código com dados adequados, sem presumir aprovação nem declarar aceite; respeitar eventual portão explícito. |
+| Revisão encontra um defeito e sugere uma abstração opcional. | Tratar o defeito; separar a sugestão sem torná-la requisito ou iniciar nova spec. |
+| Critérios cumpridos e revisão sem defeitos relevantes. | Encerrar a entrega; não abrir rodadas apenas para obter mais achados. |
+| Correção muda o código exercitado por provas anteriores. | Repetir provas afetadas e dependências, mantendo evidências não invalidadas e comandos obrigatórios. |
+| Projeto exige aceite independente ou usuário pede conselho. | Executar a avaliação ou consulta exigida com a independência e cobertura combinadas; economia não revoga a exigência. |
+
+### Execução direta: escolha e limites
+
+`fazer-direto` é uma escolha de modo para quem pede velocidade acima do fluxo habitual.
+`implementar` já permite trabalhar sem spec; a diferença é dispensar também os artefatos
+e as etapas de processo por rotina, decidindo detalhes reversíveis durante a execução.
+
+A pesquisa consultada em 13/11/2026 oferece apoio de prática, sem medir ganho deste modo:
+os [princípios do Manifesto Ágil](https://agilemanifesto.org/principles.html) priorizam entrega,
+software funcionando e simplicidade, junto da atenção à qualidade técnica.
+[Yagni, de Martin Fowler](https://martinfowler.com/bliki/Yagni.html), recomenda evitar
+funcionalidades e abstrações especulativas e preserva testes e facilidade de mudança.
+A aplicação ao modo direto é uma decisão local; essas fontes não comprovam economia com agentes.
+
+O conselho de produto e engenharia recomendou um modo separado, com gatilho no pedido do
+usuário, requisitos preservados e verificação focada. Uma dúvida pontual não abre uma spec.
+O limite de processo não elimina uma consulta ou prova expressamente exigida. Não há ainda
+medição de velocidade nem teste de comportamento em uma sessão real usando a nova skill.
+As consultas usaram Claude Opus 5.5 em esforço alto. Produto consultou as fontes externas;
+engenharia limitou essa parte a trechos e resumos. A coordenação abriu os dois textos originais.
+Foi incorporada a recomendação comum de perguntas pontuais e preservação das provas obrigatórias.
+Não foi adotada uma sequência fixa de testes nem um limite de palavras para a skill: seriam
+novas etapas e restrições sem necessidade demonstrada. As ressalvas restantes são o risco
+de acionamento fora da intenção do usuário e a ausência de ganho medido.
+
+| Pedido e estado inicial | Resultado esperado com `fazer-direto` |
+| --- | --- |
+| Exportação com colunas já definidas. | Implementar e conferir a saída, sem criar spec ou plano formal. |
+| Spec vigente e pedido explícito de execução direta. | Reutilizar os contratos, sem manter os artefatos de processo por rotina. |
+| Falta uma decisão sobre quem pode acessar dados privados. | Perguntar pontualmente e avançar apenas o trabalho independente. |
+| Mudança exige vários arquivos e há checks obrigatórios. | Cumprir o escopo inteiro e os checks, sem reduzir a entrega a um protótipo. |
+| Pedido seguinte sem preferência por execução direta. | Retomar o fluxo habitual. |
 
 ## Catálogo de skills
 
@@ -41,6 +137,7 @@ Fontes em `skills/development/`.
 | --- | --- |
 | `especificar` | Especificar comportamentos e contratos e planejar sua entrega verificável. |
 | `implementar` | Entregar e verificar o trabalho combinado. |
+| `fazer-direto` | Executar diretamente, priorizando velocidade e dispensando specs e etapas de processo. |
 | `diagnosticar` | Reproduzir uma falha e demonstrar sua causa. |
 | `revisar` | Avaliar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Verificar feedback recebido e aplicar correções autorizadas com evidências. |
@@ -50,12 +147,30 @@ Fontes em `skills/development/`.
 | `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
 | `integrar` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
 | `reconciliar` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
+| `criticar` | Criticar a qualidade de um artefato ou experiência com critérios especializados e evidências. |
 
 `revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
 examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
-`integrar` executa a integração solicitada sem presumir publicação. O apoio de
-[direção visual](../skills/development/implementar/interface.md) é compartilhado por `implementar`
-e `prototipar`, preservando a identidade e os componentes do projeto.
+`integrar` executa a integração solicitada sem presumir publicação. A
+[biblioteca de conhecimento](../knowledge/README.md) reúne guias de UI e acessibilidade
+compartilhados por `implementar`, `prototipar` e `criticar`, preservando a identidade e os
+componentes do projeto. Métodos e políticas continuam nas skills; novos domínios entram
+com conteúdo real. As cópias avulsas incluem os guias usados em `references/knowledge/`.
+`criticar` avalia artefatos e experiências, como jogos, interfaces e textos, com critérios
+derivados do pedido, do público e das referências. Para UI e UX, preserva o método e a
+[rubrica comum](../skills/development/criticar/interface-rubric.md), incluindo acessibilidade,
+o design system do projeto e as diretrizes da plataforma. Com várias perspectivas pedidas,
+compõe com `conselho`; o [painel de UI](../skills/development/criticar/interface-panel.md)
+mantém seu método específico de severidade e consolidação.
+
+Uma crítica independente usa outro contexto e segue `delegar`, com `roles.council` quando
+houver política, inclusive para um único crítico. Toda crítica realizada inclui nota geral
+e notas por categoria quando pertinentes, com duas casas decimais, como `9.73`. A escala
+padrão é de 0 a 10 (`10.00` no extremo superior), com critérios e âncoras declarados.
+As notas não substituem provas técnicas. Num ciclo de correção autorizado, quem implementa
+confere o feedback com `tratar-revisao`, corrige e repete as provas afetadas antes da nova
+crítica. O limite e a condição de parada vêm do objetivo. `verificar-aceite` continua sendo
+a comprovação independente dos critérios combinados da entrega.
 
 ### Produtividade
 
@@ -70,8 +185,10 @@ Fontes em `skills/productivity/`.
 | `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
 | `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
 | `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `andamento` | Consultar andamento, pendências e bloqueios preservando o objetivo e as autorizações. |
+| `andamento` | Consultar o pedido inteiro, pendências, próxima entrega e previsão fundamentada de conclusão. |
+| `examinar-eficiencia` | Explicar onde o trabalho gastou tempo e tokens e propor a menor mudança para cada causa. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
+| `consultar-conhecimento` | Localizar referências pertinentes, conferir aplicabilidade e relacioná-las à tarefa. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
 | `escrever-objetivo` | Escrever uma instrução de execução delimitada com conclusão verificável. |
 
@@ -94,11 +211,28 @@ Para consultar o andamento, use, por exemplo:
 
 > `$andamento Como está? O que já fez, o que falta e tem algo dependendo de mim?`
 
+> `$andamento Quanto falta para concluir o goal inteiro, incluindo revisão, testes e aceite?`
+
 O agente responde com o estado conhecido, as provas disponíveis, os impedimentos e a próxima
 ação. Depois, continua a etapa que já estava em execução e autorizada. Se estava aguardando
 uma decisão, continua aguardando: uma pergunta de andamento não conta como aprovação.
 `andamento` faz uma consulta curta; `reconciliar` audita o trabalho contra requisitos e `passar-contexto`
 prepara o contexto para outra sessão retomar.
+
+O restante vai até a conclusão combinada do pedido. Quando pertinente, o resumo inclui o
+que mudou, a próxima entrega utilizável e a previsão de conclusão, distinguindo-a da etapa
+atual. Se o usuário perguntar quanto falta, a resposta sempre traz a estimativa com base e
+incertezas ou explica por que ainda não há previsão útil e o marco que permitirá estimar.
+Usa faixa ou ordem de grandeza sustentada pelo contexto, sem exigir histórico estatístico
+nem inventar um prazo. Esperas sem duração conhecida ficam como condições; não se converte
+contagem de tarefas em percentual do tempo nem se fazem medições só para responder.
+
+Essa é uma convenção do harness para tornar a consulta mais útil. A
+[NN/g](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/) recomenda
+mostrar etapas feitas e restantes quando uma estimativa razoável não está disponível.
+Um [estudo exploratório de workshop](https://arxiv.org/html/2604.00010v1) encontrou dificuldades
+de modelos ao prever sua própria duração; suas tarefas predominantemente curtas não validam
+previsões durante goals longos. As fontes motivam cautela, não comprovam calibração local.
 
 Na mesma conversa, o momento e o efeito da entrega da pergunta dependem do ambiente: a skill
 não controla filas ou interrupções. Para observar outra execução sem lhe enviar mensagens,
@@ -241,8 +375,16 @@ e verifica referências e cópias dos provedores. Ela não substitui o código d
 reconfigura CI, permissões ou hooks por padrão. Mudanças conflitantes precisam de uma decisão;
 diferenças locais não são automaticamente descartadas como versões antigas.
 
-Na adoção ou atualização, registre na documentação de manutenção do destino a origem, a versão, o SHA
-incorporado e os componentes adotados. Preserve esse registro nas próximas atualizações.
+Para cópias editáveis, `main` é o canal estável padrão; escolha `nightly` para experimentar
+novidades. Por exemplo: `$atualizar-harness Atualize as skills a partir da branch nightly de
+jordyfontoura/skills, preservando nossas adaptações.` A skill preserva o canal registrado nas
+próximas atualizações, salvo pedido de outra referência. Uma tag fixa uma versão específica.
+O canal experimental descrito aqui usa cópias editáveis; os comandos de plugin do README
+continuam usando a instalação estável.
+
+Na adoção ou atualização, registre na documentação de manutenção do destino a origem, o canal
+ou referência fixa, a versão, o SHA incorporado e os componentes adotados. Preserve esse
+registro nas próximas atualizações.
 Se a atualização for parcial, identifique os componentes pendentes em vez de registrar
 uma versão global incorreta. Não é necessário um serviço ou agendador para usar esse fluxo.
 
