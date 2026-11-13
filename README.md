@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 29 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 30 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -54,9 +54,17 @@ plugin; veja como copiá-los no [guia de adoção](docs/ADOPTING.md#plugin).
 Instalação local testada em 01/11/2026 com Claude Code 2.1.314 e Codex 0.166.0.
 Prefere adaptar os arquivos? Use a [cópia editável](docs/ADOPTING.md#cópia-manual).
 
-O [CLI `@jordyfontoura/skills`](cli/README.md) está em desenvolvimento para recomendar e
-instalar cópias por projeto, incluindo papéis opcionais. A publicação no npm está pendente;
-o guia mostra como experimentar o código local.
+### CLI por projeto
+
+O [CLI `@jordyfontoura/skills`](cli/README.md) recomenda e instala cópias editáveis por
+projeto, incluindo papéis opcionais, configuração de modelos e biblioteca compartilhada.
+Requer Node.js 22 ou superior e npm:
+
+```bash
+npx @jordyfontoura/skills init
+```
+
+O guia também explica como experimentar o código local.
 
 ## Primeiro uso
 
@@ -93,7 +101,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 29 skills</summary>
+<summary>Ver as 30 skills</summary>
 
 ### Entender e decidir
 
@@ -104,6 +112,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
 | `esclarecer` | Retomar uma explicação que ficou confusa. |
 | `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
+| `consultar-conhecimento` | Localizar e aplicar os guias pertinentes da biblioteca de conhecimento. |
 | `conselho` | Consultar perspectivas independentes sobre uma decisão. |
 | `prototipar` | Experimentar uma interação antes da implementação completa. |
 | `especificar` | Definir comportamentos, critérios e tarefas. |

@@ -32,3 +32,8 @@ Edite apenas estas fontes. O plugin completo usa os arquivos na raiz do pacote. 
 gera cópias dos guias referenciados em `references/knowledge/` de cada skill avulsa, incluindo
 dependências transitivas e ajustando links. O cabeçalho das cópias identifica a origem;
 elas são artefatos de distribuição, não outra fonte editável no harness.
+
+Nas instalações pelo CLI, os mesmos guias ficam uma única vez em `knowledge/harness/`,
+na raiz do projeto, para Codex e Claude Code. A skill `consultar-conhecimento` e as demais
+skills instaladas apontam para essa biblioteca. O índice ajuda a escolher o que ler;
+instalar a biblioteca não obriga seu carregamento completo em cada sessão.

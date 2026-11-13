@@ -49,7 +49,9 @@ test('instala referências completas nos dois agentes, registra origem e é idem
     const path = join(root, agent, 'skills/implementar');
     assert.ok(existsSync(join(path, 'SKILL.md')));
     assert.ok(existsSync(join(path, 'testing.md')));
-    assert.ok(existsSync(join(path, 'references/knowledge/ux/usability.md')));
+    assert.equal(existsSync(join(path, 'references/knowledge')), false);
+    assert.ok(existsSync(join(root, agent, 'skills/consultar-conhecimento/SKILL.md')));
+    assert.ok(existsSync(join(root, 'knowledge/harness/ux/usability.md')));
     // Todos os links locais do pacote apontam para arquivos presentes.
     for (const name of files(path).filter(name => name.endsWith('.md'))) {
       const content = readFileSync(join(path, name), 'utf8');
@@ -60,11 +62,14 @@ test('instala referências completas nos dois agentes, registra origem e é idem
       }
     }
   }
+  assert.equal(files(root).filter(name => name.replaceAll('\\', '/').endsWith('ux/usability.md')).length, 1);
+  assert.equal(files(root).filter(name => name.replaceAll('\\', '/').endsWith('knowledge/harness/README.md')).length, 1);
   assert.equal(existsSync(join(root, 'AGENTS.md')), false);
   const receipts = readdirSync(join(root, '.harness/receipts'));
   const receipt = JSON.parse(readFileSync(join(root, '.harness/receipts', receipts[0]), 'utf8'));
   assert.match(receipt.source.sha, /^[a-f0-9]{40}$/);
   assert.equal(receipt.source.repository, 'https://github.com/jordyfontoura/skills');
+  assert.match(receipt.files['knowledge/harness/ux/usability.md'], /^[a-f0-9]{64}$/);
   assert.equal(receipt.files['.agents/skills/implementar/SKILL.md'], createHash('sha256').update(readFileSync(join(root, '.agents/skills/implementar/SKILL.md'))).digest('hex'));
   const before = files(root).map(name => [name, readFileSync(join(root, name), 'utf8')]);
   const repeated = run(root, ...args);
@@ -146,11 +151,15 @@ test('uma mudança após a prévia não é sobrescrita e desfaz arquivos criados
   assert.deepEqual(files(root), [last.path.replaceAll('/', process.platform === 'win32' ? '\\' : '/')]);
 });
 
-test('todo o payload leva as mesmas cópias geradas e todas as recomendações existem', () => {
+test('o payload preserva o conteúdo das fontes e todas as recomendações existem', () => {
   const root = fileURLToPath(new URL('../../', import.meta.url));
+  const withoutDestinations = text => text.replace(/\]\([^)]+\)/g, '](destino)').replace(/^(\s*\[[^\]]+\]:)\s*\S+/gm, '$1 destino');
   for (const [path, content] of Object.entries(payload.files)) {
-    const source = path === '.agents/models.toml' ? '.agents/models.example.toml' : path;
-    assert.equal(content, readFileSync(join(root, source), 'utf8').replaceAll('\r\n', '\n'), path);
+    const source = path === '.agents/models.toml' ? '.agents/models.example.toml' : path.replace('knowledge/harness/', 'knowledge/');
+    const canonical = readFileSync(join(root, source), 'utf8').replaceAll('\r\n', '\n');
+    const body = path.startsWith('knowledge/harness/') ? content.replace(/^<!-- Gerado de [^\n]+ -->\n\n/, '') : content;
+    if (path.endsWith('.md')) assert.equal(withoutDestinations(body), withoutDestinations(canonical), path);
+    else assert.equal(body, canonical, path);
   }
   for (const scenario of ['approval', 'direct', 'sessions', 'reviews', 'decisions', 'acceptance', 'interface']) {
     const result = run(project(), 'init', '--agents', 'codex', '--scenarios', scenario, '--dry-run');

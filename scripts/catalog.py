@@ -143,7 +143,8 @@ def knowledge_dependencies(root, source, library=None):
     return dependencies
 
 
-def copy_files(root, copy_root, sources=None):
+def copy_files(root, copy_root, sources=None, knowledge_root=None):
+    """Gera cópias autocontidas ou com biblioteca compartilhada no destino informado."""
     sources = catalog(root) if sources is None else sources
     library = knowledge_catalog(root)
     paths = {}
@@ -153,7 +154,8 @@ def copy_files(root, copy_root, sources=None):
                 paths[path.resolve()] = (copy_root / name / path.relative_to(source)).resolve()
     output = {}
     for name, skill in sources.items():
-        bundled = {path: (copy_root / name / "references/knowledge" /
+        destination = knowledge_root if knowledge_root is not None else copy_root / name / "references/knowledge"
+        bundled = {path: (destination /
                           path.relative_to((root / "knowledge").resolve())).resolve()
                    for path in knowledge_dependencies(root, skill, library)}
         if set(bundled.values()) & set(paths.values()):

@@ -1,12 +1,14 @@
 import { readFileSync } from 'node:fs';
+import type { PolicyV2 } from './policy.js';
 
 export type Agent = 'codex' | 'claude-code';
 export type Role = 'planner' | 'evaluator' | 'representative';
-export interface Skill { name: string; group: string; description: string; related: string[] }
+export interface Skill { name: string; group: string; description: string; related: string[]; knowledge: string[] }
+export interface Knowledge { path: string; title: string; skills: string[] }
 export interface Source { repository: string; sha: string; version: string; dirty: boolean; contentHash: string }
-export interface Payload { schemaVersion: number; source: Source; skills: Skill[]; roles: Role[]; files: Record<string, string> }
+export interface Payload { schemaVersion: number; source: Source; skills: Skill[]; knowledge: Knowledge[]; roles: Role[]; files: Record<string, string>; modelTemplate: PolicyV2 }
 export const payload: Payload = JSON.parse(readFileSync(new URL('../payload.json', import.meta.url), 'utf8'));
-if (payload.schemaVersion !== 1) throw new Error('Versão de catálogo não suportada.');
+if (payload.schemaVersion !== 2) throw new Error('Versão de catálogo não suportada.');
 
 export const scenarios = [
   { value: 'approval', label: 'Avaliar a abordagem antes de alterar', skills: ['propor', 'entrevistar'] },
@@ -36,7 +38,9 @@ export function recommend(choices: string[]): string[] {
     ...scenarios.filter(s => choices.includes(s.value)).flatMap(s => s.skills)])];
 }
 export function selectSkills(skills: string[], roles: Role[]): string[] {
-  return [...new Set([...skills, ...roles.flatMap(role => roleSkills[role])])].sort();
+  const selected = new Set([...skills, ...roles.flatMap(role => roleSkills[role])]);
+  if (payload.skills.some(skill => selected.has(skill.name) && skill.knowledge.length)) selected.add('consultar-conhecimento');
+  return [...selected].sort();
 }
 export function instructions(skills: string[]): string {
   const selected = new Set(skills);
@@ -49,6 +53,7 @@ export function instructions(skills: string[]): string {
     delegar: 'Delegue apenas trabalho autorizado; configurar papéis não autoriza consultas.',
     'passar-contexto': 'Use `passar-contexto` quando outra sessão precisar retomar o trabalho.',
     'escrever-claro': 'Aplique `escrever-claro` ao redigir textos para leitores.',
+    'consultar-conhecimento': 'Use `consultar-conhecimento` para localizar os guias pertinentes na [biblioteca compartilhada](knowledge/harness/README.md), sem carregar todos de uma vez.',
   };
   for (const [name, rule] of Object.entries(rules)) if (selected.has(name)) lines.push(`- ${rule}`);
   lines.push('- Preserve as instruções, convenções e permissões do projeto.');

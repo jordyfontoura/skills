@@ -122,6 +122,18 @@ sua aprovação, salvo delegação explícita daquela decisão. O arquivo não c
 
 ## Adoção e atualização
 
+O [CLI de adoção](../cli/README.md#configurar-modelos) pode criar `.agents/models.toml`
+por perguntas, com `models init`. Ele oferece herança do ambiente, um modelo compartilhado
+ou perfis separados, candidatos ordenados, esforço e associação às sete responsabilidades.
+A pergunta também aparece opcionalmente na instalação de papéis ou skills de delegação.
+O guia explica o uso pelo npm e como experimentar o código local.
+
+O CLI cria políticas v2 e valida os dados gerados sem exigir Python no destino. Isso não
+comprova disponibilidade nem suporte do provedor. Provedor e modelo são informados pela
+pessoa, sem copiar preferências pessoais deste repositório ou inferir IDs pelo agente.
+Arquivos existentes, inclusive v1, são preservados e não são validados pelo configurador.
+`--print` permite consultar uma proposta; não há migração, edição ou ativação automática.
+
 Em outro projeto, a política é opcional. Sem arquivo, preserve as seleções do ambiente e do usuário.
 Para adotar as mesmas preferências, copie e adapte o TOML pessoal e este guia. Para começar
 sem modelos fixados, copie [`.agents/models.example.toml`](../.agents/models.example.toml),

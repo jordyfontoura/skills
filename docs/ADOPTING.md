@@ -8,14 +8,14 @@ aparecer duas vezes.
 | Plugin | Claude Code e Codex, sem editar as skills. | Pelo gerenciador de plugins do agente. |
 | Cópia manual | Quem quer adaptar as skills ou usa outro agente. | Pela skill `atualizar-harness`. |
 
-O [CLI de adoção guiada](../cli/README.md), em desenvolvimento, automatiza a rota de cópias
+O [CLI de adoção guiada](../cli/README.md) automatiza a rota de cópias
 editáveis para Codex e Claude Code. Ele recomenda skills por práticas de trabalho, oferece
-papéis opcionais e mostra os arquivos antes da instalação. A publicação no npm está pendente;
-o guia explica como experimentar o código local.
+papéis opcionais e mostra os arquivos antes da instalação. Execute
+`npx @jordyfontoura/skills init` no projeto; o guia também explica como usar o código local.
 
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 29 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 30 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
@@ -104,6 +104,21 @@ Na origem, [knowledge/](../knowledge/README.md) é a única fonte editável dos 
 O plugin completo leva essa pasta junto das skills. As cópias avulsas já incluem apenas os
 guias referenciados por cada skill, inclusive suas dependências, em `references/knowledge/`.
 Copiar somente `SKILL.md` deixa recursos de fora. Não é preciso instalar o gerador no destino.
+
+Pelo CLI, os guias ficam em uma única biblioteca `knowledge/harness/` na raiz do projeto,
+compartilhada por Codex e Claude Code. As skills são instaladas com links ajustados para
+essa pasta. `consultar-conhecimento` é incluída quando a seleção usa os guias e pode ser
+instalada diretamente para disponibilizar a biblioteca. Seu índice permite localizar o
+material pertinente, sem exigir a leitura de todos os guias.
+
+O índice e suas dependências são incluídos uma única vez, mesmo com ambos os agentes.
+Arquivos próprios em outros caminhos de `knowledge/` são preservados. Conflitos dentro de
+`knowledge/harness/` interrompem a instalação antes da escrita; os hashes dos guias entram
+nos recibos e no comando `status`. `knowledge list` apresenta o catálogo disponível no pacote.
+
+O novo layout do CLI não migra instalações anteriores automaticamente. Se já houver cópias
+com `references/knowledge/`, use `atualizar-harness` para ajustar links e conferir adaptações
+antes de retirar cópias antigas. Remover uma skill não deve remover uma biblioteca que outras usam.
 
 Registre o SHA adotado também para as referências empacotadas. Ao atualizar, compare o
 pacote anterior, a origem nova e suas adaptações; um cabeçalho de geração não autoriza

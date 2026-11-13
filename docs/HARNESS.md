@@ -188,6 +188,7 @@ Fontes em `skills/productivity/`.
 | `andamento` | Consultar o pedido inteiro, pendências, próxima entrega e previsão fundamentada de conclusão. |
 | `examinar-eficiencia` | Explicar onde o trabalho gastou tempo e tokens e propor a menor mudança para cada causa. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
+| `consultar-conhecimento` | Localizar referências pertinentes, conferir aplicabilidade e relacioná-las à tarefa. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
 | `escrever-objetivo` | Escrever uma instrução de execução delimitada com conclusão verificável. |
 

@@ -9,6 +9,13 @@ completas de cada skill.
 
 ## Entender e decidir
 
+### [`consultar-conhecimento`](../skills/productivity/consultar-conhecimento/SKILL.md)
+
+Quando você precisa localizar referências pertinentes na biblioteca e relacioná-las à tarefa,
+considerando fontes, aplicabilidade e limites. A consulta não exige ler todos os guias.
+
+> $consultar-conhecimento Quais referências da biblioteca ajudam a avaliar as mensagens de erro deste formulário?
+
 ### [`propor`](../skills/productivity/propor/SKILL.md)
 
 Quando você quer avaliar o caminho antes de autorizar alterações. Ajuda a enxergar o escopo

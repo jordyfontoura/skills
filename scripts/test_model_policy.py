@@ -1,6 +1,7 @@
 """Verifica herança, alternativas ordenadas e falhas da política de modelos."""
 
 import copy
+import json
 from pathlib import Path
 import unittest
 
@@ -100,6 +101,25 @@ class ModelPolicyTests(unittest.TestCase):
 class ProfilePolicyTests(unittest.TestCase):
     def setUp(self):
         self.policy = load_policy(ROOT / ".agents/models.toml")
+
+    def test_shared_cli_contract_cases(self):
+        fixture = json.loads((ROOT / "cli/test/fixtures/policy-cases.json").read_text(encoding="utf-8"))
+        for case in fixture["cases"]:
+            policy = copy.deepcopy(fixture["base"])
+            for change in case["changes"]:
+                target = policy
+                for key in change["path"][:-1]:
+                    target = target[key]
+                if change.get("delete"):
+                    del target[change["path"][-1]]
+                else:
+                    target[change["path"][-1]] = change["value"]
+            with self.subTest(case=case["name"]):
+                if case["valid"]:
+                    validate_policy(policy)
+                else:
+                    with self.assertRaises(ValueError):
+                        validate_policy(policy)
 
     def test_personal_preferences_and_order(self):
         expected = {

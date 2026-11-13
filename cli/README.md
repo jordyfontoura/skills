@@ -4,8 +4,7 @@
 Pergunta quais agentes você usa e como pretende trabalhar, recomenda skills e permite
 revisar a seleção antes de gravar. Requer Node.js 22 ou superior e npm.
 
-O pacote está em desenvolvimento. O comando abaixo ficará disponível depois da publicação
-no npm; implementar o CLI não publica o pacote.
+Execute na raiz do projeto que receberá as skills:
 
 ```bash
 npx @jordyfontoura/skills init
@@ -22,9 +21,52 @@ node cli/dist/index.js --help
 node cli/dist/index.js init --dir ./work/meu-projeto --dry-run
 ```
 
-O build inclui cada pasta de skill completa, com seus apoios e `references/knowledge/`,
-usando o gerador existente. O pacote leva JavaScript compilado e o conteúdo pronto; quem
-o instala dispensa Python e o clone deste repositório.
+O build usa o gerador existente para preparar as skills com seus apoios e links para uma
+biblioteca compartilhada. O pacote leva JavaScript compilado e o conteúdo pronto; quem o
+instala dispensa Python e o clone deste repositório.
+
+## Biblioteca compartilhada
+
+Nas instalações pelo CLI, Codex e Claude Code usam a mesma pasta `knowledge/harness/` na
+raiz do projeto. Os guias não são repetidos dentro das skills nem por agente:
+
+```text
+projeto/
+├── knowledge/harness/
+│   ├── README.md
+│   ├── ux/
+│   └── accessibility/
+├── .agents/skills/consultar-conhecimento/SKILL.md
+└── .claude/skills/consultar-conhecimento/SKILL.md
+```
+
+O CLI ajusta os links das skills para a biblioteca e inclui `consultar-conhecimento` quando
+alguma skill escolhida usa guias. Você também pode escolher essa skill diretamente. Ela
+disponibiliza o índice e seus guias e orienta a localizar e ler somente o material pertinente.
+Ter a biblioteca instalada não significa carregar todos os textos em toda sessão.
+
+A prévia informa os guias compartilhados e os arquivos que serão criados. O índice e suas
+dependências entram uma única vez, inclusive quando ambos os agentes são selecionados.
+O catálogo pode ser consultado sem instalar skills no projeto:
+
+```bash
+npx @jordyfontoura/skills knowledge list
+npx @jordyfontoura/skills init --agents codex,claude-code --skills consultar-conhecimento --dry-run
+```
+
+Para usar o código local, execute `node cli/dist/index.js knowledge list` na raiz do
+repositório. O comando lista o conteúdo disponível no pacote, não os arquivos instalados
+no projeto; para estes, use `status`.
+
+Arquivos próprios fora de `knowledge/harness/` são preservados. Se houver uma adaptação em
+um guia compartilhado, o conflito interrompe toda a instalação antes de gravar. Os recibos
+incluem os hashes da biblioteca; `status` identifica alterações e ausências nos mesmos guias
+usados pelos dois agentes. Remover uma skill não deve remover guias usados por outras.
+
+O layout compartilhado é próprio do CLI. O plugin continua usando `knowledge/` na origem;
+as cópias manuais em `.agents/skills/` e `.claude/skills/` continuam autocontidas, com guias
+em `references/knowledge/`. O CLI não migra automaticamente uma instalação anterior: use
+`atualizar-harness` para comparar adaptações e ajustar os links antes de retirar cópias antigas.
 
 ## Escolher conteúdo
 
@@ -41,11 +83,87 @@ Os papéis `planner`, `evaluator` e `representative` são opcionais. Cada papel 
 skills de apoio necessárias, com aviso antes de instalar. Outras skills citadas são sugestões
 e não entram automaticamente. Instalar um papel não autoriza delegação nem representação.
 
-`--models` cria `.agents/models.toml` com o exemplo neutro que herda o ambiente, somente
-se o arquivo não existir. Políticas locais são preservadas. A opção é avançada e não faz
-parte das recomendações iniciais.
+`--models` continua criando `.agents/models.toml` com o exemplo neutro, somente se ele não
+existir. Quando a seleção inclui papéis, `delegar`, `conselho` ou `verificar-aceite`, o modo
+interativo também oferece uma pergunta opcional: pular, criar uma política neutra ou
+configurar modelos e perfis. A política entra na mesma prévia e confirmação da instalação.
+Se o arquivo já existe, o CLI o preserva e informa que ele não foi validado.
 
-Depois da publicação, será possível usar seleções explícitas:
+## Configurar modelos
+
+O comando dedicado não exige escolher skills nem agente e também funciona depois da adoção.
+Para experimentar o código local:
+
+```bash
+node cli/dist/index.js models init --dir ./work/meu-projeto
+```
+
+Pelo npm:
+
+```bash
+npx @jordyfontoura/skills models init
+```
+
+O configurador oferece três caminhos:
+
+- **Herdar o ambiente:** usa o mesmo exemplo neutro de `--models`.
+- **Modelo compartilhado:** define candidatos para um perfil base usado pelas sete responsabilidades.
+- **Por perfis:** separa trabalho simples, habitual e difícil, coordenação, aceite/conselho e
+  representação. Você escolhe quais personalizar; os demais herdam o ambiente. A associação
+  de cada responsabilidade ao perfil base pode ser revisada numa etapa opcional.
+
+Para cada perfil personalizado, informe o provedor, o modelo e o esforço que sua ferramenta
+de delegação aceita. Também é possível herdar o modelo e definir apenas o esforço. Alternativas
+são concretas, ordenadas e usadas por indisponibilidade. Não há catálogo de modelos embutido
+nem inferência de provedor a partir de Codex ou Claude Code.
+
+No modo por perfis, `planner`, `implementer` e `reviewer` recebem mapas `simple`/`hard`;
+`default` continua sendo o perfil base escolhido. `evaluator`, `council` e `representative`
+não recebem esses mapas. Os perfis de representação e trabalho difícil são separados.
+Inicialmente o conselho usa o perfil de aceite; você pode mudar a associação opcionalmente.
+
+A política orienta novas delegações autorizadas. Ela não muda o modelo da conversa aberta,
+não autoriza delegação nem representação e não grava modelos nos arquivos nativos dos papéis.
+A validação é estrutural: não consulta contas, credenciais, disponibilidade ou esforços aceitos
+pelos provedores. Não é preciso ter instalado os três arquivos de papéis para configurar as
+responsabilidades previstas na política.
+
+O CLI só cria arquivos ausentes. Um arquivo existente é preservado byte a byte, inclusive
+comentários, políticas v1 e conteúdo inválido; ele não é lido como TOML nem validado. Não há
+migração ou edição automática. Use `--print` para consultar outra proposta sem tocar o destino.
+
+Para automação, `models init` aceita `--neutral` ou `--config arquivo.json`. A segunda opção
+recebe o objeto de política v2 completo, valida referências e regras e o serializa como TOML.
+Arquivos `.env` não são aceitos como configuração. Exemplo de JSON, com IDs ilustrativos:
+
+```json
+{
+  "version": 2,
+  "profiles": {
+    "default": {
+      "candidates": [{ "provider": "minha-ferramenta", "model": "meu-modelo", "effort": "inherit" }]
+    }
+  },
+  "roles": {
+    "implementer": { "when": "Implementar trabalho autorizado.", "profile": "default" }
+  }
+}
+```
+
+Para gerar a política sem perguntas:
+
+```bash
+npx @jordyfontoura/skills models init --neutral --dry-run
+npx @jordyfontoura/skills models init --config ./policy.json --print
+npx @jordyfontoura/skills models init --config ./policy.json --yes
+```
+
+Sem terminal interativo, escolha explicitamente `--neutral` ou `--config`; a gravação exige
+`--yes`. `--print` escreve somente TOML na saída e não cria diretórios. Sem uma configuração
+explícita, `--print` em execução não interativa mostra a política neutra. `--dry-run` mostra
+a prévia sem gravar. Essas opções não permitem sobrescrever um arquivo existente.
+
+Também é possível usar seleções explícitas:
 
 ```bash
 npx @jordyfontoura/skills list
@@ -83,6 +201,8 @@ Recibos anteriores são mantidos em adoções parciais. Versione-os com os arqui
 Modelos locais preservados não são reivindicados pelo recibo. Para atualizar ou mesclar
 adaptações, use `atualizar-harness` com os recibos e a origem desejada. O CLI não atualiza
 automaticamente nem mescla Markdown.
+Se você editar um `models.toml` criado pelo CLI, `status` mostrará `alterado`; isso é uma
+personalização esperada, não uma instrução para restaurar o modelo original.
 
 ## Manter e verificar
 
@@ -98,6 +218,9 @@ python -m unittest discover -s scripts
 Os testes exercitam o executável e um consumidor do `.tgz` real, incluindo referências,
 papéis, conflitos, repetição, simulação e preservação de arquivos. O teste do pacote instala
 dependências em `work/` e pode precisar de rede. Os testes do harness continuam necessários.
+Os testes de política usam casos de contrato compartilhados entre Python e TypeScript e
+conferem o TOML emitido com `tomllib` e `model_policy.py`. Python é necessário nessa prova
+da origem, mas não no consumidor do pacote.
 As perguntas e o cancelamento são exercitados com streams controlados; a renderização em
 terminais reais precisa de conferência manual. A CI também executa em Linux e Windows,
 com Node.js 22 e 24; configurar essa matriz não comprova uma execução remota.

@@ -31,4 +31,19 @@ test('o pacote real instala e roda pelo npm exec sem fontes TypeScript ou Python
   assert.match(readFileSync(join(target, '.agents/skills/implementar/SKILL.md'), 'utf8'), /Implementar/);
   assert.ok(readdirSync(join(target, '.codex/agents')).includes('planner.toml'));
   assert.ok(readdirSync(join(target, '.claude/agents')).includes('planner.md'));
+  assert.ok(readdirSync(join(target, 'knowledge/harness')).includes('README.md'));
+  for (const agent of ['.agents', '.claude']) {
+    const consultation = readFileSync(join(target, agent, 'skills/consultar-conhecimento/SKILL.md'), 'utf8');
+    assert.match(consultation, /\.\.\/\.\.\/\.\.\/knowledge\/harness\/README.md/);
+    assert.ok(!readdirSync(join(target, agent, 'skills/implementar')).includes('references'));
+  }
+  const config = join(root, 'policy.json');
+  writeFileSync(config, JSON.stringify({ version: 2,
+    profiles: { custom: { candidates: [{ provider: 'external', model: 'model-a', effort: 'custom' }] } },
+    roles: { implementer: { when: 'Implementar.', profile: 'custom' } } }));
+  const installed = join(root, 'node_modules/@jordyfontoura/skills/dist/index.js');
+  const models = spawnSync(process.execPath, [installed, 'models', 'init', '--config', config, '--dir', target, '--yes'],
+    { cwd: root, encoding: 'utf8', env: { ...process.env, PATH: '', Path: '' } });
+  assert.equal(models.status, 0, models.stderr);
+  assert.match(readFileSync(join(target, '.agents/models.toml'), 'utf8'), /model-a/);
 });

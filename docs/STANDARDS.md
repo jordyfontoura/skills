@@ -58,6 +58,11 @@ dependências necessárias em `references/knowledge/` de cada cópia avulsa, inc
 transitivos, com procedência e caminhos ajustados. Essa pasta é reservada à geração no
 harness; não mantenha ali uma segunda fonte editável nem use symlinks.
 
+O empacotamento do CLI usa uma biblioteca única em `knowledge/harness/` no destino, com
+links ajustados nas skills de ambos os agentes. Essa escolha não muda os links canônicos
+nem o formato autocontido das cópias manuais. Preserve documentos próprios do destino
+fora desse namespace e confira adaptações antes de atualizar guias compartilhados.
+
 ## Escrita e manutenção
 
 - Cada skill trata de um resultado, com um gatilho claro e instruções suficientes para agir.

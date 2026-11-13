@@ -14,6 +14,7 @@ function allowed(path: string): boolean {
   if (path.includes('\\') || path.split('/').some(part => part === '..' || part === '.' || !part || part === '.env' || part.startsWith('.env.'))) return false;
   return /^\.(agents|claude)\/skills\/[a-z0-9-]+\/.+/.test(path)
     || /^\.(claude|codex)\/agents\/[a-z0-9-]+\.(md|toml)$/.test(path)
+    || /^knowledge\/harness\/(?:[a-zA-Z0-9._-]+\/)*[a-zA-Z0-9._-]+\.md$/.test(path)
     || path === '.agents/models.toml';
 }
 async function stat(path: string) {
@@ -39,7 +40,7 @@ async function safePath(root: string, path: string): Promise<string> {
   }
   return target;
 }
-export async function planInstall(root: string, selection: Selection): Promise<Plan> {
+export async function planInstall(root: string, selection: Selection, modelsContent?: string): Promise<Plan> {
   root = resolve(root);
   const files: Record<string, string> = {};
   for (const name of selection.skills) {
@@ -49,12 +50,13 @@ export async function planInstall(root: string, selection: Selection): Promise<P
       if (selection.agents.includes('codex')) files[path] = content;
       if (selection.agents.includes('claude-code')) files[path.replace('.agents/', '.claude/')] = content;
     }
+    for (const path of payload.skills.find(skill => skill.name === name)?.knowledge ?? []) files[path] = payload.files[path];
   }
   for (const role of selection.roles) for (const agent of selection.agents) {
     const path = agent === 'codex' ? `.codex/agents/${role}.toml` : `.claude/agents/${role}.md`;
     files[path] = payload.files[path];
   }
-  if (selection.models) files['.agents/models.toml'] = payload.files['.agents/models.toml'];
+  if (selection.models) files['.agents/models.toml'] = modelsContent ?? payload.files['.agents/models.toml'];
   const entries: Entry[] = [];
   const conflicts: string[] = [];
   for (const [path, content] of Object.entries(files).sort(([a], [b]) => a.localeCompare(b))) {
