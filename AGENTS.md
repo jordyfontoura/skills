@@ -8,8 +8,10 @@ Este é o ponto de entrada do agente. Mantenha-o curto; procedimentos ficam nas 
 - Gerar cópias dos provedores após editar fontes: `python scripts/sync.py`.
 - Validar arquivos e cópias dos provedores: `python scripts/check.py` (Python 3.11+).
 - Testar o validador: `python -m unittest discover -s scripts`.
+- Preparar o CLI: `npm ci --prefix cli`; compilar: `npm run build --prefix cli`.
+- Verificar o CLI após o build: `npm run typecheck --prefix cli` e `npm test --prefix cli`.
 - Estado local: `git status --short`, `git log -5 --oneline`.
-- Não há aplicação para compilar, instalar ou executar.
+- Não há aplicação web. O CLI opcional fica em `cli/`; veja `cli/README.md`.
 
 ## Trabalho
 

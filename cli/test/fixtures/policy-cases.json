@@ -1,0 +1,49 @@
+{
+  "base": {
+    "version": 2,
+    "profiles": { "default": { "candidates": [{ "provider": "inherit", "model": "inherit", "effort": "inherit" }] } },
+    "roles": {
+      "planner": { "when": "Planejar.", "profile": "default" },
+      "evaluator": { "when": "Avaliar.", "profile": "default" },
+      "representative": { "when": "Representar.", "profile": "default" },
+      "council": { "when": "Consultar.", "profile": "default" }
+    }
+  },
+  "cases": [
+    { "name": "nome de perfil com quebra de linha", "valid": false, "changes": [{ "path": ["profiles", "custom\n"], "value": { "candidates": [{ "provider": "inherit", "model": "inherit", "effort": "inherit" }] } }] },
+    { "name": "BOM em string não é espaço para o Python", "valid": true, "changes": [{ "path": ["roles", "planner", "when"], "value": "\ufeff" }] },
+    { "name": "controle DEL precisa de escape TOML", "valid": true, "changes": [{ "path": ["roles", "planner", "when"], "value": "Planejar\u007f." }] },
+    { "name": "U0085 é espaço para o Python", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "effort"], "value": "\u0085high" }] },
+    { "name": "herança neutra", "valid": true, "changes": [] },
+    { "name": "esforço explícito com modelo herdado", "valid": true, "changes": [{ "path": ["profiles", "default", "candidates", 0, "effort"], "value": "high" }] },
+    { "name": "modelo e esforço de ambiente externo", "valid": true, "changes": [{ "path": ["profiles", "default", "candidates"], "value": [{ "provider": "custom-driver", "model": "local/model:v1", "effort": "custom-effort" }] }] },
+    { "name": "alternativa concreta após herança", "valid": true, "changes": [{ "path": ["profiles", "default", "candidates"], "value": [{ "provider": "inherit", "model": "inherit", "effort": "inherit" }, { "provider": "other", "model": "model-b", "effort": "inherit" }] }] },
+    { "name": "mapa de complexidade permitido", "valid": true, "changes": [{ "path": ["roles", "planner", "complexity"], "value": { "simple": "default", "hard": "default" } }] },
+    { "name": "responsabilidade adicional", "valid": true, "changes": [{ "path": ["roles", "researcher"], "value": { "when": "Pesquisar.", "profile": "default", "complexity": {} } }] },
+    { "name": "escape de strings TOML", "valid": true, "changes": [{ "path": ["roles", "planner", "when"], "value": "Planejar \"cenários\".\nCaminho C:\\projeto\t中文 🦊" }] },
+    { "name": "versão desconhecida", "valid": false, "changes": [{ "path": ["version"], "value": 3 }] },
+    { "name": "versão booleana", "valid": false, "changes": [{ "path": ["version"], "value": true }] },
+    { "name": "campos antigos em v2", "valid": false, "changes": [{ "path": ["defaults"], "value": {} }] },
+    { "name": "perfis vazios", "valid": false, "changes": [{ "path": ["profiles"], "value": {} }] },
+    { "name": "nome de perfil inválido", "valid": false, "changes": [{ "path": ["profiles", "Invalid"], "value": { "candidates": [] } }] },
+    { "name": "candidatos vazios", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates"], "value": [] }] },
+    { "name": "candidatos não são lista", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates"], "value": "typo" }] },
+    { "name": "candidato incompleto", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "effort"], "delete": true }] },
+    { "name": "modelo herdado sem provedor herdado", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "provider"], "value": "other" }] },
+    { "name": "provedor herdado sem modelo herdado", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "model"], "value": "model-a" }] },
+    { "name": "alternativa herdada", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates"], "value": [{ "provider": "other", "model": "model-a", "effort": "inherit" }, { "provider": "inherit", "model": "inherit", "effort": "inherit" }] }] },
+    { "name": "candidato repetido", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates"], "value": [{ "provider": "inherit", "model": "inherit", "effort": "inherit" }, { "provider": "other", "model": "model-a", "effort": "high" }, { "provider": "other", "model": "model-a", "effort": "high" }] }] },
+    { "name": "esforço inválido", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "effort"], "value": false }] },
+    { "name": "espaços no modelo", "valid": false, "changes": [{ "path": ["profiles", "default", "candidates", 0, "model"], "value": " inherit" }] },
+    { "name": "responsabilidades vazias", "valid": false, "changes": [{ "path": ["roles"], "value": {} }] },
+    { "name": "perfil inexistente", "valid": false, "changes": [{ "path": ["roles", "planner", "profile"], "value": "absent" }] },
+    { "name": "campo de responsabilidade desconhecido", "valid": false, "changes": [{ "path": ["roles", "planner", "fallbacks"], "value": [] }] },
+    { "name": "justificativa vazia", "valid": false, "changes": [{ "path": ["roles", "planner", "when"], "value": " " }] },
+    { "name": "complexidade default proibida", "valid": false, "changes": [{ "path": ["roles", "planner", "complexity"], "value": { "default": "default" } }] },
+    { "name": "complexidade desconhecida", "valid": false, "changes": [{ "path": ["roles", "planner", "complexity"], "value": { "medium": "default" } }] },
+    { "name": "mapa não é tabela", "valid": false, "changes": [{ "path": ["roles", "planner", "complexity"], "value": [] }] },
+    { "name": "evaluator protegido", "valid": false, "changes": [{ "path": ["roles", "evaluator", "complexity"], "value": {} }] },
+    { "name": "representative protegido", "valid": false, "changes": [{ "path": ["roles", "representative", "complexity"], "value": {} }] },
+    { "name": "council protegido", "valid": false, "changes": [{ "path": ["roles", "council", "complexity"], "value": {} }] }
+  ]
+}

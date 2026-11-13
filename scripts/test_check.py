@@ -11,17 +11,59 @@ import tempfile
 import unittest
 
 from check import ROOT, validate
-from catalog import catalog, copy_files, rebase_links
+from catalog import catalog, copy_files, local_targets, rebase_links
 from sync import sync
 
 
 class ValidationTests(unittest.TestCase):
+    def test_shared_layout_has_one_library_and_all_links_resolve(self):
+        shared = self.root / "knowledge/harness"
+        exported = copy_files(self.root, self.root / ".agents/skills", knowledge_root=shared)
+        self.assertIn((shared / "README.md").resolve(), exported)
+        self.assertIn((shared / "ux/usability.md").resolve(), exported)
+        self.assertFalse(any("references/knowledge" in path.as_posix() for path in exported))
+        for path, content in exported.items():
+            if path.suffix == ".md":
+                for target, relative in local_targets(content.decode("utf-8")):
+                    self.assertIn((path.parent / relative).resolve(), exported, f"{path}: {target}")
+        for name in ("implementar", "criticar", "consultar-conhecimento"):
+            text = exported[(self.root / f".agents/skills/{name}/SKILL.md").resolve()].decode("utf-8")
+            self.assertIn("../../../knowledge/harness/", text)
+
+    def test_shared_layout_includes_transitive_guides_with_a_single_skill(self):
+        guide = self.root / "knowledge/ux/extra.md"
+        guide.write_text("# Guia adicional\n\n[Critérios](../accessibility/interface-criteria.md).\n", encoding="utf-8")
+        with (self.root / "knowledge/README.md").open("a", encoding="utf-8") as stream:
+            stream.write("\n[Guia adicional](ux/extra.md).\n")
+        with (self.root / "knowledge/ux/usability.md").open("a", encoding="utf-8") as stream:
+            stream.write("\n[Detalhes](extra.md).\n")
+        shared = self.root / "knowledge/harness"
+        exported = copy_files(self.root, self.root / ".agents/skills",
+                              sources={"implementar": catalog(self.root)["implementar"]}, knowledge_root=shared)
+        self.assertIn((shared / "ux/extra.md").resolve(), exported)
+        self.assertIn((shared / "accessibility/interface-criteria.md").resolve(), exported)
+        self.assertEqual(exported[(shared / "ux/extra.md").resolve()].decode("utf-8").count("../accessibility/interface-criteria.md"), 1)
+
+    def test_manual_consultation_skill_remains_self_contained(self):
+        exported = copy_files(self.root, self.root / ".agents/skills",
+                              sources={"consultar-conhecimento": catalog(self.root)["consultar-conhecimento"]})
+        directory = self.root / ".agents/skills/consultar-conhecimento"
+        self.assertIn((directory / "references/knowledge/README.md").resolve(), exported)
+        for path, content in exported.items():
+            self.assertTrue(path.is_relative_to(directory.resolve()))
+            if path.suffix == ".md":
+                for target, relative in local_targets(content.decode("utf-8")):
+                    self.assertIn((path.parent / relative).resolve(), exported, f"{path}: {target}")
+
     def setUp(self):
         self.workspace = tempfile.TemporaryDirectory(dir=ROOT / "scripts")
         self.addCleanup(self.workspace.cleanup)
         self.root = Path(self.workspace.name)
         for directory in (".agents", ".claude", ".claude-plugin", ".codex", "agents", "docs", "skills", "knowledge"):
             shutil.copytree(ROOT / directory, self.root / directory)
+        # Inclui a documentação referenciada na raiz sem copiar dependências ou builds.
+        shutil.copytree(ROOT / "cli", self.root / "cli", ignore=shutil.ignore_patterns(
+            "node_modules", "dist", "payload.json", "LICENSE", "*.tgz"))
         for path in ROOT.iterdir():
             if path.is_file():
                 shutil.copy2(path, self.root / path.name)

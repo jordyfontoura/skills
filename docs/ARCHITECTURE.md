@@ -21,7 +21,8 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
 - `agents/` é a cópia de `.claude/agents/` que o plugin carrega. O Codex não recebe papéis
   pelo plugin.
 - `scripts/catalog.py` lê o catálogo e o índice de conhecimento, resolve dependências
-  transitivas e adapta links relativos ao layout de instalação.
+  transitivas e adapta links relativos ao layout de instalação. `copy_files` gera referências
+  dentro de cada cópia avulsa ou em uma biblioteca compartilhada, conforme o destino informado.
 - `scripts/sync.py` gera as cópias das skills e de `agents/`, sem editar as fontes ou remover
   arquivos extras.
 - `scripts/check.py` valida metadados, links, configuração, manifestos do plugin e consistência
@@ -30,11 +31,20 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
   biblioteca, componentes executáveis no plugin e caracteres invisíveis.
 - `scripts/model_policy.py` valida e consulta a política, sem executar agentes ou fazer rede.
 - `.github/workflows/ci.yml` executa essa verificação e os testes do validador.
+- `cli/` contém o pacote TypeScript `@jordyfontoura/skills`. `scripts/package_cli.py` usa
+  `catalog.py` para empacotar skills com links para `knowledge/harness/`, os guias uma única
+  vez, papéis e o exemplo neutro de modelos. O payload v2 declara as dependências de guias
+  por skill e o catálogo de conhecimento. Ele não contém `references/knowledge/` por skill.
+  O pacote publicado usa apenas Node.js; Python permanece na manutenção da origem.
 
 As cópias preservam as instruções das fontes. A geração ajusta somente links Markdown relativos
 para os arquivos correspondentes no layout de uso; blocos de código e links externos são preservados.
 O plugin completo usa as fontes e a biblioteca na raiz do pacote. Nas cópias avulsas, cada
 skill recebe seus guias em `references/knowledge/`, com procedência e links internos ajustados.
+Pelo CLI, as skills de Codex e Claude Code apontam para a mesma biblioteca na raiz do projeto,
+`knowledge/harness/`. A skill `consultar-conhecimento` é incluída quando uma seleção precisa
+de guias e pode ser selecionada sozinha. Ela aponta para o índice, cujo fechamento de
+dependências disponibiliza todos os guias catalogados, com consulta seletiva durante a tarefa.
 Um mesmo guia pode ter várias cópias geradas, mas é editado apenas em `knowledge/` na origem.
 O empacotamento inclui apenas o fechamento das dependências declaradas por links Markdown,
 inclusive links de referência; não depende de symlinks, variáveis de provedor ou rede.
@@ -42,6 +52,27 @@ inclusive links de referência; não depende de symlinks, variáveis de provedor
 Os papéis acrescentam os metadados próprios de cada provedor. Quem inicia a consulta lê a política
 local e verifica as capacidades reais das ferramentas. Campos nativos dos provedores não são
 alterados por essa política. Os scripts de manutenção usam apenas a biblioteca padrão do Python.
+
+O CLI acrescenta um build Node.js opcional, com dependências fixadas em `cli/package-lock.json`.
+O pacote npm leva JavaScript compilado e conteúdo pronto, sem fontes Python ou TypeScript.
+Como o marketplace aponta para a raiz, o cache do plugin pode conter a pasta `cli/`; ela
+não registra executáveis no manifesto e não é executada pelo plugin. A validação continua
+recusando `bin/`, hooks e comandos executáveis na raiz.
+
+No destino, o CLI confere os arquivos antes de gravar, recusa conflitos e links simbólicos,
+mantém os arquivos idênticos e preserva políticas locais de modelos. Recibos imutáveis em
+`.harness/receipts/` registram seleção, origem, SHA de base e hashes de conteúdo. `status`
+identifica alterações e ausências sem rede; a mesclagem continua na skill `atualizar-harness`.
+Isso inclui os guias compartilhados. O CLI preserva os outros caminhos de `knowledge/` e
+não converte nem remove automaticamente cópias de instalações anteriores.
+
+`cli/src/policy.ts` valida dados de políticas v2 e serializa TOML sem ler ou reescrever
+políticas existentes. O configurador usa as responsabilidades do exemplo neutro incluído
+no payload, sem uma segunda lista de suas descrições. Casos em
+`cli/test/fixtures/policy-cases.json` são compartilhados com os testes Python;
+`scripts/check_cli_policy.py` comprova que o TOML gerado preserva os dados e é aceito pelo
+validador canônico. Esse helper é usado só na origem. O CLI não descobre modelos nem
+consulta provedores para verificar as preferências declaradas.
 
 O contexto de trabalho fica na conversa e nos documentos existentes. Uma especificação ou
 passagem de contexto em Markdown pode preservar tarefas longas; não há formato de registro,
