@@ -54,6 +54,10 @@ plugin; veja como copiá-los no [guia de adoção](docs/ADOPTING.md#plugin).
 Instalação local testada em 01/11/2026 com Claude Code 2.1.314 e Codex 0.166.0.
 Prefere adaptar os arquivos? Use a [cópia editável](docs/ADOPTING.md#cópia-manual).
 
+O [CLI `@jordyfontoura/skills`](cli/README.md) está em desenvolvimento para recomendar e
+instalar cópias por projeto, incluindo papéis opcionais. A publicação no npm está pendente;
+o guia mostra como experimentar o código local.
+
 ## Primeiro uso
 
 Num repositório seu, peça uma mudança com resultado claro. `implementar` orienta o agente a

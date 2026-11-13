@@ -11,6 +11,10 @@ CLAUDE.local.md
 
 # Dependências, caches do Python e arquivos do sistema
 node_modules/
+cli/dist/
+cli/payload.json
+cli/LICENSE
+cli/*.tgz
 __pycache__/
 *.pyc
 .DS_Store

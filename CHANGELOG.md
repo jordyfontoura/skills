@@ -9,6 +9,9 @@ compatibilidade.
 
 ### Adicionado
 
+- CLI TypeScript `@jordyfontoura/skills` para adoção guiada e seletiva de skills e papéis,
+  com simulação, preservação de arquivos existentes, recibos de origem e consulta de estado.
+  O pacote leva referências completas e dispensa Python no destino. Publicação no npm pendente.
 - `fazer-direto`: modo de execução que prioriza velocidade e dispensa specs, planos formais
   e etapas de processo por rotina no pedido atual. Decide detalhes técnicos reversíveis,
   preserva o escopo completo, permissões e verificações obrigatórias e relata o resultado brevemente.

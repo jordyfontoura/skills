@@ -8,9 +8,14 @@ aparecer duas vezes.
 | Plugin | Claude Code e Codex, sem editar as skills. | Pelo gerenciador de plugins do agente. |
 | Cópia manual | Quem quer adaptar as skills ou usa outro agente. | Pela skill `atualizar-harness`. |
 
+O [CLI de adoção guiada](../cli/README.md), em desenvolvimento, automatiza a rota de cópias
+editáveis para Codex e Claude Code. Ele recomenda skills por práticas de trabalho, oferece
+papéis opcionais e mostra os arquivos antes da instalação. A publicação no npm está pendente;
+o guia explica como experimentar o código local.
+
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 28 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 29 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
@@ -90,7 +95,8 @@ mantém o canal registrado. Para voltar ao canal estável, peça explicitamente 
 as mudanças que essa troca pode retirar. Uma versão específica pedida prevalece sobre o canal.
 
 Use `configurar-harness` apenas se quiser que o agente configure comandos e verificações do projeto.
-Não há instalador, conta, serviço ou processo em segundo plano.
+As cópias manuais dispensam instalador. O CLI opcional exige Node.js e npm, sem conta,
+serviço ou processo em segundo plano para usar o conteúdo instalado.
 
 ## Biblioteca de conhecimento
 

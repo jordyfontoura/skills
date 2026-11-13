@@ -22,6 +22,9 @@ class ValidationTests(unittest.TestCase):
         self.root = Path(self.workspace.name)
         for directory in (".agents", ".claude", ".claude-plugin", ".codex", "agents", "docs", "skills", "knowledge"):
             shutil.copytree(ROOT / directory, self.root / directory)
+        # Inclui a documentação referenciada na raiz sem copiar dependências ou builds.
+        shutil.copytree(ROOT / "cli", self.root / "cli", ignore=shutil.ignore_patterns(
+            "node_modules", "dist", "payload.json", "LICENSE", "*.tgz"))
         for path in ROOT.iterdir():
             if path.is_file():
                 shutil.copy2(path, self.root / path.name)
