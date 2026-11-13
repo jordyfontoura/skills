@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 28 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 29 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -16,6 +16,7 @@ de toda mudança. Veja o [fluxo, sua base e seus limites](docs/HARNESS.md#fluxo-
 ## Quando usar
 
 - **Quer ver a abordagem antes de alterar?** `propor` orienta o agente a apresentar uma proposta e esperar seu aceite.
+- **Quer só fazer e entregar rápido?** `fazer-direto` dispensa specs e etapas de processo, com verificação do resultado.
 - **Precisa conferir uma entrega?** `implementar` pede comandos e resultados observados; `verificar-aceite` confere os critérios de forma independente.
 - **Vai retomar em outra sessão?** `passar-contexto` preserva a próxima etapa e as provas pendentes; `andamento` resume o andamento.
 
@@ -88,7 +89,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 28 skills</summary>
+<summary>Ver as 29 skills</summary>
 
 ### Entender e decidir
 
@@ -109,6 +110,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `implementar` | Entregar e verificar o trabalho combinado. |
+| `fazer-direto` | Executar diretamente, priorizando velocidade e dispensando specs e etapas de processo. |
 | `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
 | `revisar` | Analisar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
