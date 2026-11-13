@@ -22,9 +22,8 @@ o escopo de `conhecer-ferramentas`. Leia a ajuda da versão instalada antes de u
     inexistente é criado vazio e devolve `[]` sem erro; confirme com
     `qmd --index <índice> collection list`.
   - O índice não avisa quando está desatualizado e pode devolver texto que não existe mais.
-    Não cite snippet, docid nem score: leia o arquivo atual na linha do resultado (com a
-    Bateia, `bateia doc section <arquivo> --at-line <linha> --json`) e cite caminho, linhas
-    e, quando houver, `sha256`. Busca vazia não prova que algo não existe.
+    Não cite snippet, docid nem score: leia o arquivo atual na linha do resultado e cite
+    caminho e linhas. Busca vazia não prova que algo não existe.
   - Sem autorização, não rode `update`, `embed`, `pull`, `init`, `collection add` nem `trust`;
     não use `mcp --http` nem variáveis `QMD_TRUST_*`. Exija a versão 2.8.3 ou posterior.
     Prefira um índice por projeto restrito a `**/*.md`; não indexe a máquina, `.env` ou logs.
