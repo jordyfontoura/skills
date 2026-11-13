@@ -37,6 +37,21 @@ Com plugin, esta skill continua cuidando do que ele não instala: orientações 
 Se o mesmo nome existir no plugin e numa cópia local, relate a duplicata e peça uma escolha;
 não apague nenhuma das duas.
 
+Na rota CLI, leia os recibos de `.harness/receipts/` como registros por seleção e componente.
+Confira origem, versão, `source.sha`, `source.dirty`, `source.contentHash` e hashes dos arquivos.
+Se `source.dirty` for verdadeiro, o SHA identifica apenas o commit de base do build, não o
+conteúdo exato instalado. Os hashes identificam conteúdos, mas não permitem recuperá-los.
+Só use uma base anterior como comprovada quando o artefato ou conteúdo obtido ou reproduzido
+corresponder aos hashes registrados; isso também vale para arquivos gerados a partir de um
+commit sem alterações locais. Sem essa prova, siga a comparação sem base comprovada,
+preservando possíveis personalizações.
+
+Combine os recibos aplicáveis a cada componente; o nome de arquivo baseado em hash não
+indica ordem cronológica. Se faltar uma ordem ou base comprovada, relate a lacuna em vez
+de escolher um recibo como a última versão. Preserve os recibos antigos como histórico
+imutável e registre separadamente o que foi atualizado, sem declarar uma atualização
+parcial como revisão única de todo o destino.
+
 ## Identificar origem e destino
 
 Leia as instruções do projeto de destino, seu estado Git e os registros de adoção existentes.
@@ -101,6 +116,11 @@ leva na raiz; cópias avulsas de `.agents/skills/` e `.claude/skills/` levam as 
 empacotadas em `references/knowledge/`. Copie a pasta completa e registre a revisão dos guias.
 Em destinos com fontes agrupadas, inclua a biblioteca e use geração compatível. Não copie
 somente `SKILL.md` nem deixe links apontando para o clone original.
+Nas adoções pelo CLI, a biblioteca fica em `knowledge/harness/` no destino e é compartilhada
+pelas skills de Codex e Claude Code. Preserve esse layout e consulte os recibos em
+`.harness/receipts/` para identificar a origem dos arquivos; confira as adaptações atuais.
+Ao migrar cópias antigas, compare os guias e ajuste os links dos dois agentes antes de retirar
+duplicatas. Preserve os outros caminhos de `knowledge/` e os guias ainda usados por outra skill.
 Cabeçalhos de geração indicam procedência, não ausência de personalização: compare cada guia
 com a base adotada antes de atualizar. Preserve adaptações locais e confira versões do mesmo
 guia em skills diferentes. Recursos retirados ou deslocados exigem migração explícita;

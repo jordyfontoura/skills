@@ -9,9 +9,17 @@ compatibilidade.
 
 ### Adicionado
 
+- `consultar-conhecimento`: localiza referências pertinentes e orienta sua aplicação por fontes,
+  aplicabilidade e limites. Pelo CLI, Codex e Claude Code usam uma biblioteca única em
+  `knowledge/harness/`, com links ajustados, recibos e consulta do catálogo por `knowledge list`.
+  Cópias manuais continuam autocontidas. A instalação não migra nem sobrescreve adaptações antigas.
+- Configurador `models init` no CLI, com política neutra, modelo compartilhado ou perfis,
+  esforço e alternativas ordenadas. A instalação oferece uma pergunta opcional. A geração
+  v2 tem validação estrutural em TypeScript e provas cruzadas com Python, sem editar arquivos
+  existentes ou consultar disponibilidade dos provedores. `--print` mostra somente o TOML.
 - CLI TypeScript `@jordyfontoura/skills` para adoção guiada e seletiva de skills e papéis,
   com simulação, preservação de arquivos existentes, recibos de origem e consulta de estado.
-  O pacote leva referências completas e dispensa Python no destino. Publicação no npm pendente.
+  O pacote leva referências completas e dispensa Python no destino.
 - `fazer-direto`: modo de execução que prioriza velocidade e dispensa specs, planos formais
   e etapas de processo por rotina no pedido atual. Decide detalhes técnicos reversíveis,
   preserva o escopo completo, permissões e verificações obrigatórias e relata o resultado brevemente.
@@ -37,6 +45,9 @@ compatibilidade.
 
 ### Mudado
 
+- `configurar-harness` reconhece a adoção pelo CLI, preserva a biblioteca compartilhada e
+  orienta a configuração opcional de modelos. `atualizar-harness` distingue o SHA de base
+  de builds locais do conteúdo instalado e confere os hashes antes de assumir uma base de comparação.
 - `andamento`: cobre o pedido inteiro até sua condição de conclusão, com mudanças desde o
   último resumo, próxima entrega utilizável e previsão fundamentada quando pertinente.
   Perguntas sobre tempo sempre recebem uma estimativa com base e incertezas ou o motivo de
