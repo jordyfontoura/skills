@@ -12,9 +12,13 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 | [Hierarquia, estados, conteúdo e escolha](ux/states-and-content.md) | Composição, mensagens, interação, adaptação e padrões enganosos. |
 | [Convenções de plataforma](ux/platform-conventions.md) | Entradas, navegação do sistema, janelas e integrações. |
 | [Acessibilidade por forma de acesso](accessibility/interface-criteria.md) | Critérios WCAG e WCAG2ICT que cada forma de inspeção permite examinar. |
+| [Fontes de assets para jogos](gamedev/asset-sources.md) | Escolha de arte, áudio, modelos, texturas e addons de terceiros, com a licença de cada site. |
+| [Padrões de programação de jogos](gamedev/programming-patterns.md) | Laço de jogo, passo fixo, entidades, comunicação entre sistemas e otimização. |
+| [Práticas de engenharia em jogos com Godot](gamedev/engineering-practices.md) | Desempenho, organização de cenas e código, dados, entrada, persistência e versionamento. |
+| [Técnicas de game design](gamedev/game-design.md) | Mecânicas, ritmo, dificuldade, resposta ao jogador, escopo e acessibilidade de jogos. |
 
 UI é compartilhada entre frontend, aplicações nativas e jogos; não replique o mesmo guia por
-domínio. Pastas como `games`, `frontend`, `legal` e `scientific-research` podem surgir quando
+domínio. Pastas como `frontend`, `legal` e `scientific-research` podem surgir quando
 houver material útil, com nomes de arquivos em inglês e texto em português. Não crie pastas
 vazias nem transforme os exemplos de domínio numa taxonomia obrigatória.
 
