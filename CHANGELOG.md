@@ -7,6 +7,12 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Alterado
+
+- `melhorar-harness`: considera simplificar ou retirar componentes com indício de custo ou
+  obsolescência, comparando um por vez sem enfraquecer requisitos ou verificações úteis.
+- `configurar-harness`: orienta mensagens de falha com local, regra violada e correção possível.
+
 ### Adicionado
 
 - `consultar-conhecimento`: localiza referências pertinentes e orienta sua aplicação por fontes,
