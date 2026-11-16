@@ -45,7 +45,9 @@ test('todas as skills dos dois agentes usam somente a biblioteca compartilhada c
     const content = readFileSync(join(root, agent, 'skills/consultar-conhecimento/SKILL.md'), 'utf8');
     assert.match(content, /\.\.\/\.\.\/\.\.\/knowledge\/harness\/README.md/);
   }
-  assert.match(result.stdout, /Conhecimento compartilhado: 4 guias e um índice/);
+  const guides = markdownFiles(fileURLToPath(new URL('../../knowledge/', import.meta.url))).length - 1;
+  assert.ok(guides >= 4, 'a biblioteca de origem perdeu guias');
+  assert.ok(result.stdout.includes(`Conhecimento compartilhado: ${guides} guias e um índice`), result.stdout);
 });
 
 test('somente Claude instala a biblioteca na raiz e não cria pastas de skills do Codex', () => {

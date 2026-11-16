@@ -15,6 +15,9 @@ compatibilidade.
 
 ### Adicionado
 
+- Guias de desenvolvimento de jogos em `knowledge/gamedev/`: fontes de assets com a licença
+  de cada site, padrões de programação, práticas de engenharia com Godot e técnicas de game
+  design. Cada guia registra as fontes consultadas e o que não pôde ser conferido.
 - `consultar-conhecimento`: localiza referências pertinentes e orienta sua aplicação por fontes,
   aplicabilidade e limites. Pelo CLI, Codex e Claude Code usam uma biblioteca única em
   `knowledge/harness/`, com links ajustados, recibos e consulta do catálogo por `knowledge list`.
