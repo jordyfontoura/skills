@@ -178,6 +178,19 @@ confere o feedback com `tratar-revisao`, corrige e repete as provas afetadas ant
 crítica. O limite e a condição de parada vêm do objetivo. `verificar-aceite` continua sendo
 a comprovação independente dos critérios combinados da entrega.
 
+O método de interface parte da [avaliação heurística](https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/)
+e da [escala de severidade da NN/g](https://www.nngroup.com/articles/how-to-rate-the-severity-of-usability-problems/),
+que fundamentam a inspeção e a reavaliação por vários avaliadores. As definições de 1 a 3,
+os pisos, a regra de barreiras e a mediana são escolhas deste harness. O
+[resumo de 33 estudos da MeasuringU](https://measuringu.com/evaluator-effect/), fonte
+secundária, relata concordância mediana de 27% entre dois avaliadores humanos.
+Na comparação de [Duan et al., CHI 2024](https://arxiv.org/abs/2403.13139), o GPT-4 teve
+precisão menor que especialistas humanos (0,60 contra 0,83) e recall um pouco maior. Os erros
+incluíram regras fora de contexto, duplicatas, descartes reapresentados, correções vagas e
+leitura visual incorreta sem interface renderizada; a utilidade caiu nas iterações. As regras
+de `criticar` respondem a esses erros, sem medição de ganho nem garantia de que os resultados
+se apliquem a outros modelos.
+
 ### Produtividade
 
 Fontes em `skills/productivity/`.

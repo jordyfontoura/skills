@@ -12,6 +12,15 @@ compatibilidade.
 - `andamento`: o procedimento passa de 86 para 33 linhas e descreve o resultado esperado em
   vez do passo a passo. Mantém a cobertura do pedido inteiro, a previsão fundamentada, a
   leitura sem efeito sobre o trabalho em curso e o cuidado ao observar outra conversa.
+- `implementar`, `delegar` e `criticar` passam a descrever o resultado esperado, o formato e
+  os limites, sem repetir o que o modelo faz sem instrução nem o roteamento para outras skills.
+  `implementar` vai de 63 para 35 linhas, `delegar` de 112 para 88 e `criticar` de 254 para 213.
+  Ficam a entrega por jornada, o reaproveitamento do resultado de base, a resolução da política
+  de modelos nas versões 1 e 2, o conteúdo do brief, a rubrica de interface com pisos e
+  severidade, o painel, as notas com duas casas decimais e os ciclos de correção. Os apoios
+  `testing.md`, `interface.md` e `workloads.md` não mudam. Os fundamentos do método de
+  interface saem de `criticar` e ficam em `docs/HARNESS.md`. Não houve comparação em execuções
+  equivalentes.
 - `check.py` recusa também skills removidas citadas como skill. Lê as remoções deste CHANGELOG,
   no formato "- `nome` foi removida.", e aceita renomeações antigas que terminam numa delas.
 - O `AGENTS.md` deste repositório deixa de repetir quando usar cada skill; mantém comandos,
