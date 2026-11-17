@@ -9,6 +9,9 @@ compatibilidade.
 
 ### Alterado
 
+- `andamento`: o procedimento passa de 86 para 33 linhas e descreve o resultado esperado em
+  vez do passo a passo. Mantém a cobertura do pedido inteiro, a previsão fundamentada, a
+  leitura sem efeito sobre o trabalho em curso e o cuidado ao observar outra conversa.
 - `implementar`, `prototipar` e `criticar` consultam direção visual e movimento conforme a
   tarefa, preservando identidade, decisões existentes e separação entre avaliação e correção.
   A documentação explica a convivência opcional com UI/UX Pro Max e Impeccable.
