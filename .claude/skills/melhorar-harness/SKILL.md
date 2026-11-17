@@ -16,6 +16,10 @@ podem precisar de uma referência; erros mecânicos recorrentes, de uma checagem
 decisões de julgamento, de um padrão curto. Remova orientação desatualizada ou duplicada
 quando ela for a causa. Não transforme um caso isolado em política para todos os projetos.
 
+Quando houver indício de custo ou obsolescência, considere simplificar ou retirar um componente.
+Compare um componente por vez no mesmo cenário, preservando requisitos e verificações úteis.
+Sem comparação executada, a vantagem da remoção continua sendo hipótese; propor não autoriza remover.
+
 Apresente apenas propostas que teriam mudado o resultado observado. Falta de verificações
 é um achado, não autorização para alterar o harness. Aplique mudanças já autorizadas; nos
 demais casos, apresente a proposta concreta para escolha do usuário. Não instale bloqueios

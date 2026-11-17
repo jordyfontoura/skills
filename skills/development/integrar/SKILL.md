@@ -1,7 +1,6 @@
 ---
 name: integrar
-description: Integra trabalho entre branches ou conclui a integração de um PR no destino autorizado, preservando alterações e verificando a árvore resultante. Não confunda com `descrever-pr`, que escreve a descrição.
-license: Apache-2.0
+description: Integra trabalho entre branches ou conclui a integração de um PR no destino autorizado, preservando alterações e verificando a árvore resultante.license: Apache-2.0
 ---
 
 # Integrar trabalho verificado
@@ -58,7 +57,7 @@ uma ação já autorizada, mas não deduza autorização remota de uma integraç
 Respeite as proteções do destino e confira o SHA e o resultado da ação. Se um push for rejeitado
 ou uma resposta se perder, leia o estado atual antes de tentar novamente; não force a operação.
 
-Use `descrever-pr` para a descrição e `tratar-revisao` para feedback recebido. Siga os mecanismos
+Use `tratar-revisao` para feedback recebido. Siga os mecanismos
 do ambiente para acompanhar checks quando necessário; informe os pendentes sem fingir sucesso.
 Remova branches ou worktrees somente quando essa limpeza estiver autorizada, o trabalho estiver
 preservado e a propriedade do recurso estiver comprovada. Não remova ambientes geridos externamente.

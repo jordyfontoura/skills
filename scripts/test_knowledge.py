@@ -8,6 +8,7 @@ import unittest
 from catalog import (catalog, copy_files, knowledge_catalog, knowledge_dependencies,
                      local_targets)
 from check import ROOT
+from sync import sync
 
 
 class KnowledgeTests(unittest.TestCase):
@@ -32,28 +33,26 @@ class KnowledgeTests(unittest.TestCase):
         path.write_text(content, encoding="utf-8")
         return path
 
-    def test_bundle_is_selective_transitive_and_independent_for_each_consumer(self):
+    def test_default_copies_link_to_root_without_duplicating_guides(self):
         copy_root = self.root / "export"
         output = copy_files(self.root, copy_root)
         for name in ("avaliar", "criar"):
             skill = copy_root / name
             main = output[(skill / "SKILL.md").resolve()].decode("utf-8")
-            self.assertIn("[ui]: references/knowledge/ux/ui.md?view=1#layout", main)
+            self.assertIn("[ui]: ../../knowledge/ux/ui.md?view=1#layout", main)
             self.assertIn("[Exemplo](../../../knowledge/not-installed.md)", main)
-            self.assertIn((skill / "references/knowledge/accessibility/keyboard.md").resolve(), output)
-            self.assertNotIn((skill / "references/knowledge/games/other.md").resolve(), output)
-            self.assertIn("Gerado de knowledge/ux/ui.md", output[
-                (skill / "references/knowledge/ux/ui.md").resolve()].decode("utf-8"))
+        self.assertTrue(all(path.name == "SKILL.md" for path in output))
 
-    def test_single_skill_copy_survives_relocation_without_source_or_other_skills(self):
+    def test_single_skill_and_root_library_survive_project_relocation(self):
         skill = catalog(self.root)["avaliar"]
-        output = copy_files(self.root, self.root / "export", {"avaliar": skill})
+        project = self.root / "export"
+        output = copy_files(self.root, project / ".agents/skills", {"avaliar": skill},
+                            knowledge_root=project / "knowledge")
         for path, content in output.items():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
-        installed = self.root / "installed/avaliar"
-        installed.parent.mkdir()
-        shutil.move(str(self.root / "export/avaliar"), installed)
+        installed = self.root / "installed"
+        shutil.move(str(project), installed)
         # Remove the source files so no dependency can accidentally resolve against them.
         for relative in ("skills", "knowledge"):
             directory = (self.root / relative).resolve()
@@ -92,41 +91,88 @@ class KnowledgeTests(unittest.TestCase):
     def test_generated_resource_cannot_overwrite_authored_file(self):
         self.write("skills/development/avaliar/references/knowledge/ux/ui.md", "Adaptação.\n")
         with self.assertRaisesRegex(ValueError, "reservado às cópias geradas"):
-            copy_files(self.root, self.root / "export")
+            copy_files(self.root, self.root / "export", knowledge_root=(
+                self.root / "export/avaliar/references/knowledge"))
 
     def test_non_markdown_files_are_rejected(self):
         self.write("knowledge/tool.py", "print('not documentation')\n")
         with self.assertRaisesRegex(ValueError, "somente referências Markdown"):
             knowledge_catalog(self.root)
 
-    def test_library_change_updates_each_bundle_without_editing_consumers(self):
+    def test_library_change_never_rewrites_sources_or_generates_duplicates(self):
         sources = catalog(self.root)
         before = {name: (skill / "SKILL.md").read_bytes() for name, skill in sources.items()}
         self.write("knowledge/accessibility/keyboard.md", "# Teclado\nCritério atualizado.\n")
         output = copy_files(self.root, self.root / "export")
         for name, source in sources.items():
-            bundled = (self.root / "export" / name /
-                       "references/knowledge/accessibility/keyboard.md").resolve()
-            self.assertIn("Critério atualizado.", output[bundled].decode("utf-8"))
             self.assertEqual((source / "SKILL.md").read_bytes(), before[name])
+        self.assertTrue(all(path.name == "SKILL.md" for path in output))
+        self.assertIn("Critério atualizado.", (self.root / "knowledge/accessibility/keyboard.md").read_text(encoding="utf-8"))
 
     def test_real_ui_consumers_have_relocatable_links(self):
         # Check the actual distribution, including its own support files, outside its layout.
         sources = catalog(ROOT)
         consumers = {name: sources[name] for name in ("criticar", "implementar", "prototipar")}
         for name, source in consumers.items():
-            self.assertEqual(len(knowledge_dependencies(ROOT, source)), 4)
-        output = copy_files(ROOT, self.root / "real-export", consumers)
+            expected = {"ux/usability.md", "ux/states-and-content.md",
+                        "ux/visual-direction.md", "ux/motion.md",
+                        "ux/platform-conventions.md", "accessibility/interface-criteria.md"}
+            if name == "criticar":
+                expected.update({"gamedev/game-design.md", "3d-modeling/game-ready-assets.md",
+                                 "3d-modeling/export-pipeline.md", "gamedev/asset-sources.md"})
+            actual = {path.relative_to(ROOT / "knowledge").as_posix()
+                      for path in knowledge_dependencies(ROOT, source)}
+            self.assertEqual(actual, expected)
+        project = self.root / "real-export"
+        output = copy_files(ROOT, project / ".agents/skills", consumers,
+                            knowledge_root=project / "knowledge")
         for path, content in output.items():
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(content)
         for name in consumers:
-            installed = self.root / "real-export" / name
+            installed = project / ".agents/skills" / name
             for path in installed.rglob("*.md"):
                 for _, relative in local_targets(path.read_text(encoding="utf-8")):
                     target = (path.parent / relative).resolve()
-                    self.assertTrue(target.is_relative_to(installed.resolve()), (path, target))
+                    self.assertTrue(target.is_relative_to(project.resolve()), (path, target))
                     self.assertTrue(target.is_file(), (path, target))
+
+    def install_legacy_copies(self):
+        for provider in (".agents/skills", ".claude/skills"):
+            for name, source in catalog(self.root).items():
+                directory = self.root / provider
+                output = copy_files(self.root, directory, {name: source},
+                                    knowledge_root=directory / name / "references/knowledge")
+                for path, content in output.items():
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(content)
+
+    def test_sync_migrates_identical_legacy_guides_and_is_idempotent(self):
+        self.install_legacy_copies()
+        before = {path: path.read_bytes() for path in knowledge_catalog(self.root)}
+        self.assertGreater(sync(self.root), 0)
+        for provider in (".agents/skills", ".claude/skills"):
+            directory = self.root / provider
+            self.assertFalse(list(directory.rglob("references/knowledge")))
+            for path in directory.rglob("*.md"):
+                for _, relative in local_targets(path.read_text(encoding="utf-8")):
+                    self.assertTrue((path.parent / relative).resolve().is_file())
+        self.assertEqual(before, {path: path.read_bytes() for path in before})
+        self.assertEqual(sync(self.root), 0)
+
+    def test_sync_preserves_modified_or_unknown_legacy_guides_before_any_write(self):
+        self.install_legacy_copies()
+        for relative in ("ux/ui.md", "custom.md"):
+            with self.subTest(relative=relative):
+                target = self.root / ".claude/skills/criar/references/knowledge" / relative
+                original = target.read_bytes() if target.exists() else None
+                self.write(str(target.relative_to(self.root)), "Adaptação local.\n")
+                before = {p: p.read_bytes() for p in self.root.rglob("*") if p.is_file()}
+                with self.assertRaisesRegex(ValueError, "Cópias fora do catálogo"):
+                    sync(self.root)
+                self.assertEqual(before, {p: p.read_bytes() for p in self.root.rglob("*") if p.is_file()})
+                if original is not None:
+                    target.write_bytes(original)
 
     def test_full_plugin_sources_resolve_after_relocation(self):
         plugin = self.root / "plugin-cache/arbitrary-version"

@@ -15,6 +15,12 @@ Para interfaces, consulte os guias de [usabilidade](../../../knowledge/ux/usabil
 [acessibilidade](../../../knowledge/accessibility/interface-criteria.md) e
 [plataforma](../../../knowledge/ux/platform-conventions.md), conforme a pergunta do experimento.
 Reutilize a identidade e os componentes do projeto; os guias não autorizam trocá-los.
+Quando a questão envolver identidade ou composição ainda abertas, consulte
+[direção visual e tokens](../../../knowledge/ux/visual-direction.md). Apresente público,
+tarefa, conteúdo, estados e escolhas visuais relevantes, preservando decisões e autorizações
+existentes. Para experimentar animação, consulte [movimento](../../../knowledge/ux/motion.md)
+e demonstre também o retorno equivalente com movimento reduzido. Registre decisões úteis
+no projeto de destino, sem criar outra fonte de verdade para seu design system.
 Respeite e declare as simulações próprias do protótipo.
 
 Mantenha o protótipo separado do código de produção, em local permitido para experimentos

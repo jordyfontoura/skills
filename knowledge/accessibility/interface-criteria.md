@@ -26,6 +26,10 @@ Separe o que a forma de acesso permite examinar:
   conteúdo em *hover* ou foco (1.4.13, AA); orientação (1.3.4, AA); alternativas a gestos
   complexos e a arrastar (2.5.1, A; 2.5.7, AA); tempo limite (2.2.1, A); dados não pedidos
   de novo (3.3.7, A); autenticação sem teste cognitivo (3.3.8, AA).
+- **Observando o comportamento no tempo:** pausa, parada ou ocultação de movimento e
+  atualização automática conforme as condições do 2.2.2 (A); flashes conforme frequência
+  e limiares do 2.3.1 (A). Consulte [movimento](../ux/motion.md) para as condições e os
+  limites da inspeção. Capturas isoladas não comprovam esses critérios.
 - **Com tecnologia assistiva ou ferramenta:** leitores de tela, controle por voz, ampliadores
   e auditorias. Ferramentas automáticas detectam só parte das falhas; um resultado limpo não
   prova conformidade.
@@ -42,5 +46,9 @@ entre o 2.5.8 e a plataforma, mas registre como falha WCAG apenas o que descumpr
 
 ## Fontes
 
+- Revisão de movimento em 17/11/2026: explicações W3C dos critérios
+  [2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html),
+  [2.3.1](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html) e
+  [2.3.3](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html).
 - [WCAG 2.2, W3C](https://www.w3.org/TR/WCAG22/), recomendação de 12 de dezembro de 2024 citada na origem.
 - [WCAG2ICT, W3C](https://www.w3.org/TR/wcag2ict-22/), orientação para software que não é web.

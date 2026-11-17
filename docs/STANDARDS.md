@@ -16,7 +16,7 @@ Forme o identificador da skill com um verbo no infinitivo, derivado do título o
 [glossário](GLOSSARY.md), como `especificar` ("Especificar o trabalho") e `passar-contexto`
 ("Passagem de contexto"). Acrescente um complemento quando o verbo sozinho for ambíguo, como
 `pesquisar-web` e `verificar-aceite`. Use substantivo só nas exceções listadas: `conselho` e
-`andamento`. Escreva siglas em minúsculas, como `descrever-pr`. Use um sufixo para uma variação
+`andamento`. Escreva siglas em minúsculas, como `pr` num nome composto. Use um sufixo para uma variação
 com finalidade própria, como `entrevistar` e `entrevistar-por-arquivo`. Não mantenha aliases.
 
 Desde a versão 0.2.0, os identificadores ficam em português. Assim o comando corresponde ao título
@@ -53,14 +53,14 @@ continuam no destino. Uma referência não concede permissão nem vira regra uni
 
 Skills citam outras skills pelo nome. Links para fora de sua pasta são permitidos somente
 para arquivos catalogados em `knowledge/`; use links diretos aos guias pertinentes.
-Referências da biblioteca só têm links locais para dentro dela. A geração empacota as
-dependências necessárias em `references/knowledge/` de cada cópia avulsa, incluindo links
-transitivos, com procedência e caminhos ajustados. Essa pasta é reservada à geração no
-harness; não mantenha ali uma segunda fonte editável nem use symlinks.
+Referências da biblioteca só têm links locais para dentro dela. As cópias dos provedores
+apontam para `knowledge/` na raiz, compartilhada entre skills e agentes. Não duplique os
+guias dentro das skills nem use symlinks. Na cópia manual, inclua a biblioteca na raiz
+do destino e preserve os caminhos usados pelos links e pelas dependências transitivas.
 
 O empacotamento do CLI usa uma biblioteca única em `knowledge/harness/` no destino, com
 links ajustados nas skills de ambos os agentes. Essa escolha não muda os links canônicos
-nem o formato autocontido das cópias manuais. Preserve documentos próprios do destino
+nem o layout das cópias manuais, que usam `knowledge/`. Preserve documentos próprios do destino
 fora desse namespace e confira adaptações antes de atualizar guias compartilhados.
 
 ## Escrita e manutenção

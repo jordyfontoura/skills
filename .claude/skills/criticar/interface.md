@@ -1,95 +1,91 @@
-# Criticar a interface
+# Rubrica de interface
 
-Use para avaliar a experiência de uso de uma interface existente ou proposta: capturas de tela,
-aplicação em execução, protótipo, arquivo de design ou código de interface. Use `revisar` para
-um diff contra requisitos, `verificar-aceite` para critérios combinados e `implementar` para
-construir ou corrigir a interface. Para vários avaliadores independentes, use
-o apoio [interface-panel.md](interface-panel.md) de `criticar`;
-para escolher entre alternativas de design, use `conselho`.
+Leia ao criticar UI e UX, inclusive a interface de jogos.
 
-## Fixar o contexto
+Fixe público, tarefas principais e de saída, plataforma, entradas, tamanhos de tela, temas,
+etapa, design system, guias de marca e conteúdo, meta de acessibilidade e versão em escopo.
+Em exploração, priorize fluxos e estrutura e agrupe acabamento; antes do lançamento, examine
+também acabamento e estados por completo. A etapa muda o foco, não a severidade.
 
-Antes de criticar, identifique:
+Diretrizes do projeto e da plataforma prevalecem em convenções, estilo e componentes. Dois
+pisos não cedem: **WCAG 2.2 nível AA**, ou meta mais exigente, inclusive legal, e **escolha da
+pessoa**, pela qual a interface não leva ninguém a decidir contra o próprio interesse.
+Registre conflitos com esses pisos sem rebaixar a severidade.
 
-- O público e as tarefas principais que a interface deve permitir.
-- A plataforma, os modos de entrada, os tamanhos de tela e os temas relevantes.
-- A etapa do trabalho. Ela muda o foco, não a severidade. Em exploração, priorize fluxos e
-  estrutura e agrupe o acabamento visual. Antes do lançamento, examine acabamento e estados
-  por completo.
-- O design system, os guias de marca e de conteúdo, as decisões registradas, a meta de
-  acessibilidade e as restrições do projeto.
-- Críticas anteriores desta interface, achados descartados e seus motivos.
-- O que está em escopo: telas, fluxos, estados e a versão examinada.
+## As sete seções
 
-Procure esses dados no pedido, na documentação e no código do projeto antes de perguntar.
-Pergunte apenas quando uma resposta mudar a crítica; nos demais casos, declare a suposição e
-prossiga. Sem objetivo definido, um julgamento vira preferência pessoal.
+Entenda a interface e as tarefas e percorra as sete seções nesta ordem, marcando cada uma
+como examinada ou não examinada:
 
-## Consultar as diretrizes aplicáveis
+1. **Tarefas e fluxos:** [usabilidade](../../../knowledge/ux/usability.md), com percurso
+   cognitivo quando aprendizagem ou padrões pouco familiares importarem.
+2. **Heurísticas de usabilidade:** as dez heurísticas do mesmo guia, conforme as convenções
+   do público. Uma violação aparente precisa de impacto concreto na tarefa.
+3. **Acessibilidade:** [critérios por forma de acesso](../../../knowledge/accessibility/interface-criteria.md).
+   Numa auditoria, percorra todos os critérios dos níveis da meta e indique número e nível
+   nos achados. Registre o que o acesso não permite verificar; inspeção parcial não comprova
+   conformidade.
+4. **Hierarquia visual, layout e consistência:** [hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md)
+   contra o design system, e [direção visual e tokens](../../../knowledge/ux/visual-direction.md)
+   para a coerência com a tarefa. Com causa compartilhada, recomende corrigir o componente
+   ou a regra de origem.
+5. **Conteúdo, confiança e escolha:** conteúdo e padrões enganosos no mesmo guia.
+6. **Estados, interação e adaptação:** os estados e extremos pertinentes do mesmo guia, com
+   os limites de simulações, capturas e operação. Havendo animação, consulte
+   [movimento](../../../knowledge/ux/motion.md) e examine interrupção, retorno com movimento
+   reduzido e desempenho.
+7. **Convenções da plataforma:** [inventário de plataforma](../../../knowledge/ux/platform-conventions.md)
+   e diretrizes oficiais vigentes, com URL, data e versão do sistema, SDK ou biblioteca.
+   Sem consulta, marque a diretriz como de memória, versão não conferida.
 
-Leia [interface-rubric.md](interface-rubric.md), a base comum, com seus pisos de acessibilidade e de escolha da
-pessoa. Depois procure as diretrizes específicas:
+Um achado precisa de regra verificável ou de princípio com mecanismo explícito, com impacto
+em tarefa, compreensão, confiança percebida ou coerência do produto. Uma reação como "parece
+datado", uma preferência estética ou um sinal de genericidade, sem regra nem mecanismo, é
+sugestão de direção. Decisões deliberadas do projeto, sem violação de piso nem impacto
+comprovado, ficam em divergências e riscos, com o teste que confirmaria o risco. Um problema
+que cruza seções entra na primeira em que aparecer, citando todos os padrões violados.
 
-- No projeto: tokens, componentes, documentação do design system, guias de conteúdo e decisões
-  de interface.
-- Na plataforma: diretrizes oficiais vigentes, como Apple Human Interface Guidelines, Material
-  Design, Fluent ou o guia do sistema de componentes em uso.
+## Severidade e formato dos achados
 
-Quando um achado depender de uma diretriz externa e houver acesso à internet, consulte-a com
-`pesquisar-web` e cite URL e data. Sem consulta, marque o padrão como "de memória, versão não
-conferida". Sem acesso, declare o limite e siga com a rubrica e os materiais locais. Registre
-conflitos entre diretrizes em vez de escolher um lado em silêncio.
+A severidade combina frequência no grupo afetado, impacto na tarefa e persistência depois
+que o problema é conhecido. Certeza fica na base; esforço de correção não altera a nota.
 
-## Examinar a interface
+| Nota | Consequência |
+| --- | --- |
+| 0 | Não é problema de uso; apenas para reavaliar achados alheios. |
+| 1 | Cosmético, sem atraso nem erro na tarefa. |
+| 2 | Hesitação ou pequeno atraso; recuperação sem ajuda nem perda. |
+| 3 | Erro, atraso significativo ou abandono para parte do público; recuperação exige esforço ou ajuda. |
+| 4 | Impede tarefa em escopo para algum grupo ou causa perda de dados, dinheiro, privacidade ou segurança. |
 
-Examine a forma mais fiel disponível. Para aspectos visuais, prefira a interface renderizada
-e em uso a capturas, e capturas ao código. Para acessibilidade, o código e a árvore de
-acessibilidade revelam o que capturas não mostram. Medidas de espaçamento, alinhamento,
-tamanho e cor vêm do código, dos estilos computados ou do arquivo de design. Estimadas a
-partir de uma captura, são aproximadas.
+Uma barreira de acessibilidade que impede tarefa em escopo recebe 4, mesmo afetando um grupo
+pequeno. Não registre achado próprio com severidade 0.
 
-Opere em ambiente de teste ou com dados fictícios. Não conclua ações com efeito real, como
-compra, envio, exclusão ou agendamento, sem autorização; registre o passo como não examinado.
+Cada achado informa ID estável, local e ocorrências, observação verificável, padrões violados,
+impacto com público e tarefa, severidade justificada, base com evidência e recomendação
+concreta, que liga padrão esperado, lacuna e origem da correção. Para calibrar: um botão de
+checkout desabilitado sem explicar o campo pendente pode receber 3 quando bloqueia o avanço;
+pesos de títulos inconsistentes, sem atraso ou erro, podem receber 1.
 
-Aplique as sete seções da rubrica na ordem e registre cada achado no formato dela. Mantenha a
-crítica consistente:
+## Painel de interface
 
-- Todo achado indica um padrão ou mecanismo e um impacto concreto, conforme "Achado ou
-  preferência" na rubrica. O resto vai para sugestões de direção.
-- Um mesmo problema é um achado só, com todas as ocorrências e todos os padrões violados.
-- Não aplique uma regra contra uma convenção consagrada do público. Uma decisão registrada do
-  projeto entra como divergência deliberada, salvo violação de um piso da rubrica ou impacto
-  concreto na tarefa.
-- Não reapresente um achado descartado pelo usuário com outra justificativa. Mantenha o
-  descarte, salvo evidência nova, que deve ser explicada.
-- Atribua a severidade pela escala da rubrica e a base pelo material examinado.
-- Recomende uma mudança concreta, com o padrão esperado e a diferença atual.
+Num painel, siga também [panel.md](panel.md). O padrão é de 3 a 5 avaliadores. Cada um
+examina a interface inteira nas sete seções e aprofunda usabilidade, acessibilidade,
+hierarquia, conteúdo ou plataforma conforme os riscos. A faixa vem de avaliações humanas e
+não garante independência entre instâncias de IA.
 
-## Limites
+Consolide a severidade assim:
 
-Uma inspeção não substitui teste com pessoas do público, incluindo pessoas com deficiência e
-usuários de tecnologia assistiva quando a meta de acessibilidade exigir. Indique quais achados
-de alta incerteza ou alto impacto merecem esse teste e o que observar nele. Não declare
-conformidade com a WCAG a partir de uma inspeção.
+1. Envie a lista consolidada, sem notas nem autores, para reavaliação independente. Cada
+   avaliador atribui de 0 a 4 a todos os itens, com motivo; 0 significa que não considera
+   problema de uso.
+2. Registre notas, mediana, intervalo e quais avaliadores relataram cada achado originalmente.
+   Com quantidade par, a mediana pode ser intermediária, como 2,5.
+3. Diferença de 2 níveis ou mais abre nova rodada, com evidências e argumentos sem autoria.
+   Cada avaliador mantém ou altera a nota com justificativa; alterar exige evidência nova.
+   Preserve os pareceres originais. Se a disputa depender do comportamento das pessoas,
+   recomende o teste que a resolveria.
 
-Críticas repetidas da mesma interface tendem a perder utilidade. Numa nova versão, parta dos
-achados anteriores em vez de recomeçar.
-
-A crítica produz achados; não altera a interface. Correções exigem autorização e seguem
-`implementar`.
-
-## Retornar
-
-Responda em português, salvo pedido diferente, com:
-
-1. **Contexto e suposições:** público, tarefas, plataforma, etapa, versão examinada, formas de
-   acesso e diretrizes consultadas, com links ou caminhos.
-2. **Achados:** ordenados por severidade, no formato da rubrica. Numa nova versão, marque cada
-   achado anterior como resolvido, persistente ou novo.
-3. **O que preservar:** decisões que funcionam bem e devem resistir às mudanças, quando houver.
-4. **Divergências deliberadas e riscos:** separadas dos achados.
-5. **Sugestões de direção:** separadas dos achados.
-6. **Cobertura:** as seções da rubrica examinadas, o que não pôde ser examinado e por quê, e as
-   confirmações recomendadas com pessoas ou ferramentas.
-
-Se não houver achado relevante, diga isso com a cobertura e os limites da avaliação.
+Barreira de acessibilidade observada com severidade 4 mantém 4, salvo refutação com evidência;
+notas de avaliadores sem o mesmo acesso não a rebaixam. A escala de severidade e a faixa de
+avaliadores valem para UI, não para jogos, textos ou outros aspectos.

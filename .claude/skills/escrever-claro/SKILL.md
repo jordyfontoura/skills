@@ -36,7 +36,8 @@ abaixo ajudam a revisar, mas não são proibições universais de palavras, tom 
   fazer ou verificar. Preserve comandos, contratos, pré-requisitos, ordem das ações e diferenças
   entre comportamento previsto e observado. Um tutorial ensina; uma instrução orienta uma
   tarefa; uma referência descreve; uma explicação apresenta motivos. Não imponha a mesma
-  estrutura a todos. Para PRs, siga também `descrever-pr`.
+  estrutura a todos. Numa descrição de PR, comece pelo problema e pelo comportamento
+  resultante e inclua as verificações executadas, com seus resultados.
 - **Produto e interface:** em botões, formulários, ajuda e erros, deixe clara a ação, o estado
   ou a recuperação possível. Use termos consistentes com a interface e preserve condições
   importantes. Não encurte removendo o contexto necessário nem use cor ou posição como única

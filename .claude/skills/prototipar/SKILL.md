@@ -10,11 +10,17 @@ Identifique a pergunta que o experimento precisa responder. Deduza-a do pedido q
 clara; pergunte apenas se a ambiguidade mudar o experimento. Reutilize a linguagem visual
 e as interfaces do projeto quando útil. Escolha o meio mais simples que demonstre a dúvida:
 página independente, script pequeno ou simulação isolada.
-Para interfaces, consulte os guias de [usabilidade](references/knowledge/ux/usability.md),
-[hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md),
-[acessibilidade](references/knowledge/accessibility/interface-criteria.md) e
-[plataforma](references/knowledge/ux/platform-conventions.md), conforme a pergunta do experimento.
+Para interfaces, consulte os guias de [usabilidade](../../../knowledge/ux/usability.md),
+[hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md),
+[acessibilidade](../../../knowledge/accessibility/interface-criteria.md) e
+[plataforma](../../../knowledge/ux/platform-conventions.md), conforme a pergunta do experimento.
 Reutilize a identidade e os componentes do projeto; os guias não autorizam trocá-los.
+Quando a questão envolver identidade ou composição ainda abertas, consulte
+[direção visual e tokens](../../../knowledge/ux/visual-direction.md). Apresente público,
+tarefa, conteúdo, estados e escolhas visuais relevantes, preservando decisões e autorizações
+existentes. Para experimentar animação, consulte [movimento](../../../knowledge/ux/motion.md)
+e demonstre também o retorno equivalente com movimento reduzido. Registre decisões úteis
+no projeto de destino, sem criar outra fonte de verdade para seu design system.
 Respeite e declare as simulações próprias do protótipo.
 
 Mantenha o protótipo separado do código de produção, em local permitido para experimentos

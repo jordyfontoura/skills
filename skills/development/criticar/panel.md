@@ -1,32 +1,29 @@
-# Organizar uma crítica em painel
+# Crítica em painel
 
-Use quando o pedido incluir conselho, painel ou várias perspectivas independentes. Siga
-`conselho` para selecionar perspectivas, investigar independentemente e preservar divergências;
-não delegue uma nova coordenação de painel a cada crítico.
+Leia quando o pedido incluir conselho, painel ou várias perspectivas independentes. Sem esse
+pedido, a crítica é individual.
 
-Fixe o mesmo objeto, versão, intenção, critérios e referências para todos. Informe o acesso
-real de cada um e use `delegar`, resolvendo `roles.council` quando houver política. Cada
-especialista faz sua crítica individual sem conhecer os primeiros pareceres dos demais e
-sem abrir agentes. O formato de achado de `criticar` substitui o relatório genérico de
-especialista de `conselho`. Cada crítico entrega a nota geral e as notas por categoria
-pertinentes, com duas casas decimais e justificativas, além dos achados.
+O coordenador organiza as consultas uma vez com `conselho` e as executa com `delegar`. Todos
+recebem o mesmo objeto, versão, intenção, contexto, critérios, diretrizes e descartes
+anteriores, com as formas de acesso de cada um. Cada especialista pode investigar fontes, mas
+não redefine o objeto nem conhece os primeiros pareceres dos demais. O retorno de `criticar`,
+com as notas de qualidade justificadas, substitui o relatório genérico de especialista de `conselho`.
 
-Para UI e UX, leia [interface-panel.md](interface-panel.md): ele preserva o procedimento
-específico de composição, reavaliação e severidade. Sua faixa de avaliadores, escala e fontes
-não são regras universais para jogos, textos ou outros aspectos de qualidade.
+Escolha perspectivas pela cobertura necessária e respeite quantidade e modelos pedidos.
+Prefira modelos diferentes, quando disponíveis e autorizados, e trate a concordância entre
+instâncias do mesmo modelo como fraca. Para UI, a faixa de avaliadores e a consolidação da
+severidade estão em [interface.md](interface.md#painel-de-interface).
 
-Nos demais domínios, escolha as perspectivas pela cobertura necessária, respeitando a
-quantidade pedida. Agrupe achados equivalentes com rastreio dos originais, preserve problemas
-relatados por um só crítico e confronte divergências com evidências. Não resolva disputa
-factual por maioria. Reavalie o que depender de evidência nova ou de consequência ainda
-não examinada, seguindo `conselho`; se faltar prova decisiva, indique como obtê-la.
+Agrupe achados equivalentes com IDs consolidados, rastreando os originais e o motivo da união;
+na dúvida, mantenha-os separados e relacionados. Preserve achados de um único crítico e
+recomendações diferentes. Quantidade de relatores não mede gravidade, e disputa factual não
+se resolve por maioria.
 
-Não calcule médias ou medianas de prioridades incompatíveis. Fixe critérios, âncoras e regra
-de consolidação das notas de qualidade antes das consultas. Preserve as notas individuais
-e apresente as consolidadas com duas casas decimais e a regra usada. Notas com acessos ou
-critérios diferentes não são diretamente comparáveis: nesse caso, apresente-as por escopo,
-sem forçar uma nota consolidada. Retorne composição, cobertura,
-concordâncias, divergências, achados e limites, distinguindo recomendação de aprovação.
+Para notas de qualidade, fixe critérios, âncoras e regra de consolidação antes das consultas.
+Preserve as notas individuais e explique as consolidadas. Não calcule médias ou medianas de
+prioridades incompatíveis; notas com critérios ou acessos diferentes são apresentadas por
+escopo.
 
-Sem contextos independentes, declare o painel não realizado; uma análise individual não
-comprova conselho. Crítica consultiva não autoriza correção nem altera critérios de aceite.
+Retorne composição, modelos, acesso, cobertura, concordâncias, controvérsias e suas resoluções
+ou provas pendentes, preservando divergências e autoria dos achados. Sem contextos
+independentes, declare o painel não realizado e a análise como individual.

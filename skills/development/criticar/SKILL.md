@@ -6,67 +6,62 @@ license: Apache-2.0
 
 # Criticar um artefato ou experiência
 
-Fixe o objeto e a versão, o público, a intenção, o foco pedido, as referências e as ações
-permitidas. Consulte decisões, críticas anteriores e descartes antes de perguntar. Preserve
-o escopo e as escolhas estabelecidas; especializar a crítica não autoriza redefinir o produto.
-Para escolher entre propostas, use `conselho`; para atrito estrutural de código, use
-`examinar-arquitetura`; para reescrever texto, use `escrever-claro`.
+Avalie o objeto pedido com critérios declarados e evidências, sem corrigi-lo. Fixe objeto e
+versão, público, intenção, foco, referências e ações permitidas, consultando decisões, críticas
+anteriores e descartes antes de perguntar. Especializar a crítica não autoriza redefinir o
+produto. Para escolher entre propostas, use `conselho`; para reescrever texto, `escrever-claro`.
 
 ## Escolher o método e os critérios
 
-Declare a especialização pertinente ao pedido e os critérios desta crítica antes do exame:
+Declare a especialização e os critérios antes do exame, combinando métodos quando o objeto exigir:
 
-- **UI e UX**, inclusive a interface de jogos: leia [interface.md](interface.md) e sua
-  [rubrica](interface-rubric.md). Preserve as sete seções, a escala e os pisos da rubrica.
-  Consulte os guias de [usabilidade](../../../knowledge/ux/usability.md),
-  [hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md),
-  [plataforma](../../../knowledge/ux/platform-conventions.md) e
-  [acessibilidade](../../../knowledge/accessibility/interface-criteria.md) conforme os critérios
-  examinados. Os guias são compartilhados; o método e as políticas continuam nesta skill.
-- **Outros aspectos**, como game design, direção de arte ou argumentação de um texto: derive
-  os critérios do pedido, das referências, das regras do projeto e de princípios do domínio
-  com mecanismo explícito. Para clareza de texto, consulte `escrever-claro` sem reescrever.
-  Identifique a origem e os limites dos critérios propostos; não apresente uma rubrica criada
-  para o caso como padrão validado. Consulte fontes externas com `pesquisar-web` quando um
-  julgamento depender delas; sem consulta, declare a origem não conferida.
+- **UI e UX**, inclusive a interface de jogos: leia [interface.md](interface.md) e siga a
+  rubrica, com seus pisos, as sete seções e a escala de severidade.
+- **Game design:** [mecânicas, ritmo, dificuldade e resposta ao jogador](../../../knowledge/gamedev/game-design.md).
+- **Assets 3D para jogos:** [geometria, materiais, rig e requisitos de uso](../../../knowledge/3d-modeling/game-ready-assets.md).
+- **Outros aspectos**, como direção de arte ou argumentação de um texto: critérios derivados
+  do pedido, das referências, das regras do projeto e de princípios do domínio com mecanismo
+  explícito. Para clareza de texto, consulte `escrever-claro` sem reescrever.
 
-Combine os métodos quando o objeto exigir. Uma rubrica de interface não cobre sozinha
-cooperação, ritmo de jogo ou coerência de um argumento. Pergunte apenas se uma definição
-ausente mudar o julgamento; nos demais casos, declare suposições razoáveis.
+Informe a origem e os limites dos critérios; uma rubrica criada para o caso não é padrão
+validado. Use `consultar-conhecimento` para localizar outros guias e leia só os necessários.
+Quando um julgamento depender de fonte externa, consulte-a com `pesquisar-web` ou declare a
+origem não conferida. Pergunte apenas se uma definição ausente mudar o julgamento; nos demais
+casos, declare suposições razoáveis.
 
 ## Preservar a independência
 
-Uma crítica pontual pode ocorrer no contexto atual se ele não produziu o objeto. Quem fez o
-trabalho não apresenta sua autocrítica como independente. Num pedido de crítico independente
-ou num ciclo produtor-crítico autorizado, use `delegar` para uma consulta em contexto novo.
-Forneça objeto, versão, critérios, acesso, achados anteriores e decisões, sem usar a defesa
-ou a autoavaliação do implementador como evidência.
+Quem produziu o objeto não apresenta sua autocrítica como independente. Uma crítica pontual
+pode ocorrer no contexto atual se ele não produziu o objeto. Para um crítico independente ou
+um ciclo produtor-crítico autorizado, use `delegar` com um contexto novo e forneça objeto,
+versão, critérios, acesso, achados anteriores e decisões, sem a defesa nem a autoavaliação
+de quem implementou.
 
-Respeite o modelo explicitamente escolhido. Havendo política local, a consulta crítica usa
-`roles.council` conforme `delegar`, inclusive quando individual; esse papel não exige painel.
-Sem política, preserve as seleções do ambiente e do usuário. Configuração não comprova execução.
-Se não houver contexto independente ou ferramenta adequada, declare a crítica pendente ou
-limitada, sem simular outro especialista.
+Respeite o modelo escolhido. Havendo política local, a consulta usa `roles.council` conforme
+`delegar`, mesmo com um só crítico. Sem contexto independente ou ferramenta adequada, declare
+a crítica pendente ou limitada, sem simular outro especialista. Como crítico delegado, faça
+só a sua análise, sem abrir novos agentes ou conselhos.
 
-Para várias perspectivas solicitadas, leia [panel.md](panel.md) e siga `conselho` para compor
-e executar as consultas; para UI, leia também [interface-panel.md](interface-panel.md).
-O coordenador organiza o painel uma única vez. Como crítico delegado,
-faça apenas sua análise, sem abrir novos agentes ou conselhos.
+Quando o pedido incluir conselho, painel ou várias perspectivas independentes, leia
+[panel.md](panel.md).
 
 ## Examinar e fundamentar
 
 Examine a forma mais fiel disponível para cada critério: jogue, navegue, leia ou opere o
-artefato conforme autorizado. Capturas sustentam aparência, mas não demonstram sozinhas
-controles, persistência, cooperação ou áudio. Código lido não comprova execução.
-Use ambiente de teste e respeite os limites de ações com efeitos reais. Registre passos,
-condições e materiais examinados; capacidade ou acesso ausentes continuam sendo limites.
+artefato, conforme autorizado, em ambiente de teste e dentro dos limites de ações com efeitos
+reais. Para aparência, prefira a interface renderizada em uso, depois capturas, depois código.
+Para acessibilidade, use também código, árvore de acessibilidade e tecnologia assistiva.
+Medidas vêm do código, de estilos computados ou do arquivo de design; estimativas de captura
+são aproximadas. Capturas não demonstram controles, persistência, cooperação ou áudio, e
+código lido não comprova execução. Inspeção não substitui testes com o público, incluindo
+pessoas com deficiência: indique as hipóteses de alto impacto ou incerteza que os exigem.
+Registre passos, condições e materiais examinados; capacidade ou acesso ausentes são limites.
 
-Cada achado precisa de localização, observação, critério ou mecanismo, impacto, prioridade,
-base e recomendação concreta. Use IDs estáveis e distinga `observado`, `inferido` e `hipótese`,
-citando a evidência. Na UI, use o formato e a severidade da rubrica. Nos demais domínios,
-justifique a prioridade pela consequência e pelo alcance, sem impor a escala de UI.
-Um juízo sem critério nem mecanismo fica em sugestões de direção. Não confunda uma reação
-prevista do público com comportamento observado em pessoas.
+Fora da UI, cada achado traz localização, observação, critério ou mecanismo, impacto,
+prioridade justificada pela consequência e pelo alcance, base e recomendação concreta, sem
+a escala de UI; na UI, valem o formato e a severidade da rubrica. Em todo domínio, use IDs estáveis e marque a base como `observado`, `inferido`
+ou `hipótese`, citando a evidência. Uma reação prevista do público não é comportamento
+observado em pessoas.
 
 Agrupe ocorrências do mesmo problema. Preserve descartes do usuário, salvo evidência nova
 declarada. Numa nova versão, marque achados anteriores como resolvidos, persistentes ou
@@ -74,48 +69,42 @@ regressões e identifique os novos. Aponte também o que funciona e deve resisti
 
 ## Notas e ciclos de correção
 
-Toda crítica realizada entrega uma nota geral de qualidade. Use a escala combinada ou,
-na ausência dela, de 0 a 10. Escreva as notas de qualidade com ponto e exatamente duas casas
-decimais: `9.73`, `7.00`, `0.00`; o extremo superior da escala padrão é `10.00`.
-Quando houver dimensões distintas relevantes, inclua também notas por categoria, como
-game design e estética, ou usabilidade e acessibilidade. Respeite categorias pedidas e
-não crie divisões só para preencher um quadro.
+Toda crítica realizada entrega uma nota geral de qualidade, na escala combinada ou, sem ela,
+de 0 a 10. Escreva as notas com ponto e exatamente duas casas decimais: `9.73`, `7.00`, `0.00`;
+o máximo da escala padrão é `10.00`. Havendo dimensões distintas relevantes, inclua notas por
+categoria, como game design e estética, ou usabilidade e acessibilidade, respeitando as
+categorias pedidas.
 
-Antes do exame, fixe critérios e âncoras adequados ao domínio, usando os combinados ou
-declarando os adotados quando o pedido não os fornecer. Referências comentadas ajudam a
-calibrar. Ligue cada nota às evidências, aos pontos fortes e aos problemas que a justificam;
-explique a relação da nota geral com as categorias e os pesos, se houver. Não suponha média
-aritmética nem use uma nota alta para compensar uma exigência descumprida.
+Fixe critérios e âncoras antes do exame, usando os combinados ou declarando os adotados.
+Ligue cada nota às evidências, aos pontos fortes e aos problemas que a justificam e explique
+a relação da nota geral com as categorias e os pesos. Não suponha média aritmética, e uma
+nota alta não compensa uma exigência descumprida. As duas casas são formato, não precisão
+estatística: declare cobertura e incerteza. Em exame parcial, a nota vale para a parte
+examinada; sem material suficiente, declare a crítica não realizada em vez de dar nota.
+Nota de qualidade e severidade são medidas distintas, e a severidade de UI continua de 0 a 4.
+Não crie um limiar de aprovação por conta própria.
 
-Declare a cobertura e a incerteza: duas casas decimais são formato de apresentação, não
-precisão estatística comprovada. Em exame parcial, a nota vale só para a parte examinada;
-sem acesso a material suficiente, declare a crítica não realizada em vez de inventar nota.
-Nota de qualidade e severidade são medidas distintas: a escala de severidade de UI continua
-de 0 a 4, conforme a rubrica. Se faltar uma definição decisiva para aplicar um limiar de
-aprovação, esclareça essa definição sem criar um limiar por conta própria.
-
-A crítica não edita o produto. Um ciclo só prossegue quando a implementação e as novas
-avaliações estiverem autorizadas. Antes da primeira rodada, fixe critérios, eventual limiar,
-regra de avaliação e condição de parada, incluindo o limite de rodadas quando combinado.
-Modelo, limiar de aprovação e número de rodadas respeitam o pedido.
-
-Quem implementa confere o feedback com `tratar-revisao`, corrige por prioridade com
-`implementar` e repete as provas afetadas. As sugestões são meios a conferir para atingir
-o requisito; não ganham autoridade por terem vindo do crítico. Preserve versões recuperáveis
-e evidências para comparar melhora e regressões. Cada nova crítica avalia a versão resultante;
-não repita avaliações da mesma versão apenas até obter uma nota favorável.
-
-Não baixe o limiar nem troque o crítico para obter aprovação. Após duas correções sem sucesso
-ou recorrência do mesmo defeito, use `diagnosticar`. Encerre ao cumprir os critérios ou atingir
-a condição de parada, relatando notas, problemas e provas ausentes. Se uma decisão ou acesso
-ficar pendente, continue apenas o trabalho independente autorizado. A última versão não é
-automaticamente a melhor. Notas não substituem provas técnicas nem `verificar-aceite`.
+A crítica não edita o produto. Um ciclo de correção só prossegue com a implementação e as
+novas avaliações autorizadas. Antes da primeira rodada, fixe critérios, limiar eventual, regra
+de avaliação e condição de parada, com limite de rodadas quando combinado. Quem implementa
+confere o feedback com `tratar-revisao`, corrige por prioridade e repete as provas afetadas:
+as sugestões do crítico são meios a conferir, não requisitos. Cada nova crítica avalia a
+versão resultante. Não repita a avaliação da mesma versão até obter nota favorável, não baixe
+o limiar e não troque o crítico para aprovar. Preserve versões recuperáveis para comparar;
+a última não é automaticamente a melhor. Encerre ao cumprir os critérios ou atingir a condição
+de parada, relatando notas, problemas e provas ausentes. Notas não substituem provas técnicas
+nem `verificar-aceite`.
 
 ## Retornar
 
-Entregue contexto, versão, especialização, critérios e formas de acesso; achados por prioridade
-com evidências; o que preservar; divergências deliberadas e sugestões separadas; cobertura,
-limites e provas recomendadas. Inclua sempre a nota geral e as notas por categoria pertinentes,
-com duas casas decimais e justificativas. A conclusão pelo limiar só existe quando combinada.
+Responda em português, salvo pedido diferente, com:
+
+- contexto, versão, especialização, critérios e formas de acesso;
+- achados por prioridade, com evidências;
+- o que preservar, e as divergências deliberadas e sugestões de direção, separadas dos achados;
+- cobertura, limites e provas recomendadas;
+- nota geral e notas por categoria pertinentes, com justificativas. A conclusão pelo limiar
+  só existe quando ele foi combinado.
+
 Num painel, preserve divergências e autoria dos achados. Sem problema relevante, diga isso
-com a cobertura examinada, sem fabricar críticas nem declarar qualidade que não pôde verificar.
+com a cobertura examinada.

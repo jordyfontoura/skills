@@ -37,13 +37,6 @@ e decisões entre rodadas, sem precisar reconstruir tudo pela conversa.
 
 > $entrevistar-por-arquivo Organize as escolhas pendentes dos lembretes em um arquivo Markdown para eu responder depois.
 
-### [`esclarecer`](../skills/productivity/esclarecer/SKILL.md)
-
-Quando a explicação ficou confusa. Retoma o contexto em português claro, sem avançar a tarefa
-nem interpretar sua dúvida como aprovação.
-
-> $esclarecer Não entendi por que precisamos de uma fila para enviar os lembretes. Explique usando esse exemplo.
-
 ### [`pesquisar-web`](../skills/productivity/pesquisar-web/SKILL.md)
 
 Quando a decisão depende de informação externa. A pesquisa consulta fontes na internet
@@ -90,14 +83,6 @@ e ainda falta provar. Um plano curto pode ficar na conversa.
 
 > $implementar Adicione a exportação CSV dos resultados filtrados, com as colunas já exibidas na tabela, e confira o arquivo gerado. Não publique.
 
-### [`fazer-direto`](../skills/development/fazer-direto/SKILL.md)
-
-Quando você quer priorizar a entrega e dispensar o fluxo habitual. Vai direto ao código,
-decide detalhes técnicos reversíveis e confere o resultado, sem criar specs, planos formais
-ou rodadas de revisão por rotina. Mantém o escopo e as verificações obrigatórias.
-
-> $fazer-direto Adicione a exportação CSV com as colunas da tabela. Use os padrões existentes, sem spec nem plano formal. Confira o arquivo gerado e não publique.
-
 ### [`diagnosticar`](../skills/development/diagnosticar/SKILL.md)
 
 Quando há uma falha sem causa conhecida, principalmente após tentativas frustradas de correção.
@@ -118,13 +103,6 @@ Quando já existem comentários de revisão para tratar. Confere cada achado ant
 correções e explica os itens corrigidos, rejeitados ou pendentes.
 
 > $tratar-revisao Confira os comentários desta revisão e aplique as correções válidas dentro do escopo aprovado.
-
-### [`examinar-arquitetura`](../skills/development/examinar-arquitetura/SKILL.md)
-
-Quando o código está difícil de entender, modificar ou testar, mesmo sem um diff novo.
-Localiza o atrito nos pontos de uso e propõe mudanças com motivos concretos, sem refatorar.
-
-> $examinar-arquitetura Analise o acoplamento entre pedidos, pagamentos e notificações e proponha melhorias sustentadas pelo código.
 
 ### [`verificar-aceite`](../skills/development/verificar-aceite/SKILL.md)
 
@@ -157,20 +135,6 @@ O ciclo de correção exige autorização de implementação e uma condição de
 O crítico não escreve código; quem implementa confere os achados e repete as provas afetadas.
 
 > $implementar Conclua o escopo aprovado. Ao terminar, chame um crítico independente com $criticar, corrija os problemas confirmados no escopo e peça nova crítica, até três rodadas. Encerre com todos os critérios comprovados e sem problemas impeditivos confirmados pelo crítico, ou com as pendências ao atingir o limite. Não mude os requisitos para obter aprovação.
-
-### [`reconciliar`](../skills/development/reconciliar/SKILL.md)
-
-Quando documentos, código e relatos parecem discordar sobre o que está pronto. Compara
-requisitos e evidências para separar o que existe, o que falta e o que ficou obsoleto.
-
-> $reconciliar Compare os requisitos da exportação, a implementação e as provas existentes. Liste as lacunas e os registros desatualizados.
-
-### [`descrever-pr`](../skills/development/descrever-pr/SKILL.md)
-
-Quando a mudança precisa de uma descrição que ajude quem vai revisá-la. Explica o problema,
-o comportamento resultante e as verificações; esta skill cuida do texto do PR.
-
-> $descrever-pr Escreva o título e a descrição do PR desta branch, incluindo comportamento, verificações e limitações.
 
 ### [`integrar`](../skills/development/integrar/SKILL.md)
 
@@ -207,14 +171,6 @@ Exemplo fictício quando só uma parte pode ser estimada:
 Sem base para um número:
 
 > Ainda não há previsão útil: falta descobrir a causa da falha de integração. A primeira reprodução que isole a causa permitirá estimar a correção. Os testes e o aceite continuam pendentes depois dela.
-
-### [`examinar-eficiencia`](../skills/productivity/examinar-eficiencia/SKILL.md)
-
-Quando o trabalho está demorando ou gastando muitos tokens. Aponta onde o gasto aconteceu, com
-evidências, separa causa observada de inferida e propõe a menor mudança para cada uma, sem
-cortar verificações úteis.
-
-> $examinar-eficiencia Por que estamos demorando ou gastando tantos tokens para terminar as tarefas? Como podemos melhorar?
 
 ### [`passar-contexto`](../skills/productivity/passar-contexto/SKILL.md)
 
