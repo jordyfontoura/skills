@@ -12,9 +12,8 @@ if (payload.schemaVersion !== 2) throw new Error('Versão de catálogo não supo
 
 export const scenarios = [
   { value: 'approval', label: 'Avaliar a abordagem antes de alterar', skills: ['propor', 'entrevistar'] },
-  { value: 'direct', label: 'Executar direto quando eu pedir', skills: ['fazer-direto'] },
   { value: 'sessions', label: 'Retomar trabalhos entre sessões', skills: ['passar-contexto', 'andamento'] },
-  { value: 'reviews', label: 'Trabalhar com PRs e revisões', skills: ['revisar', 'tratar-revisao', 'descrever-pr', 'integrar'] },
+  { value: 'reviews', label: 'Trabalhar com PRs e revisões', skills: ['revisar', 'tratar-revisao', 'integrar'] },
   { value: 'decisions', label: 'Definir requisitos e pesquisar decisões', skills: ['especificar', 'pesquisar-web', 'conselho', 'delegar'] },
   { value: 'acceptance', label: 'Delegar e verificar o aceite independentemente', skills: ['verificar-aceite', 'delegar', 'escrever-objetivo'] },
   { value: 'interface', label: 'Experimentar e avaliar interfaces', skills: ['criticar', 'prototipar'] },
@@ -34,7 +33,7 @@ for (const name of [...scenarios.flatMap(s => s.skills), ...Object.values(roleSk
   if (!available.has(name)) throw new Error(`Recomendação aponta para skill ausente: ${name}`);
 }
 export function recommend(choices: string[]): string[] {
-  return [...new Set(['implementar', 'escrever-claro', 'esclarecer',
+  return [...new Set(['implementar', 'escrever-claro',
     ...scenarios.filter(s => choices.includes(s.value)).flatMap(s => s.skills)])];
 }
 export function selectSkills(skills: string[], roles: Role[]): string[] {

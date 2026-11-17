@@ -74,9 +74,8 @@ Escolha Codex, Claude Code ou ambos. Diretórios existentes sugerem os agentes, 
 escolha continua editável. Você pode receber recomendações por práticas, escolher no
 catálogo ou consultar as instruções do plugin completo.
 
-As recomendações começam com `implementar`, `escrever-claro` e `esclarecer`, e acrescentam
-skills conforme suas escolhas: aprovação da abordagem, execução direta quando solicitada,
-retomada entre sessões, PRs e revisão, pesquisa e requisitos, aceite independente e interfaces.
+As recomendações começam com `implementar` e `escrever-claro`, e acrescentam
+skills conforme suas escolhas: aprovação da abordagem, retomada entre sessões, PRs e revisão, pesquisa e requisitos, aceite independente e interfaces.
 Você pode desmarcar qualquer recomendação na seleção final.
 
 Os papéis `planner`, `evaluator` e `representative` são opcionais. Cada papel acrescenta as

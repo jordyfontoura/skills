@@ -23,11 +23,8 @@ provas. Encerre essa definição assim que a próxima entrega puder ser implemen
 Tamanho do trabalho não exige uma spec por si só; correções dentro do combinado não reiniciam
 o planejamento. Consulte `planner` apenas se uma análise separada tiver utilidade e estiver autorizada.
 
-Quando pedir para só fazer, ir direto ao código ou usar um modo gohorse, use `fazer-direto`
-como alternativa ao fluxo habitual naquele pedido. Ela dispensa criação e manutenção de specs,
-planos formais e rodadas de revisão por rotina. Aproveita requisitos já definidos, decide
-detalhes reversíveis e verifica o resultado, preservando permissões e provas obrigatórias.
-Não altera o padrão para pedidos futuros nem reduz o escopo a um protótipo.
+Nenhuma etapa deste fluxo é obrigatória por padrão. Para execução direta, sem spec, plano
+formal ou rodadas de revisão, diga isso no pedido; permissões e provas exigidas continuam valendo.
 
 Use `revisar` para analisar o diff contra requisitos e riscos aplicáveis. Agrupe correções
 relacionadas e confira seus efeitos no conjunto, preservando provas ainda válidas. Melhorias
@@ -36,7 +33,6 @@ de uma questão pendente, alteração ou risco concreto; não é obrigatório pr
 Use `verificar-aceite` quando solicitado ou exigido pelo projeto. Termine com evidências e use
 `passar-contexto` se outra sessão continuar, com estado, provas e próxima ação, sem copiar o histórico.
 
-Use `reconciliar` para comparar o trabalho pretendido com implementação e evidências atuais.
 Use `conselho` para pareceres independentes sobre uma proposta; siga a governança existente
 sem exigir comitê para toda mudança. Aplique `escrever-claro` ao redigir textos para leitores,
 incluindo títulos e descrições.
@@ -89,38 +85,6 @@ e validação estrutural não demonstram melhora de comportamento ou economia de
 | Critérios cumpridos e revisão sem defeitos relevantes. | Encerrar a entrega; não abrir rodadas apenas para obter mais achados. |
 | Correção muda o código exercitado por provas anteriores. | Repetir provas afetadas e dependências, mantendo evidências não invalidadas e comandos obrigatórios. |
 | Projeto exige aceite independente ou usuário pede conselho. | Executar a avaliação ou consulta exigida com a independência e cobertura combinadas; economia não revoga a exigência. |
-
-### Execução direta: escolha e limites
-
-`fazer-direto` é uma escolha de modo para quem pede velocidade acima do fluxo habitual.
-`implementar` já permite trabalhar sem spec; a diferença é dispensar também os artefatos
-e as etapas de processo por rotina, decidindo detalhes reversíveis durante a execução.
-
-A pesquisa consultada em 13/11/2026 oferece apoio de prática, sem medir ganho deste modo:
-os [princípios do Manifesto Ágil](https://agilemanifesto.org/principles.html) priorizam entrega,
-software funcionando e simplicidade, junto da atenção à qualidade técnica.
-[Yagni, de Martin Fowler](https://martinfowler.com/bliki/Yagni.html), recomenda evitar
-funcionalidades e abstrações especulativas e preserva testes e facilidade de mudança.
-A aplicação ao modo direto é uma decisão local; essas fontes não comprovam economia com agentes.
-
-O conselho de produto e engenharia recomendou um modo separado, com gatilho no pedido do
-usuário, requisitos preservados e verificação focada. Uma dúvida pontual não abre uma spec.
-O limite de processo não elimina uma consulta ou prova expressamente exigida. Não há ainda
-medição de velocidade nem teste de comportamento em uma sessão real usando a nova skill.
-As consultas usaram Claude Opus 5.5 em esforço alto. Produto consultou as fontes externas;
-engenharia limitou essa parte a trechos e resumos. A coordenação abriu os dois textos originais.
-Foi incorporada a recomendação comum de perguntas pontuais e preservação das provas obrigatórias.
-Não foi adotada uma sequência fixa de testes nem um limite de palavras para a skill: seriam
-novas etapas e restrições sem necessidade demonstrada. As ressalvas restantes são o risco
-de acionamento fora da intenção do usuário e a ausência de ganho medido.
-
-| Pedido e estado inicial | Resultado esperado com `fazer-direto` |
-| --- | --- |
-| Exportação com colunas já definidas. | Implementar e conferir a saída, sem criar spec ou plano formal. |
-| Spec vigente e pedido explícito de execução direta. | Reutilizar os contratos, sem manter os artefatos de processo por rotina. |
-| Falta uma decisão sobre quem pode acessar dados privados. | Perguntar pontualmente e avançar apenas o trabalho independente. |
-| Mudança exige vários arquivos e há checks obrigatórios. | Cumprir o escopo inteiro e os checks, sem reduzir a entrega a um protótipo. |
-| Pedido seguinte sem preferência por execução direta. | Retomar o fluxo habitual. |
 
 ## Direção visual, construção e refinamento de interfaces
 
@@ -182,20 +146,15 @@ Fontes em `skills/development/`.
 | --- | --- |
 | `especificar` | Especificar comportamentos e contratos e planejar sua entrega verificável. |
 | `implementar` | Entregar e verificar o trabalho combinado. |
-| `fazer-direto` | Executar diretamente, priorizando velocidade e dispensando specs e etapas de processo. |
 | `diagnosticar` | Reproduzir uma falha e demonstrar sua causa. |
 | `revisar` | Avaliar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Verificar feedback recebido e aplicar correções autorizadas com evidências. |
-| `examinar-arquitetura` | Identificar atrito estrutural em código existente e propor mudanças sustentadas. |
 | `verificar-aceite` | Verificar critérios de aceite de forma independente. |
 | `prototipar` | Esclarecer uma questão de design com um experimento. |
-| `descrever-pr` | Explicar comportamento resultante, provas e riscos de integração. |
 | `integrar` | Integrar branches ou concluir merge de PR no destino autorizado e verificar o resultado. |
-| `reconciliar` | Comparar requisitos, documentos e implementação para identificar lacunas e trabalho obsoleto. |
 | `criticar` | Criticar a qualidade de um artefato ou experiência com critérios especializados e evidências. |
 
-`revisar` produz achados; `tratar-revisao` trata feedback existente. `examinar-arquitetura`
-examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a descrição;
+`revisar` produz achados; `tratar-revisao` trata feedback existente.
 `integrar` executa a integração solicitada sem presumir publicação. A
 [biblioteca de conhecimento](../knowledge/README.md) reúne guias de UI e acessibilidade
 compartilhados por `implementar`, `prototipar` e `criticar`, preservando a identidade e os
@@ -225,7 +184,6 @@ Fontes em `skills/productivity/`.
 
 | Skill | Resultado |
 | --- | --- |
-| `esclarecer` | Reformular um ponto confuso em português claro, usando o glossário do projeto. |
 | `conselho` | Consolidar pareceres independentes, divergências e recomendações. |
 | `delegar` | Delegar trabalho delimitado e conferir o resultado. |
 | `passar-contexto` | Preservar próxima etapa, evidências e trabalho restante. |
@@ -233,7 +191,6 @@ Fontes em `skills/productivity/`.
 | `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
 | `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
 | `andamento` | Consultar o pedido inteiro, pendências, próxima entrega e previsão fundamentada de conclusão. |
-| `examinar-eficiencia` | Explicar onde o trabalho gastou tempo e tokens e propor a menor mudança para cada causa. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
 | `consultar-conhecimento` | Localizar referências pertinentes, conferir aplicabilidade e relacioná-las à tarefa. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
@@ -250,10 +207,6 @@ Fontes em `skills/harness/`.
 | `atualizar-harness` | Trazer atualizações da origem preservando adaptações locais. |
 | `conhecer-ferramentas` | Explicar ferramentas CLI, inventariar o ambiente e preparar faltantes no escopo autorizado. |
 
-Use `$esclarecer` ou pergunte "Como assim?" para retomar uma explicação.
-A skill recupera o contexto e usa o [glossário](GLOSSARY.md), preservando nomes de comandos
-e skills. Ela não avança a tarefa nem trata uma dúvida como aprovação.
-
 Para consultar o andamento, use, por exemplo:
 
 > `$andamento Como está? O que já fez, o que falta e tem algo dependendo de mim?`
@@ -263,8 +216,7 @@ Para consultar o andamento, use, por exemplo:
 O agente responde com o estado conhecido, as provas disponíveis, os impedimentos e a próxima
 ação. Depois, continua a etapa que já estava em execução e autorizada. Se estava aguardando
 uma decisão, continua aguardando: uma pergunta de andamento não conta como aprovação.
-`andamento` faz uma consulta curta; `reconciliar` audita o trabalho contra requisitos e `passar-contexto`
-prepara o contexto para outra sessão retomar.
+`andamento` faz uma consulta curta; `passar-contexto` prepara o contexto para outra sessão retomar.
 
 O restante vai até a conclusão combinada do pedido. Quando pertinente, o resumo inclui o
 que mudou, a próxima entrega utilizável e a previsão de conclusão, distinguindo-a da etapa
@@ -304,14 +256,14 @@ Para ferramentas CLI, use `conhecer-ferramentas` e o [guia de ferramentas](TOOLS
 ou um inventário não autoriza instalação. Quando a preparação já estiver explicitamente
 autorizada, a skill executa o lote pertinente sem pedir a mesma aprovação novamente.
 
-`esclarecer`, `pesquisar-web` e `conselho` adaptam suas orientações à situação dentro do próprio `SKILL.md`:
-tipo de dúvida, tipo de evidência necessária e tipo de decisão, respectivamente. Essas divisões
+`pesquisar-web` e `conselho` adaptam suas orientações à situação dentro do próprio `SKILL.md`:
+tipo de evidência necessária e tipo de decisão, respectivamente. Essas divisões
 ajudam a escolher a abordagem; não são etapas ou seções obrigatórias em toda resposta.
 
-As adaptações usam como referências a [orientação de escrita acessível do W3C](https://www.w3.org/WAI/tips/writing/),
+As adaptações usam como referências
 os [métodos de busca da Cochrane](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04)
 e o [estudo de conformidade em agentes de Choi et al.](https://arxiv.org/abs/2506.01332).
-O W3C trata de conteúdo web; a Cochrane, de revisões de intervenções; o estudo, de debates
+A Cochrane trata de revisões de intervenções; o estudo, de debates
 simulados sobre temas controversos. A aplicação ao harness é uma escolha de projeto, sem
 prova de ganho neste ambiente. Esses contextos não impõem requisitos a toda conversa ou busca.
 

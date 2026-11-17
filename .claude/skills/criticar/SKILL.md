@@ -9,8 +9,7 @@ license: Apache-2.0
 Fixe o objeto e a versão, o público, a intenção, o foco pedido, as referências e as ações
 permitidas. Consulte decisões, críticas anteriores e descartes antes de perguntar. Preserve
 o escopo e as escolhas estabelecidas; especializar a crítica não autoriza redefinir o produto.
-Para escolher entre propostas, use `conselho`; para atrito estrutural de código, use
-`examinar-arquitetura`; para reescrever texto, use `escrever-claro`.
+Para escolher entre propostas, use `conselho`; para reescrever texto, use `escrever-claro`.
 
 ## Escolher o método e os critérios
 

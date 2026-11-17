@@ -16,7 +16,7 @@ Forme o identificador da skill com um verbo no infinitivo, derivado do título o
 [glossário](GLOSSARY.md), como `especificar` ("Especificar o trabalho") e `passar-contexto`
 ("Passagem de contexto"). Acrescente um complemento quando o verbo sozinho for ambíguo, como
 `pesquisar-web` e `verificar-aceite`. Use substantivo só nas exceções listadas: `conselho` e
-`andamento`. Escreva siglas em minúsculas, como `descrever-pr`. Use um sufixo para uma variação
+`andamento`. Escreva siglas em minúsculas, como `pr` num nome composto. Use um sufixo para uma variação
 com finalidade própria, como `entrevistar` e `entrevistar-por-arquivo`. Não mantenha aliases.
 
 Desde a versão 0.2.0, os identificadores ficam em português. Assim o comando corresponde ao título
