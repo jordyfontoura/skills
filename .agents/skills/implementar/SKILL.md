@@ -27,10 +27,10 @@ em conclusão do produto. Uma pendência bloqueia somente o trabalho que depende
 ordem ou portão explícito; avance trabalho independente autorizado sem antecipar aceite.
 Leia [testing.md](testing.md) ao adicionar testes, ordenar verificações ou ler suas saídas.
 Para interfaces, leia [interface.md](interface.md) e consulte diretamente os guias de
-[usabilidade](references/knowledge/ux/usability.md),
-[hierarquia, estados e conteúdo](references/knowledge/ux/states-and-content.md),
-[acessibilidade](references/knowledge/accessibility/interface-criteria.md) e
-[plataforma](references/knowledge/ux/platform-conventions.md) conforme a tarefa.
+[usabilidade](../../../knowledge/ux/usability.md),
+[hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md),
+[acessibilidade](../../../knowledge/accessibility/interface-criteria.md) e
+[plataforma](../../../knowledge/ux/platform-conventions.md) conforme a tarefa.
 Use `tratar-revisao` ao tratar feedback
 recebido e `integrar` quando o pedido autorizar concluir uma integração entre branches.
 Use `diagnosticar` após duas correções sem sucesso, quando a causa não estiver clara ou quando

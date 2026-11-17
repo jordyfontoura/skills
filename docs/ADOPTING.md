@@ -72,9 +72,10 @@ Publicar na origem não atualiza as cópias instaladas nos seus projetos.
 
 1. Copie as skills escolhidas de [.agents/skills/](../.agents/skills/) (Codex e outros agentes)
    ou de [.claude/skills/](../.claude/skills/) (Claude Code) para a mesma pasta no seu projeto.
-   Copie a pasta inteira, incluindo `references/knowledge/` quando existir: ali estão os
-   guias usados pela skill, com links internos. Os arquivos de apoio não dependem do clone
-   original. Outras skills são citadas pelo nome; copie também as necessárias ao fluxo pedido.
+   Copie a pasta inteira e a biblioteca [knowledge/](../knowledge/README.md) para a raiz
+   do projeto: as skills apontam para essa pasta compartilhada. Confira conflitos antes de
+   copiar sobre arquivos existentes. Outras skills são citadas pelo nome; copie também as
+   necessárias ao fluxo pedido.
 2. Se quiser os papéis, copie [.claude/agents/](../.claude/agents/) e
    [.codex/agents/](../.codex/agents/) para as pastas correspondentes.
 3. Acrescente o bloco acima às instruções do projeto. Preserve os comandos e as convenções
@@ -101,9 +102,10 @@ serviço ou processo em segundo plano para usar o conteúdo instalado.
 ## Biblioteca de conhecimento
 
 Na origem, [knowledge/](../knowledge/README.md) é a única fonte editável dos guias de domínio.
-O plugin completo leva essa pasta junto das skills. As cópias avulsas já incluem apenas os
-guias referenciados por cada skill, inclusive suas dependências, em `references/knowledge/`.
-Copiar somente `SKILL.md` deixa recursos de fora. Não é preciso instalar o gerador no destino.
+O plugin completo leva essa pasta junto das skills. As cópias de `.agents/skills/` e
+`.claude/skills/` também apontam para `knowledge/` na raiz, sem duplicatas por skill.
+Na adoção manual, copie essa biblioteca uma única vez para os dois agentes. Copiar somente
+`SKILL.md` deixa recursos de fora. Não é preciso instalar o gerador no destino.
 
 Pelo CLI, os guias ficam em uma única biblioteca `knowledge/harness/` na raiz do projeto,
 compartilhada por Codex e Claude Code. As skills são instaladas com links ajustados para
@@ -116,7 +118,7 @@ Arquivos próprios em outros caminhos de `knowledge/` são preservados. Conflito
 `knowledge/harness/` interrompem a instalação antes da escrita; os hashes dos guias entram
 nos recibos e no comando `status`. `knowledge list` apresenta o catálogo disponível no pacote.
 
-O novo layout do CLI não migra instalações anteriores automaticamente. Se já houver cópias
+O CLI não migra instalações anteriores automaticamente. Se já houver cópias
 com `references/knowledge/`, use `atualizar-harness` para ajustar links e conferir adaptações
 antes de retirar cópias antigas. Remover uma skill não deve remover uma biblioteca que outras usam.
 

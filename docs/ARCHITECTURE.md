@@ -22,7 +22,8 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
   pelo plugin.
 - `scripts/catalog.py` lê o catálogo e o índice de conhecimento, resolve dependências
   transitivas e adapta links relativos ao layout de instalação. `copy_files` gera referências
-  dentro de cada cópia avulsa ou em uma biblioteca compartilhada, conforme o destino informado.
+  em uma biblioteca compartilhada quando o destino difere da origem; por padrão, as cópias
+  apontam para `knowledge/` na raiz sem copiar seus arquivos.
 - `scripts/sync.py` gera as cópias das skills e de `agents/`, sem editar as fontes ou remover
   arquivos extras.
 - `scripts/check.py` valida metadados, links, configuração, manifestos do plugin e consistência
@@ -39,16 +40,19 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
 
 As cópias preservam as instruções das fontes. A geração ajusta somente links Markdown relativos
 para os arquivos correspondentes no layout de uso; blocos de código e links externos são preservados.
-O plugin completo usa as fontes e a biblioteca na raiz do pacote. Nas cópias avulsas, cada
-skill recebe seus guias em `references/knowledge/`, com procedência e links internos ajustados.
+O plugin completo e as cópias dos provedores usam a biblioteca `knowledge/` na raiz do
+repositório. Os links das cópias são ajustados sem gerar guias dentro das skills.
 Pelo CLI, as skills de Codex e Claude Code apontam para a mesma biblioteca na raiz do projeto,
 `knowledge/harness/`. A skill `consultar-conhecimento` é incluída quando uma seleção precisa
 de guias e pode ser selecionada sozinha. Ela aponta para o índice, cujo fechamento de
 dependências disponibiliza todos os guias catalogados, com consulta seletiva durante a tarefa.
-Um mesmo guia pode ter várias cópias geradas, mas é editado apenas em `knowledge/` na origem.
+Cada guia é editado apenas em `knowledge/` na origem e compartilhado pelos dois provedores.
 O empacotamento inclui apenas o fechamento das dependências declaradas por links Markdown,
 inclusive links de referência; não depende de symlinks, variáveis de provedor ou rede.
-`sync.py` continua recusando arquivos extras em vez de apagar adaptações.
+`sync.py` migra o layout antigo retirando somente guias de `references/knowledge/` cujo
+conteúdo completo corresponde ao gerado pela origem atual. Guias adaptados, desatualizados
+ou desconhecidos interrompem a operação antes de qualquer escrita. Outros arquivos extras
+continuam sendo recusados. A biblioteca canônica nunca é reescrita pela sincronização.
 Os papéis acrescentam os metadados próprios de cada provedor. Quem inicia a consulta lê a política
 local e verifica as capacidades reais das ferramentas. Campos nativos dos provedores não são
 alterados por essa política. Os scripts de manutenção usam apenas a biblioteca padrão do Python.
