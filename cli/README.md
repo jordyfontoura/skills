@@ -63,9 +63,9 @@ um guia compartilhado, o conflito interrompe toda a instalação antes de gravar
 incluem os hashes da biblioteca; `status` identifica alterações e ausências nos mesmos guias
 usados pelos dois agentes. Remover uma skill não deve remover guias usados por outras.
 
-O layout compartilhado é próprio do CLI. O plugin continua usando `knowledge/` na origem;
-as cópias manuais em `.agents/skills/` e `.claude/skills/` continuam autocontidas, com guias
-em `references/knowledge/`. O CLI não migra automaticamente uma instalação anterior: use
+O CLI usa o namespace `knowledge/harness/`. O plugin e as cópias manuais em `.agents/skills/`
+e `.claude/skills/` usam `knowledge/` na raiz; na adoção manual, copie também essa biblioteca.
+O CLI não migra automaticamente uma instalação anterior: use
 `atualizar-harness` para comparar adaptações e ajustar os links antes de retirar cópias antigas.
 
 ## Escolher conteúdo

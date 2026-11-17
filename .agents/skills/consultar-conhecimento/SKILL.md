@@ -7,7 +7,7 @@ license: Apache-2.0
 # Consultar conhecimento pertinente
 
 Identifique a questão que a referência precisa ajudar a resolver. Use o
-[índice da biblioteca](references/knowledge/README.md) para localizar os guias por assunto.
+[índice da biblioteca](../../../knowledge/README.md) para localizar os guias por assunto.
 Se outra skill já indicou um guia específico, consulte esse trecho diretamente.
 Não carregue toda a biblioteca nem siga todos os links como uma lista obrigatória de leitura.
 

@@ -3,7 +3,8 @@
 from pathlib import Path
 import sys
 
-from catalog import CLAUDE_AGENTS, COPY_ROOTS, PLUGIN_AGENTS, copy_files, plugin_agent_files
+from catalog import (CLAUDE_AGENTS, COPY_ROOTS, PLUGIN_AGENTS, catalog, copy_files,
+                     plugin_agent_files)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,11 +12,27 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def sync(root=ROOT):
     planned = {}
+    obsolete = set()
+    sources = catalog(root)
     for relative in COPY_ROOTS:
         directory = root / relative
         expected = copy_files(root, directory)
         actual = {p.resolve() for p in directory.rglob("*") if p.is_file()}
         extra = actual - set(expected)
+        # Reconheça apenas os guias antigos gerados, comparando o conteúdo completo.
+        # Uma adaptação ou arquivo desconhecido continua impedindo qualquer escrita.
+        for name, source in sources.items():
+            legacy_root = (directory / name / "references/knowledge").resolve()
+            if not legacy_root.is_relative_to((root / relative).absolute()):
+                raise ValueError(f"Cópia antiga fora do diretório do provedor: {legacy_root}")
+            if not any(path.is_relative_to(legacy_root) for path in extra):
+                continue
+            legacy = copy_files(root, directory, {name: source}, knowledge_root=legacy_root)
+            for path in extra & set(legacy):
+                if (path.is_relative_to(legacy_root) and path.is_relative_to(root.resolve())
+                        and path.read_bytes() == legacy[path]):
+                    obsolete.add(path)
+        extra -= obsolete
         expected_names = {p.relative_to(directory.resolve()).parts[0] for p in expected}
         extra_directories = ({p.resolve() for p in directory.iterdir()
                               if p.is_dir() and p.name not in expected_names}
@@ -39,6 +56,15 @@ def sync(root=ROOT):
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(content)
             changed += 1
+    for path in sorted(obsolete):
+        path.unlink()
+        changed += 1
+        directory = path.parent
+        while directory.name != "references" and not any(directory.iterdir()):
+            directory.rmdir()
+            directory = directory.parent
+        if directory.name == "references" and not any(directory.iterdir()):
+            directory.rmdir()
     return changed
 
 

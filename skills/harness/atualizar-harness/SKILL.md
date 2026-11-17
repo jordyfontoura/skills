@@ -112,8 +112,9 @@ Atualize os arquivos canônicos e depois as cópias dos provedores adotados. Inc
 modelos e recursos necessários. Preserve metadados locais válidos, capacidades e configurações
 de modelos; não imponha a configuração de outro projeto.
 Na origem desta coleção, `knowledge/` contém os guias compartilhados. O plugin completo os
-leva na raiz; cópias avulsas de `.agents/skills/` e `.claude/skills/` levam as dependências
-empacotadas em `references/knowledge/`. Copie a pasta completa e registre a revisão dos guias.
+leva na raiz; cópias de `.agents/skills/` e `.claude/skills/` também apontam para essa
+biblioteca única. Na adoção manual, copie `knowledge/` para a raiz do destino, confira
+conflitos e registre a revisão dos guias. Não duplique as referências por skill.
 Em destinos com fontes agrupadas, inclua a biblioteca e use geração compatível. Não copie
 somente `SKILL.md` nem deixe links apontando para o clone original.
 Nas adoções pelo CLI, a biblioteca fica em `knowledge/harness/` no destino e é compartilhada

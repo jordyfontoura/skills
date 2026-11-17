@@ -24,8 +24,8 @@ Consulte os [padrões](docs/STANDARDS.md), o [glossário](docs/GLOSSARY.md) e a
 
 Uma skill cita outras skills e papéis pelo nome. Links para fora de sua pasta só podem
 apontar para referências catalogadas em `knowledge/`. Métodos e políticas ficam na skill;
-conhecimento de domínio compartilhado fica na biblioteca. A geração inclui os guias usados
-nas cópias avulsas, para que os arquivos de apoio funcionem quando a pasta for copiada sozinha.
+conhecimento de domínio compartilhado fica na biblioteca. A geração ajusta os links das
+cópias dos provedores para `knowledge/` na raiz, sem duplicar os guias por skill.
 
 ## Branches e canais
 
@@ -68,15 +68,15 @@ a correção e o histórico. Nunca force push em nenhum dos canais.
 ## Editar
 
 Edite as fontes em `skills/<grupo>/<nome>/` e os papéis em `.agents/roles/`. Não edite as cópias.
-Edite referências de domínio em `knowledge/` e mantenha seu índice atualizado. Não edite
-manualmente `references/knowledge/` dentro das cópias geradas.
+Edite referências de domínio em `knowledge/` e mantenha seu índice atualizado.
 
 1. Para papéis, atualize na mesma mudança `.claude/agents/<nome>.md` (metadados de nome,
    descrição e ferramentas, seguidos do corpo canônico) e `.codex/agents/<nome>.toml` (mesmo nome,
    descrição e corpo em `developer_instructions`). Os arquivos não fixam modelo.
 2. Gere as cópias com `python scripts/sync.py`. O comando atualiza `.agents/skills/`,
    `.claude/skills/` e `agents/`, ajusta links ao layout sem grupos e recusa arquivos fora do
-   catálogo em vez de apagá-los.
+   catálogo em vez de apagá-los. Na migração do layout antigo, remove somente guias de
+   `references/knowledge/` idênticos aos gerados; adaptações interrompem toda a operação.
 3. Valide com Python 3.11 ou mais recente:
 
    ```text

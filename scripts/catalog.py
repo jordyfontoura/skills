@@ -144,7 +144,7 @@ def knowledge_dependencies(root, source, library=None):
 
 
 def copy_files(root, copy_root, sources=None, knowledge_root=None):
-    """Gera cópias autocontidas ou com biblioteca compartilhada no destino informado."""
+    """Gera skills com links para a biblioteca da raiz ou do destino informado."""
     sources = catalog(root) if sources is None else sources
     library = knowledge_catalog(root)
     paths = {}
@@ -154,7 +154,7 @@ def copy_files(root, copy_root, sources=None, knowledge_root=None):
                 paths[path.resolve()] = (copy_root / name / path.relative_to(source)).resolve()
     output = {}
     for name, skill in sources.items():
-        destination = knowledge_root if knowledge_root is not None else copy_root / name / "references/knowledge"
+        destination = knowledge_root if knowledge_root is not None else root / "knowledge"
         bundled = {path: (destination /
                           path.relative_to((root / "knowledge").resolve())).resolve()
                    for path in knowledge_dependencies(root, skill, library)}
@@ -164,6 +164,8 @@ def copy_files(root, copy_root, sources=None, knowledge_root=None):
         owned = {path: target for path, target in paths.items()
                  if path.is_relative_to(skill.resolve())}
         for source, target in {**owned, **bundled}.items():
+            if source == target:
+                continue  # A biblioteca canônica já existe; nunca a reescreva como cópia.
             if source.suffix.lower() == ".md":
                 text = rebase_links(source.read_text(encoding="utf-8"), source, target, mapping)
                 if source in bundled:

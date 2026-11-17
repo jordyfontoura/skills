@@ -122,6 +122,51 @@ de acionamento fora da intenção do usuário e a ausência de ganho medido.
 | Mudança exige vários arquivos e há checks obrigatórios. | Cumprir o escopo inteiro e os checks, sem reduzir a entrega a um protótipo. |
 | Pedido seguinte sem preferência por execução direta. | Retomar o fluxo habitual. |
 
+## Direção visual, construção e refinamento de interfaces
+
+O fluxo de interface reaproveita as skills existentes. `entrevistar` resolve escolhas humanas
+abertas; `especificar` define comportamento e provas quando necessário; `prototipar` esclarece
+uma dúvida por experimento; `implementar` constrói e refina; `criticar` avalia sem corrigir.
+`verificar-aceite` comprova os critérios independentemente quando solicitado ou exigido.
+Essa sequência não obriga passar por todas as skills em cada ajuste de interface.
+
+O apoio de interface de `implementar` e os guias de
+[direção visual](../knowledge/ux/visual-direction.md) e [movimento](../knowledge/ux/motion.md)
+ajudam a formular uma direção quando ela estiver aberta. Refinamento preserva a identidade;
+redesign precisa estar no escopo autorizado. Decisões e tokens específicos ficam no projeto
+de destino, junto do design system existente, sem um novo formato obrigatório de documento.
+
+### Convivência com ferramentas externas
+
+UI/UX Pro Max e Impeccable são apoios opcionais. O harness funciona sem sua instalação,
+scripts ou serviços. Suas saídas são recomendações a conferir, não aprovação nem prova de
+funcionamento. O design system do projeto, as autorizações e os pisos de avaliação continuam
+valendo. Preferências estéticas externas não viram proibições universais.
+
+- **UI/UX Pro Max:** pode apoiar a escolha de paleta, tipografia, composição e tokens quando
+  houver direção aberta. Confira a adequação das saídas e mapeie-as para o sistema do projeto.
+  Não gere outra identidade para uma tela nova de um produto que já tem identidade definida.
+- **Impeccable:** `shape` ajuda a preparar um brief; `critique` e `audit` fornecem avaliações;
+  `polish` altera a interface para acabamento. Na revisão consultada, `craft` é um alias
+  descontinuado para construção, não uma etapa adicional. Aproveitar uma avaliação não
+  autoriza executar suas correções nem substitui a independência exigida por `criticar`.
+- **GSAP:** opção para animação web quando o projeto já usa ou a necessidade justificar a
+  adoção. Primeiro defina o propósito do movimento e considere os recursos existentes.
+  Confira movimento reduzido, interrupção, limpeza e licença conforme o guia de movimento.
+
+Uma adoção externa exige conferir versão, escopo de escrita, executáveis, hooks e requisitos
+de delegação. O Impeccable atual inclui um motor executável e oferece hooks automáticos;
+eles não são instalados pelo harness. Delegações continuam dependendo de autorização.
+Não execute instaladores nem downloads como consequência automática de consultar estes guias.
+Arquivos externos como `PRODUCT.md`, `DESIGN.md` e `design-system/<slug>/MASTER.md` só devem
+ser incorporados com função definida em relação às fontes que o projeto já mantém.
+
+Fontes consultadas em 17/11/2026: [UI/UX Pro Max, `e59ff376a4`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/e59ff376a4)
+e [Impeccable, `d41d9860b0`](https://github.com/pbakaus/impeccable/tree/d41d9860b0).
+Não houve execução comparativa das ferramentas. O uso em uma tela nova e outra com design
+system existente, com avaliação independente autorizada, ainda precisa demonstrar o valor
+prático da orientação. Verificações estruturais do harness não comprovam esse ganho.
+
 ## Catálogo de skills
 
 Os comandos, os títulos e as instruções ficam em português.
@@ -154,13 +199,15 @@ examina dificuldades de arquitetura mesmo sem diff. `descrever-pr` escreve a des
 `integrar` executa a integração solicitada sem presumir publicação. A
 [biblioteca de conhecimento](../knowledge/README.md) reúne guias de UI e acessibilidade
 compartilhados por `implementar`, `prototipar` e `criticar`, preservando a identidade e os
-componentes do projeto. Métodos e políticas continuam nas skills; novos domínios entram
-com conteúdo real. As cópias avulsas incluem os guias usados em `references/knowledge/`.
+componentes do projeto. Ela também traz guias de desenvolvimento de jogos e de modelagem 3D, localizados por
+`consultar-conhecimento`. Métodos e políticas continuam nas skills; novos domínios entram
+com conteúdo real. As cópias dos provedores apontam para `knowledge/` na raiz; na adoção
+manual, copie também essa biblioteca, compartilhada pelos dois agentes.
 `criticar` avalia artefatos e experiências, como jogos, interfaces e textos, com critérios
 derivados do pedido, do público e das referências. Para UI e UX, preserva o método e a
-[rubrica comum](../skills/development/criticar/interface-rubric.md), incluindo acessibilidade,
+[rubrica comum](../skills/development/criticar/SKILL.md#rubrica-de-interface), incluindo acessibilidade,
 o design system do projeto e as diretrizes da plataforma. Com várias perspectivas pedidas,
-compõe com `conselho`; o [painel de UI](../skills/development/criticar/interface-panel.md)
+compõe com `conselho`; o [painel de UI](../skills/development/criticar/SKILL.md#crítica-em-painel)
 mantém seu método específico de severidade e consolidação.
 
 Uma crítica independente usa outro contexto e segue `delegar`, com `roles.council` quando

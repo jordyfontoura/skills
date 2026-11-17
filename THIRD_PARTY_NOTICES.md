@@ -69,6 +69,12 @@ Estas fontes inspiraram temas de skills, sem texto incluído:
 
 - `tratar-revisao` e `integrar`: [Superpowers](https://github.com/obra/superpowers), de Jesse Vincent (MIT).
 - Apoio `interface.md` de `implementar`: [frontend-design](https://github.com/anthropics/skills), da Anthropic (Apache-2.0).
+- Guias de direção visual e movimento e sua integração às skills:
+  [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/e59ff376a4),
+  de Next Level Builder (MIT), e [Impeccable](https://github.com/pbakaus/impeccable/tree/d41d9860b0),
+  de Paul Bakaus (Apache-2.0). Síntese própria em português, sem reprodução dos catálogos,
+  scripts ou playbooks. As referências GSAP, DTCG e W3C estão identificadas nos guias;
+  suas bibliotecas e especificações não são distribuídas nesta coleção.
 
 ## Retrato do autor
 

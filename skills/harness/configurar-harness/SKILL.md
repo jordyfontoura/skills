@@ -31,6 +31,8 @@ por causa do harness. Teste o validador com fixtures mínimas criadas pelo próp
 separadas da verificação do repositório real, mantendo os casos que devem falhar, como links
 quebrados. Valide a documentação real na própria árvore do repositório. Não mantenha listas
 parciais de arquivos copiados para fazer a documentação passar nos testes.
+Nas checagens novas, faça a mensagem de falha indicar, quando possível, o local, a regra violada
+e como corrigir. Não sugira desativar a checagem para contornar a falha.
 Use `conhecer-ferramentas` para inventariar ferramentas e preparar faltantes quando essa instalação fizer
 parte do pedido; isso não torna o catálogo de CLIs uma dependência obrigatória do projeto.
 

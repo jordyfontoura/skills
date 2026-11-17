@@ -7,12 +7,35 @@ compatibilidade.
 
 ## [Não lançado]
 
+### Alterado
+
+- `implementar`, `prototipar` e `criticar` consultam direção visual e movimento conforme a
+  tarefa, preservando identidade, decisões existentes e separação entre avaliação e correção.
+  A documentação explica a convivência opcional com UI/UX Pro Max e Impeccable.
+- `criticar` concentra procedimento, rubrica de interface e regras específicas de painel
+  no `SKILL.md`, consultando os guias de `knowledge/` conforme o domínio. Os quatro arquivos
+  de apoio foram incorporados, preservando pisos, escalas, independência e consolidação.
+- Cópias de `.agents/skills/` e `.claude/skills/` usam `knowledge/` na raiz, sem duplicar
+  guias por skill. `sync.py` retira cópias antigas idênticas às geradas e interrompe a
+  migração se houver adaptações ou arquivos desconhecidos. A adoção manual inclui a biblioteca.
+- `melhorar-harness`: considera simplificar ou retirar componentes com indício de custo ou
+  obsolescência, comparando um por vez sem enfraquecer requisitos ou verificações úteis.
+- `configurar-harness`: orienta mensagens de falha com local, regra violada e correção possível.
+
 ### Adicionado
 
+- Guias `knowledge/ux/visual-direction.md` e `knowledge/ux/motion.md`: direção e tokens,
+  finalidade e interrupção de animações, movimento reduzido e uso contextual de GSAP na web.
+  O guia de acessibilidade explicita os critérios temporais 2.2.2 e 2.3.1, ambos de nível A.
+- Guias de desenvolvimento de jogos em `knowledge/gamedev/`: fontes de assets com a licença
+  de cada site, padrões de programação, práticas de engenharia com Godot e técnicas de game
+  design. Cada guia registra as fontes consultadas e o que não pôde ser conferido.
+- Guias de modelagem 3D em `knowledge/3d-modeling/`: modelos prontos para jogo e pipeline
+  de exportação do Blender para o Godot, com base em glTF 2.0.
 - `consultar-conhecimento`: localiza referências pertinentes e orienta sua aplicação por fontes,
   aplicabilidade e limites. Pelo CLI, Codex e Claude Code usam uma biblioteca única em
   `knowledge/harness/`, com links ajustados, recibos e consulta do catálogo por `knowledge list`.
-  Cópias manuais continuam autocontidas. A instalação não migra nem sobrescreve adaptações antigas.
+  Cópias manuais usam `knowledge/` na raiz. A instalação não migra nem sobrescreve adaptações antigas.
 - Configurador `models init` no CLI, com política neutra, modelo compartilhado ou perfis,
   esforço e alternativas ordenadas. A instalação oferece uma pergunta opcional. A geração
   v2 tem validação estrutural em TypeScript e provas cruzadas com Python, sem editar arquivos
@@ -27,9 +50,9 @@ compatibilidade.
   `criticar`, `implementar` e `prototipar`. Procedimentos, pisos e escalas continuam nas skills.
   O índice declara os arquivos disponíveis; os guias registram aplicabilidade, origem,
   fontes e limites. Outros domínios entram quando houver conteúdo útil.
-- Empacotamento seletivo das referências em `references/knowledge/` das cópias avulsas,
-  incluindo dependências transitivas e links ajustados. O plugin completo usa a biblioteca
-  na raiz. A validação continua recusando links arbitrários fora da skill e verifica índice,
+- Empacotamento seletivo das referências do CLI, incluindo dependências transitivas e links
+  ajustados. O plugin e as cópias dos provedores usam a biblioteca na raiz. A validação
+  continua recusando links arbitrários fora da skill e verifica índice,
   integridade das cópias e isolamento da biblioteca. Atualização e adoção preservam adaptações locais.
 - `examinar-eficiencia`: explica por que o trabalho com o agente demorou ou gastou muitos
   tokens e propõe a menor mudança para cada causa, sem cortar verificações úteis. Usa a conversa,
@@ -53,9 +76,9 @@ compatibilidade.
   Perguntas sobre tempo sempre recebem uma estimativa com base e incertezas ou o motivo de
   ainda não estimar e o marco necessário. Distingue etapas de conclusão total e trabalho
   ativo de esperas externas, sem percentual inventado, medições novas ou acompanhamento periódico.
-- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica foi
-  preservada em `criticar/interface-rubric.md`, o método em `interface.md` e o painel de UI em
-  `interface-panel.md`. Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
+- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica, o método
+  e o painel de UI estão consolidados em `criticar/SKILL.md`.
+  Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
   apoios, preservando adaptações locais; a ausência dos diretórios antigos não autoriza
   apagá-los no destino. Use `criticar` com `conselho` para várias perspectivas, sem aliases.
 - `criticar-interface` passou a se chamar `criticar`.

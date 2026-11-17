@@ -44,16 +44,18 @@ class ValidationTests(unittest.TestCase):
         self.assertIn((shared / "accessibility/interface-criteria.md").resolve(), exported)
         self.assertEqual(exported[(shared / "ux/extra.md").resolve()].decode("utf-8").count("../accessibility/interface-criteria.md"), 1)
 
-    def test_manual_consultation_skill_remains_self_contained(self):
+    def test_manual_consultation_skill_uses_root_library_without_copying_it(self):
         exported = copy_files(self.root, self.root / ".agents/skills",
                               sources={"consultar-conhecimento": catalog(self.root)["consultar-conhecimento"]})
         directory = self.root / ".agents/skills/consultar-conhecimento"
-        self.assertIn((directory / "references/knowledge/README.md").resolve(), exported)
+        self.assertNotIn((self.root / "knowledge/README.md").resolve(), exported)
+        self.assertIn("../../../knowledge/README.md", exported[
+            (directory / "SKILL.md").resolve()].decode("utf-8"))
         for path, content in exported.items():
             self.assertTrue(path.is_relative_to(directory.resolve()))
             if path.suffix == ".md":
                 for target, relative in local_targets(content.decode("utf-8")):
-                    self.assertIn((path.parent / relative).resolve(), exported, f"{path}: {target}")
+                    self.assertTrue((path.parent / relative).resolve().is_file(), f"{path}: {target}")
 
     def setUp(self):
         self.workspace = tempfile.TemporaryDirectory(dir=ROOT / "scripts")
@@ -82,14 +84,12 @@ class ValidationTests(unittest.TestCase):
         errors, _, _ = validate(self.root)
         self.assertTrue(any("difere da skill canônica" in error for error in errors))
 
-    def test_generated_knowledge_copy_drift_is_rejected_and_sync_repairs_it(self):
-        target = self.root / ".agents/skills/criticar/references/knowledge/ux/usability.md"
+    def test_root_knowledge_change_is_used_without_generating_copies(self):
+        target = self.root / "knowledge/ux/usability.md"
         before = target.read_bytes()
-        target.write_text("Referência divergente.\n", encoding="utf-8")
-        errors, _, _ = validate(self.root)
-        self.assertTrue(any("usability.md: difere da skill canônica" in error for error in errors))
-        sync(self.root)
-        self.assertEqual(target.read_bytes(), before)
+        target.write_bytes(before + "\nReferência atualizada.\n".encode("utf-8"))
+        self.assertEqual(sync(self.root), 0)
+        self.assertEqual(target.read_bytes(), before + "\nReferência atualizada.\n".encode("utf-8"))
         self.assertEqual(validate(self.root)[0], [])
 
     def test_role_instruction_drift_is_rejected(self):
