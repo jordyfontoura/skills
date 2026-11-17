@@ -87,8 +87,8 @@ implementação, examinar a arquitetura, apontar onde a sessão gastou tempo e e
 Os pedidos continuam valendo em linguagem natural. A remoção não foi comparada em execuções
 equivalentes; a economia de contexto e de manutenção é uma hipótese.
 
-`fazer-direto` e `examinar-eficiencia` existiram apenas em `nightly`. As outras quatro estão
-na versão `v0.2.0`. Numa cópia editável, `atualizar-harness` preserva as pastas que você
+As seis estavam no canal estável: quatro desde a versão 0.2.0, e `fazer-direto` e
+`examinar-eficiencia` desde a promoção de 13/11/2026. Numa cópia editável, `atualizar-harness` preserva as pastas que você
 adaptou; a ausência na origem não autoriza apagá-las no destino. O CLI deixa de oferecer a
 prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padrão.
 
