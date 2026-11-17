@@ -9,6 +9,8 @@ compatibilidade.
 
 ### Alterado
 
+- O banner do README ganha animação na rede neural: pulsos entram pelas linhas e percorrem
+  as conexões, acendendo os nós. Com movimento reduzido, o banner continua estático.
 - `andamento`: o procedimento passa de 86 para 33 linhas e descreve o resultado esperado em
   vez do passo a passo. Mantém a cobertura do pedido inteiro, a previsão fundamentada, a
   leitura sem efeito sobre o trabalho em curso e o cuidado ao observar outra conversa.
