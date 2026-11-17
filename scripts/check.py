@@ -22,6 +22,7 @@ TEXT_SUFFIXES = {".md", ".json", ".toml", ".py", ".yml", ".yaml", ".svg", ""}
 HIDDEN = re.compile("[\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff"
                     "\U000e0000-\U000e007f\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 RENAME = re.compile(r"^- `([a-z0-9-]+)` passou a se chamar `([a-z0-9-]+)`\.$", re.M)
+REMOVAL = re.compile(r"^- `([a-z0-9-]+)` foi removida\.$", re.M)
 STALE_NAME_SUFFIXES = {".md", ".toml", ".yml", ".yaml", ".json", ""}
 URL = re.compile(r"https?://[^\s)>\]]+")
 # Trechos em que um nome antigo continua correto, por arquivo (sufixo do caminho).
@@ -161,13 +162,17 @@ def validate(root=ROOT):
 
 
 def stale_names(root, sources):
-    """Recusa nomes de skills renomeadas, lidos do CHANGELOG, citados como skill."""
+    """Recusa nomes de skills renomeadas ou removidas, lidos do CHANGELOG, citados como skill."""
     changelog = root / "CHANGELOG.md"
-    renames = dict(RENAME.findall(read(changelog))) if changelog.is_file() else {}
+    history = read(changelog) if changelog.is_file() else ""
+    renames = dict(RENAME.findall(history))
+    removed = set(REMOVAL.findall(history))
     if not renames:
         return ["CHANGELOG.md: nenhuma renomeação no formato "
                 "\"- `antigo` passou a se chamar `novo`.\"; a verificação de nomes antigos depende dela"]
-    errors = []
+    errors = [f"CHANGELOG.md: `{name}` foi removida, mas ainda está no catálogo"
+              for name in sorted(removed & set(sources))]
+    removed -= set(sources)
     current = {}
     for old in renames:
         seen, name = {old}, renames[old]
@@ -176,22 +181,36 @@ def stale_names(root, sources):
             name = renames[name]
         if old in sources:
             errors.append(f"CHANGELOG.md: `{old}` foi renomeada, mas ainda está no catálogo")
-        elif name in seen or name not in sources:
+        elif name in seen or name not in set(sources) | removed:
             errors.append(f"CHANGELOG.md: a renomeação de `{old}` não termina numa skill do catálogo")
         else:
             current[old] = name
-    if not current:
+    if not current and not removed:
         return errors
-    names = "|".join(re.escape(n) for n in sorted(current, key=len, reverse=True))
+
+    def advice(name):
+        if name in removed:
+            return f"skill removida `{name}`"
+        if current[name] in removed:
+            return f"nome antigo `{name}`; a skill `{current[name]}` foi removida"
+        return f"nome antigo `{name}`; use `{current[name]}`"
+
     end = r"(?![\w-])"
-    patterns = (
-        re.compile(rf"`({names})`"),
-        re.compile(rf"\$({names}){end}"),
-        re.compile(rf"(?<=[/:])({names}){end}"),
-        re.compile(rf"^\s*(?:name|placeholder):\s*({names})\s*$", re.M),
-        re.compile(rf"(?<![\w-])(?:[Uu]se|siga|seguindo|menciona|pedir|skills?)\s+({names}){end}"),
-        re.compile(rf"^description:.*?(?<![\w-])({names}){end}", re.M),
-    )
+    # Nomes removidos, como `esclarecer`, também são palavras comuns: valem só as formas
+    # que identificam uma skill. As formas em prosa ficam restritas aos nomes renomeados.
+    cited = "|".join(re.escape(n) for n in sorted(set(current) | removed, key=len, reverse=True))
+    patterns = [
+        re.compile(rf"`({cited})`"),
+        re.compile(rf"\$({cited}){end}"),
+        re.compile(rf"(?<=[/:])({cited}){end}"),
+        re.compile(rf"^\s*(?:name|placeholder):\s*({cited})\s*$", re.M),
+    ]
+    if current:
+        names = "|".join(re.escape(n) for n in sorted(current, key=len, reverse=True))
+        patterns += [
+            re.compile(rf"(?<![\w-])(?:[Uu]se|siga|seguindo|menciona|pedir|skills?)\s+({names}){end}"),
+            re.compile(rf"^description:.*?(?<![\w-])({names}){end}", re.M),
+        ]
     files = [p for p in root.iterdir() if p.is_file() and p.name != "CHANGELOG.md"]
     for relative in TEXT_DIRECTORIES:
         if relative != "scripts":
@@ -214,7 +233,7 @@ def stale_names(root, sources):
                 line = text.count("\n", 0, match.start(1)) + 1
                 found.add((line, match[1]))
         for line, old in sorted(found):
-            errors.append(f"{relative}:{line}: nome antigo `{old}`; use `{current[old]}`")
+            errors.append(f"{relative}:{line}: {advice(old)}")
     for suffix, excerpts in STALE_NAME_EXCEPTIONS.items():
         for excerpt in excerpts:
             if (suffix, excerpt) not in used:
