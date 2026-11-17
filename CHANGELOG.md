@@ -14,11 +14,12 @@ compatibilidade.
   leitura sem efeito sobre o trabalho em curso e o cuidado ao observar outra conversa.
 - `implementar`, `delegar` e `criticar` passam a descrever o resultado esperado, o formato e
   os limites, sem repetir o que o modelo faz sem instrução nem o roteamento para outras skills.
-  `implementar` vai de 63 para 35 linhas, `delegar` de 112 para 88 e `criticar` de 254 para 213.
+  `implementar` vai de 63 para 35 linhas e `delegar` de 112 para 88. O `SKILL.md` de `criticar`
+  vai de 254 para 110, com 91 linhas em `interface.md` e 29 em `panel.md`.
   Ficam a entrega por jornada, o reaproveitamento do resultado de base, a resolução da política
   de modelos nas versões 1 e 2, o conteúdo do brief, a rubrica de interface com pisos e
   severidade, o painel, as notas com duas casas decimais e os ciclos de correção. Os apoios
-  `testing.md`, `interface.md` e `workloads.md` não mudam. Os fundamentos do método de
+  de `implementar` e `delegar` não mudam. Os fundamentos do método de
   interface saem de `criticar` e ficam em `docs/HARNESS.md`. Não houve comparação em execuções
   equivalentes.
 - `check.py` recusa também skills removidas citadas como skill. Lê as remoções deste CHANGELOG,
@@ -28,9 +29,10 @@ compatibilidade.
 - `implementar`, `prototipar` e `criticar` consultam direção visual e movimento conforme a
   tarefa, preservando identidade, decisões existentes e separação entre avaliação e correção.
   A documentação explica a convivência opcional com UI/UX Pro Max e Impeccable.
-- `criticar` concentra procedimento, rubrica de interface e regras específicas de painel
-  no `SKILL.md`, consultando os guias de `knowledge/` conforme o domínio. Os quatro arquivos
-  de apoio foram incorporados, preservando pisos, escalas, independência e consolidação.
+- `criticar` mantém o procedimento geral no `SKILL.md` e traz a rubrica de interface em
+  `interface.md` e as regras de painel em `panel.md`, lidos só quando a crítica é de UI ou
+  em painel. Os quatro apoios anteriores foram reunidos nesses dois, preservando pisos,
+  escalas, independência e consolidação. Os guias de `knowledge/` são consultados conforme o domínio.
 - Cópias de `.agents/skills/` e `.claude/skills/` usam `knowledge/` na raiz, sem duplicar
   guias por skill. `sync.py` retira cópias antigas idênticas às geradas e interrompe a
   migração se houver adaptações ou arquivos desconhecidos. A adoção manual inclui a biblioteca.
@@ -105,8 +107,8 @@ prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padr
   Perguntas sobre tempo sempre recebem uma estimativa com base e incertezas ou o motivo de
   ainda não estimar e o marco necessário. Distingue etapas de conclusão total e trabalho
   ativo de esperas externas, sem percentual inventado, medições novas ou acompanhamento periódico.
-- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica, o método
-  e o painel de UI estão consolidados em `criticar/SKILL.md`.
+- As duas entradas de crítica de interface foram reunidas em `criticar`. A rubrica e o painel
+  de UI ficam no apoio `criticar/interface.md`.
   Para quem adotou `nightly`, `atualizar-harness` deve migrar chamadas e
   apoios, preservando adaptações locais; a ausência dos diretórios antigos não autoriza
   apagá-los no destino. Use `criticar` com `conselho` para várias perspectivas, sem aliases.

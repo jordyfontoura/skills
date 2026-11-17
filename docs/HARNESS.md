@@ -164,9 +164,9 @@ com conteúdo real. As cópias dos provedores apontam para `knowledge/` na raiz;
 manual, copie também essa biblioteca, compartilhada pelos dois agentes.
 `criticar` avalia artefatos e experiências, como jogos, interfaces e textos, com critérios
 derivados do pedido, do público e das referências. Para UI e UX, preserva o método e a
-[rubrica comum](../skills/development/criticar/SKILL.md#rubrica-de-interface), incluindo acessibilidade,
+[rubrica comum](../skills/development/criticar/interface.md), incluindo acessibilidade,
 o design system do projeto e as diretrizes da plataforma. Com várias perspectivas pedidas,
-compõe com `conselho`; o [painel de UI](../skills/development/criticar/SKILL.md#crítica-em-painel)
+compõe com `conselho`; o [painel de UI](../skills/development/criticar/interface.md#painel-de-interface)
 mantém seu método específico de severidade e consolidação.
 
 Uma crítica independente usa outro contexto e segue `delegar`, com `roles.council` quando
