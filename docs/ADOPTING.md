@@ -15,7 +15,7 @@ papéis opcionais e mostra os arquivos antes da instalação. Execute
 
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 30 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 31 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 

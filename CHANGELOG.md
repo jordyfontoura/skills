@@ -24,6 +24,15 @@ compatibilidade.
 
 ### Adicionado
 
+- Skill `subir-regua`: melhoria em etapas, combinável com `criticar`, `escrever-claro` ou
+  outras formas de avaliação. Cada etapa repete avaliar e corrigir em contexto novo até
+  cumprir seu critério e então passa ao próximo avaliador ou a uma meta mais alta. Mudanças
+  só substituem a referência quando não há regressão, e a escada para na etapa que esgota
+  seus ciclos.
+- Seção opcional `ladders` na política de modelos v2, validada em Python e no CLI, com
+  etapas concretas e `max_cycles` configurável. A política pessoal registra a escada
+  `padrao`: Luna XHigh, Haiku XHigh, Sol Medium, Opus Medium e Fable Medium, com 3 ciclos
+  por etapa.
 - Guias `knowledge/ux/visual-direction.md` e `knowledge/ux/motion.md`: direção e tokens,
   finalidade e interrupção de animações, movimento reduzido e uso contextual de GSAP na web.
   O guia de acessibilidade explicita os critérios temporais 2.2.2 e 2.3.1, ambos de nível A.

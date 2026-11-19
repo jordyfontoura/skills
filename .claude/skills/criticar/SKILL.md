@@ -221,7 +221,9 @@ o requisito; não ganham autoridade por terem vindo do crítico. Preserve versõ
 e evidências para comparar melhora e regressões. Cada nova crítica avalia a versão resultante;
 não repita avaliações da mesma versão apenas até obter uma nota favorável.
 
-Não baixe o limiar nem troque o crítico para obter aprovação. Após duas correções sem sucesso
+Não baixe o limiar nem troque o crítico para obter aprovação. Para uma sequência de críticos
+ou metas crescentes, use `subir-regua`; nela, a troca ocorre depois da aprovação da etapa.
+Após duas correções sem sucesso
 ou recorrência do mesmo defeito, use `diagnosticar`. Encerre ao cumprir os critérios ou atingir
 a condição de parada, relatando notas, problemas e provas ausentes. Se uma decisão ou acesso
 ficar pendente, continue apenas o trabalho independente autorizado. A última versão não é

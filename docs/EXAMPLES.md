@@ -158,6 +158,14 @@ O crítico não escreve código; quem implementa confere os achados e repete as 
 
 > $implementar Conclua o escopo aprovado. Ao terminar, chame um crítico independente com $criticar, corrija os problemas confirmados no escopo e peça nova crítica, até três rodadas. Encerre com todos os critérios comprovados e sem problemas impeditivos confirmados pelo crítico, ou com as pendências ao atingir o limite. Não mude os requisitos para obter aprovação.
 
+### [`subir-regua`](../skills/productivity/subir-regua/SKILL.md)
+
+Quando você quer melhorar algo em etapas, passando a avaliadores ou metas mais exigentes a
+cada aprovação. A skill combinada define como avaliar; sem sequência no pedido, o modo usa
+a escada `padrao` da política de modelos.
+
+> Melhore o UX/UI com $criticar no modo $subir-regua até 9.00 em todas as telas, desktop e mobile. Repense textos, componentes e posições quando necessário.
+
 ### [`reconciliar`](../skills/development/reconciliar/SKILL.md)
 
 Quando documentos, código e relatos parecem discordar sobre o que está pronto. Compara

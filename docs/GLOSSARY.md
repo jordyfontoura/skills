@@ -27,6 +27,10 @@ inglês abaixo ajudam a reconhecer esses mesmos conceitos no código e nas ferra
 - **Crítica (critique)**: exame da qualidade de um artefato ou experiência em relação à intenção,
   ao público, às referências e aos critérios do domínio. Produz achados e recomendações;
   não corrige o produto nem substitui a comprovação dos critérios de aceite.
+- **Escada (ladder)**: sequência de etapas de `subir-regua`. Cada etapa tem um avaliador e um
+  critério; a seguinte só começa depois que a anterior cumpre o seu.
+- **Etapa (stage)**: degrau da escada, em que se repete avaliar e corrigir até cumprir o
+  critério ou esgotar o limite de ciclos.
 - **Avaliação (evaluation)**: verificação independente dos critérios de aceite pelos métodos combinados.
 - **Passagem de contexto (handoff)**: registro do estado atual, não do histórico, suficiente
   para outra sessão retomar o trabalho na etapa correta, com o próximo passo e as provas que faltam.
