@@ -150,6 +150,10 @@ Arquivos `.env` não são aceitos como configuração. Exemplo de JSON, com IDs 
 }
 ```
 
+O objeto também pode trazer a seção opcional `ladders`, com as escadas de `subir-regua`.
+O formato está no [guia de modelos](../docs/MODELS.md#escadas-de-subir-regua); as perguntas
+interativas não criam escadas.
+
 Para gerar a política sem perguntas:
 
 ```bash

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import unittest
 
-from model_policy import load_policy, resolve_policy, validate_policy
+from model_policy import load_policy, resolve_ladder, resolve_policy, validate_policy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,6 +135,34 @@ class ProfilePolicyTests(unittest.TestCase):
             self.assertEqual([(o["model"], o["effort"]) for o in options], pairs)
             for option in options:
                 self.assertEqual(option["provider"], "codex" if option["model"].startswith("gpt-") else "claudeAgent")
+
+    def test_personal_ladder_keeps_stage_order_and_limit(self):
+        ladder = resolve_ladder(self.policy, "padrao")
+        self.assertEqual(ladder["max_cycles"], 3)
+        self.assertEqual([(s["model"], s["effort"]) for s in ladder["stages"]], [
+            ("gpt-6-luna", "xhigh"), ("claude-haiku-5-5", "xhigh"), ("gpt-6.1-sol", "medium"),
+            ("claude-opus-5-5", "medium"), ("claude-fable-5-2", "medium")])
+        for stage in ladder["stages"]:
+            self.assertEqual(stage["provider"], "codex" if stage["model"].startswith("gpt-") else "claudeAgent")
+
+    def test_ladders_are_optional_and_isolated(self):
+        ladder = resolve_ladder(self.policy, "padrao")
+        ladder["stages"][0]["effort"] = "low"
+        self.assertEqual(self.policy["ladders"]["padrao"]["stages"][0]["effort"], "xhigh")
+        without = copy.deepcopy(self.policy)
+        del without["ladders"]["padrao"]["max_cycles"]
+        self.assertIsNone(resolve_ladder(without, "padrao")["max_cycles"])
+        del without["ladders"]
+        validate_policy(without)
+        with self.assertRaisesRegex(ValueError, "Escada sem configuração"):
+            resolve_ladder(without, "padrao")
+
+    def test_ladders_do_not_extend_version_1(self):
+        policy = {"version": 1, "defaults": {"provider": "inherit", "model": "inherit", "effort": "inherit"},
+                  "roles": {"planner": {"when": "Planejar.", "fallbacks": []}},
+                  "ladders": copy.deepcopy(self.policy["ladders"])}
+        with self.assertRaisesRegex(ValueError, "campos desconhecidos"):
+            validate_policy(policy)
 
     def test_complexity_routing_and_protected_roles(self):
         for role in ("implementer", "reviewer"):
