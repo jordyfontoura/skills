@@ -225,7 +225,7 @@ Fontes em `skills/productivity/`.
 | `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
 | `entrevistar-por-arquivo` | Conduzir perguntas em arquivo e consolidar decisões em rodadas assíncronas. |
 | `propor` | Explicar a abordagem e aguardar aprovação antes de executar. |
-| `andamento` | Consultar o pedido inteiro, pendências, próxima entrega e previsão fundamentada de conclusão. |
+| `andamento` | Consultar o pedido inteiro, pendências e próxima entrega, sempre com uma faixa de tempo até a conclusão. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
 | `consultar-conhecimento` | Localizar referências pertinentes, conferir aplicabilidade e relacioná-las à tarefa. |
 | `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
@@ -253,13 +253,15 @@ ação. Depois, continua a etapa que já estava em execução e autorizada. Se e
 uma decisão, continua aguardando: uma pergunta de andamento não conta como aprovação.
 `andamento` faz uma consulta curta; `passar-contexto` prepara o contexto para outra sessão retomar.
 
-O restante vai até a conclusão combinada do pedido. Quando pertinente, o resumo inclui o
-que mudou, a próxima entrega utilizável e a previsão de conclusão, distinguindo-a da etapa
-atual. Se o usuário perguntar quanto falta, a resposta sempre traz a estimativa com base e
-incertezas ou explica por que ainda não há previsão útil e o marco que permitirá estimar.
-Usa faixa ou ordem de grandeza sustentada pelo contexto, sem exigir histórico estatístico
-nem inventar um prazo. Esperas sem duração conhecida ficam como condições; não se converte
-contagem de tarefas em percentual do tempo nem se fazem medições só para responder.
+O restante vai até a conclusão combinada do pedido. Toda consulta, inclusive "como está?",
+traz uma faixa de tempo restante para concluir o goal ou pedido inteiro, com limites inferior
+e superior, unidade, base e incertezas. A previsão inclui as verificações e entregas exigidas;
+estimar só a etapa atual não basta. Com pouco contexto, a faixa é preliminar e mais ampla,
+com baixa confiança, hipóteses explícitas e indicação do que permitirá refiná-la.
+Esperas sem duração conhecida ficam como condições fora da faixa, que nesse caso estima
+o trabalho após a liberação, sem prometer uma data de conclusão. Para um pedido concluído,
+informa "0 a 0 minutos restantes" e a evidência. Não se converte contagem de tarefas em
+percentual do tempo nem se fazem medições só para responder.
 
 Essa é uma convenção do harness para tornar a consulta mais útil. A
 [NN/g](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/) recomenda

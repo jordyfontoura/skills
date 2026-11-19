@@ -9,6 +9,9 @@ compatibilidade.
 
 ### Alterado
 
+- `andamento`: toda consulta passa a incluir uma faixa de tempo restante até concluir o goal
+  ou pedido inteiro. Com pouco contexto, informa uma faixa preliminar com baixa confiança
+  e hipóteses; esperas sem prazo ficam como condições fora da estimativa.
 - O banner do README ganha animação na rede neural: pulsos entram pelas linhas e percorrem
   as conexões, acendendo os nós. Com movimento reduzido, o banner continua estático.
 - `andamento`: o procedimento passa de 86 para 33 linhas e descreve o resultado esperado em

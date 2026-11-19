@@ -1,6 +1,6 @@
 ---
 name: andamento
-description: Resume o andamento do pedido inteiro, pendências, bloqueios, próxima entrega utilizável e previsão fundamentada de conclusão, ou o motivo de ainda não estimar. Use para consultas rápidas sem mudar o objetivo; `passar-contexto` prepara a retomada por outra sessão.
+description: Resume o andamento do pedido inteiro, pendências, bloqueios e próxima entrega utilizável, sempre com uma faixa de tempo estimada até a conclusão. Use para consultas rápidas sem mudar o objetivo; `passar-contexto` prepara a retomada por outra sessão.
 license: Apache-2.0
 ---
 
@@ -22,9 +22,18 @@ que a pergunta pede:
 Separe o que foi verificado, relatado antes, inferido e desconhecido. Uma prova anterior só
 vale se ainda se aplica à revisão e ao ambiente atuais.
 
-Quando perguntarem quanto falta, dê uma faixa ou ordem de grandeza para um ponto de chegada
-nomeado, com a base e o que pode alongá-la. Sem base útil, diga o que precisa ser descoberto
-antes de estimar. Esperas sem prazo, como uma aprovação, ficam como condição, fora da estimativa.
+Toda resposta de andamento deve trazer uma faixa de tempo restante até concluir o goal ou
+pedido inteiro, mesmo quando o usuário perguntar apenas "como está?". Informe limite inferior,
+superior e unidade, como "entre 30 e 60 minutos", incluindo as verificações e entregas exigidas.
+Uma estimativa da próxima etapa pode complementar essa faixa, mas não substituí-la.
+
+Fundamente a faixa no escopo restante, no progresso observado e nas dependências conhecidas.
+Com pouco contexto, dê uma faixa preliminar mais ampla, declare a baixa confiança, as hipóteses
+e o que permitirá refiná-la; não substitua a faixa por "não é possível estimar". Não apresente
+a estimativa como prazo garantido. Atualize-a quando novas evidências mudarem a previsão.
+Esperas sem prazo, como uma aprovação, ficam como condição explícita fora da faixa: estime
+o trabalho restante após a liberação, sem sugerir que esse seja o prazo total de calendário.
+Se o pedido já estiver concluído, informe "0 a 0 minutos restantes" e a evidência de conclusão.
 Use o que já está no contexto: não rode comandos, meça nem delegue só para obter um número,
 e não converta contagem de tarefas em percentual.
 
