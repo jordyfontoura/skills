@@ -136,7 +136,7 @@ preserve a descrição das escolhas do destino e explique o formato que ele real
 Em `AGENTS.md`, `CLAUDE.md`, glossário e documentos locais, incorpore só as orientações
 relevantes. Não substitua arquivos inteiros nem sobrescreva comandos da aplicação, decisões,
 requisitos, respostas humanas ou critérios de aceite. Preserve a terminologia do destino.
-Confira links depois de adaptar caminhos, inclusive o glossário usado por `esclarecer`.
+Confira links depois de adaptar caminhos, inclusive o glossário do projeto.
 
 Não copie a CI, configurações de ferramentas pessoais, permissões, hooks ou scripts de manutenção deste repositório por
 padrão. Uma mudança nesses arquivos só entra quando estiver no escopo solicitado e fizer

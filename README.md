@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 31 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 25 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -16,7 +16,6 @@ de toda mudança. Veja o [fluxo, sua base e seus limites](docs/HARNESS.md#fluxo-
 ## Quando usar
 
 - **Quer ver a abordagem antes de alterar?** `propor` orienta o agente a apresentar uma proposta e esperar seu aceite.
-- **Quer só fazer e entregar rápido?** `fazer-direto` dispensa specs e etapas de processo, com verificação do resultado.
 - **Precisa conferir uma entrega?** `implementar` pede comandos e resultados observados; `verificar-aceite` confere os critérios de forma independente.
 - **Vai retomar em outra sessão?** `passar-contexto` preserva a próxima etapa e as provas pendentes; `andamento` resume o andamento.
 
@@ -101,7 +100,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 31 skills</summary>
+<summary>Ver as 25 skills</summary>
 
 ### Entender e decidir
 
@@ -110,7 +109,6 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `propor` | Avaliar uma abordagem antes de autorizar alterações. |
 | `entrevistar` | Resolver escolhas abertas pela conversa. |
 | `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
-| `esclarecer` | Retomar uma explicação que ficou confusa. |
 | `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
 | `consultar-conhecimento` | Localizar e aplicar os guias pertinentes da biblioteca de conhecimento. |
 | `conselho` | Consultar perspectivas independentes sobre uma decisão. |
@@ -123,16 +121,12 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `implementar` | Entregar e verificar o trabalho combinado. |
-| `fazer-direto` | Executar diretamente, priorizando velocidade e dispensando specs e etapas de processo. |
 | `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
 | `revisar` | Analisar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
-| `examinar-arquitetura` | Identificar atrito estrutural no código e propor melhorias. |
 | `subir-regua` | Melhorar em etapas, com avaliadores ou metas mais exigentes a cada aprovação. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
-| `reconciliar` | Comparar requisitos, implementação e evidências. |
 | `criticar` | Receber uma crítica especializada de um artefato ou experiência, individual ou com conselho. |
-| `descrever-pr` | Escrever a descrição de uma mudança para quem vai revisá-la. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
 
 ### Acompanhar e dividir o trabalho
@@ -140,7 +134,6 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | Skill | Use para |
 | --- | --- |
 | `andamento` | Consultar andamento, pendências e bloqueios. |
-| `examinar-eficiencia` | Entender por que o trabalho demorou ou gastou muitos tokens e como melhorar. |
 | `passar-contexto` | Deixar outra sessão pronta para continuar. |
 | `delegar` | Dividir trabalho autorizado e conferir o retorno. |
 
@@ -161,7 +154,8 @@ O nome interno da coleção é harness; daí os nomes das skills de manutenção
 ## Como o autor usa
 
 Frequência relativa nas conversas pessoais do autor, consultadas em 13/11/2026.
-Pedidos e declarações podem se sobrepor e não comprovam execução.
+Pedidos e declarações podem se sobrepor e não comprovam execução. O retrato é anterior à
+remoção de seis skills, que ainda aparecem nele.
 
 <picture>
   <source media="(max-width: 600px)" srcset="docs/assets/skill-usage-mobile.svg">

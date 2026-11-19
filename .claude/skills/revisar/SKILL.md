@@ -6,8 +6,7 @@ license: Apache-2.0
 
 # Revisar alterações específicas
 
-Use `tratar-revisao` para tratar comentários já recebidos e `examinar-arquitetura` para examinar
-atrito estrutural do código existente sem depender de um diff. Este procedimento produz achados
+Use `tratar-revisao` para tratar comentários já recebidos. Este procedimento produz achados
 sobre alterações específicas; não aplica correções por conta própria.
 
 Fixe as revisões de base e de destino antes de ler. Diferencie mudanças commitadas de alterações

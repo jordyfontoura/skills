@@ -34,8 +34,7 @@ SOFTWARE.
 
 ### Skills de Matt Pocock
 
-`esclarecer`, `diagnosticar`, `prototipar`, `melhorar-harness`, `examinar-arquitetura` e
-`entrevistar-por-arquivo` seguem ideias e a organização de skills de
+`diagnosticar`, `prototipar`, `melhorar-harness` e `entrevistar-por-arquivo` seguem ideias e a organização de skills de
 [mattpocock/skills](https://github.com/mattpocock/skills). O texto foi escrito de novo em
 português. Por cautela, o aviso da licença acompanha esta coleção.
 

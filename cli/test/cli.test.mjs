@@ -21,7 +21,7 @@ test('o CLI lista todo o catálogo e rejeita entradas inválidas sem criar arqui
   const root = project();
   const list = run(root, 'list');
   assert.equal(list.status, 0, list.stderr);
-  for (const name of ['implementar', 'fazer-direto', 'planner', 'representative']) assert.ok(list.stdout.includes(name));
+  for (const name of ['implementar', 'andamento', 'planner', 'representative']) assert.ok(list.stdout.includes(name));
   for (const args of [[], ['init', '--yes'], ['init', '--agents', 'codex', '--skills', '../escape', '--yes'],
     ['init', '--agents', 'other', '--skills', 'implementar', '--yes'], ['unknown']]) {
     assert.notEqual(run(root, ...args).status, 0);
@@ -161,7 +161,7 @@ test('o payload preserva o conteúdo das fontes e todas as recomendações exist
     if (path.endsWith('.md')) assert.equal(withoutDestinations(body), withoutDestinations(canonical), path);
     else assert.equal(body, canonical, path);
   }
-  for (const scenario of ['approval', 'direct', 'sessions', 'reviews', 'decisions', 'acceptance', 'interface']) {
+  for (const scenario of ['approval', 'sessions', 'reviews', 'decisions', 'acceptance', 'interface']) {
     const result = run(project(), 'init', '--agents', 'codex', '--scenarios', scenario, '--dry-run');
     assert.equal(result.status, 0, result.stderr);
   }

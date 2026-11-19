@@ -102,23 +102,3 @@ No fim, informe o estado de parada, a referência entregue, as notas por etapa, 
 os avisos de independência e as provas ausentes. Notas de modelos diferentes não formam uma
 série comparável. Uma nota que sobe não comprova melhora por si: recomende teste com
 pessoas ou `verificar-aceite` quando a decisão depender disso.
-
-## Fundamentos
-
-- [Pan et al., 2024](https://arxiv.org/abs/2407.04549), preprint: em revisão iterativa de
-  redações, a nota do avaliador subiu enquanto a nota humana estagnou ou caiu, sobretudo com
-  contexto compartilhado entre autor e avaliador. Um avaliador sem o histórico acompanhou as
-  pessoas. Daí o contexto novo e a ausência de notas anteriores.
-- [Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076): modelos avaliam melhor
-  os próprios textos do que textos equivalentes para pessoas. Daí a alternância de famílias
-  e o aviso de independência.
-- [Verga et al., 2024](https://arxiv.org/abs/2404.18796), preprint: avaliadores de famílias
-  diferentes mostraram menos viés do que um único avaliador grande.
-- [Gao et al., 2022](https://arxiv.org/abs/2210.10760), preprint: otimizar uma medida
-  substituta acaba reduzindo a qualidade real, como prevê a lei de Goodhart. Daí a regra da
-  referência e o limite de ciclos.
-- [Madaan et al., NeurIPS 2023](https://arxiv.org/abs/2303.17651): no Self-Refine, as primeiras
-  rodadas concentraram os ganhos. Daí o limite padrão de 3 ciclos por etapa.
-
-Nenhum desses estudos testou esta sequência de etapas. Eles fundamentam as regras sem
-medir o ganho do modo.
