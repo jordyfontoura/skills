@@ -191,6 +191,27 @@ leitura visual incorreta sem interface renderizada; a utilidade caiu nas iteraç
 de `criticar` respondem a esses erros, sem medição de ganho nem garantia de que os resultados
 se apliquem a outros modelos.
 
+`subir-regua` organiza esse ciclo em etapas: cada uma repete avaliar e corrigir até cumprir
+seu critério, e então o próximo avaliador examina a versão inteira. A skill combinada define
+como avaliar. Por exemplo: "Melhore o UX/UI com `$criticar` no modo `$subir-regua` até
+`9.00` em todas as telas, desktop e mobile". Sem sequência no pedido, o modo usa
+`ladders.padrao` da política de modelos e para na etapa que esgotar seus ciclos.
+
+As regras de `subir-regua` partem destes estudos, nenhum deles com esta sequência de etapas.
+Em revisão iterativa de redações, [Pan et al., 2024](https://arxiv.org/abs/2407.04549),
+preprint, observaram a nota do avaliador subir enquanto a nota humana estagnava ou caía,
+sobretudo com contexto compartilhado entre autor e avaliador; um avaliador sem o histórico
+acompanhou as pessoas. Daí o contexto novo e a ausência de notas anteriores.
+[Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076), mostraram que modelos
+avaliam melhor os próprios textos do que textos equivalentes para pessoas, e
+[Verga et al., 2024](https://arxiv.org/abs/2404.18796), preprint, que avaliadores de famílias
+diferentes têm menos viés do que um único avaliador grande; daí a alternância de famílias e
+o aviso de independência. [Gao et al., 2022](https://arxiv.org/abs/2210.10760), preprint,
+viram a otimização de uma medida substituta acabar reduzindo a qualidade real, como prevê a
+lei de Goodhart; daí a regra da referência e o limite de ciclos. No Self-Refine,
+[Madaan et al., NeurIPS 2023](https://arxiv.org/abs/2303.17651), as primeiras rodadas
+concentraram os ganhos, o que sustenta o padrão de 3 ciclos por etapa.
+
 ### Produtividade
 
 Fontes em `skills/productivity/`.
@@ -198,6 +219,7 @@ Fontes em `skills/productivity/`.
 | Skill | Resultado |
 | --- | --- |
 | `conselho` | Consolidar pareceres independentes, divergências e recomendações. |
+| `subir-regua` | Melhorar em etapas, passando a avaliadores ou metas mais exigentes após cada aprovação. |
 | `delegar` | Delegar trabalho delimitado e conferir o resultado. |
 | `passar-contexto` | Preservar próxima etapa, evidências e trabalho restante. |
 | `entrevistar` | Resolver escolhas abertas de escopo e design pela conversa. |
@@ -363,6 +385,8 @@ A configuração deste repositório registra preferências pessoais em perfis da
 com seleção por papel e mapas explícitos de complexidade. O guia traz um exemplo neutro
 com `inherit` para adoção; políticas locais da versão 1 continuam válidas sem migração.
 `delegar`, `conselho`, `verificar-aceite` e `escrever-objetivo` consultam a política quando ela existe no destino.
+A seção opcional `ladders` guarda as escadas de `subir-regua`, que são etapas em sequência,
+não alternativas por indisponibilidade.
 O agente verifica a seleção na ferramenta real; o arquivo não muda a conversa aberta nem
 autoriza delegação ou ações novas. `$propor` mantém a espera humana, salvo delegação explícita.
 

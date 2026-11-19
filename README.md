@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 24 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 25 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -100,7 +100,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 24 skills</summary>
+<summary>Ver as 25 skills</summary>
 
 ### Entender e decidir
 
@@ -124,6 +124,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
 | `revisar` | Analisar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
+| `subir-regua` | Melhorar em etapas, com avaliadores ou metas mais exigentes a cada aprovação. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
 | `criticar` | Receber uma crítica especializada de um artefato ou experiência, individual ou com conselho. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |

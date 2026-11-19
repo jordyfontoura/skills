@@ -90,7 +90,8 @@ de avaliação e condição de parada, com limite de rodadas quando combinado. Q
 confere o feedback com `tratar-revisao`, corrige por prioridade e repete as provas afetadas:
 as sugestões do crítico são meios a conferir, não requisitos. Cada nova crítica avalia a
 versão resultante. Não repita a avaliação da mesma versão até obter nota favorável, não baixe
-o limiar e não troque o crítico para aprovar. Preserve versões recuperáveis para comparar;
+o limiar e não troque o crítico para aprovar; numa sequência de críticos ou metas crescentes,
+use `subir-regua`, em que a troca ocorre depois da aprovação da etapa. Preserve versões recuperáveis para comparar;
 a última não é automaticamente a melhor. Encerre ao cumprir os critérios ou atingir a condição
 de parada, relatando notas, problemas e provas ausentes. Notas não substituem provas técnicas
 nem `verificar-aceite`.

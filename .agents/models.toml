@@ -75,3 +75,15 @@ profile = "representative"
 [roles.council]
 when = "Consultar especialistas independentes numa análise multidisciplinar autorizada."
 profile = "evaluator"
+
+# Escadas de `subir-regua`: etapas em sequência, não alternativas por indisponibilidade.
+[ladders.padrao]
+when = "Subir a régua com avaliadores de famílias alternadas até a última etapa aprovar."
+max_cycles = 3
+stages = [
+  { provider = "codex", model = "gpt-6-luna", effort = "xhigh" },
+  { provider = "claudeAgent", model = "claude-haiku-5-5", effort = "xhigh" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-fable-5-2", effort = "medium" },
+]
