@@ -40,7 +40,7 @@ export async function configureModels(): Promise<string> {
     { value: 'shared', label: 'Definir um modelo compartilhado' },
     { value: 'profiles', label: 'Separar modelos por perfis de trabalho' },
   ] }));
-  if (mode === 'neutral') return payload.files['.agents/models.toml'];
+  if (mode === 'neutral') return payload.files['.agents/models.md'];
   const policy = createPolicy(mode);
   const chosen = mode === 'shared' ? ['default'] : await answer(p.multiselect({
     message: 'Quais perfis deseja personalizar? Os demais herdam o ambiente.', showInstructions: false, required: false,
@@ -70,14 +70,14 @@ export async function configureModels(): Promise<string> {
 }
 export async function modelsExist(root: string): Promise<boolean> {
   const plan = await planInstall(root, { agents: [], skills: [], roles: [], models: true });
-  if (plan.conflicts.length) throw new Error('O destino de models.toml não é um arquivo regular.');
-  return plan.entries.some(entry => entry.path === '.agents/models.toml' && entry.state === 'preserve');
+  if (plan.conflicts.length) throw new Error('O destino de models.md não é um arquivo regular.');
+  return plan.entries.some(entry => ['.agents/models.md', '.agents/models.toml'].includes(entry.path) && entry.state === 'preserve');
 }
 export interface ModelsOptions { root: string; interactive: boolean; neutral?: boolean; config?: string; print?: boolean; dryRun?: boolean; yes?: boolean }
 export async function runModels(options: ModelsOptions): Promise<void> {
   if (options.config !== undefined && options.neutral) throw new Error('Use --neutral ou --config, sem combinar os dois.');
   if (!options.print && await modelsExist(options.root)) {
-    console.log('models.toml existente: preservado, não validado. Políticas v1 e v2 continuam intactas. Use --print para consultar uma proposta sem gravar.');
+    console.log('Política existente: preservado, não validado. Markdown e TOML legado continuam intactos. Use --print para consultar uma proposta sem gravar.');
     return;
   }
   let content: string;
@@ -88,19 +88,19 @@ export async function runModels(options: ModelsOptions): Promise<void> {
     validatePolicyV2(policy);
     content = serializePolicy(policy);
   } else if (options.neutral || (options.print && !options.interactive)) {
-    content = payload.files['.agents/models.toml'];
+    content = payload.files['.agents/models.md'];
   } else if (options.interactive) {
     content = await configureModels();
   } else throw new Error('Sem terminal interativo, informe --neutral ou --config arquivo.json.');
   if (options.print) { process.stdout.write(content); return; }
-  console.log(`\n${policyNotice}\n\nPrévia de .agents/models.toml:\n\n${content}`);
+  console.log(`\n${policyNotice}\n\nPrévia de .agents/models.md:\n\n${content}`);
   const plan = await planInstall(options.root, { agents: [], skills: [], roles: [], models: true }, content);
   if (plan.conflicts.length) throw new Error('Destino inválido. Nenhum arquivo foi alterado.');
-  if (plan.entries.some(entry => entry.state === 'preserve')) { console.log('models.toml surgiu durante a prévia: preservado, não validado.'); return; }
+  if (plan.entries.some(entry => entry.state === 'preserve')) { console.log('models.md surgiu durante a prévia: preservado, não validado.'); return; }
   if (options.dryRun) { console.log('Simulação concluída. Nenhum arquivo foi alterado.'); return; }
   if (!options.yes) {
     if (!options.interactive) throw new Error('Para gravar sem perguntas, confirme a política com --yes.');
-    if (!await answer(p.confirm({ message: 'Criar models.toml com a política acima?', active: 'Sim', inactive: 'Não', initialValue: false }))) throw new Cancelled();
+    if (!await answer(p.confirm({ message: 'Criar models.md com a política acima?', active: 'Sim', inactive: 'Não', initialValue: false }))) throw new Cancelled();
   }
   await applyPlan(plan);
   console.log('Política de modelos criada. Para conferir os arquivos, use o comando status.');

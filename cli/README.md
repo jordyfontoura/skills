@@ -82,11 +82,13 @@ Os papéis `planner`, `evaluator` e `representative` são opcionais. Cada papel 
 skills de apoio necessárias, com aviso antes de instalar. Outras skills citadas são sugestões
 e não entram automaticamente. Instalar um papel não autoriza delegação nem representação.
 
-`--models` continua criando `.agents/models.toml` com o exemplo neutro, somente se ele não
-existir. Quando a seleção inclui papéis, `delegar`, `conselho` ou `verificar-aceite`, o modo
-interativo também oferece uma pergunta opcional: pular, criar uma política neutra ou
-configurar modelos e perfis. A política entra na mesma prévia e confirmação da instalação.
-Se o arquivo já existe, o CLI o preserva e informa que ele não foi validado.
+O guia padrão de modelos e a escada de `subir-regua` acompanham automaticamente as skills
+que os consultam, em `knowledge/harness/agents/model-selection.md`. Não é preciso usar
+`--models` nem criar política local. Pedido explícito e substituições locais prevalecem.
+
+`--models` cria uma personalização neutra em `.agents/models.md`, somente se não houver
+política Markdown ou TOML legada. No modo interativo, a personalização é opcional e entra
+na mesma prévia e confirmação. Políticas existentes são preservadas sem validação.
 
 ## Configurar modelos
 
@@ -113,8 +115,8 @@ O configurador oferece três caminhos:
 
 Para cada perfil personalizado, informe o provedor, o modelo e o esforço que sua ferramenta
 de delegação aceita. Também é possível herdar o modelo e definir apenas o esforço. Alternativas
-são concretas, ordenadas e usadas por indisponibilidade. Não há catálogo de modelos embutido
-nem inferência de provedor a partir de Codex ou Claude Code.
+são concretas, ordenadas e usadas por indisponibilidade. O padrão distribuído fica no guia; o configurador não infere IDs de provedor a partir
+de Codex ou Claude Code nem verifica disponibilidade.
 
 No modo por perfis, `planner`, `implementer` e `reviewer` recebem mapas `simple`/`hard`;
 `default` continua sendo o perfil base escolhido. `evaluator`, `council` e `representative`
@@ -128,11 +130,12 @@ pelos provedores. Não é preciso ter instalado os três arquivos de papéis par
 responsabilidades previstas na política.
 
 O CLI só cria arquivos ausentes. Um arquivo existente é preservado byte a byte, inclusive
-comentários, políticas v1 e conteúdo inválido; ele não é lido como TOML nem validado. Não há
+comentários e conteúdo inválido. Um `.agents/models.toml` legado também impede a criação
+de outra política; ele não é lido nem validado. Não há
 migração ou edição automática. Use `--print` para consultar outra proposta sem tocar o destino.
 
 Para automação, `models init` aceita `--neutral` ou `--config arquivo.json`. A segunda opção
-recebe o objeto de política v2 completo, valida referências e regras e o serializa como TOML.
+recebe o objeto de política v2 completo, valida referências e regras e o serializa como tabelas Markdown.
 Arquivos `.env` não são aceitos como configuração. Exemplo de JSON, com IDs ilustrativos:
 
 ```json
@@ -162,7 +165,7 @@ npx @jordyfontoura/skills models init --config ./policy.json --yes
 ```
 
 Sem terminal interativo, escolha explicitamente `--neutral` ou `--config`; a gravação exige
-`--yes`. `--print` escreve somente TOML na saída e não cria diretórios. Sem uma configuração
+`--yes`. `--print` escreve somente Markdown na saída e não cria diretórios. Sem uma configuração
 explícita, `--print` em execução não interativa mostra a política neutra. `--dry-run` mostra
 a prévia sem gravar. Essas opções não permitem sobrescrever um arquivo existente.
 
@@ -204,7 +207,7 @@ Recibos anteriores são mantidos em adoções parciais. Versione-os com os arqui
 Modelos locais preservados não são reivindicados pelo recibo. Para atualizar ou mesclar
 adaptações, use `atualizar-harness` com os recibos e a origem desejada. O CLI não atualiza
 automaticamente nem mescla Markdown.
-Se você editar um `models.toml` criado pelo CLI, `status` mostrará `alterado`; isso é uma
+Se você editar um `models.md` criado pelo CLI, `status` mostrará `alterado`; isso é uma
 personalização esperada, não uma instrução para restaurar o modelo original.
 
 ## Manter e verificar
@@ -222,7 +225,7 @@ Os testes exercitam o executável e um consumidor do `.tgz` real, incluindo refe
 papéis, conflitos, repetição, simulação e preservação de arquivos. O teste do pacote instala
 dependências em `work/` e pode precisar de rede. Os testes do harness continuam necessários.
 Os testes de política usam casos de contrato compartilhados entre Python e TypeScript e
-conferem o TOML emitido com `tomllib` e `model_policy.py`. Python é necessário nessa prova
+conferem as tabelas Markdown emitidas com `markdown_policy.py` e `model_policy.py`. Python é necessário nessa prova
 da origem, mas não no consumidor do pacote.
 As perguntas e o cancelamento são exercitados com streams controlados; a renderização em
 terminais reais precisa de conferência manual. A CI também executa em Linux e Windows,

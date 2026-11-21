@@ -7,6 +7,10 @@ compatibilidade.
 
 ## [Não lançado]
 
+- Política de modelos por papel e escada de `subir-regua` em Markdown, distribuída com
+  as skills em `knowledge`, sem exigir TOML local. O CLI cria personalizações Markdown
+  e preserva políticas TOML antigas; validadores e testes conferem as tabelas e a distribuição.
+
 ## [0.3.0] - 2026-11-21
 
 ### Alterado

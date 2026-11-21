@@ -71,6 +71,7 @@ class ValidationTests(unittest.TestCase):
                 shutil.copy2(path, self.root / path.name)
         (self.root / "scripts").mkdir()
         shutil.copy2(ROOT / "scripts/model_policy.py", self.root / "scripts/model_policy.py")
+        shutil.copy2(ROOT / "scripts/markdown_policy.py", self.root / "scripts/markdown_policy.py")
 
     def test_current_catalog_passes(self):
         errors, skills, roles = validate(self.root)
@@ -121,6 +122,7 @@ class ValidationTests(unittest.TestCase):
         shutil.copy2(ROOT / "scripts/check.py", script)
         shutil.copy2(ROOT / "scripts/catalog.py", script.parent / "catalog.py")
         shutil.copy2(ROOT / "scripts/model_policy.py", script.parent / "model_policy.py")
+        shutil.copy2(ROOT / "scripts/markdown_policy.py", script.parent / "markdown_policy.py")
         result = subprocess.run(
             [sys.executable, str(script)],
             capture_output=True,
@@ -239,10 +241,10 @@ class ValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "SKILL.md ausente"):
             validate(self.root)
 
-    def test_example_policy_must_stay_valid(self):
-        path = self.root / ".agents/models.example.toml"
+    def test_distributed_policy_must_stay_valid(self):
+        path = self.root / "knowledge/agents/model-selection.md"
         path.write_text(path.read_text(encoding="utf-8").replace(
-            'model = "inherit", effort', 'model = "gpt", effort'), encoding="utf-8")
+            '| codex | gpt-6-luna | medium |', '| inherit | gpt-6-luna | medium |'), encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "provider e model"):
             validate(self.root)
 
@@ -301,9 +303,9 @@ class ValidationTests(unittest.TestCase):
             sync(self.root)
 
     def test_policy_requires_configuration_for_canonical_roles(self):
-        path = self.root / ".agents/models.toml"
+        path = self.root / "knowledge/agents/model-selection.md"
         path.write_text(path.read_text(encoding="utf-8").replace(
-            "[roles.representative]", "[roles.other]"), encoding="utf-8")
+            "| representative | Resolver", "| other | Resolver"), encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "Responsabilidades sem configuração: representative"):
             validate(self.root)
 

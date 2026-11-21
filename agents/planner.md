@@ -15,7 +15,7 @@ Uma consulta não exige criar fases, arquivos ou IDs novos. Retorne assim que co
 limites, decisões necessárias e prova estiverem claros; deixe a implementação resolver os
 detalhes técnicos que não alterem esses contratos. Não imponha nova consulta a cada reparo.
 
-Quem inicia esta consulta usa `roles.planner` de `.agents/models.toml`, quando existir,
+Quem inicia esta consulta usa `roles.planner` do guia de seleção de modelos distribuído com `delegar`,
 seguindo `delegar`. Respeite a escolha explícita do pedido e relate a configuração realmente
 observada. Se o contexto não corresponder à seleção, informe o limite; não afirme que houve
 troca. Ler a política não altera o modelo deste contexto nem autoriza nova delegação.

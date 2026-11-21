@@ -50,7 +50,7 @@ test('perguntas reais recomendam skills, incluem papel e só instalam após conf
   assert.ok(existsSync(join(result.root, '.agents/skills/propor/SKILL.md')));
   assert.ok(existsSync(join(result.root, '.agents/skills/redigir/SKILL.md')));
   assert.ok(existsSync(join(result.root, '.codex/agents/planner.toml')));
-  assert.equal(existsSync(join(result.root, '.agents/models.toml')), false);
+  assert.equal(existsSync(join(result.root, '.agents/models.md')), false);
   assert.match(result.output, /Instalação concluída/);
 });
 
@@ -68,19 +68,19 @@ const shared = [
 ];
 
 test('models init configura modelo compartilhado, esforço e alternativas na ordem escolhida', async () => {
-  const prompts = [...shared, ['Criar models.toml', 'y\r']];
+  const prompts = [...shared, ['Criar models.md', 'y\r']];
   const result = await wizard(false, { command: ['models', 'init'], prompts });
   assert.equal(result.code, 0, result.output + result.errors);
   assert.equal(result.step, prompts.length);
-  const content = readFileSync(join(result.root, '.agents/models.toml'), 'utf8');
+  const content = readFileSync(join(result.root, '.agents/models.md'), 'utf8');
   assert.ok(content.indexOf('external-a') < content.indexOf('external-b'));
-  assert.match(content, /effort = "custom"/);
-  assert.match(content, /effort = "inherit"/);
-  assert.equal((content.match(/profile = "default"/g) ?? []).length, 7);
+  assert.match(content, /\| custom \|/);
+  assert.match(content, /\| inherit \|/);
+  assert.equal((content.match(/\| default \| - \| - \| - \|/g) ?? []).length, 7);
 });
 
 test('cancelar nas etapas do configurador nunca grava arquivos', async () => {
-  const flow = [...shared, ['Criar models.toml', 'y\r']];
+  const flow = [...shared, ['Criar models.md', 'y\r']];
   for (const cancelAt of [0, 2, 4, 5, 7, 10]) {
     const prompts = flow.slice(0, cancelAt + 1).map((step, index) => index === cancelAt ? [step[0], '\x03'] : step);
     const result = await wizard(false, { command: ['models', 'init'], prompts });
@@ -100,7 +100,7 @@ test('o init integra a política personalizada na mesma confirmação de skills 
   assert.equal(result.code, 0, result.output + result.errors);
   assert.equal(result.step, prompts.length);
   assert.ok(existsSync(join(result.root, '.agents/skills/propor/SKILL.md')));
-  assert.match(readFileSync(join(result.root, '.agents/models.toml'), 'utf8'), /external-a/);
+  assert.match(readFileSync(join(result.root, '.agents/models.md'), 'utf8'), /external-a/);
   assert.equal(readdirSync(join(result.root, '.harness/receipts')).length, 1);
 });
 
@@ -112,15 +112,15 @@ test('o configurador por perfis permite revisar a associação das sete responsa
     ['ID do modelo', 'model-a\r'], ['Esforço aceito', '\r'], ['Adicionar alternativa', '\r'],
     ['Personalizar o perfil base', 'y\r'],
     ...['orchestrator', 'planner', 'implementer', 'reviewer', 'evaluator', 'representative', 'council'].map(role => [`Perfil base de ${role}:`, '\r']),
-    ['Criar models.toml', 'y\r'],
+    ['Criar models.md', 'y\r'],
   ];
   const result = await wizard(false, { command: ['models', 'init'], prompts });
   assert.equal(result.code, 0, result.output + result.errors);
   assert.equal(result.step, prompts.length);
-  const content = readFileSync(join(result.root, '.agents/models.toml'), 'utf8');
-  assert.match(content, /\[roles\.planner\.complexity\]/);
-  assert.doesNotMatch(content, /\[roles\.(evaluator|council|representative)\.complexity\]/);
-  assert.match(content, /\[profiles\.representative\]/);
+  const content = readFileSync(join(result.root, '.agents/models.md'), 'utf8');
+  assert.match(content, /\| planner \|[^\n]+\| sim \| simple \| hard \|/);
+  assert.doesNotMatch(content, /\| (evaluator|council|representative) \|[^\n]+\| sim \|/);
+  assert.match(content, /\| representative \| 1 \|/);
 });
 
 test('cancelar na confirmação depois das perguntas não grava arquivos', async () => {

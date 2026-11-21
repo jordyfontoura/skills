@@ -15,7 +15,7 @@ function allowed(path: string): boolean {
   return /^\.(agents|claude)\/skills\/[a-z0-9-]+\/.+/.test(path)
     || /^\.(claude|codex)\/agents\/[a-z0-9-]+\.(md|toml)$/.test(path)
     || /^knowledge\/harness\/(?:[a-zA-Z0-9._-]+\/)*[a-zA-Z0-9._-]+\.md$/.test(path)
-    || path === '.agents/models.toml';
+    || path === '.agents/models.md' || path === '.agents/models.toml';
 }
 async function stat(path: string) {
   try { return await lstat(path); }
@@ -56,15 +56,20 @@ export async function planInstall(root: string, selection: Selection, modelsCont
     const path = agent === 'codex' ? `.codex/agents/${role}.toml` : `.claude/agents/${role}.md`;
     files[path] = payload.files[path];
   }
-  if (selection.models) files['.agents/models.toml'] = modelsContent ?? payload.files['.agents/models.toml'];
+  if (selection.models) {
+    const legacy = await safePath(root, '.agents/models.toml');
+    if (await stat(legacy)) files['.agents/models.toml'] = ''; // Somente preservar, sem ler nem migrar.
+    else files['.agents/models.md'] = modelsContent ?? payload.files['.agents/models.md'];
+  }
   const entries: Entry[] = [];
   const conflicts: string[] = [];
   for (const [path, content] of Object.entries(files).sort(([a], [b]) => a.localeCompare(b))) {
     if (typeof content !== 'string') throw new Error(`Conteúdo ausente no pacote: ${path}`);
     const target = await safePath(root, path);
     const info = await stat(target);
+    if (path === '.agents/models.toml' && !info) throw new Error('A política legada mudou durante a prévia. Execute novamente.');
     if (info && !info.isFile()) { conflicts.push(path); continue; }
-    if (info && path === '.agents/models.toml') {
+    if (info && ['.agents/models.md', '.agents/models.toml'].includes(path)) {
       entries.push({ path, content, state: 'preserve' });
     } else if (info && await readFile(target, 'utf8') !== content) {
       conflicts.push(path);

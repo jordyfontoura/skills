@@ -26,7 +26,7 @@ escolhidas pela descrição de cada uma.
   descrições e mensagens.
 - Quando o usuário pedir `propor`, apresente a abordagem e aguarde aprovação antes de executar,
   mesmo que haja uma autorização genérica anterior.
-- Delegar exige autorização. Para escolher modelo por papel, consulte `.agents/models.toml` e
+- Delegar exige autorização. Para escolher modelo por papel, consulte `knowledge/agents/model-selection.md` e
   `docs/MODELS.md`; a política não autoriza delegação nem muda o modelo da conversa aberta.
 - Relate comandos e resultados observados. Implementação concluída não é aceite independente.
 

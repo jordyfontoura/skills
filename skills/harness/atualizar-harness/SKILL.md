@@ -126,7 +126,8 @@ Cabeçalhos de geração indicam procedência, não ausência de personalizaçã
 com a base adotada antes de atualizar. Preserve adaptações locais e confira versões do mesmo
 guia em skills diferentes. Recursos retirados ou deslocados exigem migração explícita;
 uma ausência na origem não autoriza apagar a cópia do destino.
-Trate `.agents/models.toml` e suas regras locais de seleção como personalizações do destino.
+Atualize o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md) como dependência das skills. Preserve substituições
+locais em instruções do projeto, `.agents/models.md` e `.agents/models.toml` legado.
 Não substitua modelos, esforços ou alternativas pela configuração herdada desta coleção.
 As skills aceitam políticas v1 e v2: atualizar instruções não exige migrar o arquivo.
 Não migre silenciosamente nem acrescente perfis pessoais. Se a migração fizer parte do pedido,

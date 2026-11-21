@@ -10,6 +10,27 @@ const workspace = fileURLToPath(new URL('../../work/cli-knowledge-tests/', impor
 mkdirSync(workspace, { recursive: true });
 const project = () => mkdtempSync(join(workspace, 'project-'));
 const run = (root, ...args) => spawnSync(process.execPath, [cli, ...args, '--dir', root], { encoding: 'utf8' });
+
+test('uma skill avulsa leva modelos e escada sem exigir política local em nenhum agente', () => {
+  for (const agent of ['codex', 'claude-code']) for (const skill of ['delegar', 'subir-regua']) {
+    const root = project();
+    const result = run(root, 'init', '--agents', agent, '--skills', skill, '--yes');
+    assert.equal(result.status, 0, result.stderr);
+    const directory = agent === 'codex' ? '.agents' : '.claude';
+    const content = readFileSync(join(root, directory, 'skills', skill, 'SKILL.md'), 'utf8');
+    assert.match(content, /\.\.\/\.\.\/\.\.\/knowledge\/harness\/agents\/model-selection.md/);
+    const guide = readFileSync(join(root, 'knowledge/harness/agents/model-selection.md'), 'utf8');
+    assert.match(guide, /\| default \| 1 \| codex \| gpt-6.1-sol \| medium \|/);
+    const stages = [...guide.matchAll(/\| padrao \|[^\n]+?\| 3 \| (\d) \| (\w+) \| ([\w.-]+) \| (\w+) \|/g)];
+    assert.deepEqual(stages.map(m => m.slice(1)), [
+      ['1', 'codex', 'gpt-6-luna', 'xhigh'], ['2', 'claudeAgent', 'claude-haiku-5-5', 'xhigh'],
+      ['3', 'codex', 'gpt-6.1-sol', 'medium'], ['4', 'claudeAgent', 'claude-opus-5-5', 'medium'],
+      ['5', 'claudeAgent', 'claude-fable-5-2', 'medium'],
+    ]);
+    for (const extension of ['md', 'toml']) assert.equal(existsSync(join(root, `.agents/models.${extension}`)), false);
+    checkLinks(root);
+  }
+});
 function markdownFiles(root) {
   return readdirSync(root, { recursive: true }).filter(name => name.endsWith('.md')).map(name => join(root, name));
 }

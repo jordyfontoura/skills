@@ -3,6 +3,7 @@
 from pathlib import Path
 import re
 import tomllib
+from markdown_policy import parse_markdown
 
 
 TARGET_FIELDS = {"provider", "model", "effort"}
@@ -152,7 +153,9 @@ def validate_profiles(policy, required_roles):
 
 
 def load_policy(path, required_roles=()):
-    policy = tomllib.loads(Path(path).read_text(encoding="utf-8"))
+    path = Path(path)
+    text = path.read_text(encoding="utf-8")
+    policy = parse_markdown(text) if path.suffix == ".md" else tomllib.loads(text)
     return validate_policy(policy, required_roles)
 
 

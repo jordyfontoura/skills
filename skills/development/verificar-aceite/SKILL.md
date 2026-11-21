@@ -20,7 +20,7 @@ quando disponível. Forneça revisão fixada, passos de prova, instruções de e
 e limites de permissão. Siga `delegar` e relate configurações reais de modelo e ferramentas,
 quando expostas. Se não puder executar um contexto independente adequado, declare o aceite
 como não comprovado.
-Se existir uma política em `.agents/models.toml`, quem inicia a avaliação resolve
+Consulte o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md), distribuído com esta skill. Quem inicia a avaliação resolve
 `roles.evaluator` seguindo `delegar`: perfil próprio na v2, campos e alternativas na v1,
 sem substituição pela complexidade da implementação. Respeite a seleção explícita do pedido.
 Configurar esse papel não comprova que o modelo executou nem permite dispensar a independência ou as provas.

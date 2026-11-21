@@ -33,7 +33,7 @@ test('TypeScript aceita e recusa os mesmos casos de contrato compartilhados com 
   }
 });
 
-test('os geradores e a serialização TOML preservam valores e passam no validador Python', () => {
+test('os geradores e a serialização Markdown preservam valores e passam no validador Python', () => {
   const generated = ['shared', 'profiles'].map(layout => ({ name: layout, policy: createPolicy(layout) }));
   const custom = createPolicy('profiles');
   custom.profiles.default.candidates = [
@@ -43,9 +43,12 @@ test('os geradores e a serialização TOML preservam valores e passam no validad
   custom.profiles.council = structuredClone(custom.profiles.evaluator);
   custom.roles.council.profile = 'council';
   generated.push({ name: 'perfil separado para conselho e alternativas ordenadas', policy: custom });
+  const escaped = createPolicy('shared');
+  escaped.roles.planner.when = '  Planejar | <alternativas> & preservar &#10;\nUnicode 中文.  ';
+  generated.push({ name: 'células Markdown com entidades, separadores e espaços', policy: escaped });
   const cases = [...fixture.cases.filter(c => c.valid).map(c => ({ name: c.name, policy: applyCase(c) })), ...generated];
-  const input = cases.map(c => ({ ...c, toml: serializePolicy(c.policy) }));
-  input.push({ name: 'neutra exata', policy: payload.modelTemplate, toml: payload.files['.agents/models.toml'] });
+  const input = cases.map(c => ({ ...c, markdown: serializePolicy(c.policy) }));
+  input.push({ name: 'neutra exata', policy: payload.modelTemplate, markdown: payload.files['.agents/models.md'] });
   const checker = fileURLToPath(new URL('../../scripts/check_cli_policy.py', import.meta.url));
   const result = spawnSync('python', [checker], { input: JSON.stringify(input), encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr || result.error?.message);
@@ -60,7 +63,7 @@ test('models init cria o exemplo neutro sem pedir agente ou skills e registra or
   const root = project();
   const result = run(root, '--neutral', '--yes');
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(readFileSync(join(root, '.agents/models.toml'), 'utf8'), payload.files['.agents/models.toml']);
+  assert.equal(readFileSync(join(root, '.agents/models.md'), 'utf8'), payload.files['.agents/models.md']);
   assert.ok(existsSync(join(root, '.harness/receipts')));
   assert.equal(existsSync(join(root, '.agents/skills')), false);
   const again = run(root, '--neutral', '--yes');
@@ -78,7 +81,7 @@ test('JSON personalizado gera perfis sem depender de nomes de provedores conheci
   writeFileSync(config, JSON.stringify(policy));
   const result = run(root, '--config', config, '--yes');
   assert.equal(result.status, 0, result.stderr);
-  const content = readFileSync(join(root, '.agents/models.toml'), 'utf8');
+  const content = readFileSync(join(root, '.agents/models.md'), 'utf8');
   assert.equal(content, serializePolicy(policy));
   assert.match(result.stdout, /não foram verificados/);
 });
@@ -87,7 +90,7 @@ test('simulação, impressão e falta de confirmação não criam nem o diretór
   const root = join(project(), 'destino');
   const printed = run(root, '--neutral', '--print');
   assert.equal(printed.status, 0, printed.stderr);
-  assert.equal(printed.stdout, payload.files['.agents/models.toml']);
+  assert.equal(printed.stdout, payload.files['.agents/models.md']);
   assert.equal(run(root, '--neutral', '--dry-run').status, 0);
   assert.notEqual(run(root, '--neutral').status, 0);
   assert.notEqual(run(root, '--yes').status, 0);
@@ -96,21 +99,33 @@ test('simulação, impressão e falta de confirmação não criam nem o diretór
 
 test('arquivos existentes são mantidos byte a byte, inclusive v1, comentários e conteúdo inválido', () => {
   for (const content of [Buffer.from('# Comentário local\r\nversion = 1\r\n[defaults]\r\nprovider = "inherit"\r\nmodel = "inherit"\r\neffort = "inherit"\r\n[roles.implementer]\r\nwhen = "Implementar."\r\nfallbacks = []\r\n'),
-    Buffer.from('# Personalização local\r\n' + payload.files['.agents/models.toml'].replaceAll('\n', '\r\n')),
+    Buffer.from('# Personalização local\r\n' + payload.files['.agents/models.md'].replaceAll('\n', '\r\n')),
     Buffer.from('\ufeff# Outra política\r\nversion = 2\r\n'), Buffer.from([0, 255, 1])]) {
     const root = project();
     mkdirSync(join(root, '.agents'));
-    const path = join(root, '.agents/models.toml');
+    const path = join(root, '.agents/models.md');
     writeFileSync(path, content);
     const result = run(root, '--yes');
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /preservado, não validado/);
     const printed = run(root, '--neutral', '--print');
     assert.equal(printed.status, 0, printed.stderr);
-    assert.equal(printed.stdout, payload.files['.agents/models.toml']);
+    assert.equal(printed.stdout, payload.files['.agents/models.md']);
     assert.deepEqual(readFileSync(path), content);
     assert.equal(existsSync(join(root, '.harness')), false);
   }
+});
+
+test('TOML legado permanece intacto sem criar política Markdown concorrente', () => {
+  const root = project();
+  mkdirSync(join(root, '.agents'));
+  const content = Buffer.from('# Minha política\r\nversion = 1\r\n');
+  writeFileSync(join(root, '.agents/models.toml'), content);
+  const result = run(root, '--neutral', '--yes');
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(readFileSync(join(root, '.agents/models.toml')), content);
+  assert.equal(existsSync(join(root, '.agents/models.md')), false);
+  assert.equal(existsSync(join(root, '.harness')), false);
 });
 
 test('políticas inválidas são recusadas antes de qualquer escrita', () => {

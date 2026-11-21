@@ -32,7 +32,7 @@ Um tempo limite excedido não demonstra sozinho a causa. Várias causas podem co
 
 Use capacidades disponíveis adequadas à consequência do erro. Respeite provedor, modelo
 e esforço escolhidos; declare configurações que a ferramenta não pode fornecer.
-Quando existir `.agents/models.toml`, resolva papel e complexidade seguindo `delegar`:
+Use o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md), com as substituições locais, para resolver papel e complexidade seguindo `delegar`:
 na v2, o perfil base só muda por mapa explícito; na v1, combine os campos e alternativas antigos.
 Tipos como visual, escrita e operação orientam capacidades e provas, sem reordenar candidatos.
 A escolha explícita do pedido atual prevalece. Não confunda

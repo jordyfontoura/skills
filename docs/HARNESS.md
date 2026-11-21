@@ -352,7 +352,9 @@ A existência de um papel não autoriza delegação; respeite ferramentas e perm
 
 ## Política de modelos
 
-Defina provedor, modelo, esforço e alternativas em [`.agents/models.toml`](../.agents/models.toml).
+Consulte provedor, modelo, esforço, alternativas e escadas no
+[guia de seleção de modelos](../knowledge/agents/model-selection.md), distribuído com as skills.
+Substituições locais são opcionais e têm prioridade sobre o padrão.
 O [guia de modelos](MODELS.md) explica as responsabilidades e o fluxo com representante.
 A configuração deste repositório registra preferências pessoais em perfis da versão 2,
 com seleção por papel e mapas explícitos de complexidade. O guia traz um exemplo neutro

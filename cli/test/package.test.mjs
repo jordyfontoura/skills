@@ -45,5 +45,5 @@ test('o pacote real instala e roda pelo npm exec sem fontes TypeScript ou Python
   const models = spawnSync(process.execPath, [installed, 'models', 'init', '--config', config, '--dir', target, '--yes'],
     { cwd: root, encoding: 'utf8', env: { ...process.env, PATH: '', Path: '' } });
   assert.equal(models.status, 0, models.stderr);
-  assert.match(readFileSync(join(target, '.agents/models.toml'), 'utf8'), /model-a/);
+  assert.match(readFileSync(join(target, '.agents/models.md'), 'utf8'), /model-a/);
 });

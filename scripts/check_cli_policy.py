@@ -2,7 +2,7 @@
 
 import json
 import sys
-import tomllib
+from markdown_policy import parse_markdown
 
 from model_policy import validate_policy
 
@@ -12,7 +12,7 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     cases = json.load(sys.stdin)
     for case in cases:
-        parsed = tomllib.loads(case["toml"])
+        parsed = parse_markdown(case["markdown"])
         if parsed != case["policy"]:
             raise ValueError(f"Serialização mudou a política: {case['name']}")
         validate_policy(parsed)

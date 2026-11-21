@@ -94,7 +94,7 @@ test('conflitos impedem toda a instalação e preservam as adaptações', () => 
 test('papéis incluem apoio, modelos existentes são preservados e instruções são apenas sugeridas', () => {
   const root = project();
   mkdirSync(join(root, '.agents'));
-  writeFileSync(join(root, '.agents/models.toml'), 'Minha política');
+  writeFileSync(join(root, '.agents/models.md'), 'Minha política');
   writeFileSync(join(root, 'AGENTS.md'), 'Minhas instruções');
   const result = run(root, 'init', '--agents', 'codex,claude-code', '--skills', 'none', '--roles', 'all', '--models', '--yes');
   assert.equal(result.status, 0, result.stderr);
@@ -103,12 +103,12 @@ test('papéis incluem apoio, modelos existentes são preservados e instruções 
     assert.ok(existsSync(join(root, `.claude/agents/${role}.md`)));
   }
   for (const name of ['especificar', 'delegar', 'verificar-aceite', 'implementar']) assert.ok(existsSync(join(root, `.agents/skills/${name}/SKILL.md`)));
-  assert.equal(readFileSync(join(root, '.agents/models.toml'), 'utf8'), 'Minha política');
+  assert.equal(readFileSync(join(root, '.agents/models.md'), 'utf8'), 'Minha política');
   assert.equal(readFileSync(join(root, 'AGENTS.md'), 'utf8'), 'Minhas instruções');
   const empty = project();
   assert.equal(run(empty, 'init', '--agents', 'codex', '--skills', 'none', '--models', '--yes').status, 0);
-  const policy = readFileSync(join(empty, '.agents/models.toml'), 'utf8');
-  assert.match(policy, /provider = "inherit"/);
+  const policy = readFileSync(join(empty, '.agents/models.md'), 'utf8');
+  assert.match(policy, /\| inherit \| inherit \| inherit \|/);
   assert.doesNotMatch(policy, /claude-opus|gpt-6/);
 });
 
@@ -155,7 +155,8 @@ test('o payload preserva o conteúdo das fontes e todas as recomendações exist
   const root = fileURLToPath(new URL('../../', import.meta.url));
   const withoutDestinations = text => text.replace(/\]\([^)]+\)/g, '](destino)').replace(/^(\s*\[[^\]]+\]:)\s*\S+/gm, '$1 destino');
   for (const [path, content] of Object.entries(payload.files)) {
-    const source = path === '.agents/models.toml' ? '.agents/models.example.toml' : path.replace('knowledge/harness/', 'knowledge/');
+    if (path === '.agents/models.md') continue; // A política neutra é gerada e tem prova cruzada própria.
+    const source = path.replace('knowledge/harness/', 'knowledge/');
     const canonical = readFileSync(join(root, source), 'utf8').replaceAll('\r\n', '\n');
     const body = path.startsWith('knowledge/harness/') ? content.replace(/^<!-- Gerado de [^\n]+ -->\n\n/, '') : content;
     if (path.endsWith('.md')) assert.equal(withoutDestinations(body), withoutDestinations(canonical), path);

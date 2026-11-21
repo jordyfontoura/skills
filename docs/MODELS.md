@@ -1,193 +1,50 @@
 # Modelos por papel e complexidade
 
-Para uma introdução com fluxograma e exemplos, veja [como papéis e perfis escolhem os modelos](MODEL-FLOW.md).
+A fonte principal é o [guia de seleção de modelos](../knowledge/agents/model-selection.md).
+Ele reúne candidatos ordenados, esforço, papéis, complexidade, precedência e a escada de
+`subir-regua`. O plugin o inclui em `knowledge/`; o CLI instala o guia uma vez em
+`knowledge/harness/`, como dependência das skills, sem exigir uma política local.
 
-A política fica em [`.agents/models.toml`](../.agents/models.toml). Ela orienta novas delegações,
-sem iniciar agentes, instalar serviços ou mudar o modelo da conversa aberta. A escolha explícita
-do usuário no pedido atual prevalece. Configurar um modelo não autoriza delegação nem representação.
+Para exemplos de aplicação, veja [o fluxo de seleção](MODEL-FLOW.md).
 
-## Configuração pessoal
+## Personalizar um projeto
 
-O arquivo deste repositório contém as preferências pessoais aprovadas do proprietário:
+O pedido explícito prevalece, seguido das substituições locais e do padrão do guia.
+Declare substituições no `AGENTS.md`/`CLAUDE.md` do projeto ou em `.agents/models.md`.
+Não edite o guia distribuído para registrar uma preferência específica do projeto.
+Políticas antigas `.agents/models.toml` v1/v2 continuam válidas como substituições locais;
+atualizar as skills não exige migrá-las. Se duas fontes locais conflitarem, esclareça a prioridade.
 
-| Perfil | Primeiro candidato | Alternativa por indisponibilidade |
-| --- | --- | --- |
-| `simple` | GPT-6 Luna medium | Claude Haiku 5.5 medium |
-| `default` | GPT-6.1 Sol medium | Claude Sonnet 5.5 high |
-| `hard` | Claude Opus 5.5 high | GPT-6.1 Sol high |
-| `orchestrator` | Claude Opus 5.5 high | GPT-6.1 Sol high |
-| `representative` | Claude Opus 5.5 high | GPT-6.1 Sol high |
-| `evaluator` | Claude Opus 5.5 high | GPT-6.1 Sol high |
-
-`planner`, `implementer` e `reviewer` usam `default`, com mapas explícitos para `simple` e `hard`.
-No planejamento, `hard` atende escolhas difíceis de comportamento ou arquitetura, com
-consequências relevantes; uma definição delimitada não exige esse perfil por ser uma spec.
-`orchestrator` e `representative` usam seus perfis próprios. `evaluator` e `council` compartilham
-o perfil `evaluator`; alterar essa lista afeta ambos. `criticar` usa `roles.council` para uma
-consulta independente, mesmo individual; a quantidade de críticos vem do pedido e da cobertura.
-O representante tem uma lista própria,
-mesmo sendo igual à de `hard`, para que mudanças na implementação não alterem suas decisões.
-
-Os IDs de provedor `codex` e `claudeAgent` correspondem ao T3 Code, usado pelo mantenedor.
-Outros ambientes podem exigir IDs diferentes ou não oferecer esses candidatos. A tabela
-registra preferências, não disponibilidade comprovada, desempenho comparado ou modelos executados.
-
-Planejamento rotineiro permanece na conversa, com o modelo atual. Use uma consulta ao
-`planner` quando uma análise separada tiver utilidade concreta e estiver autorizada; nesse
-novo contexto, resolva papel, complexidade, modelo e esforço. Não chame outro agente apenas
-para corresponder à política. A escolha explícita do pedido prevalece. Ao adotar em outro projeto,
-preserve sua política local; a skill não fixa nomes de modelos nem exige este TOML.
-
-## Formato da versão 2
-
-`version = 2` usa apenas `profiles` e `roles`, sem `defaults` nem seleção direta nos papéis.
-Cada perfil contém uma lista `candidates` não vazia, na ordem autorizada. Cada candidato
-declara `provider`, `model` e `effort`. O primeiro é a preferência; os seguintes são alternativas.
-
-Cada `roles.<nome>` exige `when` e `profile`, com um mapa `complexity` opcional:
-
-```toml
-[roles.implementer]
-when = "Implementar uma parte autorizada e verificável."
-profile = "default"
-
-[roles.implementer.complexity]
-simple = "simple"
-hard = "hard"
-```
-
-O mapa aceita somente `simple` e `hard`. O nível `default` sempre usa `profile`, evitando
-dois padrões concorrentes. Nomes de perfis não têm significado automático: o vínculo só existe
-quando declarado no papel. Um perfil pode ter qualquer nome em `kebab-case` e servir a vários papéis.
-
-`representative`, `evaluator` e `council` não aceitam mapas de complexidade. Isso mantém sua seleção
-própria, mesmo quando a implementação avaliada é simples ou difícil. Papéis adicionais podem
-declarar mapas. O coordenador desta coleção não tem mapa; um mapa em outro projeto só orienta
-a criação autorizada de um novo coordenador, nunca a troca do modelo de uma conversa aberta.
-
-`when` explica o uso; não é um gatilho executável. Referências inexistentes, campos desconhecidos,
-versões não suportadas e candidatos repetidos no mesmo perfil são erros. Perfis distintos podem
-ter listas iguais e perfis sem uso podem ser mantidos para adoção futura.
-
-Para herdar o ambiente, o primeiro candidato pode usar `provider = "inherit"` e `model = "inherit"`
-juntos. Não misture um ID concreto com um herdado. As alternativas exigem provedor e modelo
-concretos. `effort = "inherit"` pode aparecer em qualquer candidato; outro valor precisa ser
-suportado pela ferramenta. A validação local não consulta provedores.
+O [configurador do CLI](../cli/README.md#configurar-modelos) cria `.agents/models.md`,
+com herança do ambiente, um modelo compartilhado ou perfis separados. `--config arquivo.json`
+aceita o contrato v2 e produz tabelas Markdown; `--print` mostra a proposta sem gravar.
+Arquivos existentes são preservados. O CLI também preserva e reconhece a política TOML legada,
+sem criar outra política concorrente. Não há migração automática.
 
 ## Escadas de `subir-regua`
 
-A seção opcional `ladders` guarda sequências de avaliadores para `subir-regua`. Cada escada
-exige `when` e uma lista `stages` não vazia, na ordem em que as etapas acontecem. Cada etapa
-declara `provider`, `model` e `effort` concretos; `inherit` só é aceito em `effort`. Uma etapa
-repetida é erro, mas o mesmo modelo pode aparecer com esforços diferentes. `max_cycles` é
-opcional: um inteiro positivo que limita os ciclos de cada etapa. Sem ele, a skill usa 3; o
-pedido pode fixar outro limite, inclusive por etapa.
+A sequência padrão está somente no guia. Cada linha declara escada, finalidade, limite de
+ciclos, etapa, provedor, modelo e esforço. Uma etapa indisponível interrompe a sequência;
+alternativas de perfis não substituem etapas. O critério de aprovação vem do pedido.
+Uma política personalizada gerada com `--config` pode incluir `ladders`; as perguntas
+interativas configuram papéis e perfis, sem criar uma escada local.
 
-```toml
-[ladders.padrao]
-when = "Subir a régua com avaliadores de famílias alternadas até a última etapa aprovar."
-max_cycles = 3
-stages = [
-  { provider = "codex", model = "gpt-6-luna", effort = "xhigh" },
-  { provider = "claudeAgent", model = "claude-haiku-5-5", effort = "xhigh" },
-  { provider = "codex", model = "gpt-6.1-sol", effort = "medium" },
-  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "medium" },
-  { provider = "claudeAgent", model = "claude-fable-5-2", effort = "medium" },
-]
-```
+## Contrato e verificações
 
-Esta é a escada pessoal deste repositório: Luna XHigh, Haiku XHigh, Sol Medium, Opus Medium
-e Fable Medium. As etapas não são alternativas por indisponibilidade, e os `candidates` dos
-perfis não as substituem. Uma etapa que não puder executar como declarada fica pendente.
-A ordem é uma escolha do usuário, não uma classificação de qualidade dos modelos. A v1 não
-aceita `ladders`.
+Novas políticas usam o contrato v2: `profiles` com `candidates` ordenados e `roles` com
+`when`, `profile` e mapa opcional `complexity.simple`/`complexity.hard`. `default` usa o
+perfil base; `evaluator`, `roles.council` e `representative` não aceitam mapas. A seção opcional
+`ladders` contém `when`, `stages` e `max_cycles` opcional. Etapas exigem IDs concretos.
+O guia explica as colunas Markdown correspondentes. Campos desconhecidos, referências
+inexistentes, listas vazias, duplicações e herança incompatível continuam sendo erros.
 
-## Resolver a seleção
+`scripts/model_policy.py` lê Markdown e TOML legado; `resolve_policy` e `resolve_ladder`
+consultam a política sem executar modelos. A v1 combina `defaults`, campos do papel e
+`fallbacks`; a v2 resolve perfis e mapas. Os validadores não consultam provedores.
+`python scripts/check.py` confere a fonte Markdown, os papéis e as cópias dos provedores.
+Os testes Python e do CLI cobrem resolução, serialização, preservação e distribuição.
+Disponibilidade e esforço realmente aceitos exigem conferência em cada execução.
 
-1. Preserve o modelo e esforço explicitamente pedidos pelo usuário e as restrições da tarefa.
-2. Identifique o papel. O pedido pode fixar a complexidade; caso contrário, quem delega a classifica
-   pelo trabalho e pela consequência do erro. Use `default` quando não houver motivo concreto
-   para outro nível. `simple` atende edições mecânicas delimitadas; `hard`, diagnóstico difícil
-   e escolhas de arquitetura com consequências relevantes. O tipo visual, escrita, pesquisa ou
-   operação orienta ferramentas e provas, sem selecionar sozinho outro modelo.
-3. Na v2, use o perfil indicado no mapa para o nível informado, se houver. Sem substituição,
-   mantenha o perfil do papel. Nível desconhecido é erro; nível conhecido sem mapa não é.
-4. Confira capacidades reais de provedor, modelo e esforço. Se o primeiro candidato estiver
-   indisponível, considere somente as alternativas cadastradas, em ordem, dentro da autorização
-   atual. Um modelo exigido no pedido não pode ser substituído apenas porque há alternativa.
-5. Registre papel, versão, perfil efetivo, complexidade e sua origem, se ela mudou a seleção,
-   motivo de eventual alternativa e modelo/esforço pedidos versus observados. O que a ferramenta
-   não expuser permanece desconhecido.
-
-Uma saída incorreta não é indisponibilidade e não autoriza escalar o modelo. Investigue ou
-corrija o resultado. Se nenhum candidato elegível puder executar, informe o limite real.
-Contextos independentes e provas próprias continuam necessários para avaliação; trocar o nome
-do modelo não estabelece independência.
-
-## Compatibilidade com a versão 1
-
-A v1 continua válida sem migração: combine `defaults` com `provider`, `model` e `effort`
-do papel, depois considere `fallbacks` em ordem. Ela não possui perfis ou mapas de complexidade;
-um nível conhecido informado ao resolvedor mantém a seleção antiga. Não misture campos das
-duas versões. Uma versão desconhecida exige esclarecimento, sem presumir outro formato.
-
-O helper `resolve_policy(policy, role, complexity="default")`, em
-[`scripts/model_policy.py`](../scripts/model_policy.py), preserva o retorno antigo da v1.
-Na v2, acrescenta `profile`, `complexity` e `complexity_applied`; o último só é verdadeiro
-quando o mapa muda o perfil base. As listas retornadas podem ser editadas sem alterar a política.
-`resolve_ladder(policy, name)` retorna as etapas em ordem e `max_cycles`, ou `None` quando
-o limite não foi declarado.
-Esses helpers são de manutenção; as skills também explicam a resolução para uso sem Python.
-
-## Representante em uma execução autônoma
-
-Você autoriza o objetivo e quais escolhas podem ser representadas. Quando surgir uma escolha
-dentro desses limites, o coordenador consulta `representative` com contexto, opções, evidências,
-preferências e consequências. O representante responde em leitura; o coordenador preserva
-a autoria da decisão e continua o trabalho permitido. A revisão final do goal permanece com você.
-
-O representante não amplia o objetivo nem decide ações reservadas ao usuário. Não inventa
-fatos pessoais nem é apresentado como se você tivesse respondido. `$propor` continua aguardando
-sua aprovação, salvo delegação explícita daquela decisão. O arquivo não concede essa delegação.
-
-## Adoção e atualização
-
-O [CLI de adoção](../cli/README.md#configurar-modelos) pode criar `.agents/models.toml`
-por perguntas, com `models init`. Ele oferece herança do ambiente, um modelo compartilhado
-ou perfis separados, candidatos ordenados, esforço e associação às sete responsabilidades.
-A pergunta também aparece opcionalmente na instalação de papéis ou skills de delegação.
-O guia explica o uso pelo npm e como experimentar o código local.
-
-O CLI cria políticas v2 e valida os dados gerados sem exigir Python no destino. Isso não
-comprova disponibilidade nem suporte do provedor. Provedor e modelo são informados pela
-pessoa, sem copiar preferências pessoais deste repositório ou inferir IDs pelo agente.
-Arquivos existentes, inclusive v1, são preservados e não são validados pelo configurador.
-`--print` permite consultar uma proposta; não há migração, edição ou ativação automática.
-
-Em outro projeto, a política é opcional. Sem arquivo, preserve as seleções do ambiente e do usuário.
-Para adotar as mesmas preferências, copie e adapte o TOML pessoal e este guia. Para começar
-sem modelos fixados, copie [`.agents/models.example.toml`](../.agents/models.example.toml),
-que herda o ambiente em todas as responsabilidades. O formato mínimo é este:
-
-```toml
-version = 2
-
-[profiles.inherited]
-candidates = [{ provider = "inherit", model = "inherit", effort = "inherit" }]
-
-[roles.implementer]
-when = "Implementar trabalho autorizado."
-profile = "inherited"
-```
-
-Ao atualizar o harness, mantenha a política e as escolhas locais, inclusive v1. Atualizar skills
-não exige migrar o TOML. Se uma migração fizer parte do pedido, preserve valores, ordem e
-comportamento, e apresente conflitos reais. Não copie IDs pessoais por cima do destino.
-As skills não exigem scripts de manutenção ou serviços para ler e aplicar essas regras.
-
-## Verificação
-
-`python scripts/check.py` valida formato, referências, papéis canônicos e cópias dos provedores.
-`python -m unittest discover -s scripts` cobre as duas versões, ordem, isolamento, níveis sem mapa,
-papéis protegidos, escadas e configurações inválidas. As provas são estruturais: disponibilidade,
-esforço aceito e comportamento real do modelo dependem das ferramentas de cada execução.
+Configurar modelos não autoriza delegação ou representação nem muda o modelo da conversa.
+O representante só decide dentro da autonomia explicitamente autorizada e não amplia o objetivo.
+Uma espera pedida por `propor` continua valendo, salvo delegação explícita daquela decisão.
