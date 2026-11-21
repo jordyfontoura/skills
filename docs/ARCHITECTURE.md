@@ -10,9 +10,9 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
   As skills mantêm procedimentos e políticas e declaram seus guias com links diretos.
 - `.agents/skills/<nome>/` e `.claude/skills/<nome>/` são cópias sem categorias para uso dos agentes.
 - `.agents/roles/` contém instruções canônicas de `planner`, `evaluator` e `representative`.
-- `.agents/models.toml` define perfis e seleção por papel e complexidade; `docs/MODELS.md`
-  explica a versão 2 e a compatibilidade com a versão 1. `.agents/models.example.toml` é o
-  ponto de partida neutro para quem adota.
+- `knowledge/agents/model-selection.md` define perfis, seleção por papel e escadas e acompanha
+  as skills que o usam. `docs/MODELS.md` explica a adoção. `.agents/models.md` é uma
+  personalização opcional do projeto; TOML legado é preservado.
 - `.claude/agents/` adapta os papéis canônicos ao Claude Code.
 - `.codex/agents/` contém papéis em TOML para Codex. O Codex lê as cópias em `.agents/skills/`.
 - `.claude-plugin/plugin.json` descreve o plugin `jordyfontoura-skills`, com os grupos de
@@ -78,11 +78,11 @@ identifica alterações e ausências sem rede; a mesclagem continua na skill `at
 Isso inclui os guias compartilhados. O CLI preserva os outros caminhos de `knowledge/` e
 não converte nem remove automaticamente cópias de instalações anteriores.
 
-`cli/src/policy.ts` valida dados de políticas v2 e serializa TOML sem ler ou reescrever
-políticas existentes. O configurador usa as responsabilidades do exemplo neutro incluído
-no payload, sem uma segunda lista de suas descrições. Casos em
+`cli/src/policy.ts` valida dados de políticas v2 e serializa tabelas Markdown sem ler ou
+reescrever políticas existentes. O configurador usa responsabilidades derivadas do guia
+canônico incluído no payload, sem uma segunda lista de suas descrições. Casos em
 `cli/test/fixtures/policy-cases.json` são compartilhados com os testes Python;
-`scripts/check_cli_policy.py` comprova que o TOML gerado preserva os dados e é aceito pelo
+`scripts/check_cli_policy.py` comprova que o Markdown gerado preserva os dados e é aceito pelo
 validador canônico. Esse helper é usado só na origem. O CLI não descobre modelos nem
 consulta provedores para verificar as preferências declaradas.
 

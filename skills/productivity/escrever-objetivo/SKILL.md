@@ -36,11 +36,11 @@ a execução para na fronteira da fase e indica a passagem para o usuário retom
 Uma pendência humana bloqueia apenas a decisão, entrega ou prova que depende dela, salvo
 ordem ou portão explicitamente combinado. Preparar trabalho independente não equivale a
 obter aprovação nem a declarar aceite da fase. Não invente aprovações de fixtures sintéticas.
-Se o destino tiver `.agents/models.toml`, aponte para a política e informe quais responsabilidades
+Aponte para o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md) e para eventuais substituições locais. Informe quais responsabilidades
 serão usadas e que a seleção segue `delegar` (v1 ou v2), sem copiar a lista inteira para o objetivo.
 Na v2, complexidade só muda um perfil por mapa explícito; preserve os perfis próprios de
 representante, avaliador e conselho. Escrever o objetivo não altera a política
-nem concede delegação. Sem esse arquivo, preserve as escolhas do usuário e do ambiente.
+nem concede delegação. Sem fonte aplicável, informe a lacuna sem inventar uma seleção.
 
 Uma execução autônoma autorizada pode usar o papel `representative`,
 quando disponível, para escolhas sustentadas por evidências dentro da intenção

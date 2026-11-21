@@ -36,10 +36,11 @@ Registre na conversa, sem reabrir decisões já tomadas:
 
 ### Escolher a escada
 
-Use, em ordem, a sequência do pedido, a escada nomeada no pedido ou `ladders.padrao` da
-política local em `.agents/models.toml`. Cada etapa da política declara `provider`, `model`
-e `effort`; o formato está em `docs/MODELS.md` do harness. Sem nenhuma dessas fontes,
-pergunte pela sequência.
+Consulte o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md), que acompanha esta skill.
+Use a sequência do pedido; depois a escada nomeada, considerando substituições locais;
+sem nome, use a escada `padrao` do guia. Não exija TOML local para usar essa sequência.
+Cada etapa declara provedor, modelo e esforço. Sem fonte aplicável, informe a lacuna e
+pergunte pela sequência, sem criar uma escada de uma etapa com o modelo atual.
 
 As etapas são uma sequência, não alternativas por indisponibilidade. Não aplique os
 `candidates` dos perfis a uma etapa. Confira a disponibilidade real de modelo e esforço

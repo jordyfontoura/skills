@@ -4,7 +4,7 @@ A responsabilidade define **quem faz o quê**. O perfil indica **quais modelos t
 A complexidade pode mudar o perfil quando existe um vínculo explícito na configuração.
 
 Este guia explica a política atual deste repositório, em
-[`.agents/models.toml`](../.agents/models.toml), versão 2. Ela orienta novas consultas ou
+[`knowledge/agents/model-selection.md`](../knowledge/agents/model-selection.md). Ela orienta novas consultas ou
 delegações autorizadas; não inicia agentes nem troca o modelo da conversa aberta.
 
 ## O que cada nome significa
@@ -87,7 +87,7 @@ Se o usuário exigiu um modelo e ele não pode executar, outra opção precisa e
 | Resolver uma escolha autorizada durante um goal. | `representative` + `default` | `representative` | Claude Opus 5.5, `high`. |
 
 São preferências configuradas, não provas de disponibilidade ou de execução. A lista completa
-de candidatos e alternativas está em [MODELS.md](MODELS.md#configuração-pessoal).
+de candidatos e alternativas está em [guia de seleção de modelos](../knowledge/agents/model-selection.md#perfis).
 
 ## Por que o representante tem um perfil separado?
 

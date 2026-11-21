@@ -103,33 +103,19 @@ export function validatePolicyV2(value: unknown): asserts value is PolicyV2 {
 }
 export function serializePolicy(policy: PolicyV2): string {
   validatePolicyV2(policy);
-  const quote = (value: string) => JSON.stringify(value).replace(/\u007f/g, '\\u007f');
-  const lines = [
-    '# Política de modelos para delegações autorizadas, gerada pelo CLI.',
-    '# Não altera a conversa aberta nem autoriza delegação ou representação.',
-    '# IDs e esforços são preferências declaradas; sua disponibilidade não foi verificada.',
-    '# inherit mantém o ambiente. Alternativas são consideradas na ordem indicada.',
-    'version = 2', '',
-  ];
-  for (const [name, profile] of Object.entries(policy.profiles)) {
-    lines.push(`[profiles.${name}]`, 'candidates = [');
-    for (const candidate of profile.candidates) lines.push(`  { provider = ${quote(candidate.provider)}, model = ${quote(candidate.model)}, effort = ${quote(candidate.effort)} },`);
-    lines.push(']', '');
-  }
-  for (const [name, role] of Object.entries(policy.roles)) {
-    lines.push(`[roles.${name}]`, `when = ${quote(role.when)}`, `profile = ${quote(role.profile)}`);
-    if (role.complexity) {
-      lines.push(`[roles.${name}.complexity]`);
-      for (const [level, profile] of Object.entries(role.complexity)) lines.push(`${level} = ${quote(profile)}`);
-    }
+  const cell = (value: string | number) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('|', '&#124;').replaceAll('\r', '&#13;').replaceAll('\n', '&#10;')
+    .replace(/^\s+|\s+$/g, value => [...value].map(char => `&#${char.codePointAt(0)};`).join(''));
+  const lines = ['# Seleção de modelos', ''];
+  const table = (title: string, header: string[], rows: (string | number)[][]) => {
+    lines.push(`## ${title}`, '', `| ${header.join(' | ')} |`, `| ${header.map(() => '---').join(' | ')} |`);
+    for (const row of rows) lines.push(`| ${row.map(cell).join(' | ')} |`);
     lines.push('');
-  }
-  for (const [name, ladder] of Object.entries(policy.ladders ?? {})) {
-    lines.push(`[ladders.${name}]`, `when = ${quote(ladder.when)}`);
-    if (ladder.max_cycles !== undefined) lines.push(`max_cycles = ${ladder.max_cycles}`);
-    lines.push('stages = [');
-    for (const stage of ladder.stages) lines.push(`  { provider = ${quote(stage.provider)}, model = ${quote(stage.model)}, effort = ${quote(stage.effort)} },`);
-    lines.push(']', '');
-  }
+  };
+  table('Perfis', ['Perfil', 'Ordem', 'Provedor', 'Modelo', 'Esforço'],
+    Object.entries(policy.profiles).flatMap(([name, profile]) => profile.candidates.map((c, i) => [name, i + 1, c.provider, c.model, c.effort])));
+  table('Papéis', ['Papel', 'Quando usar', 'Perfil', 'Mapa', 'Simple', 'Hard'],
+    Object.entries(policy.roles).map(([name, role]) => [name, role.when, role.profile, role.complexity ? 'sim' : '-', role.complexity?.simple ?? '-', role.complexity?.hard ?? '-']));
+  table('Escadas', ['Escada', 'Quando usar', 'Ciclos', 'Etapa', 'Provedor', 'Modelo', 'Esforço'],
+    Object.entries(policy.ladders ?? {}).flatMap(([name, ladder]) => ladder.stages.map((s, i) => [name, ladder.when, ladder.max_cycles ?? '-', i + 1, s.provider, s.model, s.effort])));
   return lines.join('\n');
 }

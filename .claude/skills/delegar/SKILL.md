@@ -22,8 +22,10 @@ nem novas delegações. Um revisor em modo de leitura devolve achados com refer�
 
 ## Escolher o modelo
 
-A escolha explícita do usuário no pedido atual prevalece. Sem `.agents/models.toml` no destino,
-preserve a seleção do ambiente e do usuário. Com a política, identifique a responsabilidade
+Consulte o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md), distribuído com esta skill.
+A escolha explícita do pedido prevalece; depois vêm substituições locais declaradas e o padrão
+do guia, sem exigir arquivo local. Siga também suas regras para fontes ausentes ou conflitantes.
+Identifique a responsabilidade
 (`orchestrator`, `planner`, `implementer`, `reviewer`, `evaluator`, `representative` ou `council`,
 ou outra configurada pelo projeto) e resolva a seleção, sem precisar de scripts:
 

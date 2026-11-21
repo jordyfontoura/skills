@@ -18,9 +18,10 @@ identificar os componentes adotados; confira o conteúdo atual antes de concluir
 permanece igual ao registrado. Preserve os outros documentos de conhecimento do projeto.
 
 Se configurar modelos fizer parte do pedido, use o comando `models init` do CLI adotado,
-quando disponível, ou o exemplo neutro da coleção. O configurador cria apenas arquivos
-ausentes; `--print` permite consultar uma proposta sem gravar. Preserve `.agents/models.toml`
-existente, inclusive políticas v1, comentários e escolhas locais. Uma migração exige escopo
+quando disponível. O padrão está no [guia de seleção de modelos](../../../knowledge/agents/model-selection.md), que acompanha as skills;
+personalização local é opcional. O configurador cria `.agents/models.md` somente se não houver
+política existente; `--print` mostra uma proposta sem gravar. Preserve políticas Markdown e
+TOML legadas, comentários e escolhas locais. Uma migração exige escopo
 expresso. A validação estrutural não comprova disponibilidade de modelo ou esforço, não
 altera a conversa aberta nem autoriza delegação. Não instale o CLI apenas por usar esta skill.
 

@@ -14,7 +14,7 @@ técnica não amplia sua autorização: uma exigência do usuário só muda com 
 ou delegação explícita dessa decisão. Uma hipótese técnica introduzida pelo plano pode ser
 revista dentro da intenção e da autorização existentes, preservando o motivo da mudança.
 
-Quem inicia a consulta usa `roles.representative` de `.agents/models.toml`, quando existir,
+Quem inicia a consulta usa `roles.representative` do guia de seleção de modelos distribuído com `delegar`,
 seguindo `delegar`. A seleção de um modelo não concede autorização para representar o usuário.
 Um pedido de `propor` continua aguardando a decisão humana, salvo delegação explícita daquela
 aprovação. Preserve sua própria autoria: sua recomendação não é uma resposta escrita pelo usuário.

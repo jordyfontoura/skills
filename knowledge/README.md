@@ -6,6 +6,7 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 
 | Referência | Quando consultar |
 | --- | --- |
+| [Seleção de modelos](agents/model-selection.md) | Modelos por papel, esforço, alternativas e escada de `subir-regua`, com substituições locais opcionais. |
 | [Fontes e referências do harness](references.md) | Conferir fontes, inspirações, versões e limites das adaptações. |
 | [Usabilidade, tarefas e fluxos](ux/usability.md) | Compreensão, navegação, aprendizagem e recuperação de erros em interfaces. |
 | [Hierarquia, estados, conteúdo e escolha](ux/states-and-content.md) | Composição, mensagens, interação, adaptação e padrões enganosos. |

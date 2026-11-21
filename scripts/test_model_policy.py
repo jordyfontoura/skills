@@ -100,7 +100,7 @@ class ModelPolicyTests(unittest.TestCase):
 
 class ProfilePolicyTests(unittest.TestCase):
     def setUp(self):
-        self.policy = load_policy(ROOT / ".agents/models.toml")
+        self.policy = load_policy(ROOT / "knowledge/agents/model-selection.md")
 
     def test_shared_cli_contract_cases(self):
         fixture = json.loads((ROOT / "cli/test/fixtures/policy-cases.json").read_text(encoding="utf-8"))

@@ -30,7 +30,6 @@ STALE_NAME_EXCEPTIONS = {
     # Nomes das skills de origem no pstack, preservados na atribuição.
     "THIRD_PARTY_NOTICES.md": ("das skills `unslop` e `technical-writing`",),
     # `council` aqui é a chave de papel `roles.council`, que continua em inglês.
-    "docs/MODELS.md": ("`evaluator` e `council`",),
     "delegar/SKILL.md": ("`representative` ou `council`", "`evaluator` e `council`"),
     # O comando nativo do Claude Code que motivou a mudança de nomes.
     "docs/STANDARDS.md": ("`/review`",),
@@ -89,8 +88,7 @@ def validate(root=ROOT):
     roles = root / ".agents/roles"
     role_names = {p.stem for p in roles.glob("*.md")}
     require(bool(role_names), "O catálogo de papéis está vazio")
-    load_policy(root / ".agents/models.toml", required_roles=role_names)
-    load_policy(root / ".agents/models.example.toml", required_roles=role_names)
+    load_policy(root / "knowledge/agents/model-selection.md", required_roles=role_names)
     for directory, suffix in [(".claude/agents", "*.md"), (".codex/agents", "*.toml")]:
         require(role_names == {p.stem for p in (root / directory).glob(suffix)},
                 f"{directory}: os nomes dos papéis diferem dos canônicos")

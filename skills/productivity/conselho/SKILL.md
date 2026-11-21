@@ -59,7 +59,7 @@ independente da fonte.
 
 Use `delegar` para consultas autorizadas. Respeite modelos escolhidos e capacidades reais
 da ferramenta; esta skill não fixa provedor, modelo, esforço nem tamanho de comitê.
-Se houver `.agents/models.toml`, resolva `roles.council` seguindo `delegar`: na v2, use seu
+Consulte o [guia de seleção de modelos](../../../knowledge/agents/model-selection.md) e resolva `roles.council` seguindo `delegar`: na v2, use seu
 perfil sem substituição por complexidade; na v1, preserve campos e alternativas. Isso vale
 para cada consulta, salvo escolha explícita do usuário para um especialista.
 Execute cada perspectiva independente em seu próprio contexto. Várias perspectivas num único

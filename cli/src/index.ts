@@ -21,7 +21,7 @@ Uso: npx @jordyfontoura/skills [init|list|status] [opções]
   --models                   Criar política neutra se não existir
   --neutral                  Em models init: criar política que herda o ambiente
   --config arquivo.json      Em models init: gerar a partir de uma política JSON v2
-  --print                    Em models init: imprimir apenas TOML, sem gravar
+  --print                    Em models init: imprimir apenas Markdown, sem gravar
   --dir caminho              Projeto de destino (padrão: pasta atual)
   --dry-run                  Mostrar a instalação sem gravar arquivos
   --yes                      Confirmar uma seleção explícita sem perguntas
@@ -123,7 +123,7 @@ async function main() {
   let wantModels = Boolean(values.models);
   let modelsContent: string | undefined;
   if (interactive && !values.models && (roles.length || selected.some(name => ['delegar', 'conselho', 'verificar-aceite'].includes(name)))) {
-    if (await modelsExist(root)) console.log('models.toml existente: preservado, não validado.');
+    if (await modelsExist(root)) console.log('Política existente: preservado, não validado.');
     else {
       const option = await answer(p.select({ message: 'Criar uma política de modelos para delegações? (opcional)', showInstructions: false, options: [
         { value: 'skip', label: 'Não criar agora' },
@@ -146,9 +146,9 @@ async function main() {
   console.log('Se já usa o plugin, evite instalar cópias das mesmas skills; --skills none permite escolher apenas papéis.');
   for (const entry of plan.entries) console.log(`${{ create: 'criar', same: 'idêntico', preserve: 'preservar' }[entry.state]}: ${entry.path}`);
   for (const path of plan.conflicts) console.log(`conflito: ${path}`);
-  const modelEntry = plan.entries.find(entry => entry.path === '.agents/models.toml');
-  if (modelEntry?.state === 'create') console.log(`\n${policyNotice}\n\nPrévia de .agents/models.toml:\n\n${modelEntry.content}`);
-  if (modelEntry?.state === 'preserve') console.log('models.toml existente: preservado, não validado.');
+  const modelEntry = plan.entries.find(entry => ['.agents/models.md', '.agents/models.toml'].includes(entry.path));
+  if (modelEntry?.state === 'create') console.log(`\n${policyNotice}\n\nPrévia de .agents/models.md:\n\n${modelEntry.content}`);
+  if (modelEntry?.state === 'preserve') console.log('Política existente: preservado, não validado.');
   if (plan.conflicts.length) throw new Error('Há arquivos diferentes no destino. Nenhum arquivo foi alterado. Use atualizar-harness para preservar adaptações.');
   if (values['dry-run']) { console.log('\nSimulação concluída. Nenhum arquivo foi alterado.'); return; }
   if (!values.yes) {

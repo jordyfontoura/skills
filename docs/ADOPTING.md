@@ -80,10 +80,10 @@ Publicar na origem não atualiza as cópias instaladas nos seus projetos.
    [.codex/agents/](../.codex/agents/) para as pastas correspondentes.
 3. Acrescente o bloco acima às instruções do projeto. Preserve os comandos e as convenções
    que já existem.
-4. Se quiser escolher modelos por papel, copie
-   [.agents/models.example.toml](../.agents/models.example.toml) como `.agents/models.toml`
-   e ajuste. Sem esse arquivo, as skills usam o modelo do ambiente. O [guia](MODELS.md)
-   explica o formato.
+4. Copie o [guia de modelos](../knowledge/agents/model-selection.md) com as skills que
+   o consultam. Ele traz modelos por papel e a escada de `subir-regua`; não exige arquivo
+   local. Para personalizar, use `.agents/models.md` ou instruções explícitas do projeto.
+   O [guia de adoção da política](MODELS.md) explica a precedência e a compatibilidade com TOML.
 5. `esclarecer` usa o glossário do projeto quando ele existe. Você pode partir do
    [glossário desta coleção](GLOSSARY.md).
 6. Registre na documentação de manutenção do projeto a origem, o canal ou referência fixa,

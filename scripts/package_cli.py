@@ -4,7 +4,8 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
-import tomllib
+from model_policy import load_policy
+from markdown_policy import serialize_markdown
 
 from catalog import catalog, copy_files, knowledge_catalog, knowledge_dependencies
 
@@ -26,7 +27,13 @@ def main():
         for path in sorted((root / directory).glob(pattern)):
             if path.is_file():
                 files[path.relative_to(root).as_posix()] = path.read_text(encoding="utf-8")
-    files[".agents/models.toml"] = (root / ".agents/models.example.toml").read_text(encoding="utf-8")
+    template = load_policy(root / "knowledge/agents/model-selection.md")
+    # A personalização neutra herda o ambiente; o padrão distribuído permanece no guia.
+    neutral = {"version": 2, "profiles": {"inherited": {"candidates": [
+        {"provider": "inherit", "model": "inherit", "effort": "inherit"}]}},
+        "roles": {name: {"when": role["when"], "profile": "inherited"}
+                  for name, role in template["roles"].items()}}
+    files[".agents/models.md"] = serialize_markdown(neutral)
     skills = []
     sources = catalog(root)
     library = knowledge_catalog(root)
@@ -55,7 +62,7 @@ def main():
                           "version": plugin["version"], "dirty": dirty, "contentHash": digest},
                "skills": skills, "knowledge": knowledge,
                "roles": ["planner", "evaluator", "representative"], "files": files,
-               "modelTemplate": tomllib.loads(files[".agents/models.toml"])}
+               "modelTemplate": neutral}
     (package / "payload.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (package / "LICENSE").write_bytes((root / "LICENSE").read_bytes())
     print(f"OK: pacote com {len(skills)} skills, 3 papéis e {len(files)} arquivos")
