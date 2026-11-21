@@ -240,9 +240,9 @@ Este modo se inspira na organização de escolhas por dependência da
 [grilling, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills%2Fproductivity%2Fgrilling%2FSKILL.md),
 adaptada para respostas em arquivo e encerramento por suficiência.
 
-## escrever-claro
+## redigir
 
-Aplicação: skill `escrever-claro`.
+Aplicação: skill `redigir`.
 
 Adaptada de [unslop e technical-writing, do pstack](https://github.com/cursor/plugins/tree/main/pstack/skills),
 de Lauren Tan, sob licença MIT. O aviso de copyright e a permissão estão em

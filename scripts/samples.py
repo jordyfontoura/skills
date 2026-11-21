@@ -365,7 +365,8 @@ def changed_files(workspace: Path, before: dict[str, str]) -> list[str]:
 def without_workspace_path(text: str, workspace: Path) -> str:
     """Tira o caminho temporário, que muda a cada execução, do texto registrado."""
     native = str(workspace)
-    forms = {native, native.replace("\\", "\\\\"), workspace.as_posix(), "/" + workspace.as_posix()}
+    forward = native.replace("\\", "/")
+    forms = {native, native.replace("\\", "\\\\"), forward, "/" + forward}
     for form in sorted(forms, key=len, reverse=True):
         text = re.sub(re.escape(form), "<workspace>", text, flags=re.I)
     return text
