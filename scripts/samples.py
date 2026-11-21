@@ -123,11 +123,16 @@ def files_under(path: Path) -> list[Path]:
     return sorted(item for item in path.rglob("*") if item.is_file())
 
 
+def hash_order(relative: Path) -> tuple:
+    """Ordem igual em qualquer sistema: o Windows compara caminhos sem diferenciar maiúsculas."""
+    return tuple(part.lower() for part in relative.parts), relative.parts
+
+
 def digest(root: Path, paths: list[Path], extra: dict) -> str:
     sha = hashlib.sha256(json.dumps(extra, sort_keys=True).encode())
-    for path in sorted(set(paths)):
-        sha.update(path.relative_to(root).as_posix().encode() + b"\0")
-        sha.update(hashlib.sha256(normalized(path.read_bytes())).digest())
+    for relative in sorted({path.relative_to(root) for path in paths}, key=hash_order):
+        sha.update(relative.as_posix().encode() + b"\0")
+        sha.update(hashlib.sha256(normalized((root / relative).read_bytes())).digest())
     return sha.hexdigest()
 
 
