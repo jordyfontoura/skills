@@ -74,7 +74,8 @@ fora desse namespace e confira adaptações antes de atualizar guias compartilha
 - Use links relativos para documentação. Skills copiadas não devem depender de caminhos da
   máquina original nem de serviço externo obrigatório.
 - As verificações de manutenção usam a biblioteca padrão do Python. Ler e aplicar skills
-  não exige ambiente de execução.
+  não exige ambiente de execução. A exceção é o coletor `history.py` de `melhorar-harness`,
+  que precisa de Python 3.11+ para medir o histórico; sem ele, a skill analisa só a conversa atual.
 
 O validador verifica estrutura e consistência; a escolha do idioma e a qualidade da tradução
 também precisam de leitura. Não use uma busca de palavras como prova de equivalência das instruções.

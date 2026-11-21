@@ -238,7 +238,7 @@ Fontes em `skills/harness/`.
 | Skill | Resultado |
 | --- | --- |
 | `configurar-harness` | Configurar verificações adequadas às tecnologias do projeto. |
-| `melhorar-harness` | Melhorar o harness a partir de dificuldades observadas na sessão. |
+| `melhorar-harness` | Medir o histórico de conversas do projeto e propor melhorias no harness num relatório HTML. |
 | `atualizar-harness` | Trazer atualizações da origem preservando adaptações locais. |
 | `conhecer-ferramentas` | Explicar ferramentas CLI, inventariar o ambiente e preparar faltantes no escopo autorizado. |
 

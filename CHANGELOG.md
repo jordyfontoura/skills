@@ -41,6 +41,13 @@ compatibilidade.
 - Cópias de `.agents/skills/` e `.claude/skills/` usam `knowledge/` na raiz, sem duplicar
   guias por skill. `sync.py` retira cópias antigas idênticas às geradas e interrompe a
   migração se houver adaptações ou arquivos desconhecidos. A adoção manual inclui a biblioteca.
+- `melhorar-harness` passa a analisar o histórico de conversas do projeto, e não só a sessão
+  atual. Reúne o que `examinar-eficiencia` e `examinar-arquitetura` cobriam, aplicado ao
+  harness: erros frequentes, gasto de tokens e de tempo e atrito entre skills. Entrega um
+  relatório HTML com os dados medidos e as propostas. A skill ganha o coletor `history.py`,
+  que lê os registros locais do Claude Code e do Codex com a biblioteca padrão do Python 3.11+;
+  é o primeiro código distribuído dentro de uma skill. Invocar a skill autoriza ler os
+  registros deste projeto; antes, ela não lia transcrições.
 - `melhorar-harness`: considera simplificar ou retirar componentes com indício de custo ou
   obsolescência, comparando um por vez sem enfraquecer requisitos ou verificações úteis.
 - `configurar-harness`: orienta mensagens de falha com local, regra violada e correção possível.

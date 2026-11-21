@@ -143,7 +143,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | --- | --- |
 | `escrever-claro` | Escrever e revisar textos, preservando fatos e voz. |
 | `configurar-harness` | Configurar comandos e verificações para o projeto. |
-| `melhorar-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
+| `melhorar-harness` | Analisar o histórico de conversas do projeto e propor melhorias no harness, com relatório HTML. |
 | `atualizar-harness` | Atualizar skills copiadas preservando adaptações locais. |
 | `conhecer-ferramentas` | Entender e preparar ferramentas de linha de comando, quando autorizado. |
 

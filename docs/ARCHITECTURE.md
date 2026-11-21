@@ -63,6 +63,11 @@ Como o marketplace aponta para a raiz, o cache do plugin pode conter a pasta `cl
 não registra executáveis no manifesto e não é executada pelo plugin. A validação continua
 recusando `bin/`, hooks e comandos executáveis na raiz.
 
+`melhorar-harness` é a única skill com código: `history.py` mede o histórico de conversas do
+projeto. Ele só roda quando o agente o chama, lê os registros locais do Claude Code e do Codex,
+grava apenas os arquivos de saída indicados e não acessa a rede. O pacote do CLI o leva como
+conteúdo da skill, sem executá-lo. `scripts/test_history.py` prova a coleta com conversas sintéticas.
+
 No destino, o CLI confere os arquivos antes de gravar, recusa conflitos e links simbólicos,
 mantém os arquivos idênticos e preserva políticas locais de modelos. Recibos imutáveis em
 `.harness/receipts/` registram seleção, origem, SHA de base e hashes de conteúdo. `status`
