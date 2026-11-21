@@ -489,6 +489,8 @@ def table(headers, rows, bar=None, empty="Nada registrado no período."):
     numeric = [index == bar or (index > 0 and all(
         not isinstance(row[index], str) or re.match(r"(\d|US\$|–)", row[index]) for row in rows))
         for index in range(len(headers))]
+    # Fora da f-string: o Python 3.11 não aceita barra invertida dentro da expressão.
+    align = [' class="num"' if is_numeric else "" for is_numeric in numeric]
     body = []
     for row in rows:
         cells = []
@@ -498,10 +500,9 @@ def table(headers, rows, bar=None, empty="Nada registrado no período."):
                 cells.append(f'<td class="num"><span class="bar" style="width:{width:.1f}%"></span>'
                              f'<span class="value">{escape(cell[1])}</span></td>')
             else:
-                cells.append(f'<td{" class=\"num\"" if numeric[index] else ""}>{escape(str(cell))}</td>')
+                cells.append(f'<td{align[index]}>{escape(str(cell))}</td>')
         body.append("<tr>" + "".join(cells) + "</tr>")
-    head = "".join(f'<th{" class=\"num\"" if numeric[i] else ""}>{escape(h)}</th>'
-                   for i, h in enumerate(headers))
+    head = "".join(f'<th{align[i]}>{escape(h)}</th>' for i, h in enumerate(headers))
     return f'<div class="scroll"><table><thead><tr>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>'
 
 
