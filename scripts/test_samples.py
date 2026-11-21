@@ -93,6 +93,12 @@ class SampleTests(unittest.TestCase):
         write(self.root / "samples/postagem/scenario/turns/01.md", "Escreve uma postagem.\r\n")
         self.assertEqual(self.stale_variants(), [])
 
+    def test_hash_order_ignores_case_like_windows_paths(self):
+        names = ["README.md", "backup.py", "config.json", "Zeta/a.md", "alfa/B.md"]
+        ordered = sorted((Path(name) for name in names), key=samples.hash_order)
+        self.assertEqual([path.as_posix() for path in ordered],
+                         ["alfa/B.md", "backup.py", "config.json", "README.md", "Zeta/a.md"])
+
     def test_unknown_skill_and_provider_are_reported(self):
         write(self.root / "samples/postagem/scenario/scenario.toml", 'skills = ["inexistente"]\n')
         with self.assertRaisesRegex(samples.SampleError, "inexistente"):
