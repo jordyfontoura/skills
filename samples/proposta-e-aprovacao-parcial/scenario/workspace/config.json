@@ -1,0 +1,5 @@
+{
+  "sources": ["C:/Dados/financeiro", "C:/Dados/contratos"],
+  "destination": "E:/Backups",
+  "keep": 7
+}

@@ -1,0 +1,22 @@
+{
+  "inputs_hash": "e6dcf14a51898b6e96f475e8276525399538b223e078f39958a7e95f66e8525e",
+  "provider": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "cli_version": "codex-cli 0.169.0",
+  "skills_used": [
+    "esclarecer"
+  ],
+  "files": [],
+  "metrics": {
+    "input_tokens": 135780,
+    "cached_input_tokens": 105088,
+    "output_tokens": 2196,
+    "reasoning_tokens": 118,
+    "tool_calls": 3,
+    "duration_seconds": 59,
+    "reply_words": 700,
+    "turns": 2
+  },
+  "generated_at": "2026-11-21T16:30:12Z"
+}
