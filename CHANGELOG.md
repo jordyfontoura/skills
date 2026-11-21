@@ -55,6 +55,10 @@ compatibilidade.
 
 ### Adicionado
 
+- `samples/` guarda respostas reais de agentes a cenários fixos, com e sem as skills, para
+  cada modelo de `samples/models.toml`. `python scripts/samples.py run` gera as amostras
+  desatualizadas com os CLIs do Claude Code e do Codex, e cada cenário ganha um `METRICS.md`
+  com tokens, tempo e skills acionadas. A CI acusa amostras desatualizadas nos PRs para `main`.
 - Guia `knowledge/writing/clear-explanation.md`: padrão de explicação clara, válido para
   conversa, documento, página ou diagrama. Reúne o que a antiga `esclarecer` ensinava sobre
   partir do leitor, escolher a forma pelo tipo de assunto, definir termos e preservar condições.
