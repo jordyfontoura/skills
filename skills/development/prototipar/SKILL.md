@@ -48,5 +48,3 @@ comportamento, contrato ou prova. Com definições suficientes, a implementaçã
 pode continuar com um plano curto, sem nova etapa de especificação.
 Converta o comportamento aprovado em critérios com `visual`, `run` ou outro método adequado;
 um protótipo não comprova o critério de produção. Liste suas simulações e seus limites.
-
-Inspirada em [prototype, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills/engineering/prototype/SKILL.md).

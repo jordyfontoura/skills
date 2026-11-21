@@ -3,7 +3,7 @@
 - **Tipo:** referência de domínio; critérios de acessibilidade e recomendações contextuais.
 - **Aplicabilidade:** movimento em interfaces web, nativas e de jogos. A seção de GSAP é
   específica da web; outras plataformas usam suas APIs e convenções.
-- **Origem e revisão:** síntese própria das fontes abaixo, consultadas em 17/11/2026;
+- **Origem e revisão:** síntese própria das fontes catalogadas, consultadas em 17/11/2026;
   WCAG 2.2, documentação GSAP v3 e Impeccable em `d41d9860b0`.
 - **Limites:** orientações e exemplos não substituem medição no dispositivo-alvo, testes
   com pessoas ou auditoria completa. Nenhuma biblioteca foi executada nesta pesquisa.
@@ -79,12 +79,4 @@ a operação da interface nem prova, sozinha, conformidade sobre flashes.
 
 ## Fontes
 
-- [WCAG 2.2: 2.2.2, W3C](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html).
-- [WCAG 2.2: 2.3.1, W3C](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html).
-- [WCAG 2.2: 2.3.3, W3C](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html).
-- [Desempenho de animações CSS e JavaScript, MDN](https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/CSS_JavaScript_animation_performance).
-- [gsap.matchMedia(), documentação v3](https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/).
-- [Licença GSAP](https://gsap.com/community/standard-license/), termos consultados nesta revisão;
-  conferir novamente quando a adoção depender deles.
-- [Impeccable, revisão consultada](https://github.com/pbakaus/impeccable/tree/d41d9860b0):
-  inspiração para relacionar movimento à tarefa e preservar retorno em movimento reduzido.
+[Fontes e referências de movimento](../references.md#movimento).

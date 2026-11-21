@@ -86,26 +86,4 @@ vigente da loja de destino; este guia não a pesquisou.
 
 ## Fontes
 
-Consultadas em 16/11/2026.
-
-- Kenney: [suporte e licença](https://kenney.nl/support).
-- Quaternius: [licença QAL v1.0](https://quaternius.com/license.html).
-- itch.io: [listagem de assets](https://itch.io/game-assets).
-- CraftPix: [licenças de arquivos](https://craftpix.net/file-licenses/).
-- KayKit: [página de assets](https://kaylousberg.com/game-assets) e [perfil no itch.io](https://kaylousberg.itch.io/).
-- OpenGameArt: [artigo da Wikipedia](https://en.wikipedia.org/wiki/OpenGameArt.org), fonte
-  secundária com aviso de desatualização.
-- Poly Haven: [licença](https://polyhaven.com/license).
-- ambientCG: [licença](https://docs.ambientcg.com/license/).
-- Fab: [licenças e preços](https://dev.epicgames.com/documentation/en-us/fab/licenses-and-pricing-in-fab).
-- Sketchfab: [modelos gratuitos](https://sketchfab.com/features/free-3d-models).
-- Godot: [o que é a Asset Library](https://docs.godotengine.org/en/stable/community/asset_library/what_is_assetlib.html),
-  documentação da versão 4.7.
-- Sonniss: [licença do pacote GDC](https://sonniss.com/gdc-bundle-license/).
-- Freesound: [FAQ](https://freesound.org/help/faq/).
-- Pixabay: [resumo da licença](https://pixabay.com/service/license-summary/).
-- Incompetech: [licenças](https://incompetech.com/music/royalty-free/licenses/).
-- Mixamo: [FAQ da comunidade Adobe](https://community.adobe.com/t5/mixamo-discussions/mixamo-faq-licensing-royalties-ownership-eula-and-tos/td-p/13234775),
-  de 29/09/2022.
-- game-icons.net: [página inicial](https://game-icons.net/).
-- PixelLab: [termos de serviço](https://www.pixellab.ai/termsofservice).
+[Fontes e referências de assets de terceiros](../references.md#assets-de-terceiros).
