@@ -120,5 +120,3 @@ se a prova exigir outro agente. Julgue o resultado e as ações observáveis, n�
 palavras da skill. Se a comparação não for possível, declare a lacuna: leitura e validação
 de estrutura não demonstram mudança de comportamento, e uma execução isolada não estabelece
 taxa de acerto. Rodar o coletor de novo após um período comparável mostra a tendência, não a causa.
-
-Inspirada em [retro, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills/engineering/retro/SKILL.md).

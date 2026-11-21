@@ -6,6 +6,7 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 
 | Referência | Quando consultar |
 | --- | --- |
+| [Fontes e referências do harness](references.md) | Conferir fontes, inspirações, versões e limites das adaptações. |
 | [Usabilidade, tarefas e fluxos](ux/usability.md) | Compreensão, navegação, aprendizagem e recuperação de erros em interfaces. |
 | [Hierarquia, estados, conteúdo e escolha](ux/states-and-content.md) | Composição, mensagens, interação, adaptação e padrões enganosos. |
 | [Direção visual e tokens](ux/visual-direction.md) | Paleta, tipografia, densidade e tokens quando a direção estiver aberta ou sua coerência precisar de avaliação. |
@@ -18,13 +19,16 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 | [Técnicas de game design](gamedev/game-design.md) | Mecânicas, ritmo, dificuldade, resposta ao jogador, escopo e acessibilidade de jogos. |
 | [Modelos 3D prontos para jogo](3d-modeling/game-ready-assets.md) | Escala, geometria, UVs, materiais PBR, rig, LOD e colisão em modelos para tempo real. |
 | [Pipeline de exportação do Blender para o Godot](3d-modeling/export-pipeline.md) | Formato, opções de exportação, sufixos e opções de importação de cenas e texturas. |
+| [Explicação clara](writing/clear-explanation.md) | Explicar um conceito, mecanismo, decisão ou estado em conversa, documento, página ou diagrama. |
 
 UI é compartilhada entre frontend, aplicações nativas e jogos; não replique o mesmo guia por
 domínio. Pastas como `frontend`, `legal` e `scientific-research` podem surgir quando
 houver material útil, com nomes de arquivos em inglês e texto em português. Não crie pastas
 vazias nem transforme os exemplos de domínio numa taxonomia obrigatória.
 
-Cada referência declara aplicabilidade, origem, fontes e limites. Separe sínteses de fontes,
+Cada guia declara aplicabilidade, origem e limites; suas fontes ficam no catálogo
+`references.md`, com links para as seções pertinentes. Créditos de inspiração das skills
+também ficam nesse catálogo, sem exigir sua leitura durante a execução. Separe sínteses de fontes,
 recomendações contextuais e políticas locais. Registre versão ou data conferida; em direito,
 a jurisdição e a vigência são parte do contexto; em pesquisa científica, indique o desenho
 do estudo, a população e os limites das evidências. Confirme uma fonte vigente quando ela

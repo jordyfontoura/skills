@@ -7,7 +7,7 @@ license: Apache-2.0
 # Subir a régua
 
 Este modo organiza a progressão; a skill combinada define como avaliar. Com `criticar`, cada
-avaliação segue a crítica e suas notas; com `escrever-claro`, a revisão de texto; com
+avaliação segue a crítica e suas notas; com `redigir`, a revisão de texto; com
 `revisar`, um diff; com um benchmark ou teste, a medida combinada. Sem skill nem medida
 indicadas, derive o método do pedido e declare-o antes da primeira etapa.
 

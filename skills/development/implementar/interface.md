@@ -25,7 +25,7 @@ Identifique a ação principal e a informação necessária para realizá-la. Co
 [usabilidade](../../../knowledge/ux/usability.md) e de
 [hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md).
 Não converta tudo em cartões nem corte informação só para obter uma composição limpa.
-Conteúdo real orienta o layout; identifique dados simulados. Use `escrever-claro` para revisar
+Conteúdo real orienta o layout; identifique dados simulados. Use `redigir` para revisar
 o texto de interface mantendo as condições necessárias à compreensão.
 
 ## Cobrir estados e acesso
@@ -52,6 +52,3 @@ No acabamento, confira espaçamento, tipografia, alinhamento, conteúdo e estado
 design system. Diferencie um defeito local de uma inconsistência no token ou componente
 compartilhado e corrija a origem. Acabamento não autoriza redesign. Repita as provas afetadas.
 Para uma crítica estruturada da experiência de uso, use a rubrica de interface de `criticar`.
-
-Inspiração de direção visual: [frontend-design, da Anthropic](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md).
-As orientações são adaptadas ao projeto, sem impor a estética da referência.

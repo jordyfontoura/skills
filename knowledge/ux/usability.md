@@ -44,6 +44,4 @@ convenção que o público já conhece; nesse caso, registre-a só com impacto c
 
 ## Fontes
 
-- [10 heurísticas de usabilidade, NN/g](https://www.nngroup.com/articles/ten-usability-heuristics/)
-  (revisão de 2024 citada na origem). Os resumos são próprios do harness.
-- [Percurso cognitivo, NN/g](https://www.nngroup.com/articles/cognitive-walkthroughs/).
+[Fontes e referências de usabilidade](../references.md#usabilidade).

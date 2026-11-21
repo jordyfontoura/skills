@@ -37,6 +37,13 @@ e decisões entre rodadas, sem precisar reconstruir tudo pela conversa.
 
 > $entrevistar-por-arquivo Organize as escolhas pendentes dos lembretes em um arquivo Markdown para eu responder depois.
 
+### [`esclarecer`](../skills/productivity/esclarecer/SKILL.md)
+
+Quando a explicação ficou confusa. Reexplica o ponto de outra forma, sem avançar a tarefa
+nem interpretar sua dúvida como aprovação.
+
+> $esclarecer Não entendi por que precisamos de uma fila para enviar os lembretes. Explique usando esse exemplo.
+
 ### [`pesquisar-web`](../skills/productivity/pesquisar-web/SKILL.md)
 
 Quando a decisão depende de informação externa. A pesquisa consulta fontes na internet
@@ -198,10 +205,18 @@ e resultado esperado, e exige conferir o retorno antes de incorporá-lo.
 
 ### [`escrever-claro`](../skills/productivity/escrever-claro/SKILL.md)
 
+Quando você quer que um conteúdo explique bem o assunto, em qualquer meio. Aplica o
+[padrão de explicação clara](../knowledge/writing/clear-explanation.md) à resposta, ao
+documento ou à página pedida.
+
+> $escrever-claro Monte uma página HTML explicando como a fila de lembretes funciona, para quem nunca viu o sistema.
+
+### [`redigir`](../skills/productivity/redigir/SKILL.md)
+
 Quando um texto está genérico, repetitivo ou distante da sua voz. Revisa a linguagem para
 deixar a informação clara, preservando fatos, comandos e o tom pretendido.
 
-> $escrever-claro Revise este README para ficar mais direto e natural, preservando os fatos técnicos e os comandos.
+> $redigir Revise este README para ficar mais direto e natural, preservando os fatos técnicos e os comandos.
 
 ### [`configurar-harness`](../skills/harness/configurar-harness/SKILL.md)
 

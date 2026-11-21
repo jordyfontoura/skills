@@ -114,7 +114,7 @@ class KnowledgeTests(unittest.TestCase):
         sources = catalog(ROOT)
         consumers = {name: sources[name] for name in ("criticar", "implementar", "prototipar")}
         for name, source in consumers.items():
-            expected = {"ux/usability.md", "ux/states-and-content.md",
+            expected = {"references.md", "ux/usability.md", "ux/states-and-content.md",
                         "ux/visual-direction.md", "ux/motion.md",
                         "ux/platform-conventions.md", "accessibility/interface-criteria.md"}
             if name == "criticar":

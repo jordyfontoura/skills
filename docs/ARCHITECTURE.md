@@ -31,6 +31,9 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
   `knowledge/`. O validador recusa links arbitrários, arquivos fora do índice, escapes da
   biblioteca, componentes executáveis no plugin e caracteres invisíveis.
 - `scripts/model_policy.py` valida e consulta a política, sem executar agentes ou fazer rede.
+- `scripts/samples.py` executa os cenários de `samples/` nos CLIs do Claude Code e do Codex,
+  com e sem as skills, e registra as respostas e o consumo. Só `run` chama modelos; `check`
+  compara hashes e é o que a CI executa nos PRs para `main`.
 - `.github/workflows/ci.yml` executa essa verificação e os testes do validador.
 - `cli/` contém o pacote TypeScript `@jordyfontoura/skills`. `scripts/package_cli.py` usa
   `catalog.py` para empacotar skills com links para `knowledge/harness/`, os guias uma única

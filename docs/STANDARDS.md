@@ -48,6 +48,10 @@ Adaptações em projetos de destino continuam pertencendo a esses projetos.
 Conhecimento reutilizável por domínio ou tema fica em `knowledge/`, com índice em
 `knowledge/README.md`. Mantenha nomes de pastas e arquivos em inglês, texto em português e
 aplicabilidade, origem, fontes e limites explícitos. Crie domínios apenas com conteúdo real.
+Centralize bibliografias e créditos de inspiração em `knowledge/references.md`, com
+contribuição aproveitada, versão ou data conhecida e limites da adaptação. Guias apontam
+para as seções pertinentes; links necessários à execução e avisos de licença ficam junto
+do conteúdo. Não exija a leitura integral do catálogo para executar uma skill.
 Procedimentos, escalas e pisos obrigatórios continuam nas skills; decisões de um projeto
 continuam no destino. Uma referência não concede permissão nem vira regra universal.
 

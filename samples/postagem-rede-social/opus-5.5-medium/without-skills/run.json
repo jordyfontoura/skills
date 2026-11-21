@@ -1,0 +1,21 @@
+{
+  "inputs_hash": "f99041587c4293103865648cc1356ab2dfa0bab8ca3c3c73a0bc44e70121a111",
+  "provider": "claude",
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "cli_version": "2.1.326 (Claude Code)",
+  "skills_used": [],
+  "files": [],
+  "metrics": {
+    "input_tokens": 10172,
+    "cached_input_tokens": 4428,
+    "output_tokens": 707,
+    "reasoning_tokens": 50,
+    "tool_calls": 0,
+    "duration_seconds": 11,
+    "reply_words": 253,
+    "turns": 1,
+    "estimated_cost_usd": 0.0613
+  },
+  "generated_at": "2026-11-21T15:55:34Z"
+}

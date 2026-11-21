@@ -47,5 +47,3 @@ Relate falhas alheias ao pedido sem ampliar o escopo. Use `passar-contexto` se a
 
 Informe a causa observada, a reprodução antes e depois, a correção e a incerteza restante.
 Não inclua credenciais ou conteúdo privado nos registros e na resposta.
-
-Inspirada em [diagnosing-bugs, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md).

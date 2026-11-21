@@ -45,6 +45,9 @@ jobs:
         run: python scripts/check.py
       - name: Testar falhas de validação
         run: python -m unittest discover -s scripts
+      - name: Conferir amostras na promoção
+        if: github.base_ref == 'main'
+        run: python scripts/samples.py check
 
   plugin:
     runs-on: ubuntu-latest

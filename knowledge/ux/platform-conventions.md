@@ -22,6 +22,7 @@ Apple Human Interface Guidelines, Material Design, Fluent ou um guia interno. Co
 
 ## Fontes
 
-- Inventário adaptado do harness em `d3c31c7`.
-- Consulte as fontes primárias da plataforma em uso, como Apple Human Interface Guidelines,
-  Material Design ou Fluent, e registre URL, versão e data da consulta.
+Consulte as fontes primárias da plataforma em uso, como Apple Human Interface Guidelines,
+Material Design ou Fluent, e registre URL, versão e data da consulta.
+
+[Fontes e referências de convenções de plataforma](../references.md#convenções-de-plataforma).
