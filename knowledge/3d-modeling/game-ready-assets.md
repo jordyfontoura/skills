@@ -117,21 +117,4 @@ Tamanho e memória, segundo a documentação do Godot:
 
 ## Fontes
 
-Consultadas em 16/11/2026.
-
-- Khronos, [especificação glTF 2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html),
-  lida no [texto-fonte](https://raw.githubusercontent.com/KhronosGroup/glTF/main/specification/2.0/Specification.adoc).
-- Khronos 3D Commerce, [diretrizes de criação de assets em tempo real](https://github.com/KhronosGroup/3DC-Asset-Creation/blob/main/asset-creation-guidelines/RealtimeAssetCreationGuidelines.md),
-  versão 2.0.0, de agosto de 2025. As seções completas estão em elaboração e não trazem números.
-- Godot 4.7: [considerações de exportação de modelos](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html),
-  [StandardMaterial3D](https://docs.godotengine.org/en/stable/tutorials/3d/standard_material_3d.html),
-  [importação de imagens](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_images.html),
-  [limitações de renderização 3D](https://docs.godotengine.org/en/stable/tutorials/3d/3d_rendering_limitations.html),
-  [LOD de malhas](https://docs.godotengine.org/en/stable/tutorials/3d/mesh_lod.html),
-  [descarte por oclusão](https://docs.godotengine.org/en/stable/tutorials/3d/occlusion_culling.html),
-  [retargeting de esqueletos](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/retargeting_3d_skeletons.html) e
-  [otimização de GPU](https://docs.godotengine.org/en/stable/tutorials/performance/gpu_optimization.html).
-- Unity 6.6, [criação de modelos para desempenho ideal](https://docs.unity.com/en-us/engine/current/manual/assets-and-media/asset-types/models/creating-dccassets/modeling-optimized-characters).
-- Blender 4.5 LTS, [exportador glTF 2.0](https://docs.blender.org/manual/en/4.5/addons/import_export/scene_gltf2.html).
-- Não acessadas: a wiki do Polycount (densidade de texel e mapas de normal) e a documentação
-  do Unreal Engine.
+[Fontes e referências de modelos 3d](../references.md#modelos-3d).

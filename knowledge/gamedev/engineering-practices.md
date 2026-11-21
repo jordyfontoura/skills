@@ -120,22 +120,4 @@ Registre origem, autor e licença de cada asset, conforme as
 
 ## Fontes
 
-Documentação do Godot 4.7, consultada em 16/11/2026.
-
-- Desempenho: [otimização geral](https://docs.godotengine.org/en/stable/tutorials/performance/general_optimization.html),
-  [CPU](https://docs.godotengine.org/en/stable/tutorials/performance/cpu_optimization.html),
-  [GPU](https://docs.godotengine.org/en/stable/tutorials/performance/gpu_optimization.html),
-  [3D](https://docs.godotengine.org/en/stable/tutorials/performance/optimizing_3d_performance.html) e
-  [MultiMesh](https://docs.godotengine.org/en/stable/tutorials/performance/using_multimesh.html).
-- Boas práticas: [organização de cenas](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html),
-  [cenas e scripts](https://docs.godotengine.org/en/stable/tutorials/best_practices/scenes_versus_scripts.html),
-  [alternativas a nós](https://docs.godotengine.org/en/stable/tutorials/best_practices/node_alternatives.html),
-  [preferências de dados](https://docs.godotengine.org/en/stable/tutorials/best_practices/data_preferences.html),
-  [preferências de lógica](https://docs.godotengine.org/en/stable/tutorials/best_practices/logic_preferences.html),
-  [organização de projeto](https://docs.godotengine.org/en/stable/tutorials/best_practices/project_organization.html) e
-  [controle de versão](https://docs.godotengine.org/en/stable/tutorials/best_practices/version_control_systems.html).
-- Scripts e entrada: [tipagem estática](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/static_typing.html),
-  [processamento ocioso e de física](https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html),
-  [interpolação de física](https://docs.godotengine.org/en/stable/tutorials/physics/interpolation/physics_interpolation_introduction.html) e
-  [exemplos de entrada](https://docs.godotengine.org/en/stable/tutorials/inputs/input_examples.html).
-- Persistência: [salvar jogos](https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html).
+[Fontes e referências de engenharia em godot](../references.md#engenharia-em-godot).

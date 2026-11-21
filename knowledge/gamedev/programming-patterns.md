@@ -100,12 +100,4 @@ Interpretação do harness, sem confirmação na documentação lida:
 
 ## Fontes
 
-Consultadas em 16/11/2026.
-
-- Robert Nystrom, [*Game Programming Patterns*](https://gameprogrammingpatterns.com/contents.html),
-  edição web gratuita; um capítulo por padrão.
-- Glenn Fiedler, [*Fix Your Timestep!*](https://gafferongames.com/post/fix_your_timestep/), 10/06/2004.
-- Godot 4.7: [processamento ocioso e de física](https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html),
-  [interpolação de física](https://docs.godotengine.org/en/stable/tutorials/physics/interpolation/physics_interpolation_introduction.html),
-  [organização de cenas](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html) e
-  [otimização de CPU](https://docs.godotengine.org/en/stable/tutorials/performance/cpu_optimization.html).
+[Fontes e referências de padrões de programação de jogos](../references.md#padrões-de-programação-de-jogos).

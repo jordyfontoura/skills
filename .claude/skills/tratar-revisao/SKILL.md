@@ -60,6 +60,3 @@ Prepare respostas técnicas que expliquem o resultado ou a discordância. Public
 resolver conversas no provedor, fazer push ou integrar depende do pedido e da autorização
 existente; tratar feedback localmente não concede essas ações. Use `integrar` para integração
 autorizada e atualize a descrição do PR se ela precisar refletir a mudança final.
-
-Inspirada em [receiving-code-review, do Superpowers](https://github.com/obra/superpowers/blob/main/skills/receiving-code-review/SKILL.md),
-adaptada para escopo explícito, decisões existentes e continuidade de itens independentes.

@@ -52,6 +52,3 @@ No acabamento, confira espaçamento, tipografia, alinhamento, conteúdo e estado
 design system. Diferencie um defeito local de uma inconsistência no token ou componente
 compartilhado e corrija a origem. Acabamento não autoriza redesign. Repita as provas afetadas.
 Para uma crítica estruturada da experiência de uso, use a rubrica de interface de `criticar`.
-
-Inspiração de direção visual: [frontend-design, da Anthropic](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md).
-As orientações são adaptadas ao projeto, sem impor a estética da referência.

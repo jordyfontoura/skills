@@ -55,5 +55,4 @@ melhore uma métrica do produto. Para revisar ou reescrever textos, aplique a sk
 
 ## Fontes
 
-- [10 heurísticas de usabilidade, NN/g](https://www.nngroup.com/articles/ten-usability-heuristics/).
-- Listas e exemplos adaptados pelo harness; requisitos do projeto e seus guias são consultados no destino.
+[Fontes e referências de estados e conteúdo](../references.md#estados-e-conteúdo).

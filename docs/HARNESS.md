@@ -51,20 +51,8 @@ Este fluxo substitui a exigência genérica de especificar todo trabalho substan
 local foi a recorrência de planejamento, revisões e conferências nas execuções Mindfy e Partilha,
 com demora para alcançar as jornadas de uso. É uma decisão de projeto, sem economia medida ainda.
 
-A pesquisa consultada em 04/11/2026 dá apoio delimitado:
-
-- [Geração de testes orientada por contratos, Google/SpecOps 2026](https://arxiv.org/html/2608.17177v2):
-  houve melhora na detecção de bugs com custo adicional de tokens. O experimento trata de
-  testes sobre bugs históricos; não valida um fluxo obrigatório completo de SDD.
-- [Artefatos de especificação em PRs, ESEM 2026](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESEM.2026.84):
-  o estudo observacional não encontrou proteção contra defeitos ou retrabalho. A medida era
-  principalmente referência a issues e tickets, sem observar adoção direta das ferramentas SDD.
-- [SDD prescrito e praticado, preprint](https://arxiv.org/html/2608.25202v4): profissionais
-  relataram benefícios e custos de planejamento e revisão, com uso seletivo. Os relatos não
-  isolam causalidade nem separam os ganhos das melhorias dos modelos.
-- [Experimento de harness para aplicações longas, Anthropic](https://www.anthropic.com/research/harness-design-long-running-apps):
-  o autor simplificou a coordenação ao mudar de modelo e preservou planejamento e avaliação.
-  É um experimento interno, não uma validação universal nem uma receita de configuração.
+A [pesquisa sobre fluxo de trabalho](../knowledge/references.md#fluxo-de-trabalho),
+consultada em 04/11/2026, dá apoio delimitado a esta escolha.
 
 Esses resultados não demonstram que SDD seja sempre superior nem que deva ser abandonado.
 A aplicação aqui é ajustar o processo à incerteza e ao risco, mantendo requisitos, decisões,
@@ -125,8 +113,8 @@ Não execute instaladores nem downloads como consequência automática de consul
 Arquivos externos como `PRODUCT.md`, `DESIGN.md` e `design-system/<slug>/MASTER.md` só devem
 ser incorporados com função definida em relação às fontes que o projeto já mantém.
 
-Fontes consultadas em 17/11/2026: [UI/UX Pro Max, `e59ff376a4`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/e59ff376a4)
-e [Impeccable, `d41d9860b0`](https://github.com/pbakaus/impeccable/tree/d41d9860b0).
+As revisões consultadas em 17/11/2026 estão no
+[catálogo de direção visual](../knowledge/references.md#direção-visual).
 Não houve execução comparativa das ferramentas. O uso em uma tela nova e outra com design
 system existente, com avaliação independente autorizada, ainda precisa demonstrar o valor
 prático da orientação. Verificações estruturais do harness não comprovam esse ganho.
@@ -178,18 +166,9 @@ confere o feedback com `tratar-revisao`, corrige e repete as provas afetadas ant
 crítica. O limite e a condição de parada vêm do objetivo. `verificar-aceite` continua sendo
 a comprovação independente dos critérios combinados da entrega.
 
-O método de interface parte da [avaliação heurística](https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/)
-e da [escala de severidade da NN/g](https://www.nngroup.com/articles/how-to-rate-the-severity-of-usability-problems/),
-que fundamentam a inspeção e a reavaliação por vários avaliadores. As definições de 1 a 3,
-os pisos, a regra de barreiras e a mediana são escolhas deste harness. O
-[resumo de 33 estudos da MeasuringU](https://measuringu.com/evaluator-effect/), fonte
-secundária, relata concordância mediana de 27% entre dois avaliadores humanos.
-Na comparação de [Duan et al., CHI 2024](https://arxiv.org/abs/2403.13139), o GPT-4 teve
-precisão menor que especialistas humanos (0,60 contra 0,83) e recall um pouco maior. Os erros
-incluíram regras fora de contexto, duplicatas, descartes reapresentados, correções vagas e
-leitura visual incorreta sem interface renderizada; a utilidade caiu nas iterações. As regras
-de `criticar` respondem a esses erros, sem medição de ganho nem garantia de que os resultados
-se apliquem a outros modelos.
+Os [fundamentos da avaliação de interfaces](../knowledge/references.md#avaliação-de-interfaces)
+incluem inspeção heurística e estudos sobre divergências entre avaliadores. As definições de
+1 a 3, os pisos, a regra de barreiras e a mediana são escolhas deste harness, sem ganho medido.
 
 `subir-regua` organiza esse ciclo em etapas: cada uma repete avaliar e corrigir até cumprir
 seu critério, e então o próximo avaliador examina a versão inteira. A skill combinada define
@@ -197,20 +176,9 @@ como avaliar. Por exemplo: "Melhore o UX/UI com `$criticar` no modo `$subir-regu
 `9.00` em todas as telas, desktop e mobile". Sem sequência no pedido, o modo usa
 `ladders.padrao` da política de modelos e para na etapa que esgotar seus ciclos.
 
-As regras de `subir-regua` partem destes estudos, nenhum deles com esta sequência de etapas.
-Em revisão iterativa de redações, [Pan et al., 2024](https://arxiv.org/abs/2407.04549),
-preprint, observaram a nota do avaliador subir enquanto a nota humana estagnava ou caía,
-sobretudo com contexto compartilhado entre autor e avaliador; um avaliador sem o histórico
-acompanhou as pessoas. Daí o contexto novo e a ausência de notas anteriores.
-[Panickssery et al., NeurIPS 2024](https://arxiv.org/abs/2404.13076), mostraram que modelos
-avaliam melhor os próprios textos do que textos equivalentes para pessoas, e
-[Verga et al., 2024](https://arxiv.org/abs/2404.18796), preprint, que avaliadores de famílias
-diferentes têm menos viés do que um único avaliador grande; daí a alternância de famílias e
-o aviso de independência. [Gao et al., 2022](https://arxiv.org/abs/2210.10760), preprint,
-viram a otimização de uma medida substituta acabar reduzindo a qualidade real, como prevê a
-lei de Goodhart; daí a regra da referência e o limite de ciclos. No Self-Refine,
-[Madaan et al., NeurIPS 2023](https://arxiv.org/abs/2303.17651), as primeiras rodadas
-concentraram os ganhos, o que sustenta o padrão de 3 ciclos por etapa.
+Os [estudos de avaliação iterativa](../knowledge/references.md#avaliação-iterativa) motivam
+o contexto novo, a alternância de famílias e o limite de ciclos. Nenhum deles valida esta
+sequência de etapas do harness.
 
 ### Produtividade
 
@@ -263,12 +231,9 @@ o trabalho após a liberação, sem prometer uma data de conclusão. Para um ped
 informa "0 a 0 minutos restantes" e a evidência. Não se converte contagem de tarefas em
 percentual do tempo nem se fazem medições só para responder.
 
-Essa é uma convenção do harness para tornar a consulta mais útil. A
-[NN/g](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/) recomenda
-mostrar etapas feitas e restantes quando uma estimativa razoável não está disponível.
-Um [estudo exploratório de workshop](https://arxiv.org/html/2604.00010v1) encontrou dificuldades
-de modelos ao prever sua própria duração; suas tarefas predominantemente curtas não validam
-previsões durante goals longos. As fontes motivam cautela, não comprovam calibração local.
+Essa é uma convenção do harness para tornar a consulta mais útil. As
+[fontes sobre estimativas de duração](../knowledge/references.md#estimativas-de-duração)
+motivam cautela, sem comprovar calibração local.
 
 Na mesma conversa, o momento e o efeito da entrega da pergunta dependem do ambiente: a skill
 não controla filas ou interrupções. Para observar outra execução sem lhe enviar mensagens,
@@ -297,12 +262,9 @@ autorizada, a skill executa o lote pertinente sem pedir a mesma aprovação nova
 tipo de evidência necessária e tipo de decisão, respectivamente. Essas divisões
 ajudam a escolher a abordagem; não são etapas ou seções obrigatórias em toda resposta.
 
-As adaptações usam como referências
-os [métodos de busca da Cochrane](https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-04)
-e o [estudo de conformidade em agentes de Choi et al.](https://arxiv.org/abs/2506.01332).
-A Cochrane trata de revisões de intervenções; o estudo, de debates
-simulados sobre temas controversos. A aplicação ao harness é uma escolha de projeto, sem
-prova de ganho neste ambiente. Esses contextos não impõem requisitos a toda conversa ou busca.
+As [referências de pesquisa e conselho](../knowledge/references.md#pesquisa-e-conselho)
+informam as adaptações. A aplicação ao harness é uma escolha de projeto, sem prova de ganho
+neste ambiente nem requisitos universais para toda conversa ou busca.
 
 Use `pesquisar-web` quando quiser uma resposta fundamentada em fontes externas consultadas:
 

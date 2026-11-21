@@ -3,7 +3,7 @@
 - **Tipo:** referência de domínio; recomendações contextuais, sem autorizar redesign.
 - **Aplicabilidade:** criação ou refinamento de interfaces web, nativas e de jogos. Consulte
   quando a direção estiver aberta ou quando for preciso avaliar coerência visual.
-- **Origem e revisão:** síntese própria a partir das fontes abaixo, consultadas em 17/11/2026.
+- **Origem e revisão:** síntese própria a partir das fontes catalogadas, consultadas em 17/11/2026.
   Impeccable em `d41d9860b0`; UI/UX Pro Max em `e59ff376a4`; DTCG no formato 2025.10.
 - **Limites:** os playbooks orientam escolhas; não demonstram superioridade estética,
   usabilidade com pessoas nem conformidade de acessibilidade. Paletas por categoria de
@@ -71,13 +71,4 @@ operação por teclado nem acesso com tecnologia assistiva. Consulte os
 
 ## Fontes
 
-- [Impeccable, revisão consultada](https://github.com/pbakaus/impeccable/tree/d41d9860b0):
-  descoberta em `shape`, preservação de identidade em `polish` e avaliação em `critique`/`audit`.
-- [UI/UX Pro Max, revisão consultada](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/e59ff376a4):
-  busca de direção, geração de design system e exportação de tokens. Saídas são recomendações
-  a conferir no contexto do projeto.
-- [Design Tokens Format Module 2025.10, DTCG](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/):
-  formato para intercâmbio de tokens, sem prescrever a estética de um produto.
-
-As ferramentas não foram executadas nesta pesquisa. A síntese não inclui seus catálogos,
-scripts ou playbooks e não comprova ganho de qualidade em comparação com o fluxo anterior.
+[Fontes e referências de direção visual](../references.md#direção-visual).

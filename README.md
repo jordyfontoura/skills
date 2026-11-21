@@ -25,6 +25,7 @@ modelo da conversa nem autorizam delegação por conta própria. Seus testes con
 A [biblioteca de referências](knowledge/README.md) reúne conhecimento de UI e acessibilidade
 para consulta conforme a tarefa. As fontes ficam fora das skills; as cópias avulsas incluem
 automaticamente os guias necessários, sem depender do caminho deste repositório.
+Consulte as [fontes e inspirações do harness](knowledge/references.md) para conferir sua origem.
 
 ## Instalar
 

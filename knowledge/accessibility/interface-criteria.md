@@ -46,9 +46,4 @@ entre o 2.5.8 e a plataforma, mas registre como falha WCAG apenas o que descumpr
 
 ## Fontes
 
-- Revisão de movimento em 17/11/2026: explicações W3C dos critérios
-  [2.2.2](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html),
-  [2.3.1](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html) e
-  [2.3.3](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html).
-- [WCAG 2.2, W3C](https://www.w3.org/TR/WCAG22/), recomendação de 12 de dezembro de 2024 citada na origem.
-- [WCAG2ICT, W3C](https://www.w3.org/TR/wcag2ict-22/), orientação para software que não é web.
+[Fontes e referências de acessibilidade](../references.md#acessibilidade).

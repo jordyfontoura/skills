@@ -143,6 +143,5 @@ Corte gerúndios de benefício sem prova, como "…, garantindo…" e "…, perm
 Aplique o mesmo cuidado a contrastes "não apenas… mas também", travessões decorativos,
 títulos com maiúsculas em todas as palavras e fechos como "Fico à disposição".
 
-Adaptada de [unslop e technical-writing, do pstack](https://github.com/cursor/plugins/tree/main/pstack/skills),
-de Lauren Tan, sob licença MIT. O aviso de copyright e a permissão estão em
+O material MIT adaptado mantém seu aviso de copyright e permissão em
 [LICENSE-pstack.txt](LICENSE-pstack.txt).
