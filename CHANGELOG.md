@@ -7,8 +7,21 @@ compatibilidade.
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-11-21
+
 ### Alterado
 
+- `escrever-claro` muda de função: deixa de ser o procedimento de revisão de textos, que
+  agora é `redigir`, e passa a aplicar o padrão de explicação clara ao conteúdo pedido, em
+  qualquer meio. `AGENTS.md`, o bloco de adoção, o CLI e as skills `criticar`, `implementar`
+  e `subir-regua` citam `redigir` onde pediam revisão de texto. O CLI recomenda `redigir`
+  por padrão no lugar de `escrever-claro`. Não houve comparação em execuções equivalentes.
+- Fontes e créditos de inspiração passam a ficar em `knowledge/references.md`. Skills
+  mantêm instruções e avisos de licença; guias apontam para o catálogo compartilhado,
+  incluído como dependência nas instalações que o referenciam.
+- `andamento`: toda consulta passa a incluir uma faixa de tempo restante até concluir o goal
+  ou pedido inteiro. Com pouco contexto, informa uma faixa preliminar com baixa confiança
+  e hipóteses; esperas sem prazo ficam como condições fora da estimativa.
 - O banner do README ganha animação na rede neural: pulsos entram pelas linhas e percorrem
   as conexões, acendendo os nós. Com movimento reduzido, o banner continua estático.
 - `andamento`: o procedimento passa de 86 para 33 linhas e descreve o resultado esperado em
@@ -38,12 +51,41 @@ compatibilidade.
 - Cópias de `.agents/skills/` e `.claude/skills/` usam `knowledge/` na raiz, sem duplicar
   guias por skill. `sync.py` retira cópias antigas idênticas às geradas e interrompe a
   migração se houver adaptações ou arquivos desconhecidos. A adoção manual inclui a biblioteca.
+- `melhorar-harness` passa a analisar o histórico de conversas do projeto, e não só a sessão
+  atual. Reúne o que `examinar-eficiencia` e `examinar-arquitetura` cobriam, aplicado ao
+  harness: erros frequentes, gasto de tokens e de tempo e atrito entre skills. Entrega um
+  relatório HTML com os dados medidos e as propostas. A skill ganha o coletor `history.py`,
+  que lê os registros locais do Claude Code e do Codex com a biblioteca padrão do Python 3.11+;
+  é o primeiro código distribuído dentro de uma skill. Invocar a skill autoriza ler os
+  registros deste projeto; antes, ela não lia transcrições.
 - `melhorar-harness`: considera simplificar ou retirar componentes com indício de custo ou
   obsolescência, comparando um por vez sem enfraquecer requisitos ou verificações úteis.
 - `configurar-harness`: orienta mensagens de falha com local, regra violada e correção possível.
 
 ### Adicionado
 
+- `samples/` guarda respostas reais de agentes a cenários fixos, com e sem as skills, para
+  cada modelo de `samples/models.toml`. `python scripts/samples.py run` gera as amostras
+  desatualizadas com os CLIs do Claude Code e do Codex, e cada cenário ganha um `METRICS.md`
+  com tokens, tempo e skills acionadas. A CI acusa amostras desatualizadas nos PRs para `main`.
+- Guia `knowledge/writing/clear-explanation.md`: padrão de explicação clara, válido para
+  conversa, documento, página ou diagrama. Reúne o que a antiga `esclarecer` ensinava sobre
+  partir do leitor, escolher a forma pelo tipo de assunto, definir termos e preservar condições.
+- Skill `redigir`: recebe sem mudanças o procedimento de redação e revisão de textos que
+  estava em `escrever-claro`, com o aviso de licença do pstack, e aponta para o padrão.
+  Quem pedia revisão de texto por `escrever-claro` passa a pedir `redigir`.
+- `esclarecer` volta ao catálogo, mais curta: reexplica a mensagem anterior pelo padrão,
+  sem executar ações nem tratar a dúvida como aprovação. A remoção de 17/11/2026 não chegou
+  a ser lançada.
+- Skill `subir-regua`: melhoria em etapas, combinável com `criticar`, `redigir` ou
+  outras formas de avaliação. Cada etapa repete avaliar e corrigir em contexto novo até
+  cumprir seu critério e então passa ao próximo avaliador ou a uma meta mais alta. Mudanças
+  só substituem a referência quando não há regressão, e a escada para na etapa que esgota
+  seus ciclos.
+- Seção opcional `ladders` na política de modelos v2, validada em Python e no CLI, com
+  etapas concretas e `max_cycles` configurável. A política pessoal registra a escada
+  `padrao`: Luna XHigh, Haiku XHigh, Sol Medium, Opus Medium e Fable Medium, com 3 ciclos
+  por etapa.
 - Guias `knowledge/ux/visual-direction.md` e `knowledge/ux/motion.md`: direção e tokens,
   finalidade e interrupção de animações, movimento reduzido e uso contextual de GSAP na web.
   O guia de acessibilidade explicita os critérios temporais 2.2.2 e 2.3.1, ambos de nível A.
@@ -81,19 +123,19 @@ compatibilidade.
 
 ### Removido
 
-Seis skills saem do catálogo, que passa a ter 24. Elas descreviam o que os modelos atuais
-fazem sem instrução: explicar de novo, descrever um PR, comparar requisitos com a
+Cinco skills saem do catálogo. Elas descreviam o que os modelos atuais
+fazem sem instrução: descrever um PR, comparar requisitos com a
 implementação, examinar a arquitetura, apontar onde a sessão gastou tempo e executar sem spec.
 Os pedidos continuam valendo em linguagem natural. A remoção não foi comparada em execuções
 equivalentes; a economia de contexto e de manutenção é uma hipótese.
 
-As seis estavam no canal estável: quatro desde a versão 0.2.0, e `fazer-direto` e
+As cinco estavam no canal estável: três desde a versão 0.2.0, e `fazer-direto` e
 `examinar-eficiencia` desde a promoção de 13/11/2026. Numa cópia editável, `atualizar-harness` preserva as pastas que você
 adaptou; a ausência na origem não autoriza apagá-las no destino. O CLI deixa de oferecer a
-prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padrão.
+prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padrão;
+`esclarecer` continua no catálogo.
 
 - `descrever-pr` foi removida.
-- `esclarecer` foi removida.
 - `examinar-arquitetura` foi removida.
 - `examinar-eficiencia` foi removida.
 - `fazer-direto` foi removida.

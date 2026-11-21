@@ -112,7 +112,3 @@ sem criar duas cópias concorrentes da decisão vigente. Preserve as respostas h
 `especificar` pode usar esse resultado para planejar; não é uma etapa obrigatória do modo assíncrono.
 Autorizações anteriores continuam válidas dentro do escopo, mas o pedido de alinhar uma ideia
 não autoriza por si só implementá-la.
-
-Este modo se inspira na organização de escolhas por dependência da
-[grilling, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills%2Fproductivity%2Fgrilling%2FSKILL.md),
-adaptada para respostas em arquivo e encerramento por suficiência.

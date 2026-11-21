@@ -52,6 +52,8 @@ Branches de trabalho podem ser integradas em `nightly` por merge ou squash.
 Quando todo o conteúdo de `nightly` estiver aprovado para uso estável:
 
 1. Prepare a versão e o CHANGELOG em `nightly` e execute as verificações abaixo.
+   Gere as amostras com `python scripts/samples.py run` e inclua o resultado no commit; o diff
+   delas mostra o efeito das mudanças nas skills. Veja `samples/README.md`.
 2. Abra um PR de `nightly` para `main`, confira os checks e integre com **Create a merge commit**.
    Preserve o histórico entre as branches: não use squash ou rebase nessa promoção.
 3. Crie a tag `vX.Y.Z` no commit resultante em `main` e publique a versão estável.

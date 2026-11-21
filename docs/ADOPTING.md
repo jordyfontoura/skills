@@ -15,7 +15,7 @@ papéis opcionais e mostra os arquivos antes da instalação. Execute
 
 ## Plugin
 
-Os comandos estão no [README](../README.md#instalar). O plugin traz as 24 skills; no Claude Code,
+Os comandos estão no [README](../README.md#instalar). O plugin traz as 27 skills; no Claude Code,
 também os papéis `planner`, `evaluator` e `representative`. O Codex não recebe papéis por plugin:
 copie os arquivos de [.codex/agents/](../.codex/agents/) para a pasta `.codex/agents/` do projeto.
 
@@ -59,7 +59,7 @@ Adapte o texto às regras do seu projeto. As skills funcionam sem ele quando cha
 - Repita as provas afetadas por mudanças e preserve as ainda válidas. Uma pendência bloqueia
   seu trabalho dependente; ordens e portões explícitos continuam valendo.
 - Use `andamento` para consultas de andamento e `passar-contexto` quando outra sessão for retomar.
-- Aplique `escrever-claro` ao escrever documentos, títulos, descrições e mensagens.
+- Aplique `redigir` ao escrever documentos, títulos, descrições e mensagens.
 - Explorar não autoriza implementar, e uma pergunta não conta como aprovação.
 ```
 
@@ -84,7 +84,7 @@ Publicar na origem não atualiza as cópias instaladas nos seus projetos.
    [.agents/models.example.toml](../.agents/models.example.toml) como `.agents/models.toml`
    e ajuste. Sem esse arquivo, as skills usam o modelo do ambiente. O [guia](MODELS.md)
    explica o formato.
-5. Se quiser um vocabulário comum para o projeto, parta do
+5. `esclarecer` usa o glossário do projeto quando ele existe. Você pode partir do
    [glossário desta coleção](GLOSSARY.md).
 6. Registre na documentação de manutenção do projeto a origem, o canal ou referência fixa,
    a versão, o SHA e as skills copiadas. A skill `atualizar-harness` usa esse registro para preservar suas adaptações na

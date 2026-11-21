@@ -74,6 +74,34 @@ juntos. Não misture um ID concreto com um herdado. As alternativas exigem prove
 concretos. `effort = "inherit"` pode aparecer em qualquer candidato; outro valor precisa ser
 suportado pela ferramenta. A validação local não consulta provedores.
 
+## Escadas de `subir-regua`
+
+A seção opcional `ladders` guarda sequências de avaliadores para `subir-regua`. Cada escada
+exige `when` e uma lista `stages` não vazia, na ordem em que as etapas acontecem. Cada etapa
+declara `provider`, `model` e `effort` concretos; `inherit` só é aceito em `effort`. Uma etapa
+repetida é erro, mas o mesmo modelo pode aparecer com esforços diferentes. `max_cycles` é
+opcional: um inteiro positivo que limita os ciclos de cada etapa. Sem ele, a skill usa 3; o
+pedido pode fixar outro limite, inclusive por etapa.
+
+```toml
+[ladders.padrao]
+when = "Subir a régua com avaliadores de famílias alternadas até a última etapa aprovar."
+max_cycles = 3
+stages = [
+  { provider = "codex", model = "gpt-6-luna", effort = "xhigh" },
+  { provider = "claudeAgent", model = "claude-haiku-5-5", effort = "xhigh" },
+  { provider = "codex", model = "gpt-6.1-sol", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-opus-5-5", effort = "medium" },
+  { provider = "claudeAgent", model = "claude-fable-5-2", effort = "medium" },
+]
+```
+
+Esta é a escada pessoal deste repositório: Luna XHigh, Haiku XHigh, Sol Medium, Opus Medium
+e Fable Medium. As etapas não são alternativas por indisponibilidade, e os `candidates` dos
+perfis não as substituem. Uma etapa que não puder executar como declarada fica pendente.
+A ordem é uma escolha do usuário, não uma classificação de qualidade dos modelos. A v1 não
+aceita `ladders`.
+
 ## Resolver a seleção
 
 1. Preserve o modelo e esforço explicitamente pedidos pelo usuário e as restrições da tarefa.
@@ -107,7 +135,9 @@ O helper `resolve_policy(policy, role, complexity="default")`, em
 [`scripts/model_policy.py`](../scripts/model_policy.py), preserva o retorno antigo da v1.
 Na v2, acrescenta `profile`, `complexity` e `complexity_applied`; o último só é verdadeiro
 quando o mapa muda o perfil base. As listas retornadas podem ser editadas sem alterar a política.
-Esse helper é de manutenção; as skills também explicam a resolução para uso sem Python.
+`resolve_ladder(policy, name)` retorna as etapas em ordem e `max_cycles`, ou `None` quando
+o limite não foi declarado.
+Esses helpers são de manutenção; as skills também explicam a resolução para uso sem Python.
 
 ## Representante em uma execução autônoma
 
@@ -159,5 +189,5 @@ As skills não exigem scripts de manutenção ou serviços para ler e aplicar es
 
 `python scripts/check.py` valida formato, referências, papéis canônicos e cópias dos provedores.
 `python -m unittest discover -s scripts` cobre as duas versões, ordem, isolamento, níveis sem mapa,
-papéis protegidos e configurações inválidas. As provas são estruturais: disponibilidade,
+papéis protegidos, escadas e configurações inválidas. As provas são estruturais: disponibilidade,
 esforço aceito e comportamento real do modelo dependem das ferramentas de cada execução.

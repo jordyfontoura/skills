@@ -125,18 +125,4 @@ Para critérios de interface, consulte a
 
 ## Fontes
 
-Consultadas em 16/11/2026.
-
-- Robin Hunicke, Marc LeBlanc e Robert Zubek, [*MDA: A Formal Approach to Game Design and Game Research*](https://users.cs.northwestern.edu/~hunicke/MDA.pdf).
-  O artigo relata oficinas da GDC de 2001 a 2004.
-- Daniel Cook, [*Loops and Arcs*](https://lostgarden.com/2012/04/30/loops-and-arcs/), 30/04/2012, e
-  [*The Chemistry of Game Design*](https://www.gamedeveloper.com/design/the-chemistry-of-game-design), 19/07/2007.
-- Sid Meier, [*Interesting Decisions*](https://www.gdcvault.com/play/1015756/Interesting), GDC 2012.
-- Jenova Chen, [*Flow in Games*](https://www.jenovachen.com/flowingames/designfig.htm), 2006.
-- Martin Jonasson e Petri Purho, [*Juice It or Lose It*](https://www.gdcvault.com/play/1016487/Juice-It-or-Lose), GDC Europe 2012.
-- Maddy Thorson, [*Celeste & Forgiveness*](https://www.maddymakesgames.com/articles/celeste_and_forgiveness/index.html).
-- Matt Allmer, [*The 13 Basic Principles of Gameplay Design*](https://www.gamedeveloper.com/design/the-13-basic-principles-of-gameplay-design), 27/02/2009.
-- Liz England, [*The Door Problem*](https://lizengland.com/blog/2014/04/the-door-problem/), 21/04/2014.
-- [*The Level Design Book*](https://book.leveldesignbook.com/process/overview), visão geral do processo.
-- [*Game Accessibility Guidelines*](https://gameaccessibilityguidelines.com/) e seu
-  [nível básico](https://gameaccessibilityguidelines.com/basic/).
+[Fontes e referências de game design](../references.md#game-design).

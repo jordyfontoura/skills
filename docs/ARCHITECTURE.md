@@ -31,6 +31,9 @@ Este repositório contém procedimentos em Markdown e configurações opcionais 
   `knowledge/`. O validador recusa links arbitrários, arquivos fora do índice, escapes da
   biblioteca, componentes executáveis no plugin e caracteres invisíveis.
 - `scripts/model_policy.py` valida e consulta a política, sem executar agentes ou fazer rede.
+- `scripts/samples.py` executa os cenários de `samples/` nos CLIs do Claude Code e do Codex,
+  com e sem as skills, e registra as respostas e o consumo. Só `run` chama modelos; `check`
+  compara hashes e é o que a CI executa nos PRs para `main`.
 - `.github/workflows/ci.yml` executa essa verificação e os testes do validador.
 - `cli/` contém o pacote TypeScript `@jordyfontoura/skills`. `scripts/package_cli.py` usa
   `catalog.py` para empacotar skills com links para `knowledge/harness/`, os guias uma única
@@ -62,6 +65,11 @@ O pacote npm leva JavaScript compilado e conteúdo pronto, sem fontes Python ou 
 Como o marketplace aponta para a raiz, o cache do plugin pode conter a pasta `cli/`; ela
 não registra executáveis no manifesto e não é executada pelo plugin. A validação continua
 recusando `bin/`, hooks e comandos executáveis na raiz.
+
+`melhorar-harness` é a única skill com código: `history.py` mede o histórico de conversas do
+projeto. Ele só roda quando o agente o chama, lê os registros locais do Claude Code e do Codex,
+grava apenas os arquivos de saída indicados e não acessa a rede. O pacote do CLI o leva como
+conteúdo da skill, sem executá-lo. `scripts/test_history.py` prova a coleta com conversas sintéticas.
 
 No destino, o CLI confere os arquivos antes de gravar, recusa conflitos e links simbólicos,
 mantém os arquivos idênticos e preserva políticas locais de modelos. Recibos imutáveis em

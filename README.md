@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 24 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 27 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -25,6 +25,7 @@ modelo da conversa nem autorizam delegação por conta própria. Seus testes con
 A [biblioteca de referências](knowledge/README.md) reúne conhecimento de UI e acessibilidade
 para consulta conforme a tarefa. As fontes ficam fora das skills; as cópias avulsas incluem
 automaticamente os guias necessários, sem depender do caminho deste repositório.
+Consulte as [fontes e inspirações do harness](knowledge/references.md) para conferir sua origem.
 
 ## Instalar
 
@@ -100,7 +101,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 24 skills</summary>
+<summary>Ver as 27 skills</summary>
 
 ### Entender e decidir
 
@@ -109,6 +110,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `propor` | Avaliar uma abordagem antes de autorizar alterações. |
 | `entrevistar` | Resolver escolhas abertas pela conversa. |
 | `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
+| `esclarecer` | Retomar uma explicação que ficou confusa. |
 | `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
 | `consultar-conhecimento` | Localizar e aplicar os guias pertinentes da biblioteca de conhecimento. |
 | `conselho` | Consultar perspectivas independentes sobre uma decisão. |
@@ -124,6 +126,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `diagnosticar` | Reproduzir uma falha e investigar sua causa. |
 | `revisar` | Analisar um diff fixo contra requisitos e padrões. |
 | `tratar-revisao` | Conferir feedback recebido e aplicar correções válidas. |
+| `subir-regua` | Melhorar em etapas, com avaliadores ou metas mais exigentes a cada aprovação. |
 | `verificar-aceite` | Conferir critérios de aceite de forma independente. |
 | `criticar` | Receber uma crítica especializada de um artefato ou experiência, individual ou com conselho. |
 | `integrar` | Integrar branches no destino autorizado e verificar o resultado. |
@@ -140,9 +143,10 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 
 | Skill | Use para |
 | --- | --- |
-| `escrever-claro` | Escrever e revisar textos, preservando fatos e voz. |
+| `escrever-claro` | Explicar um assunto pelo padrão de explicação clara, em qualquer meio. |
+| `redigir` | Redigir e revisar textos, preservando fatos e voz. |
 | `configurar-harness` | Configurar comandos e verificações para o projeto. |
-| `melhorar-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
+| `melhorar-harness` | Analisar o histórico de conversas do projeto e propor melhorias no harness, com relatório HTML. |
 | `atualizar-harness` | Atualizar skills copiadas preservando adaptações locais. |
 | `conhecer-ferramentas` | Entender e preparar ferramentas de linha de comando, quando autorizado. |
 

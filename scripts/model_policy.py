@@ -86,8 +86,35 @@ def validate_policy(policy, required_roles=()):
     return policy
 
 
+def ladders(value):
+    if not isinstance(value, dict) or not value:
+        raise ValueError("ladders: deve conter ao menos uma escada")
+    for name, ladder in value.items():
+        location = f"ladders.{name}"
+        identifier(name, location)
+        fields(ladder, {"when", "max_cycles", "stages"}, {"when", "stages"}, location)
+        if not isinstance(ladder["when"], str) or not ladder["when"].strip():
+            raise ValueError(f"{location}.when: explique quando usar esta escada")
+        if "max_cycles" in ladder:
+            cycles = ladder["max_cycles"]
+            if type(cycles) is not int or cycles < 1:
+                raise ValueError(f"{location}.max_cycles: deve ser um inteiro positivo")
+        stages = ladder["stages"]
+        if not isinstance(stages, list) or not stages:
+            raise ValueError(f"{location}.stages: deve conter uma lista não vazia")
+        seen = set()
+        for index, stage in enumerate(stages):
+            item = target(stage, f"{location}.stages[{index}]", concrete=True)
+            identity = tuple(item[k] for k in sorted(TARGET_FIELDS))
+            if identity in seen:
+                raise ValueError(f"{location}.stages: etapa repetida")
+            seen.add(identity)
+
+
 def validate_profiles(policy, required_roles):
-    fields(policy, {"version", "profiles", "roles"}, {"version", "profiles", "roles"}, "política")
+    fields(policy, {"version", "profiles", "roles", "ladders"}, {"version", "profiles", "roles"}, "política")
+    if "ladders" in policy:
+        ladders(policy["ladders"])
     profiles = policy["profiles"]
     if not isinstance(profiles, dict) or not profiles:
         raise ValueError("profiles: deve conter ao menos um perfil")
@@ -152,4 +179,18 @@ def resolve_policy(policy, role, complexity="default"):
         "role": role,
         "when": settings["when"],
         "candidates": [primary, *(dict(item) for item in settings["fallbacks"])],
+    }
+
+
+def resolve_ladder(policy, name):
+    """Retorna as etapas em ordem; o limite ausente fica None para a skill aplicar seu padrão."""
+    validate_policy(policy)
+    ladder = policy.get("ladders", {}).get(name)
+    if ladder is None:
+        raise ValueError(f"Escada sem configuração: {name}")
+    return {
+        "ladder": name,
+        "when": ladder["when"],
+        "max_cycles": ladder.get("max_cycles"),
+        "stages": [dict(stage) for stage in ladder["stages"]],
     }

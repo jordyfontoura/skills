@@ -320,7 +320,8 @@ class ValidationTests(unittest.TestCase):
             "Use interview para alinhar.": "nome antigo `interview`; use `entrevistar`",
             "Use `interview-async` para arquivos.": "nome antigo `interview-async`",
             "Rode `retro` ao final.": "nome antigo `retro`; use `melhorar-harness`",
-            "Peça `pera-ai`.": "nome antigo `pera-ai`; a skill `esclarecer` foi removida",
+            "Peça `pera-ai`.": "nome antigo `pera-ai`; use `esclarecer`",
+            "Rode `pull-request`.": "nome antigo `pull-request`; a skill `descrever-pr` foi removida",
         }
         for text, message in cases.items():
             with self.subTest(text=text):
@@ -331,7 +332,7 @@ class ValidationTests(unittest.TestCase):
 
     def test_removed_skills_cited_as_skills_are_rejected(self):
         cases = {
-            "Use `esclarecer` para retomar a explicação.": "skill removida `esclarecer`",
+            "Use `examinar-eficiencia` para medir a sessão.": "skill removida `examinar-eficiencia`",
             "> `$fazer-direto Adicione a exportação.`": "skill removida `fazer-direto`",
             "Veja skills/development/reconciliar/SKILL.md.": "skill removida `reconciliar`",
         }
@@ -352,15 +353,15 @@ class ValidationTests(unittest.TestCase):
 
     def test_removals_come_from_the_changelog(self):
         self.edit("CHANGELOG.md", lambda t: t.replace(
-            "- `esclarecer` foi removida.\n", "- `esclarecer` foi removida.\n- `revisar` foi removida.\n", 1))
+            "- `reconciliar` foi removida.\n", "- `reconciliar` foi removida.\n- `revisar` foi removida.\n", 1))
         errors, _, _ = validate(self.root)
         self.assertTrue(any("`revisar` foi removida, mas ainda está no catálogo" in e
                             for e in errors), errors)
 
         self.setUp()
-        self.edit("CHANGELOG.md", lambda t: t.replace("- `esclarecer` foi removida.\n", "", 1))
+        self.edit("CHANGELOG.md", lambda t: t.replace("- `reconciliar` foi removida.\n", "", 1))
         errors, _, _ = validate(self.root)
-        self.assertTrue(any("renomeação de `clarify` não termina" in e for e in errors), errors)
+        self.assertTrue(any("renomeação de `reconcile` não termina" in e for e in errors), errors)
 
     def test_old_skill_name_in_description_is_rejected(self):
         self.edit("skills/development/revisar/SKILL.md",

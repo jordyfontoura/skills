@@ -37,6 +37,13 @@ e decisões entre rodadas, sem precisar reconstruir tudo pela conversa.
 
 > $entrevistar-por-arquivo Organize as escolhas pendentes dos lembretes em um arquivo Markdown para eu responder depois.
 
+### [`esclarecer`](../skills/productivity/esclarecer/SKILL.md)
+
+Quando a explicação ficou confusa. Reexplica o ponto de outra forma, sem avançar a tarefa
+nem interpretar sua dúvida como aprovação.
+
+> $esclarecer Não entendi por que precisamos de uma fila para enviar os lembretes. Explique usando esse exemplo.
+
 ### [`pesquisar-web`](../skills/productivity/pesquisar-web/SKILL.md)
 
 Quando a decisão depende de informação externa. A pesquisa consulta fontes na internet
@@ -136,6 +143,14 @@ O crítico não escreve código; quem implementa confere os achados e repete as 
 
 > $implementar Conclua o escopo aprovado. Ao terminar, chame um crítico independente com $criticar, corrija os problemas confirmados no escopo e peça nova crítica, até três rodadas. Encerre com todos os critérios comprovados e sem problemas impeditivos confirmados pelo crítico, ou com as pendências ao atingir o limite. Não mude os requisitos para obter aprovação.
 
+### [`subir-regua`](../skills/productivity/subir-regua/SKILL.md)
+
+Quando você quer melhorar algo em etapas, passando a avaliadores ou metas mais exigentes a
+cada aprovação. A skill combinada define como avaliar; sem sequência no pedido, o modo usa
+a escada `padrao` da política de modelos.
+
+> Melhore o UX/UI com $criticar no modo $subir-regua até 9.00 em todas as telas, desktop e mobile. Repense textos, componentes e posições quando necessário.
+
 ### [`integrar`](../skills/development/integrar/SKILL.md)
 
 Quando é hora de juntar o trabalho ao destino autorizado. Confere o estado das branches,
@@ -190,10 +205,18 @@ e resultado esperado, e exige conferir o retorno antes de incorporá-lo.
 
 ### [`escrever-claro`](../skills/productivity/escrever-claro/SKILL.md)
 
+Quando você quer que um conteúdo explique bem o assunto, em qualquer meio. Aplica o
+[padrão de explicação clara](../knowledge/writing/clear-explanation.md) à resposta, ao
+documento ou à página pedida.
+
+> $escrever-claro Monte uma página HTML explicando como a fila de lembretes funciona, para quem nunca viu o sistema.
+
+### [`redigir`](../skills/productivity/redigir/SKILL.md)
+
 Quando um texto está genérico, repetitivo ou distante da sua voz. Revisa a linguagem para
 deixar a informação clara, preservando fatos, comandos e o tom pretendido.
 
-> $escrever-claro Revise este README para ficar mais direto e natural, preservando os fatos técnicos e os comandos.
+> $redigir Revise este README para ficar mais direto e natural, preservando os fatos técnicos e os comandos.
 
 ### [`configurar-harness`](../skills/harness/configurar-harness/SKILL.md)
 
@@ -204,10 +227,13 @@ Ajuda o agente a usar checks reais, em vez de seguir instruções de um template
 
 ### [`melhorar-harness`](../skills/harness/melhorar-harness/SKILL.md)
 
-Quando uma dificuldade da sessão revela algo a melhorar nas instruções. Propõe uma mudança
-ligada ao problema observado e explica seu custo, sem transformar todo incidente em regra geral.
+Quando você quer saber onde o trabalho com os agentes neste projeto falha, demora ou gasta
+demais. Mede o histórico de conversas do Claude Code e do Codex e entrega um relatório HTML
+com erros frequentes, tokens, tempo, skills usadas e propostas ligadas a casos observados.
 
-> $melhorar-harness Nesta sessão repetimos verificações que continuavam válidas. Proponha uma melhoria nas instruções a partir desse caso.
+> $melhorar-harness Analise as conversas dos últimos 30 dias neste projeto e proponha melhorias no harness.
+
+> $melhorar-harness Nesta semana repetimos verificações que continuavam válidas. Confira no histórico e proponha uma mudança nas instruções.
 
 ### [`atualizar-harness`](../skills/harness/atualizar-harness/SKILL.md)
 

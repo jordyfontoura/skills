@@ -4,7 +4,9 @@ export interface PolicyV2 {
   version: 2;
   profiles: Record<string, { candidates: Candidate[] }>;
   roles: Record<string, PolicyRole>;
+  ladders?: Record<string, PolicyLadder>;
 }
+export interface PolicyLadder { when: string; max_cycles?: number; stages: Candidate[] }
 const fixedRoles = new Set(['representative', 'evaluator', 'council']);
 function table(value: unknown, location: string): asserts value is Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`${location}: deve ser uma tabela`);
@@ -15,6 +17,13 @@ function fields(value: Record<string, unknown>, allowed: string[], required: str
 }
 function identifier(value: unknown, location: string): asserts value is string {
   if (typeof value !== 'string' || value !== value.trim() || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value)) throw new Error(`${location}: nome inválido`);
+}
+function target(candidate: unknown, at: string, concrete: boolean): asserts candidate is Candidate {
+  table(candidate, at);
+  fields(candidate, ['provider', 'model', 'effort'], ['provider', 'model', 'effort'], at);
+  for (const key of ['provider', 'model', 'effort']) text(candidate[key], `${at}.${key}`);
+  if ((candidate.provider === 'inherit') !== (candidate.model === 'inherit')) throw new Error(`${at}: provider e model devem ser herdados ou definidos juntos`);
+  if (concrete && candidate.model === 'inherit') throw new Error(`${at}: uma alternativa deve identificar provider e model concretos`);
 }
 function text(value: unknown, location: string, trimmed = true): asserts value is string {
   // Mesmos espaços de str.strip() no Python; String.trim() trata BOM e U+0085 de outro modo.
@@ -27,10 +36,33 @@ function text(value: unknown, location: string, trimmed = true): asserts value i
     if (point >= 0xd800 && point <= 0xdfff) throw new Error(`${location}: caractere Unicode inválido`);
   }
 }
+function validateLadders(ladders: unknown) {
+  table(ladders, 'ladders');
+  if (!Object.keys(ladders).length) throw new Error('ladders: deve conter ao menos uma escada');
+  for (const [name, ladder] of Object.entries(ladders)) {
+    const location = `ladders.${name}`;
+    identifier(name, location);
+    table(ladder, location);
+    fields(ladder, ['when', 'max_cycles', 'stages'], ['when', 'stages'], location);
+    text(ladder.when, `${location}.when`, false);
+    if (Object.hasOwn(ladder, 'max_cycles') && (!Number.isSafeInteger(ladder.max_cycles) || (ladder.max_cycles as number) < 1)) {
+      throw new Error(`${location}.max_cycles: deve ser um inteiro positivo`);
+    }
+    if (!Array.isArray(ladder.stages) || !ladder.stages.length) throw new Error(`${location}.stages: deve conter uma lista não vazia`);
+    const seen = new Set<string>();
+    for (const [index, stage] of ladder.stages.entries()) {
+      target(stage, `${location}.stages[${index}]`, true);
+      const key = JSON.stringify([stage.provider, stage.model, stage.effort]);
+      if (seen.has(key)) throw new Error(`${location}.stages: etapa repetida`);
+      seen.add(key);
+    }
+  }
+}
 export function validatePolicyV2(value: unknown): asserts value is PolicyV2 {
   table(value, 'política');
   if (value.version !== 2) throw new Error('política.version: o gerador aceita somente a versão 2; arquivos v1 existentes são preservados');
-  fields(value, ['version', 'profiles', 'roles'], ['version', 'profiles', 'roles'], 'política');
+  fields(value, ['version', 'profiles', 'roles', 'ladders'], ['version', 'profiles', 'roles'], 'política');
+  if (Object.hasOwn(value, 'ladders')) validateLadders(value.ladders);
   table(value.profiles, 'profiles');
   const profiles = value.profiles;
   if (!Object.keys(profiles).length) throw new Error('profiles: deve conter ao menos um perfil');
@@ -42,12 +74,7 @@ export function validatePolicyV2(value: unknown): asserts value is PolicyV2 {
     if (!Array.isArray(profile.candidates) || !profile.candidates.length) throw new Error(`${location}.candidates: deve conter uma lista não vazia`);
     const seen = new Set<string>();
     for (const [index, candidate] of profile.candidates.entries()) {
-      const at = `${location}.candidates[${index}]`;
-      table(candidate, at);
-      fields(candidate, ['provider', 'model', 'effort'], ['provider', 'model', 'effort'], at);
-      for (const key of ['provider', 'model', 'effort']) text(candidate[key], `${at}.${key}`);
-      if ((candidate.provider === 'inherit') !== (candidate.model === 'inherit')) throw new Error(`${at}: provider e model devem ser herdados ou definidos juntos`);
-      if (index > 0 && candidate.model === 'inherit') throw new Error(`${at}: uma alternativa deve identificar provider e model concretos`);
+      target(candidate, `${location}.candidates[${index}]`, index > 0);
       const key = JSON.stringify([candidate.provider, candidate.model, candidate.effort]);
       if (seen.has(key)) throw new Error(`${location}: alternativa repetida`);
       seen.add(key);
@@ -96,6 +123,13 @@ export function serializePolicy(policy: PolicyV2): string {
       for (const [level, profile] of Object.entries(role.complexity)) lines.push(`${level} = ${quote(profile)}`);
     }
     lines.push('');
+  }
+  for (const [name, ladder] of Object.entries(policy.ladders ?? {})) {
+    lines.push(`[ladders.${name}]`, `when = ${quote(ladder.when)}`);
+    if (ladder.max_cycles !== undefined) lines.push(`max_cycles = ${ladder.max_cycles}`);
+    lines.push('stages = [');
+    for (const stage of ladder.stages) lines.push(`  { provider = ${quote(stage.provider)}, model = ${quote(stage.model)}, effort = ${quote(stage.effort)} },`);
+    lines.push(']', '');
   }
   return lines.join('\n');
 }

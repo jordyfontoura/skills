@@ -66,6 +66,3 @@ Relate origem e destino, revisões, conflitos resolvidos, provas e o estado fina
 integrado localmente, publicado, merge remoto concluído ou ainda pendente. Esses estados não
 são equivalentes. Use `passar-contexto` se outra sessão precisar concluir.
 Nomeie checks com falha ou sem execução e o que falta para concluir, quando houver.
-
-Inspirada em [finishing-a-development-branch, do Superpowers](https://github.com/obra/superpowers/blob/main/skills/finishing-a-development-branch/SKILL.md),
-sem menu fixo ou autorização implícita para publicar e limpar ambientes.

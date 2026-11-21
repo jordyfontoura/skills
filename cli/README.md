@@ -74,7 +74,7 @@ Escolha Codex, Claude Code ou ambos. Diretórios existentes sugerem os agentes, 
 escolha continua editável. Você pode receber recomendações por práticas, escolher no
 catálogo ou consultar as instruções do plugin completo.
 
-As recomendações começam com `implementar` e `escrever-claro`, e acrescentam
+As recomendações começam com `implementar` e `redigir`, e acrescentam
 skills conforme suas escolhas: aprovação da abordagem, retomada entre sessões, PRs e revisão, pesquisa e requisitos, aceite independente e interfaces.
 Você pode desmarcar qualquer recomendação na seleção final.
 
@@ -148,6 +148,10 @@ Arquivos `.env` não são aceitos como configuração. Exemplo de JSON, com IDs 
   }
 }
 ```
+
+O objeto também pode trazer a seção opcional `ladders`, com as escadas de `subir-regua`.
+O formato está no [guia de modelos](../docs/MODELS.md#escadas-de-subir-regua); as perguntas
+interativas não criam escadas.
 
 Para gerar a política sem perguntas:
 

@@ -9,7 +9,7 @@ license: Apache-2.0
 Avalie o objeto pedido com critérios declarados e evidências, sem corrigi-lo. Fixe objeto e
 versão, público, intenção, foco, referências e ações permitidas, consultando decisões, críticas
 anteriores e descartes antes de perguntar. Especializar a crítica não autoriza redefinir o
-produto. Para escolher entre propostas, use `conselho`; para reescrever texto, `escrever-claro`.
+produto. Para escolher entre propostas, use `conselho`; para reescrever texto, `redigir`.
 
 ## Escolher o método e os critérios
 
@@ -21,7 +21,7 @@ Declare a especialização e os critérios antes do exame, combinando métodos q
 - **Assets 3D para jogos:** [geometria, materiais, rig e requisitos de uso](../../../knowledge/3d-modeling/game-ready-assets.md).
 - **Outros aspectos**, como direção de arte ou argumentação de um texto: critérios derivados
   do pedido, das referências, das regras do projeto e de princípios do domínio com mecanismo
-  explícito. Para clareza de texto, consulte `escrever-claro` sem reescrever.
+  explícito. Para clareza de texto, consulte `redigir` sem reescrever.
 
 Informe a origem e os limites dos critérios; uma rubrica criada para o caso não é padrão
 validado. Use `consultar-conhecimento` para localizar outros guias e leia só os necessários.
@@ -90,7 +90,8 @@ de avaliação e condição de parada, com limite de rodadas quando combinado. Q
 confere o feedback com `tratar-revisao`, corrige por prioridade e repete as provas afetadas:
 as sugestões do crítico são meios a conferir, não requisitos. Cada nova crítica avalia a
 versão resultante. Não repita a avaliação da mesma versão até obter nota favorável, não baixe
-o limiar e não troque o crítico para aprovar. Preserve versões recuperáveis para comparar;
+o limiar e não troque o crítico para aprovar; numa sequência de críticos ou metas crescentes,
+use `subir-regua`, em que a troca ocorre depois da aprovação da etapa. Preserve versões recuperáveis para comparar;
 a última não é automaticamente a melhor. Encerre ao cumprir os critérios ou atingir a condição
 de parada, relatando notas, problemas e provas ausentes. Notas não substituem provas técnicas
 nem `verificar-aceite`.

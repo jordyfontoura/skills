@@ -44,6 +44,20 @@
     { "name": "mapa não é tabela", "valid": false, "changes": [{ "path": ["roles", "planner", "complexity"], "value": [] }] },
     { "name": "evaluator protegido", "valid": false, "changes": [{ "path": ["roles", "evaluator", "complexity"], "value": {} }] },
     { "name": "representative protegido", "valid": false, "changes": [{ "path": ["roles", "representative", "complexity"], "value": {} }] },
-    { "name": "council protegido", "valid": false, "changes": [{ "path": ["roles", "council", "complexity"], "value": {} }] }
+    { "name": "council protegido", "valid": false, "changes": [{ "path": ["roles", "council", "complexity"], "value": {} }] },
+    { "name": "escada com limite", "valid": true, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir a régua.", "max_cycles": 3, "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "xhigh" }, { "provider": "tool-b", "model": "model-b", "effort": "inherit" }] } } }] },
+    { "name": "escada sem limite", "valid": true, "changes": [{ "path": ["ladders"], "value": { "rapida": { "when": "Uma etapa.", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "medium" }] } } }] },
+    { "name": "mesmo modelo com esforços diferentes", "valid": true, "changes": [{ "path": ["ladders"], "value": { "esforco": { "when": "Subir o esforço.", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "medium" }, { "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "escadas vazias", "valid": false, "changes": [{ "path": ["ladders"], "value": {} }] },
+    { "name": "nome de escada inválido", "valid": false, "changes": [{ "path": ["ladders"], "value": { "Padrao": { "when": "Subir.", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "escada sem justificativa", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": " ", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "escada sem etapas", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "stages": [] } } }] },
+    { "name": "etapa herdada", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "stages": [{ "provider": "inherit", "model": "inherit", "effort": "inherit" }] } } }] },
+    { "name": "etapa repetida", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }, { "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "etapa incompleta", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "stages": [{ "provider": "tool-a", "model": "model-a" }] } } }] },
+    { "name": "limite zero", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "max_cycles": 0, "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "limite booleano", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "max_cycles": true, "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "limite textual", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "max_cycles": "3", "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] },
+    { "name": "campo de escada desconhecido", "valid": false, "changes": [{ "path": ["ladders"], "value": { "padrao": { "when": "Subir.", "candidates": [], "stages": [{ "provider": "tool-a", "model": "model-a", "effort": "high" }] } } }] }
   ]
 }
