@@ -7,6 +7,8 @@ compatibilidade.
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-11-21
+
 ### Alterado
 
 - `escrever-claro` muda de função: deixa de ser o procedimento de revisão de textos, que
