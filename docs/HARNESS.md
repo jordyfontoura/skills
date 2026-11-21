@@ -34,7 +34,7 @@ Use `verificar-aceite` quando solicitado ou exigido pelo projeto. Termine com ev
 `passar-contexto` se outra sessão continuar, com estado, provas e próxima ação, sem copiar o histórico.
 
 Use `conselho` para pareceres independentes sobre uma proposta; siga a governança existente
-sem exigir comitê para toda mudança. Aplique `escrever-claro` ao redigir textos para leitores,
+sem exigir comitê para toda mudança. Aplique `redigir` ao escrever textos para leitores,
 incluindo títulos e descrições.
 
 Autorizações anteriores continuam válidas. Explorar não autoriza implementar. Um pedido claro
@@ -218,6 +218,7 @@ Fontes em `skills/productivity/`.
 
 | Skill | Resultado |
 | --- | --- |
+| `esclarecer` | Reexplicar um ponto confuso pelo padrão de explicação clara, usando o glossário do projeto. |
 | `conselho` | Consolidar pareceres independentes, divergências e recomendações. |
 | `subir-regua` | Melhorar em etapas, passando a avaliadores ou metas mais exigentes após cada aprovação. |
 | `delegar` | Delegar trabalho delimitado e conferir o resultado. |
@@ -228,7 +229,8 @@ Fontes em `skills/productivity/`.
 | `andamento` | Consultar o pedido inteiro, pendências e próxima entrega, sempre com uma faixa de tempo até a conclusão. |
 | `pesquisar-web` | Pesquisar na internet e fundamentar conclusões com fontes, evidências e limites. |
 | `consultar-conhecimento` | Localizar referências pertinentes, conferir aplicabilidade e relacioná-las à tarefa. |
-| `escrever-claro` | Escrever ou revisar textos claros, preservando fatos e voz. |
+| `escrever-claro` | Aplicar o padrão de explicação clara ao conteúdo pedido, em qualquer meio. |
+| `redigir` | Redigir ou revisar textos, cortando excesso e preservando fatos e voz. |
 | `escrever-objetivo` | Escrever uma instrução de execução delimitada com conclusão verificável. |
 
 ### Manutenção do harness
@@ -241,6 +243,13 @@ Fontes em `skills/harness/`.
 | `melhorar-harness` | Melhorar o harness a partir de dificuldades observadas na sessão. |
 | `atualizar-harness` | Trazer atualizações da origem preservando adaptações locais. |
 | `conhecer-ferramentas` | Explicar ferramentas CLI, inventariar o ambiente e preparar faltantes no escopo autorizado. |
+
+O [padrão de explicação clara](../knowledge/writing/clear-explanation.md) reúne num só
+arquivo como explicar um assunto: partir do leitor, escolher a forma pelo tipo de assunto,
+definir termos e preservar condições. `$escrever-claro` aplica o padrão ao conteúdo pedido,
+como uma página ou um documento. `$esclarecer`, ou a pergunta "Como assim?", aplica-o à
+mensagem anterior, sem avançar a tarefa nem tratar a dúvida como aprovação. `redigir`
+edita textos e consulta o mesmo padrão quando o texto explica algo.
 
 Para consultar o andamento, use, por exemplo:
 
@@ -306,13 +315,13 @@ prova de ganho neste ambiente. Esses contextos não impõem requisitos a toda co
 
 Use `pesquisar-web` quando quiser uma resposta fundamentada em fontes externas consultadas:
 
-> `$pesquisar-web Pesquise como melhorar a skill escrever-claro e quais critérios usar para diferentes tipos de conteúdo.`
+> `$pesquisar-web Pesquise como melhorar a skill redigir e quais critérios usar para diferentes tipos de conteúdo.`
 
 A skill exige busca online e leitura das fontes relevantes, com links próximos das conclusões.
 Se faltar acesso à internet, o agente declara a pesquisa ausente ou parcial em vez de responder
 de memória como se tivesse pesquisado. Guias e opiniões são distinguidos de resultados medidos.
 A pesquisa não amplia a autorização para editar arquivos ou implementar suas recomendações.
-`escrever-claro` continua podendo revisar textos sem pesquisa externa quando isso for suficiente ao pedido.
+`redigir` continua podendo revisar textos sem pesquisa externa quando isso for suficiente ao pedido.
 
 ## Consultas ao conselho
 

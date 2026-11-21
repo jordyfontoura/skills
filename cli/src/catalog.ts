@@ -33,7 +33,7 @@ for (const name of [...scenarios.flatMap(s => s.skills), ...Object.values(roleSk
   if (!available.has(name)) throw new Error(`Recomendação aponta para skill ausente: ${name}`);
 }
 export function recommend(choices: string[]): string[] {
-  return [...new Set(['implementar', 'escrever-claro',
+  return [...new Set(['implementar', 'redigir',
     ...scenarios.filter(s => choices.includes(s.value)).flatMap(s => s.skills)])];
 }
 export function selectSkills(skills: string[], roles: Role[]): string[] {
@@ -51,7 +51,7 @@ export function instructions(skills: string[]): string {
     'verificar-aceite': 'Use `verificar-aceite` quando for exigido aceite em contexto independente.',
     delegar: 'Delegue apenas trabalho autorizado; configurar papéis não autoriza consultas.',
     'passar-contexto': 'Use `passar-contexto` quando outra sessão precisar retomar o trabalho.',
-    'escrever-claro': 'Aplique `escrever-claro` ao redigir textos para leitores.',
+    redigir: 'Aplique `redigir` ao escrever ou revisar textos para leitores.',
     'consultar-conhecimento': 'Use `consultar-conhecimento` para localizar os guias pertinentes na [biblioteca compartilhada](knowledge/harness/README.md), sem carregar todos de uma vez.',
   };
   for (const [name, rule] of Object.entries(rules)) if (selected.has(name)) lines.push(`- ${rule}`);

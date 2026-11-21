@@ -25,7 +25,7 @@ Identifique a ação principal e a informação necessária para realizá-la. Co
 [usabilidade](../../../knowledge/ux/usability.md) e de
 [hierarquia, estados e conteúdo](../../../knowledge/ux/states-and-content.md).
 Não converta tudo em cartões nem corte informação só para obter uma composição limpa.
-Conteúdo real orienta o layout; identifique dados simulados. Use `escrever-claro` para revisar
+Conteúdo real orienta o layout; identifique dados simulados. Use `redigir` para revisar
 o texto de interface mantendo as condições necessárias à compreensão.
 
 ## Cobrir estados e acesso

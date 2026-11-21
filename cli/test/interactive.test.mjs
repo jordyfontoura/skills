@@ -48,7 +48,7 @@ test('perguntas reais recomendam skills, incluem papel e só instalam após conf
   assert.equal(result.code, 0, result.output + result.errors);
   assert.equal(result.step, 7);
   assert.ok(existsSync(join(result.root, '.agents/skills/propor/SKILL.md')));
-  assert.ok(existsSync(join(result.root, '.agents/skills/escrever-claro/SKILL.md')));
+  assert.ok(existsSync(join(result.root, '.agents/skills/redigir/SKILL.md')));
   assert.ok(existsSync(join(result.root, '.codex/agents/planner.toml')));
   assert.equal(existsSync(join(result.root, '.agents/models.toml')), false);
   assert.match(result.output, /Instalação concluída/);

@@ -38,7 +38,7 @@ a correção pertence à origem, não só à tela.
   - consentimento enviesado.
 
 Um padrão que leva a pessoa a escolher contra o próprio interesse causa dano, mesmo que
-melhore uma métrica do produto. Para revisar ou reescrever textos, aplique a skill `escrever-claro`.
+melhore uma métrica do produto. Para revisar ou reescrever textos, aplique a skill `redigir`.
 
 ## 6. Estados, interação e adaptação
 

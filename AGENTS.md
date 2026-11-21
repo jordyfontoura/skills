@@ -22,7 +22,7 @@ escolhidas pela descrição de cada uma.
   reintegre hotfixes em `nightly`. Veja o fluxo em `CONTRIBUTING.md`.
   Não force um push nem use `--no-verify`.
 - Use nomes de skills em português, demais identificadores em inglês e textos de leitura em
-  português, conforme `docs/STANDARDS.md`. Aplique `escrever-claro` a documentos, títulos,
+  português, conforme `docs/STANDARDS.md`. Aplique `redigir` a documentos, títulos,
   descrições e mensagens.
 - Quando o usuário pedir `propor`, apresente a abordagem e aguarde aprovação antes de executar,
   mesmo que haja uma autorização genérica anterior.
