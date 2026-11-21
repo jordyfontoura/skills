@@ -227,10 +227,13 @@ Ajuda o agente a usar checks reais, em vez de seguir instruções de um template
 
 ### [`melhorar-harness`](../skills/harness/melhorar-harness/SKILL.md)
 
-Quando uma dificuldade da sessão revela algo a melhorar nas instruções. Propõe uma mudança
-ligada ao problema observado e explica seu custo, sem transformar todo incidente em regra geral.
+Quando você quer saber onde o trabalho com os agentes neste projeto falha, demora ou gasta
+demais. Mede o histórico de conversas do Claude Code e do Codex e entrega um relatório HTML
+com erros frequentes, tokens, tempo, skills usadas e propostas ligadas a casos observados.
 
-> $melhorar-harness Nesta sessão repetimos verificações que continuavam válidas. Proponha uma melhoria nas instruções a partir desse caso.
+> $melhorar-harness Analise as conversas dos últimos 30 dias neste projeto e proponha melhorias no harness.
+
+> $melhorar-harness Nesta semana repetimos verificações que continuavam válidas. Confira no histórico e proponha uma mudança nas instruções.
 
 ### [`atualizar-harness`](../skills/harness/atualizar-harness/SKILL.md)
 
