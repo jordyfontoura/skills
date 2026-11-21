@@ -14,6 +14,9 @@ compatibilidade.
   qualquer meio. `AGENTS.md`, o bloco de adoção, o CLI e as skills `criticar`, `implementar`
   e `subir-regua` citam `redigir` onde pediam revisão de texto. O CLI recomenda `redigir`
   por padrão no lugar de `escrever-claro`. Não houve comparação em execuções equivalentes.
+- Fontes e créditos de inspiração passam a ficar em `knowledge/references.md`. Skills
+  mantêm instruções e avisos de licença; guias apontam para o catálogo compartilhado,
+  incluído como dependência nas instalações que o referenciam.
 - `andamento`: toda consulta passa a incluir uma faixa de tempo restante até concluir o goal
   ou pedido inteiro. Com pouco contexto, informa uma faixa preliminar com baixa confiança
   e hipóteses; esperas sem prazo ficam como condições fora da estimativa.

@@ -48,5 +48,3 @@ independente, quando exigidos. Não crie serviço de avaliação ou uma suíte e
 Registre achados úteis na conversa ou na documentação existente. Preserve escolhas duráveis
 com contexto e consequências, sem duplicar registros. Verifique uma mudança aplicada pelo
 método pertinente e pelos comandos do projeto; uma proposta, sozinha, não é prova.
-
-Inspirada em [retro, de Matt Pocock](https://github.com/mattpocock/skills/blob/main/skills/engineering/retro/SKILL.md).

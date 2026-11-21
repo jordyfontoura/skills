@@ -6,6 +6,7 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 
 | Referência | Quando consultar |
 | --- | --- |
+| [Fontes e referências do harness](references.md) | Conferir fontes, inspirações, versões e limites das adaptações. |
 | [Usabilidade, tarefas e fluxos](ux/usability.md) | Compreensão, navegação, aprendizagem e recuperação de erros em interfaces. |
 | [Hierarquia, estados, conteúdo e escolha](ux/states-and-content.md) | Composição, mensagens, interação, adaptação e padrões enganosos. |
 | [Direção visual e tokens](ux/visual-direction.md) | Paleta, tipografia, densidade e tokens quando a direção estiver aberta ou sua coerência precisar de avaliação. |
@@ -25,7 +26,9 @@ domínio. Pastas como `frontend`, `legal` e `scientific-research` podem surgir q
 houver material útil, com nomes de arquivos em inglês e texto em português. Não crie pastas
 vazias nem transforme os exemplos de domínio numa taxonomia obrigatória.
 
-Cada referência declara aplicabilidade, origem, fontes e limites. Separe sínteses de fontes,
+Cada guia declara aplicabilidade, origem e limites; suas fontes ficam no catálogo
+`references.md`, com links para as seções pertinentes. Créditos de inspiração das skills
+também ficam nesse catálogo, sem exigir sua leitura durante a execução. Separe sínteses de fontes,
 recomendações contextuais e políticas locais. Registre versão ou data conferida; em direito,
 a jurisdição e a vigência são parte do contexto; em pesquisa científica, indique o desenho
 do estudo, a população e os limites das evidências. Confirme uma fonte vigente quando ela

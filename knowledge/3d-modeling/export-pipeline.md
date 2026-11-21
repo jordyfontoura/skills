@@ -112,14 +112,4 @@ desses arquivos. A documentação do Godot dá o exemplo `git lfs track "*.glb"`
 
 ## Fontes
 
-Consultadas em 16/11/2026.
-
-- Blender 4.5 LTS, [exportador glTF 2.0](https://docs.blender.org/manual/en/4.5/addons/import_export/scene_gltf2.html).
-- Khronos, [página do glTF](https://www.khronos.org/gltf/).
-- Godot 4.7: [formatos disponíveis](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html),
-  [personalização de tipos de nó](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/node_type_customization.html),
-  [configuração de importação](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/import_configuration.html),
-  [considerações de exportação de modelos](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html),
-  [importação de imagens](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_images.html),
-  [retargeting de esqueletos](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/retargeting_3d_skeletons.html) e
-  [controle de versão](https://docs.godotengine.org/en/stable/tutorials/best_practices/version_control_systems.html).
+[Fontes e referências de exportação 3d](../references.md#exportação-3d).
