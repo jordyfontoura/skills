@@ -150,7 +150,8 @@ def copy_files(root, copy_root, sources=None, knowledge_root=None):
     paths = {}
     for name, source in sources.items():
         for path in source.rglob("*"):
-            if path.is_file():
+            # O cache do Python aparece ao importar o código de uma skill e não faz parte dela.
+            if path.is_file() and "__pycache__" not in path.parts:
                 paths[path.resolve()] = (copy_root / name / path.relative_to(source)).resolve()
     output = {}
     for name, skill in sources.items():
