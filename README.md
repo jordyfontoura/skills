@@ -5,7 +5,7 @@
 # Mais controle sobre o trabalho dos seus agentes
 
 Skills em português para alinhar decisões, orientar implementações e pedir provas do que foi
-feito. Para Claude Code e Codex, com 25 skills e 3 papéis que você pode usar ou adaptar.
+feito. Para Claude Code e Codex, com 27 skills e 3 papéis que você pode usar ou adaptar.
 
 O padrão é implementar por entregas úteis, com planejamento proporcional à incerteza e ao
 risco. Uma spec é usada quando falta definição ou quando você a pede; não é etapa obrigatória
@@ -101,7 +101,7 @@ ficavam em inglês; a correspondência entre os nomes está no [CHANGELOG](CHANG
 Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o catálogo abaixo.
 
 <details>
-<summary>Ver as 25 skills</summary>
+<summary>Ver as 27 skills</summary>
 
 ### Entender e decidir
 
@@ -110,6 +110,7 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 | `propor` | Avaliar uma abordagem antes de autorizar alterações. |
 | `entrevistar` | Resolver escolhas abertas pela conversa. |
 | `entrevistar-por-arquivo` | Responder perguntas em Markdown, em rodadas. |
+| `esclarecer` | Retomar uma explicação que ficou confusa. |
 | `pesquisar-web` | Buscar fontes na internet para fundamentar uma conclusão. |
 | `consultar-conhecimento` | Localizar e aplicar os guias pertinentes da biblioteca de conhecimento. |
 | `conselho` | Consultar perspectivas independentes sobre uma decisão. |
@@ -142,7 +143,8 @@ Escolha pela situação no [guia de exemplos](docs/EXAMPLES.md) ou consulte o ca
 
 | Skill | Use para |
 | --- | --- |
-| `escrever-claro` | Escrever e revisar textos, preservando fatos e voz. |
+| `escrever-claro` | Explicar um assunto pelo padrão de explicação clara, em qualquer meio. |
+| `redigir` | Redigir e revisar textos, preservando fatos e voz. |
 | `configurar-harness` | Configurar comandos e verificações para o projeto. |
 | `melhorar-harness` | Propor melhorias nas instruções a partir de dificuldades observadas. |
 | `atualizar-harness` | Atualizar skills copiadas preservando adaptações locais. |

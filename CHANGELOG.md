@@ -9,10 +9,14 @@ compatibilidade.
 
 ### Alterado
 
+- `escrever-claro` muda de função: deixa de ser o procedimento de revisão de textos, que
+  agora é `redigir`, e passa a aplicar o padrão de explicação clara ao conteúdo pedido, em
+  qualquer meio. `AGENTS.md`, o bloco de adoção, o CLI e as skills `criticar`, `implementar`
+  e `subir-regua` citam `redigir` onde pediam revisão de texto. O CLI recomenda `redigir`
+  por padrão no lugar de `escrever-claro`. Não houve comparação em execuções equivalentes.
 - Fontes e créditos de inspiração passam a ficar em `knowledge/references.md`. Skills
   mantêm instruções e avisos de licença; guias apontam para o catálogo compartilhado,
   incluído como dependência nas instalações que o referenciam.
-
 - `andamento`: toda consulta passa a incluir uma faixa de tempo restante até concluir o goal
   ou pedido inteiro. Com pouco contexto, informa uma faixa preliminar com baixa confiança
   e hipóteses; esperas sem prazo ficam como condições fora da estimativa.
@@ -51,7 +55,20 @@ compatibilidade.
 
 ### Adicionado
 
-- Skill `subir-regua`: melhoria em etapas, combinável com `criticar`, `escrever-claro` ou
+- `samples/` guarda respostas reais de agentes a cenários fixos, com e sem as skills, para
+  cada modelo de `samples/models.toml`. `python scripts/samples.py run` gera as amostras
+  desatualizadas com os CLIs do Claude Code e do Codex, e cada cenário ganha um `METRICS.md`
+  com tokens, tempo e skills acionadas. A CI acusa amostras desatualizadas nos PRs para `main`.
+- Guia `knowledge/writing/clear-explanation.md`: padrão de explicação clara, válido para
+  conversa, documento, página ou diagrama. Reúne o que a antiga `esclarecer` ensinava sobre
+  partir do leitor, escolher a forma pelo tipo de assunto, definir termos e preservar condições.
+- Skill `redigir`: recebe sem mudanças o procedimento de redação e revisão de textos que
+  estava em `escrever-claro`, com o aviso de licença do pstack, e aponta para o padrão.
+  Quem pedia revisão de texto por `escrever-claro` passa a pedir `redigir`.
+- `esclarecer` volta ao catálogo, mais curta: reexplica a mensagem anterior pelo padrão,
+  sem executar ações nem tratar a dúvida como aprovação. A remoção de 17/11/2026 não chegou
+  a ser lançada.
+- Skill `subir-regua`: melhoria em etapas, combinável com `criticar`, `redigir` ou
   outras formas de avaliação. Cada etapa repete avaliar e corrigir em contexto novo até
   cumprir seu critério e então passa ao próximo avaliador ou a uma meta mais alta. Mudanças
   só substituem a referência quando não há regressão, e a escada para na etapa que esgota
@@ -97,19 +114,19 @@ compatibilidade.
 
 ### Removido
 
-Seis skills saem do catálogo, que passa a ter 24. Elas descreviam o que os modelos atuais
-fazem sem instrução: explicar de novo, descrever um PR, comparar requisitos com a
+Cinco skills saem do catálogo. Elas descreviam o que os modelos atuais
+fazem sem instrução: descrever um PR, comparar requisitos com a
 implementação, examinar a arquitetura, apontar onde a sessão gastou tempo e executar sem spec.
 Os pedidos continuam valendo em linguagem natural. A remoção não foi comparada em execuções
 equivalentes; a economia de contexto e de manutenção é uma hipótese.
 
-As seis estavam no canal estável: quatro desde a versão 0.2.0, e `fazer-direto` e
+As cinco estavam no canal estável: três desde a versão 0.2.0, e `fazer-direto` e
 `examinar-eficiencia` desde a promoção de 13/11/2026. Numa cópia editável, `atualizar-harness` preserva as pastas que você
 adaptou; a ausência na origem não autoriza apagá-las no destino. O CLI deixa de oferecer a
-prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padrão.
+prática "Executar direto quando eu pedir" e de recomendar `esclarecer` por padrão;
+`esclarecer` continua no catálogo.
 
 - `descrever-pr` foi removida.
-- `esclarecer` foi removida.
 - `examinar-arquitetura` foi removida.
 - `examinar-eficiencia` foi removida.
 - `fazer-direto` foi removida.

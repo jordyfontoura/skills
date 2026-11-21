@@ -45,7 +45,7 @@ test('todas as skills dos dois agentes usam somente a biblioteca compartilhada c
   assert.deepEqual(references, [join(root, 'knowledge/harness/references.md')]);
   assert.match(readFileSync(references[0], 'utf8'), /^## Usabilidade$/m);
   for (const agent of ['.agents', '.claude']) {
-    assert.ok(existsSync(join(root, agent, 'skills/escrever-claro/LICENSE-pstack.txt')));
+    assert.ok(existsSync(join(root, agent, 'skills/redigir/LICENSE-pstack.txt')));
   }
   for (const agent of ['.agents', '.claude']) {
     const content = readFileSync(join(root, agent, 'skills/consultar-conhecimento/SKILL.md'), 'utf8');

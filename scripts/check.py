@@ -196,7 +196,7 @@ def stale_names(root, sources):
         return f"nome antigo `{name}`; use `{current[name]}`"
 
     end = r"(?![\w-])"
-    # Nomes removidos, como `esclarecer`, também são palavras comuns: valem só as formas
+    # Nomes removidos, como `reconciliar`, também são palavras comuns: valem só as formas
     # que identificam uma skill. As formas em prosa ficam restritas aos nomes renomeados.
     cited = "|".join(re.escape(n) for n in sorted(set(current) | removed, key=len, reverse=True))
     patterns = [

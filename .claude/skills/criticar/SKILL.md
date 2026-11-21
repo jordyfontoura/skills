@@ -9,7 +9,7 @@ license: Apache-2.0
 Avalie o objeto pedido com critérios declarados e evidências, sem corrigi-lo. Fixe objeto e
 versão, público, intenção, foco, referências e ações permitidas, consultando decisões, críticas
 anteriores e descartes antes de perguntar. Especializar a crítica não autoriza redefinir o
-produto. Para escolher entre propostas, use `conselho`; para reescrever texto, `escrever-claro`.
+produto. Para escolher entre propostas, use `conselho`; para reescrever texto, `redigir`.
 
 ## Escolher o método e os critérios
 
@@ -21,7 +21,7 @@ Declare a especialização e os critérios antes do exame, combinando métodos q
 - **Assets 3D para jogos:** [geometria, materiais, rig e requisitos de uso](../../../knowledge/3d-modeling/game-ready-assets.md).
 - **Outros aspectos**, como direção de arte ou argumentação de um texto: critérios derivados
   do pedido, das referências, das regras do projeto e de princípios do domínio com mecanismo
-  explícito. Para clareza de texto, consulte `escrever-claro` sem reescrever.
+  explícito. Para clareza de texto, consulte `redigir` sem reescrever.
 
 Informe a origem e os limites dos critérios; uma rubrica criada para o caso não é padrão
 validado. Use `consultar-conhecimento` para localizar outros guias e leia só os necessários.

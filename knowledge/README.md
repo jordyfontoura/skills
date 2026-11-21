@@ -19,6 +19,7 @@ Requisitos, design systems e decisões específicos continuam no projeto de dest
 | [Técnicas de game design](gamedev/game-design.md) | Mecânicas, ritmo, dificuldade, resposta ao jogador, escopo e acessibilidade de jogos. |
 | [Modelos 3D prontos para jogo](3d-modeling/game-ready-assets.md) | Escala, geometria, UVs, materiais PBR, rig, LOD e colisão em modelos para tempo real. |
 | [Pipeline de exportação do Blender para o Godot](3d-modeling/export-pipeline.md) | Formato, opções de exportação, sufixos e opções de importação de cenas e texturas. |
+| [Explicação clara](writing/clear-explanation.md) | Explicar um conceito, mecanismo, decisão ou estado em conversa, documento, página ou diagrama. |
 
 UI é compartilhada entre frontend, aplicações nativas e jogos; não replique o mesmo guia por
 domínio. Pastas como `frontend`, `legal` e `scientific-research` podem surgir quando
